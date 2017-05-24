@@ -1,6 +1,6 @@
 {
   "name": "block-exploder-ui",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -20,9 +20,14 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
-    "core-js": "^2.4.1",
+    "bootstrap": "^3.3.7",
+    "chart.js": "^2.5.0",
+    "d3": "^4.9.1",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.1.1",
     "rxjs": "^5.1.0",
-    "zone.js": "^0.8.4"
+    "zone.js": "^0.8.4",
+    "ngx-infinite-scroll": "*"
   },
   "devDependencies": {
     "@angular/cli": "1.0.4",

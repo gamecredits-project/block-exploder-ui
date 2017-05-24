@@ -1,0 +1,72 @@
+    
+    <div class="container-fluid page-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                </div>
+                <div class="col-md-4 network-info">
+                    <div class="page-header">
+                      <h3>GameCredits</h3>
+                    </div>
+                    <h1>$1.0245</h1>
+                    <ul class="list-unstyled">
+                        <li>Hash rate: 301 GH/s</li>
+                        <li>Blockchain height: 1660353</li>
+                        <li>Explorer sync status: 100%</li>
+                        <li>Blockchain size: 1.3GB</li>
+                        <li>Version: 0x30</li>
+                    </ul>
+                    <p>
+                        <button class="btn btn-default">Download bootstrap.zip</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="search-div">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <input type="text" class="search" placeholder="Search by block hash, transaction ID or address">
+        </div>
+
+        <h1>Latest blocks <a class="show-more-blocks" routerLink="/blocks">> Show more blocks</a></h1>
+        <div class="alert alert-warning alert-dismissible halving-alert" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <strong>BLOCK HALVING:</strong>
+          <span class="js-countdown-timer monospace">
+            <span class="days">00 </span> days, <span class="hours">00</span> hours, <span class="minutes">00</span> minutes, <span class="seconds">00</span> seconds
+          </span>
+        </div>
+        <table class="table latest-blocks-table">
+            <thead>
+            <tr>
+              <th>Height</th>
+              <th>Age</th>
+              <th>Transactions</th>
+              <th>Total Sent</th>
+              <th>Size (kB)</th>
+            </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let block of latestBlocks">
+                  <td>
+                    <a routerLink="{{ '/blocks/' + block.height}}">{{block?.height}}</a>
+                  </td>
+                  <td>
+                    {{calulateMinutesFromNow(block?.time)}}
+                  </td>
+                  <td>
+                    {{block?.tx?.length}}
+                  </td>
+                  <td>
+                    {{block?.total | number:'1.5-5'}} GAME
+                  </td>
+                  <td>
+                    {{block?.size}}
+                  </td>
+                </tr>
+              </tbody>
+          </table>
+    </div>

@@ -1,0 +1,47 @@
+<div class="container">
+	<h1>All blocks </h1>
+	<div class="alert alert-warning alert-dismissible halving-alert" role="alert">
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  <strong>BLOCK HALVING:</strong>
+	  <span class="js-countdown-timer monospace">
+	    <span class="days">00 </span> days, <span class="hours">00</span> hours, <span class="minutes">00</span> minutes, <span class="seconds">00</span> seconds
+	  </span>
+	</div>
+    <div class="search-results"
+	    infiniteScroll
+	    [infiniteScrollDistance]="1"
+	    [infiniteScrollThrottle]="300"
+	    (scrolled)="onScroll()">
+		<table class="table latest-blocks-table">
+		    <thead>
+		    <tr>
+		      <th>Height</th>
+		      <th>Age</th>
+		      <th>Transactions</th>
+		      <th>Total Sent</th>
+		      <th>Size (kB)</th>
+		    </tr>
+		    </thead>
+
+		    <tbody>
+		        <tr *ngFor="let block of blockArray">
+		          <td>
+		            <a routerLink="{{ '/blocks/' + block.height}}">{{block?.height}}</a>
+		          </td>
+		          <td>
+		            {{calulateMinutesFromNow(block?.time)}}
+		          </td>
+		          <td>
+		            {{block?.tx?.length}}
+		          </td>
+		          <td>
+		            {{block?.total | number:'1.5-5'}} GAME
+		          </td>
+		          <td>
+		            {{block?.size}}
+		          </td>
+		        </tr>
+		    </tbody>
+		</table>
+	</div>
+</div>
