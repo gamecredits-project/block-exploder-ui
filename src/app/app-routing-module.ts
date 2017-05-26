@@ -7,6 +7,8 @@ import { FooterComponent } from './pages/layout/footer/footer.component';
 import { HomePageComponent } from './pages/home/homePage.component';
 import { BlocksPageComponent } from './pages/blocks/blocksPage.component';
 import { NetworkPageComponent } from './pages/network/networkPage.component';
+import { BlockPageComponent } from './pages/block/blockPage.component';
+import { TransactionsPageComponent } from './pages/transactions/transactionsPage.component';
 
 const routes: Routes = [
   { 
@@ -24,6 +26,8 @@ const routes: Routes = [
       children: [
       {path:'', component: HeaderComponent, outlet:'header'},
 
+      {path:':hash', component: BlockPageComponent},
+
       {path:'', component: BlocksPageComponent},
 
       {path:'', component: FooterComponent, outlet:'footer'}
@@ -35,6 +39,16 @@ const routes: Routes = [
       {path:'', component: HeaderComponent, outlet:'header'},
 
       {path:'', component: NetworkPageComponent},
+
+      {path:'', component: FooterComponent, outlet:'footer'}
+      ]
+  },
+  { 
+    path: 'transactions',
+      children: [
+      {path:'', component: HeaderComponent, outlet:'header'},
+
+      {path:':txid', component: TransactionsPageComponent},
 
       {path:'', component: FooterComponent, outlet:'footer'}
       ]

@@ -1,0 +1,84 @@
+
+<div class="container-fluid transaction-header">
+  <div class="container">
+    <h1>Transaction <small>View information about a GameCredits transaction</small></h1>
+    <p>
+      <i class="fa fa-hashtag"></i>
+      {{transaction?.blockhash}}
+    </p>
+  </div>
+</div>
+
+<div class="container-fluid transaction-body">
+  <div class="container">
+    <div class="transaction-card col-xs-12">
+      <div class="transaction-card__body">
+        <div class="col-md-6">
+          <p><strong>Inputs:</strong></p>
+          <ul class="list-unstyled">
+
+            <li *ngFor="let input of transaction?.vin" >
+              <div *ngIf="input.prev_txid"> 
+                <a routerLink="{{'/transactions/'+ input.prev_txid}}">
+                  {{input.prev_txid}}
+                </a> 
+              </div>
+              <div *ngIf="!input.prev_txid">No Inputs (Newly Generated Coins)</div>
+            </li> 
+
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <p><strong>Outputs</strong></p>
+          <ul class="list-unstyled">
+
+            <li *ngFor=" let output of transaction?.vout ">
+
+              <div *ngFor="let adress of output.addresses">
+                [
+                <a routerLink="/addresses/Gf2uS2ZaWWXkbj3DK263zsK2bqU4rvLHCy" >
+                  {{adress}}
+                </a>
+                ]
+              </div>
+              Amount: {{output.value | number:'1.5-5'}} GAME
+              <Br> <br>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+        <div class="transaction-card__footer">
+          <div class="col-xs-12">
+            <p class="pull-right">
+              <span data-toggle="tooltip" title="Transaction is considered confirmed if more than 6 confirmations are available">
+                Total sent: {{transaction?.total | number:'1.5-5'}} GAME, Confirmations: {{confirmations}},  Status: <i class="fa fa-check-circle-o" *ngIf=" confirmations > 6"></i> <i class="fa fa-times" *ngIf=" confirmations < 7"></i> 
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 transaction-summary">
+        <div class="table-responsive">
+          <table class="table">
+            <tr>
+              <th>Summary</th>
+              <th></th>
+            </tr>
+            <tr>
+              <td>Blockhash:</td>
+              <td>{{transaction?.blockhash}}</td>
+            </tr>
+            <tr>
+              <td>Blocktime:</td>
+              <td>{{ ( transaction?.blocktime * 1000 )  | date:'medium'}}</td>
+            </tr>
+            <tr>
+              <td>Version:</td>
+              <td>{{transaction?.version}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -33,6 +33,5 @@ import { BlocksPageService } from "./blocksPage.service";
 
  	onScroll() {
  		this.addBlocks();
-	    console.log('scrolled!!')
-	}
+ 	}
  }

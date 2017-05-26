@@ -15,10 +15,14 @@ import { FooterComponent} from './pages/layout/footer/footer.component';
 import { HomePageComponent } from './pages/home/homePage.component';
 import { BlocksPageComponent } from './pages/blocks/blocksPage.component';
 import { NetworkPageComponent } from './pages/network/networkPage.component';
+import { BlockPageComponent } from './pages/block/blockPage.component';
+import { TransactionsPageComponent } from './pages/transactions/transactionsPage.component';
 
 import { FooterService } from './pages/layout/footer/footer.service';
 import { HomePageService } from './pages/home/homePage.service';
 import { BlocksPageService } from './pages/blocks/blocksPage.service';
+import { BlockPageService } from './pages/block/blockPage.service';
+import { TransactionsPageService } from './pages/transactions/transactionsPage.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,9 @@ import { BlocksPageService } from './pages/blocks/blocksPage.service';
   HeaderComponent,
   HomePageComponent,
   BlocksPageComponent,
-  NetworkPageComponent
+  NetworkPageComponent,
+  BlockPageComponent,
+  TransactionsPageComponent
   ],
   imports: [
   BrowserModule,
@@ -39,7 +45,9 @@ import { BlocksPageService } from './pages/blocks/blocksPage.service';
   providers: [
   FooterService,
   HomePageService,
-  BlocksPageService
+  BlocksPageService,
+  BlockPageService,
+  TransactionsPageService
   ],
   bootstrap: [AppComponent]
 })

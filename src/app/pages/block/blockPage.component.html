@@ -1,0 +1,183 @@
+<div class="block-details"> 
+  <div class="container-fluid page-banner block-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1 class="block-title">
+            Block #{{block?.height}} <small>{{block?.hash}}</small>
+          </h1>
+          <p>
+            <i class="fa fa-tree"></i>
+            Merkle root: {{block?.merkleroot}}
+          </p>
+        </div>
+        <div class="col-md-6">
+          <div class="table-responsive">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th>Summary</th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <td>Number Of Transactions</td>
+                  <td>{{block?.tx?.length}}</td>
+                </tr>
+                <tr>
+                  <td>Total sent</td>
+                  <td>{{block?.total | number:'1.5-5'}} GAME</td>
+                </tr>
+                <tr>
+                  <td>Difficulty</td>
+                  <td>{{block?.difficulty}}</td>
+                </tr>
+                <tr>
+                  <td>Version</td>
+                  <td>{{block?.version}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="table-responsive">
+            <table class="table">
+              <tr>
+                <td>Confirmations</td>
+                <td>{{confirmations?.confirmations}}</td>
+              </tr>
+              <tr>
+                <td>Bits</td>
+                <td>{{block?.bits}}</td>
+              </tr>
+              <tr>
+                <td>Size</td>
+                <td>{{block?.size}} kB</td>
+              </tr>
+              <tr>
+                <td>Timestamp</td>
+                <td>{{ (block?.time * 1000 ) | date:'medium'}}</td>
+              </tr>
+              <tr>
+                <td>Nonce</td>
+                <td>{{block?.nonce}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid boxes-banner">
+    <div class="container">
+    <h4 class="chain-links-label"><i class="fa fa-chain"></i> Chain links</h4>
+        <div class="row boxes">
+          <div class="col-md-1 hidden-sm hidden-xs"></div>
+          <div class="col-md-2">
+            <p>
+              Previous
+            </p>
+            <p>
+              <i class="fa fa-cube fa-5x"></i> 
+            </p>
+            <p class="block-link">
+              <a routerLink="{{ '/blocks/' + block?.previousblockhash}}">{{block?.previousblockhash}}</a>
+            </p>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            <div class="line"></div>
+          </div>
+          <div class="col-md-2">
+            <p class="box-label">
+              This block
+            </p>
+            <p>
+              <i class="fa fa-cube fa-5x"></i> 
+            </p>
+            <p class="block-link">
+              <a routerLink="{{ '/blocks/' + block?.hash}}">{{block?.hash}}</a>
+            </p>
+          </div>
+            <div *ngIf="block?.nextblockhash">
+              <div class="col-md-2 hidden-xs hidden-sm">
+                <div class="line"></div>
+              </div>
+              <div class="col-md-2">
+                <p>
+                  Next
+                </p>
+                <p>
+                  <i class="fa fa-cube fa-5x"></i> 
+                </p>
+                <p class="block-link">
+                  <a routerLink="{{ '/blocks/' + block?.nextblockhash}}">{{block?.nextblockhash}}</a>
+                </p>
+              </div>
+              <div class="col-md-1 hidden-sm hidden-xs"></div>
+            </div>
+        </div>   
+      </div>
+    </div>
+
+  <div class="container block-transactions">
+    <div class="row">
+      <div class="col-xs-12 block-transactions">
+        <h3 class="block-transactions-title">Block Transactions ({{transactions?.length}})</h3>
+
+
+        <div class="panel panel-default" *ngFor="let trans of transactions">
+          <div class="panel-heading">
+            <a routerLink="{{'/transactions/' + trans.txid}}">
+              {{trans.txid}}
+            </a>
+            <span class="pull-right"><i class="fa fa-calendar"> {{ (trans.blocktime * 1000 ) | date:'medium'}}</i></span>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-6">
+                <p><b>Inputs</b></p>
+                <ul class="list-unstyled">
+
+                  <li *ngFor="let input of trans.vin" >
+                      <div *ngIf="input.prev_txid"> 
+                        <a routerLink="{{'/transactions/'+ input.prev_txid}}">
+                            {{input.prev_txid}}
+                        </a> 
+                      </div>
+                      <div *ngIf="!input.prev_txid">No Inputs (Newly Generated Coins)</div>
+                  </li> 
+
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <p><b>Outputs</b></p>
+                <ul class="list-unstyled">
+
+                  <li *ngFor=" let output of trans.vout ">
+
+                    <div *ngFor="let adress of output.addresses">
+                    [
+                    <a routerLink="/addresses/Gf2uS2ZaWWXkbj3DK263zsK2bqU4rvLHCy" >
+                      {{adress}}
+                    </a>
+                    ]
+                    </div>
+                    Amount: {{output.value | number:'1.5-5'}} GAME
+                    <Br> <br>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="panel-footer text-right">
+            <b>Total:</b> {{trans?.total | number:'1.5-5'}} GAME
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
