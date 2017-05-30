@@ -9,6 +9,8 @@ import { BlocksPageComponent } from './pages/blocks/blocksPage.component';
 import { NetworkPageComponent } from './pages/network/networkPage.component';
 import { BlockPageComponent } from './pages/block/blockPage.component';
 import { TransactionsPageComponent } from './pages/transactions/transactionsPage.component';
+import { AddressPageComponent } from './pages/address/addressPage.component';
+
 
 const routes: Routes = [
   { 
@@ -49,6 +51,16 @@ const routes: Routes = [
       {path:'', component: HeaderComponent, outlet:'header'},
 
       {path:':txid', component: TransactionsPageComponent},
+
+      {path:'', component: FooterComponent, outlet:'footer'}
+      ]
+  },
+  { 
+    path: 'addresses',
+      children: [
+      {path:'', component: HeaderComponent, outlet:'header'},
+
+      {path:':hash', component: AddressPageComponent},
 
       {path:'', component: FooterComponent, outlet:'footer'}
       ]
