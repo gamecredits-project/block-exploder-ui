@@ -6,40 +6,70 @@ import { HomePageService } from "./homePage.service";
  	templateUrl: 'homePage.component.html'
  })
  export class HomePageComponent implements OnInit {
+
  	latestBlocks: any = [];
+ 	networkInfo: any = [];
+ 	bootstrapLink: any = [];
+
     public line_ChartData = [
-        ['Year', 'Sales'],
-        ['2004', 1000],
-        ['2005', 1170],
-        ['2006', 660],
-        ['2007', 1030]];
+        ['Date', 'Network Hash Rate'],
+        [new Date(2015, 1, 1), 3],
+        [new Date(2015, 1, 3), 2],
+        [new Date(2015, 1, 5), 4],
+        [new Date(2015, 1, 7), 5],
+        [new Date(2015, 1, 11), 6],
+        [new Date(2015, 1, 13), 8],
+        [new Date(2015, 1, 14), 12],
+        [new Date(2015, 1, 16), 14],
+        [new Date(2015, 1, 17), 15]];
 
 
     public line_ChartOptions = {
-        title: 'Network Hash Rate',
         curveType: 'function',
         height: 400,
-        chartArea: {left:40,top:40,width:'80%',height:'80%'},
+        vAxis: {baselineColor: '#CCCCCC', gridlines: { count: 12, color: '#dddddd'} , textStyle: {color: 'white'}},
+        hAxis: {format: 'd, MMM', baselineColor: '#CCCCCC', gridlines: { count: 10, color: '#bbbbbb' }, minorGridlines: {  color: 'red' }, textStyle: {color: 'white'}},
+        chartArea: {left:40,top:40,width:'90%',height:'80%'},
         backgroundColor: '#33A579',
-        vAxis: { ticks: [100,200,300,400,500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500] },
-        hAxis: { ticks: [2002,2004, 2005, 2006, 2007, 2008, 2009] },
+        yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                    , color: 'red'
+                }],
         legend: {
-            position: 'bottom'
-        }
+            position: 'top', textStyle: {color: 'white', fontSize: 16}, alignment: 'center', opacity: 0.1
+        },
+        colors: ['white'],
+        pointSize: 8,
+        dataOpacity: 0.5
     };
         
 	constructor(private homePageService: HomePageService, 
 		) {}
 
  	ngOnInit() {
- 			this.homePageService.getLatestBlocks().subscribe( (resp) => {
+ 		this.homePageService.getLatestBlocks().subscribe( (resp) => {
 			this.latestBlocks = resp;
 		});
 
+		this.homePageService.getNetworkInfo().subscribe( (resp) => {
+			this.networkInfo = resp;
+		});
+
+		this.homePageService.getBootstrapLink().subscribe( (resp) => {
+			this.bootstrapLink = resp;
+		});
  	}
 
  	calulateMinutesFromNow( time: number) {
  		let now = new Date();
- 		return Math.abs( Math.round( (now.valueOf() / 1000 - time) / 60 ) );
+ 		let minutesOld = Math.abs( Math.round( (now.valueOf() / 1000 - time) / 60 ) );
+ 		let message = '';
+ 		message += minutesOld % 60 + ' min';
+ 		if (minutesOld > 59) {
+ 			message += minutesOld / 60 +' H';
+ 		}
+ 		return message;
  	}
  }

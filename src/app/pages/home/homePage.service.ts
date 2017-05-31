@@ -24,6 +24,39 @@ export class HomePageService {
             .catch(this.handleError);
     }
 
+    getLatestNetworkHashRates() : Observable<any> {
+        const url   = this.baseApiUrl + 'network/hashrates?limit=20';
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        });
+        return this._http.get(url, {headers})
+            .map(res => this.extractData(res))
+            .catch(this.handleError);
+    }
+
+    getNetworkInfo() : Observable<any> {
+        const url   = this.baseApiUrl + 'network/info';
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        });
+        return this._http.get(url, {headers})
+            .map(res => this.extractData(res))
+            .catch(this.handleError);
+    }
+
+    getBootstrapLink() : Observable<any> {
+        const url   = this.baseApiUrl + 'network/bootstrap';
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        });
+        return this._http.get(url, {headers})
+            .map(res => '' + this.baseApiUrl.substring(0,-4) + this.extractData(res).url)
+            .catch(this.handleError);
+    }
+
     private extractData(res: Response) {
         let body = res.json();
         return body || { };

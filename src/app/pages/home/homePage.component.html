@@ -11,14 +11,15 @@
                     </div>
                     <h1>$1.0245</h1>
                     <ul class="list-unstyled">
-                        <li>Hash rate: 301 GH/s</li>
-                        <li>Blockchain height: 1660353</li>
-                        <li>Explorer sync status: 100%</li>
-                        <li>Blockchain size: 1.3GB</li>
-                        <li>Version: 0x30</li>
+                        <li>Hash rate: {{networkInfo?.hashrate / 1000000000 | number:'1.5-5'}} GH/s</li>
+                        <li>Blockchain height: {{networkInfo?.numBlocks}}</li>
+                        <li>Coin supply: {{networkInfo?.coinSupply}}</li>
+                        <li>Blockchain size: {{networkInfo?.blockchainSize}}GB</li>
+                        <li>Number of transactions: {{networkInfo?.numTransactions}}</li>
                     </ul>
                     <p>
-                        <button class="btn btn-default">Download bootstrap.zip</button>
+                        <a href="{{bootstrapLink}}" class="btn btn-info" role="button">Download bootstrap.zip</a>
+                        <button class="btn btn-default" routerLink="{{bootstrapLink}}">Download bootstrap.zip</button>
                     </p>
                 </div>
             </div>
