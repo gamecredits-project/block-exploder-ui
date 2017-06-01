@@ -20,7 +20,7 @@
     							</tr>
     							<tr>
     								<td>Number Of Transactions</td>
-    								<td>{{address?.transactions.length}}</td>
+    								<td>{{allTransactions?.length}}</td>
     							</tr>
     						</table>
     					</div>
@@ -50,7 +50,7 @@
     					<button class="pull-right btn btn-warning" (click)="setMenu('Unspent Transactions')">Unspent transactions </button></h3>
 
     					<div  *ngIf="selectedTrancationsTagName == 'All Transactions'">
-    						<div class="panel panel-default" *ngFor="let trans of address?.transactions">
+    						<div class="panel panel-default" *ngFor="let trans of allTransactions">
     							<div class="panel-heading">
     								<a href="/transactions/345da10d5d5bff42e5949dd609bc993220b68ddfc9add9b15e7cdfeab57af35f">
     									345da10d5d5bff42e5949dd609bc993220b68ddfc9add9b15e7cdfeab57af35f

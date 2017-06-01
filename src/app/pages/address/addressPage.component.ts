@@ -10,7 +10,7 @@ import 'rxjs/add/operator/switchMap';
  })
  export class AddressPageComponent implements OnInit {
 
- 	address: any;
+ 	allTransactions: any;
  	unspent: any;
  	selectedTrancationsTagName: string = "All Transactions";
  	transactionsTagNumber: number = 0;
@@ -21,9 +21,10 @@ import 'rxjs/add/operator/switchMap';
 
  	ngOnInit() {
  		this.route.params
- 			.switchMap((params: Params) => this.addressPageService.getAddress('' + params['hash']))
+ 			.switchMap((params: Params) => this.addressPageService.getAddressAllTransactions('' + params['hash']))
  			.subscribe( resp => {
- 				this.address = resp;
+ 				this.allTransactions = resp;
+ 				this.setMenu('All Transactions');
  			});
 
  		this.route.params
@@ -37,7 +38,7 @@ import 'rxjs/add/operator/switchMap';
  	setMenu(name: string) {
  		this.selectedTrancationsTagName = name;
  		if (name == 'All Transactions') {
- 			this.transactionsTagNumber = this.address ? this.address.transactions.length : 0;
+ 			this.transactionsTagNumber = this.allTransactions ? this.allTransactions.length : 0;
  		} else if (name == 'Unspent Transactions') {
  			this.transactionsTagNumber = 0; // FIX THIS AFTER DIVIC FIXES BACKEND 
  		}

@@ -13,8 +13,8 @@ export class AddressPageService {
         private _http: Http,
     ) { }
     
-    getAddress(hash: string) : Observable<any> {
-        const url   = this.baseApiUrl + 'addresses/' + hash;
+    getAddressAllTransactions(hash: string) : Observable<any> {
+        const url   = this.baseApiUrl + 'addresses/' + hash + '?limit=25';
         const headers = new Headers({
             'Content-Type': 'application/json',
             'Accept': 'application/json',

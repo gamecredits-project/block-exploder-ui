@@ -53,7 +53,18 @@ export class HomePageService {
             'Accept': 'application/json',
         });
         return this._http.get(url, {headers})
-            .map(res => '' + this.baseApiUrl.substring(0,-4) + this.extractData(res).url)
+            .map(res => '' + this.baseApiUrl.substring(0,this.baseApiUrl.length - 5) + this.extractData(res).url)
+            .catch(this.handleError);
+    }
+
+    getHashrates() : Observable<any> {
+        const url   = this.baseApiUrl + 'network/hashrates?limit=25';
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        });
+        return this._http.get(url, {headers})
+            .map(res => this.extractData(res) )
             .catch(this.handleError);
     }
 

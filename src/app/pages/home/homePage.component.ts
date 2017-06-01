@@ -10,25 +10,16 @@ import { HomePageService } from "./homePage.service";
  	latestBlocks: any = [];
  	networkInfo: any = [];
  	bootstrapLink: any = [];
+    showPlaceholder: boolean = true;
 
-    public line_ChartData = [
-        ['Date', 'Network Hash Rate'],
-        [new Date(2015, 1, 1), 3],
-        [new Date(2015, 1, 3), 2],
-        [new Date(2015, 1, 5), 4],
-        [new Date(2015, 1, 7), 5],
-        [new Date(2015, 1, 11), 6],
-        [new Date(2015, 1, 13), 8],
-        [new Date(2015, 1, 14), 12],
-        [new Date(2015, 1, 16), 14],
-        [new Date(2015, 1, 17), 15]];
+    public line_ChartData:any = [];
 
 
     public line_ChartOptions = {
         curveType: 'function',
         height: 400,
-        vAxis: {baselineColor: '#CCCCCC', gridlines: { count: 12, color: '#dddddd'} , textStyle: {color: 'white'}},
-        hAxis: {format: 'd, MMM', baselineColor: '#CCCCCC', gridlines: { count: 10, color: '#bbbbbb' }, minorGridlines: {  color: 'red' }, textStyle: {color: 'white'}},
+        vAxis: {baselineColor: '#CCCCCC', gridlines: { count: 13, color: '#dddddd'} , textStyle: {color: 'white'}},
+        hAxis: {format: 'd, MMM', baselineColor: '#CCCCCC', gridlines: { count: 11, color: '#bbbbbb' }, minorGridlines: {  color: 'red' }, textStyle: {color: 'white'}},
         chartArea: {left:40,top:40,width:'90%',height:'80%'},
         backgroundColor: '#33A579',
         yAxes: [{
@@ -50,7 +41,7 @@ import { HomePageService } from "./homePage.service";
 
  	ngOnInit() {
  		this.homePageService.getLatestBlocks().subscribe( (resp) => {
-			this.latestBlocks = resp;
+			this.latestBlocks.push(...resp);
 		});
 
 		this.homePageService.getNetworkInfo().subscribe( (resp) => {
@@ -60,16 +51,39 @@ import { HomePageService } from "./homePage.service";
 		this.homePageService.getBootstrapLink().subscribe( (resp) => {
 			this.bootstrapLink = resp;
 		});
+
+		this.homePageService.getHashrates().subscribe( (resp) => {
+			this.line_ChartData.push(['Date','Network Hashrate']);
+			for (let index = 0; index < resp.length; ++index) {
+			    this.line_ChartData.push([ new Date(resp[index].timestamp * 1000),resp[index].hashrate / 1000000000]);
+			}
+		});
  	}
 
  	calulateMinutesFromNow( time: number) {
  		let now = new Date();
  		let minutesOld = Math.abs( Math.round( (now.valueOf() / 1000 - time) / 60 ) );
  		let message = '';
- 		message += minutesOld % 60 + ' min';
- 		if (minutesOld > 59) {
- 			message += minutesOld / 60 +' H';
+ 		let days = Math.floor(minutesOld / (60 * 24) );
+ 		let hours = Math.floor( ( minutesOld - days * 60 * 24 ) / 60 );
+ 		let minutes = minutesOld % 60;
+
+
+ 		message += minutes + ' m ';
+
+ 		if(hours || days) {
+ 			message += hours + ' h ';
  		}
+
+ 		if(days) {
+ 			message += days + ' d ';
+ 		}
+
  		return message;
  	}
+
+    hidePlaceholder() {
+                    this.showPlaceholder = false;
+
+    }
  }

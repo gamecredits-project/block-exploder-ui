@@ -18,12 +18,6 @@ import { BlocksPageService } from "./blocksPage.service";
  		this.addBlocks();
  	}
 
-
- 	calulateMinutesFromNow( time: number) {
- 		let now = new Date();
- 		return Math.abs( Math.round( (now.valueOf() / 1000 - time) / 60 ) );
- 	}
-
  	addBlocks(){
  		this.blocksPageService.getBlocks(this.loadPerScroll, this.currentlyLoaded).subscribe( (resp) => {
 			this.blockArray = this.blockArray.concat(resp);
@@ -33,5 +27,27 @@ import { BlocksPageService } from "./blocksPage.service";
 
  	onScroll() {
  		this.addBlocks();
+ 	}
+
+ 	calulateMinutesFromNow( time: number) {
+ 		let now = new Date();
+ 		let minutesOld = Math.abs( Math.round( (now.valueOf() / 1000 - time) / 60 ) );
+ 		let message = '';
+ 		let days = Math.floor(minutesOld / (60 * 24) );
+ 		let hours = Math.floor( ( minutesOld - days * 60 * 24 ) / 60 );
+ 		let minutes = minutesOld % 60;
+
+
+ 		message += minutes + ' m ';
+
+ 		if(hours || days) {
+ 			message += hours + ' h ';
+ 		}
+
+ 		if(days) {
+ 			message += days + ' d ';
+ 		}
+
+ 		return message;
  	}
  }
