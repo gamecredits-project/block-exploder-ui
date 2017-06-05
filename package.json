@@ -20,15 +20,15 @@
     "@angular/platform-browser": "4.0.2",
     "@angular/platform-browser-dynamic": "4.0.2",
     "@angular/router": "4.0.2",
-    "angular2-google-chart": "*",
+    "angular2-google-maps": "^0.17.0",
     "bootstrap": "^3.3.7",
     "chart.js": "^2.5.0",
     "d3": "^4.9.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.1.1",
+    "ngx-infinite-scroll": "*",
     "rxjs": "^5.1.0",
-    "zone.js": "^0.8.4",
-    "ngx-infinite-scroll": "*"
+    "zone.js": "^0.8.4"
   },
   "devDependencies": {
     "@angular/cli": "1.0.4",

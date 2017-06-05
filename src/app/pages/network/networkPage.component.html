@@ -1,1 +1,29 @@
-<h1> THIS IS NETWORK PAGE COMPONETN </h1>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+    				<div class="table-responsive">
+    					<h3> Network Info </h3>
+	                    <ul class="list-unstyled">
+	                        <li>Hash rate: {{networkInfo?.hashrate / 1000000000 | number:'1.5-5'}} GH/s</li>
+	                        <li>Blockchain height: {{networkInfo?.numBlocks}}</li>
+	                        <li>Coin supply: {{networkInfo?.coinSupply}}</li>
+	                        <li>Blockchain size: {{networkInfo?.blockchainSize}}GB</li>
+	                        <li>Number of transactions: {{networkInfo?.numTransactions}}</li>
+	                    </ul>
+    				</div>
+		</div>
+		<div class="col-md-6">
+    				<div class="table-responsive">
+    					<h3> Client Info </h3>
+	                    <ul class="list-unstyled">
+	                        <li>IP: {{clientInfo?.ip}}</li>
+	                    </ul>
+    				</div>
+		</div>
+	</div>
+	<div class="row last-row"> 
+		<sebm-google-map [latitude]="lat" [longitude]="lng">
+		  <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+		</sebm-google-map>	
+	</div>
+</div>

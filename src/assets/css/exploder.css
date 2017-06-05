@@ -2,6 +2,15 @@ body {
   background-color: #fafafa;
   font-family: 'Roboto', sans-serif; }
 
+.sebm-google-map-container {
+  height: 400px;
+
+}
+
+.last-row{
+  padding-bottom: 60px;
+}
+
 .navbar-default {
   background-color: #06482f !important;
   margin: 0 !important;
@@ -210,4 +219,10 @@ footer {
 .monospace {
   font-family: 'Share Tech Mono', monospace; }
 
+
+.load-more-button{
+  margin-bottom: 20px !important;
+  background-color: #33A579 !important;
+  border-color: #06482f !important;
+}
 /*# sourceMappingURL=exploder.css.map */

@@ -7,7 +7,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from "./app-routing-module";
 
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { GoogleChart } from 'angular2-google-chart/directives/angular2-google-chart.directive';
+import { GoogleChart } from './customDirectives/angular2-google-chart.directive';
+import { AgmCoreModule } from 'angular2-google-maps/core';
 
 import { HeaderComponent} from './pages/layout/header/header.component';
 import { FooterComponent} from './pages/layout/footer/footer.component';
@@ -27,6 +28,8 @@ import { BlocksPageService } from './pages/blocks/blocksPage.service';
 import { BlockPageService } from './pages/block/blockPage.service';
 import { TransactionsPageService } from './pages/transactions/transactionsPage.service';
 import { AddressPageService } from './pages/address/addressPage.service';
+import { NetworkPageService } from './pages/network/networkPage.service';
+
 
 @NgModule({
   declarations: [
@@ -47,6 +50,9 @@ import { AddressPageService } from './pages/address/addressPage.service';
   HttpModule,
   AppRoutingModule,
   InfiniteScrollModule,
+  AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDVGMQhtueV-z7v4kjQ80kYd26jrmqV-o4'
+    })
   ],
   providers: [
   FooterService,
@@ -54,7 +60,8 @@ import { AddressPageService } from './pages/address/addressPage.service';
   BlocksPageService,
   BlockPageService,
   TransactionsPageService,
-  AddressPageService
+  AddressPageService,
+  NetworkPageService
   ],
   bootstrap: [AppComponent]
 })

@@ -35,6 +35,17 @@ export class HomePageService {
             .catch(this.handleError);
     }
 
+    getNetworkPrice() : Observable<any> {
+        const url   = this.baseApiUrl + 'network/price';
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        });
+        return this._http.get(url, {headers})
+            .map(res => this.extractData(res))
+            .catch(this.handleError);
+    }
+
     getNetworkInfo() : Observable<any> {
         const url   = this.baseApiUrl + 'network/info';
         const headers = new Headers({

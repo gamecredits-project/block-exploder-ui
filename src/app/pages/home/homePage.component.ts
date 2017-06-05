@@ -10,10 +10,12 @@ import { HomePageService } from "./homePage.service";
  	latestBlocks: any = [];
  	networkInfo: any = [];
  	bootstrapLink: any = [];
+    price: number;
+
     showPlaceholder: boolean = true;
 
     public line_ChartData:any = [];
-
+    tempLineChartData: any = [];
 
     public line_ChartOptions = {
         curveType: 'function',
@@ -44,6 +46,11 @@ import { HomePageService } from "./homePage.service";
 			this.latestBlocks.push(...resp);
 		});
 
+        this.homePageService.getNetworkPrice().subscribe( (resp) => {
+            this.price = resp.priceUSD;
+        });
+
+
 		this.homePageService.getNetworkInfo().subscribe( (resp) => {
 			this.networkInfo = resp;
 		});
@@ -53,10 +60,14 @@ import { HomePageService } from "./homePage.service";
 		});
 
 		this.homePageService.getHashrates().subscribe( (resp) => {
-			this.line_ChartData.push(['Date','Network Hashrate']);
+
+			this.tempLineChartData.push(['Date','Network Hashrate']);
 			for (let index = 0; index < resp.length; ++index) {
-			    this.line_ChartData.push([ new Date(resp[index].timestamp * 1000),resp[index].hashrate / 1000000000]);
+			    this.tempLineChartData.push([ new Date(resp[index].timestamp * 1000),resp[index].hashrate / 1000000000]);
 			}
+
+
+            this.line_ChartData = this.tempLineChartData; // Change dependant vaulue only one ( so we dont trriger onChange in directive multiple times)
 		});
  	}
 

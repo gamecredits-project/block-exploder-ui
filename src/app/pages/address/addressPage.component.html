@@ -7,7 +7,7 @@
     				</h1>
     				<p>
     					<i class="fa fa-at"></i>
-    					Address: {{address?.address}}
+    					Address: {{address}}
     				</p>
     			</div>
     			<div class="col-md-6">
@@ -30,11 +30,11 @@
     						<table class="table">
     							<tr>
     								<td>Total volume:</td>
-    								<td>{{address?.volume | number:'1.5-5'}} GAME</td>
+    								<td>{{volume | number:'1.5-5'}} GAME</td>
     							</tr>
     							<tr>
     								<td>Estimated balance</td>
-    								<td>{{unspent?.balance | number:'1.5-5'}} GAME</td>
+    								<td>{{unspent?.total | number:'1.5-5'}} GAME</td>
     							</tr>
     						</table>
     					</div>
@@ -99,9 +99,11 @@
     									<b>Total:</b> 50 GAME
     								</div>
     							</div>
+
+                                <button class="btn btn-primary col-md-12 load-more-button" (click)="loadMoreTransactions()"> Load More Transactions </button>
     						</div>        
 
-    						<div class="panel panel-default" *ngIf="selectedTrancationsTagName == 'Unspent Transactions'">
+    						<div class="panel panel-default" *ngIf="selectedTrancationsTagName == 'Unspent Transactions'" >
     							DIVIC DURADI SVOJ POSO
     						</div>  
 

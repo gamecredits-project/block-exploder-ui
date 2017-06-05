@@ -6,15 +6,15 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
-export class AddressPageService {
+export class NetworkPageService {
     private baseApiUrl: string = AppSettings.API_ENDPOINT;
 
     constructor(
         private _http: Http,
     ) { }
-    
-    getAddressAllTransactions(hash: string) : Observable<any> {
-        const url   = this.baseApiUrl + 'addresses/' + hash + '?limit=25';
+
+    getNetworkInfo() : Observable<any> {
+        const url   = this.baseApiUrl + 'network/info';
         const headers = new Headers({
             'Content-Type': 'application/json',
             'Accept': 'application/json',
@@ -24,8 +24,8 @@ export class AddressPageService {
             .catch(this.handleError);
     }
 
-    getAddressUnspent(hash: string) : Observable<any> {
-        const url   = this.baseApiUrl + 'addresses/' + hash + '/unspent';
+    getClientInfo() : Observable<any> {
+        const url   = this.baseApiUrl + 'client/info';
         const headers = new Headers({
             'Content-Type': 'application/json',
             'Accept': 'application/json',
@@ -34,20 +34,6 @@ export class AddressPageService {
             .map(res => this.extractData(res))
             .catch(this.handleError);
     }
-
-    getAddressVolume(hash: string) : Observable<any> {
-        const url   = this.baseApiUrl + 'addresses/' + hash + '/volume';
-        const headers = new Headers({
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-        });
-        return this._http.get(url, {headers})
-            .map(res => this.extractData(res))
-            .catch(this.handleError);
-    }
-
-
-
 
     private extractData(res: Response) {
         let body = res.json();
