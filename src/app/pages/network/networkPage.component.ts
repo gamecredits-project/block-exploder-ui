@@ -11,8 +11,14 @@ import 'rxjs/add/operator/switchMap';
 
     networkInfo: any;
     clientInfo: any;
-   	lat: number = 51.678418;
+   	lat: number = 31.678418;
   	lng: number = 7.809007;
+  	prva: number = 53.678418;
+  	druga: number = 89.809007;
+  	zoom: number = 2;
+  	markers: any[] = [];
+
+
  	constructor(private networkPageService: NetworkPageService
 		) {}
 

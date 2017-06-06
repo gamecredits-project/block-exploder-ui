@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HomePageService } from "./homePage.service";
+import { Router } from '@angular/router';
 
  @Component ({
  	selector: 'exploder-home',
@@ -39,6 +40,7 @@ import { HomePageService } from "./homePage.service";
     };
         
 	constructor(private homePageService: HomePageService, 
+                private router: Router
 		) {}
 
  	ngOnInit() {
@@ -96,5 +98,17 @@ import { HomePageService } from "./homePage.service";
     hidePlaceholder() {
                     this.showPlaceholder = false;
 
+    }
+
+    onSearch(param: string) {
+        this.homePageService.getSearchItemType(param).subscribe( (resp) => {
+            if(resp.type == 'block') {
+                this.router.navigateByUrl('blocks/' + resp.searchBy);
+            } else if(resp.type == 'address') {
+                this.router.navigateByUrl('addresses/' + resp.searchBy);
+            } else if(resp.type == 'transaction') {
+                this.router.navigateByUrl('transactions/' + resp.searchBy);
+            }
+        });
     }
  }

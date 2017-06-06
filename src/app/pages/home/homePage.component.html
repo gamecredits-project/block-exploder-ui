@@ -29,7 +29,7 @@
     <div class="container">
         <div class="search-div">
             <i class="fa fa-search" aria-hidden="true"></i>
-            <input type="text" class="search" placeholder="Search by block hash, transaction ID or address">
+            <input #search type="text" class="search" placeholder="Search by block hash, transaction ID or address" (keyup.enter)="onSearch(search.value)">
         </div>
 
         <h1>Latest blocks <a class="show-more-blocks" routerLink="/blocks">> Show more blocks</a></h1>
