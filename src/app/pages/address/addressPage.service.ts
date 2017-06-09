@@ -14,7 +14,7 @@ export class AddressPageService {
     ) { }
     
     getAddressAllTransactions(hash: string) : Observable<any> {
-        const url   = this.baseApiUrl + 'addresses/' + hash + '?limit=25';
+        const url   = this.baseApiUrl + 'addresses/' + hash;
         const headers = new Headers({
             'Content-Type': 'application/json',
             'Accept': 'application/json',
@@ -35,6 +35,17 @@ export class AddressPageService {
             .catch(this.handleError);
     }
 
+    getAddressTotalTransactionsNumber(hash: string) : Observable<any> {
+        const url   = this.baseApiUrl + 'addresses/' + hash + '/transaction-count';
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        });
+        return this._http.get(url, {headers})
+            .map(res => this.extractData(res))
+            .catch(this.handleError);
+    }
+
     getAddressVolume(hash: string) : Observable<any> {
         const url   = this.baseApiUrl + 'addresses/' + hash + '/volume';
         const headers = new Headers({
@@ -46,6 +57,27 @@ export class AddressPageService {
             .catch(this.handleError);
     }
 
+    getAddressBalance(hash: string) : Observable<any> {
+        const url   = this.baseApiUrl + 'addresses/' + hash + '/balance';
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        });
+        return this._http.get(url, {headers})
+            .map(res => this.extractData(res))
+            .catch(this.handleError);
+    }
+
+    getNextTransactions(link: string) : Observable<any> {
+        const url   = this.baseApiUrl + link.substring(1);
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        });
+        return this._http.get(url, {headers})
+            .map(res => this.extractData(res))
+            .catch(this.handleError);
+    }
 
 
 
