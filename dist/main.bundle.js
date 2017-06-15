@@ -363,10 +363,22 @@ var environment = {
 var AppSettings = (function () {
     function AppSettings() {
     }
+    Object.defineProperty(AppSettings, "API_ENDPOINT", {
+        get: function () {
+            if (AppSettings.devMode) {
+                return 'http://localhost:8080/api/';
+            }
+            else {
+                return 'http://148.251.15.209/api/';
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
     return AppSettings;
 }());
 
-AppSettings.API_ENDPOINT = 'http://localhost:8080/api/';
+AppSettings.devMode = false;
 //# sourceMappingURL=appSettings.js.map
 
 /***/ }),
