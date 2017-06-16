@@ -1,14 +1,32 @@
 body {
   background-color: #fafafa;
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Roboto', sans-serif !important; }
 
 .sebm-google-map-container {
   height: 600px;
 
 }
 
+.usd-price-big{
+  font-size: 40px;
+}
+
+.link-underline{
+  color: white !important;
+  text-decoration: underline;
+}
+
+.download-button{
+  background-color: transparent !important;
+  border-color: white !important;
+}
+
+.home-table td{
+  padding-bottom: 10px;
+}
+
 .last-row{
-  padding-bottom: 60px;
+  padding-bottom: 60px !important;
 }
 
 .navbar-default {
@@ -31,7 +49,11 @@ body {
   background-color: #33A579;
   border-bottom: 2px solid #06482f;
   padding-top: 20px;
-  padding-bottom: 75px; }
+  }
+
+.home-title { 
+  margin-top: 0px !important;
+}
 
 .network-info {
   color: white; padding-top: 30px; padding-bottom: 40px; }
@@ -63,6 +85,28 @@ body {
     background-color: transparent; }
     .search-div .search:focus {
       outline: none; }
+
+.cointainer-blocks {
+    margin-bottom: 100px !important;
+    display:inline-block;
+    position:relative;
+    top:-37px;
+    background-color: white;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.all-blocks-button{
+
+  background-color: #ddd !important;
+  border-color: #ddd !important;
+  color: black !important;
+
+}
+
+.row.text-center hr{
+  border-color: #ddd;
+}
 
 .show-more-blocks {
   float: right;
@@ -96,7 +140,10 @@ footer {
   font-weight: 300; }
   .game-text h2 {
     font-weight: 300; }
-
+  .game-text i {
+    padding-right: 15px;
+    color: white !important;
+  }
 .footer-wrap {
   position: relative;
   bottom: 50px; }
@@ -224,5 +271,11 @@ footer {
   margin-bottom: 20px !important;
   background-color: #33A579 !important;
   border-color: #06482f !important;
+}
+
+.header-logo {
+    color: white !important;
+    font-size: 18px;
+    text-decoration: none !important;
 }
 /*# sourceMappingURL=exploder.css.map */

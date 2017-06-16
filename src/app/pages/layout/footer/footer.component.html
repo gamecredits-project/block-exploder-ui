@@ -11,8 +11,13 @@
 					There are a lot of challenges and limitations with current payment solutions and platforms in the gaming industry.
 					We will provide gaming companies a very specific solution to make payments seamless, easy and secure.
 					We will offer the gaming industry ways to pay less and make more.
-					Our in game payment gateway is built for the gaming industry by the gaming industry. <a href="https://gamecredits.com">Read more</a>
+					Our in game payment gateway is built for the gaming industry by the gaming industry. <a class="link-underline"href="https://gamecredits.com">Read more</a>
 				</p>
+				<a href="https://www.facebook.com/gamecredits/"><i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i></a>
+				<a href="https://twitter.com/game_credits"><i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i></a>
+				<a href="https://www.linkedin.com/company/gamecredits"><i class="fa fa-linkedin-square fa-3x" aria-hidden="true"></i></a>
+				<a href="https://www.youtube.com/channel/UCzkC8rkM38sxpuPcnyr1lXg"><i class="fa fa-youtube-square fa-3x" aria-hidden="true"></i></a>
+				<a href="https://gamecredits.com/slack.html"><i class="fa fa-slack fa-3x" aria-hidden="true"></i></a>
 			</div>
 			<div class="col-md-6 latest-transactions">
 				<h2>Latest (mined) transactions</h2>
@@ -21,7 +26,7 @@
 						<tbody>
 							<tr *ngFor="let transaction of latestTransactions">
 								<td>
-									<a href="{{'/transactions/' + transaction.txid}}"> {{transaction.txid.substring(0,39)}}..</a>
+									<a href="{{'/transactions/' + transaction.txid}}"> {{transaction.txid.substring(0,29)}}..</a>
 								</td>
 								<td>
 									{{transaction.total | number:'1.5-5'}} GAME

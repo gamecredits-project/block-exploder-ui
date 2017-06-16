@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
  	networkInfo: any = [];
  	bootstrapLink: any = [];
     price: number;
+    clientInfo: any = [];
 
     showPlaceholder: boolean = true;
 
@@ -22,7 +23,7 @@ import { Router } from '@angular/router';
         curveType: 'function',
         height: 400,
         vAxis: {baselineColor: '#CCCCCC', gridlines: { count: 13, color: '#dddddd'} , textStyle: {color: 'white'}},
-        hAxis: {format: 'd, MMM', baselineColor: '#CCCCCC', gridlines: { count: 11, color: '#bbbbbb' }, minorGridlines: {  color: 'red' }, textStyle: {color: 'white'}},
+        hAxis: {format: 'd. MMM', baselineColor: '#CCCCCC', gridlines: { count: 10, color: '#bbbbbb' }, minorGridlines: {  color: 'red' }, textStyle: {color: 'white'}},
         chartArea: {left:40,top:40,width:'90%',height:'80%'},
         backgroundColor: '#33A579',
         yAxes: [{
@@ -56,6 +57,11 @@ import { Router } from '@angular/router';
 		this.homePageService.getNetworkInfo().subscribe( (resp) => {
 			this.networkInfo = resp;
 		});
+
+        this.homePageService.getClientInfo().subscribe( (resp) => {
+            this.clientInfo = resp;
+        });
+
 
 		this.homePageService.getBootstrapLink().subscribe( (resp) => {
 			this.bootstrapLink = resp;

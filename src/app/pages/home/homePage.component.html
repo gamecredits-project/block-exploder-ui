@@ -2,24 +2,69 @@
     <div class="container-fluid page-banner">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <img *ngIf="showPlaceholder" src="../../assets/images/placeholder.png" alt="" style="filter: blur(5px);">
                     <div id="line_chart" [chartData]="line_ChartData" [chartOptions]= "line_ChartOptions" (ready)="hidePlaceholder()" chartType="LineChart" GoogleChart></div>
                 </div>
-                <div class="col-md-4 network-info">
-                    <div class="page-header">
+                <div class="col-md-3 network-info">
+                    <div class="page-header home-title">
                       <h3>GameCredits</h3>
                     </div>
-                    <h1>${{price | number:'1.5-5'}}</h1>
-                    <ul class="list-unstyled">
-                        <li>Hash rate: {{networkInfo?.hashrate / 1000000000 | number:'1.5-5'}} GH/s</li>
-                        <li>Blockchain height: {{networkInfo?.numBlocks}}</li>
-                        <li>Coin supply: {{networkInfo?.coinSupply}}</li>
-                        <li>Blockchain size: {{networkInfo?.blockchainSize}}GB</li>
-                        <li>Number of transactions: {{networkInfo?.numTransactions}}</li>
-                    </ul>
+                    <div>
+                    <span class="usd-price-big">${{price | number:'1.5-5'}}</span> <a class="link-underline" href="https://coinmarketcap.com/currencies/gamecredits/"> source</a>  
+                    </div>
+                    <table class="home-table">
+                      <tr>
+                          <td>
+                            Blockchain height:
+                          </td>
+                          <td>
+                            <a class="link-underline" routerLink="{{ '/blocks/' + latestBlocks[0]?.hash}}">{{latestBlocks[0]?.height}}</a>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            Coin supply:
+                          </td>
+                          <td>
+                             {{networkInfo?.coinSupply}}
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            Blockchain size:
+                          </td>
+                          <td>
+                             {{networkInfo?.blockchainSize}}GB
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            Hash rate:
+                          </td>
+                          <td>
+                             {{networkInfo?.hashrate / 1000000000 | number:'1.5-5'}} GH/s
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            Number of transactions: &nbsp;
+                          </td>
+                          <td>
+                              {{networkInfo?.numTransactions}}
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            Sync status:
+                          </td>
+                          <td>
+                            {{clientInfo?.syncProgress}} %
+                          </td>
+                      </tr>
+                    </table>
                     <p>
-                        <a href="{{bootstrapLink}}" class="btn btn-primary" role="button">Download bootstrap.zip</a>
+                        <a href="{{bootstrapLink}}" class="btn btn-primary download-button" role="button"> <i class="fa fa-download" aria-hidden="true"> Download bootstrap.zip </i></a>
                     </p>
                 </div>
             </div>
@@ -32,7 +77,7 @@
             <input #search type="text" class="search" placeholder="Search by block hash, transaction ID or address" (keyup.enter)="onSearch(search.value)">
         </div>
 
-        <h1>Latest blocks <a class="show-more-blocks" routerLink="/blocks">> Show more blocks</a></h1>
+        <h1>Latest blocks</h1>
         <table class="table latest-blocks-table">
             <thead>
             <tr>
@@ -64,4 +109,10 @@
                 </tr>
               </tbody>
           </table>
+          <div class="row text-center">
+             <hr>
+             <div class="cointainer-blocks">
+                <a class="btn btn-primary all-blocks-button" routerLink="/blocks"> <i class="fa fa-th" aria-hidden="true"> </i> Show all blocks</a>
+             </div>
+          </div>
     </div>

@@ -57,6 +57,18 @@ export class HomePageService {
             .catch(this.handleError);
     }
 
+
+    getClientInfo() : Observable<any> {
+        const url   = this.baseApiUrl + 'client/info';
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        });
+        return this._http.get(url, {headers})
+            .map(res => this.extractData(res))
+            .catch(this.handleError);
+    }
+
     getSearchItemType(param: string) : Observable<any> {
         const url   = this.baseApiUrl + 'search/' + param;
         const headers = new Headers({
