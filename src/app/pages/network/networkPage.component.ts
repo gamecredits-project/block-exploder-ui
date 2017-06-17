@@ -15,9 +15,10 @@ import 'rxjs/add/operator/switchMap';
   	lng: number = 7.809007;
   	prva: number = 53.678418;
   	druga: number = 89.809007;
-  	zoom: number = 2;
+  	zoom: number = 1;
   	markers: any[] = [];
-
+    peersToShow: any[] = [];
+    showButton: boolean = false;
 
  	constructor(private networkPageService: NetworkPageService
 		) {}
@@ -29,6 +30,13 @@ import 'rxjs/add/operator/switchMap';
 
 		this.networkPageService.getClientInfo().subscribe( (resp) => {
 			this.clientInfo = resp;
+      this.peersToShow = this.clientInfo.peerInfo.slice(0,5);
+      this.showButton= true;
 		});
  	}
+
+  showAll(){
+    this.peersToShow = this.clientInfo.peerInfo;
+    
+  }
  }

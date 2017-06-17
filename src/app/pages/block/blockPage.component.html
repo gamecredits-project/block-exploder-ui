@@ -71,54 +71,54 @@
 
   <div class="container-fluid boxes-banner">
     <div class="container">
-    <h4 class="chain-links-label"><i class="fa fa-chain"></i> Chain links</h4>
-        <div class="row boxes">
-          <div class="col-md-1 hidden-sm hidden-xs"></div>
-          <div class="col-md-2">
-            <p>
-              Previous
-            </p>
-            <p>
-              <i class="fa fa-cube fa-5x"></i> 
-            </p>
-            <p class="block-link">
-              <a routerLink="{{ '/blocks/' + block?.previousblockhash}}">{{block?.previousblockhash}}</a>
-            </p>
-          </div>
+      <h4 class="chain-links-label"><i class="fa fa-chain"></i> Chain links</h4>
+      <div class="row boxes">
+        <div class="col-md-1 hidden-sm hidden-xs"></div>
+        <div class="col-md-2">
+          <p>
+            Previous
+          </p>
+          <p>
+            <i class="fa fa-cube fa-5x"></i> 
+          </p>
+          <p class="block-link">
+            <a routerLink="{{ '/blocks/' + block?.previousblockhash}}">{{block?.previousblockhash}}</a>
+          </p>
+        </div>
+        <div class="col-md-2 hidden-xs hidden-sm">
+          <div class="line"></div>
+        </div>
+        <div class="col-md-2">
+          <p class="box-label">
+            This block
+          </p>
+          <p>
+            <i class="fa fa-cube fa-5x"></i> 
+          </p>
+          <p class="block-link">
+            <a routerLink="{{ '/blocks/' + block?.hash}}">{{block?.hash}}</a>
+          </p>
+        </div>
+        <div *ngIf="block?.nextblockhash">
           <div class="col-md-2 hidden-xs hidden-sm">
             <div class="line"></div>
           </div>
           <div class="col-md-2">
-            <p class="box-label">
-              This block
+            <p>
+              Next
             </p>
             <p>
               <i class="fa fa-cube fa-5x"></i> 
             </p>
             <p class="block-link">
-              <a routerLink="{{ '/blocks/' + block?.hash}}">{{block?.hash}}</a>
+              <a routerLink="{{ '/blocks/' + block?.nextblockhash}}">{{block?.nextblockhash}}</a>
             </p>
           </div>
-            <div *ngIf="block?.nextblockhash">
-              <div class="col-md-2 hidden-xs hidden-sm">
-                <div class="line"></div>
-              </div>
-              <div class="col-md-2">
-                <p>
-                  Next
-                </p>
-                <p>
-                  <i class="fa fa-cube fa-5x"></i> 
-                </p>
-                <p class="block-link">
-                  <a routerLink="{{ '/blocks/' + block?.nextblockhash}}">{{block?.nextblockhash}}</a>
-                </p>
-              </div>
-              <div class="col-md-1 hidden-sm hidden-xs"></div>
-            </div>
-        </div>   
-      </div>
+          <div class="col-md-1 hidden-sm hidden-xs"></div>
+        </div>
+      </div>   
     </div>
+  </div>
 
   <div class="container block-transactions">
     <div class="row">
@@ -127,57 +127,55 @@
 
 
         <div class="panel panel-default" *ngFor="let trans of transactions">
-          <div class="panel-heading">
+          <div class="panel-heading custom-panel-heading">
+            <b> TXID: </b>
             <a routerLink="{{'/transactions/' + trans.txid}}">
-              {{trans.txid}}
-            </a>
-            <span class="pull-right"><i class="fa fa-calendar"> {{ (trans.blocktime * 1000 ) | date:'medium'}}</i></span>
-          </div>
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-md-6">
-                <p><b>Inputs</b></p>
-                <ul class="list-unstyled">
+             {{trans.txid}}
+           </a>
+           <span class="pull-right"><i class="fa fa-calendar"> {{ (trans.blocktime * 1000 ) | date:'medium'}}</i></span>
+         </div>
+         <div class="panel-body">
+          <div class="row">
+            <div class="col-md-6">
+              <p><b>Inputs</b></p>
+              <ul class="list-unstyled">
 
-                  <li *ngFor="let input of trans.vin" >
-                      <div *ngIf="input.prev_txid"> 
-                        <a routerLink="{{'/transactions/'+ input.prev_txid}}">
-                            {{input.prev_txid}}
-                        </a> 
-                      </div>
-                      <div *ngIf="!input.prev_txid">No Inputs (Newly Generated Coins)</div>
-                  </li> 
+                <li *ngFor="let input of trans.vin" >
+                  <div *ngIf="input.prev_txid"> 
+                    <a routerLink="{{'/transactions/'+ input.prev_txid}}">
+                      {{input.prev_txid}}
+                    </a> 
+                  </div>
+                  <div *ngIf="!input.prev_txid">No Inputs (Newly Generated Coins)</div>
+                </li> 
 
-                </ul>
-              </div>
-              <div class="col-md-6">
-                <p><b>Outputs</b></p>
-                <ul class="list-unstyled">
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <p><b>Outputs</b></p>
+              <ul class="list-unstyled">
 
-                  <li *ngFor=" let output of trans.vout ">
-
-                    <div *ngFor="let adress of output.addresses">
-                    [
+                <li *ngFor=" let output of trans.vout ">
+                  <div *ngFor="let adress of output.addresses">
+                    {{output.value | number:'1.5-5'}} GAME ->
                     <a routerLink="{{'/addresses/'+ adress}}" >
                       {{adress}}
-                    </a>
-                    ]
-                    </div>
-                    Amount: {{output.value | number:'1.5-5'}} GAME
-                    <Br> <br>
-                  </li>
+                    </a> <span *ngIf="output.spent" class="badge badge-status" style="background-color: #EB5757">Spent</span> <span  *ngIf="!output.spent" class="badge badge-status" style="background-color: #F47F4B">Unspent</span>
+                  </div>
+                </li>
 
-                </ul>
-              </div>
+              </ul>
             </div>
           </div>
-          <div class="panel-footer text-right">
-            <b>Total:</b> {{trans?.total | number:'1.5-5'}} GAME
-          </div>
         </div>
-
-
+        <div class="panel-footer custom-panel-footing text-right">
+        <hr class="custom-panel-line">
+          <b>Total:</b> {{trans?.total | number:'1.5-5'}} GAME
+        </div>
       </div>
+
+
     </div>
   </div>
+</div>
 </div>

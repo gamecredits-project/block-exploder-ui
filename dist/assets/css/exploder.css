@@ -25,6 +25,12 @@ body {
   padding-bottom: 10px;
 }
 
+.badge-status {
+  margin-right: 30px !important ;
+  float: right;
+  width: 80px;
+}
+
 .last-row{
   padding-bottom: 60px !important;
 }
@@ -44,12 +50,47 @@ body {
 .navbar-brand .badge {
   background-color: #F47F4B; }
 
+.custom-panel-heading {
+  background-color: white !important;
+  border-color: white !important;
+}
+
+.custom-panel-footing {
+  background-color: white !important;
+  border-color: white !important;
+  padding-top: 0px !important;
+}
+
 .page-banner {
   min-height: 300px;
   background-color: #33A579;
   border-bottom: 2px solid #06482f;
   padding-top: 20px;
   }
+
+.all-peers-button:hover{
+  cursor: pointer;
+}
+
+.text-for-network {
+  padding-top: 30px;
+}
+
+
+.map {
+  height: 400px;
+}
+
+.peers-table th, .peers-table td{
+  padding: 8px 8px 8px 0px !important;
+}
+.no-border-top{
+  border-top: 0px !important;
+}
+
+.network-title {
+  padding-bottom: 40px;
+}
 
 .home-title { 
   margin-top: 0px !important;
