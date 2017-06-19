@@ -369,7 +369,7 @@ var AppSettings = (function () {
                 return 'http://localhost:8080/api/';
             }
             else {
-                return 'http://blockexplorer.gamecredits.com/api/';
+                return 'https://blockexplorer.gamecredits.com/api/';
             }
         },
         enumerable: true,
