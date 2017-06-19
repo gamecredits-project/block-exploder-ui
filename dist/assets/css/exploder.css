@@ -1,10 +1,14 @@
 body {
   background-color: #fafafa;
-  font-family: 'Roboto', sans-serif !important; }
+  font-family: 'Trebushet MS', sans-serif !important; }
 
 .sebm-google-map-container {
   height: 600px;
 
+}
+
+.padding-top-5{
+  padding-top: 5px;
 }
 
 .usd-price-big{

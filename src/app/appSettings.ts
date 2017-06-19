@@ -4,7 +4,7 @@ export class AppSettings {
         if (AppSettings.devMode) {
             return 'http://localhost:8080/api/';
         } else {
-            return 'http://148.251.15.209/api/';
+            return 'http://blockexplorer.gamecredits.com/api/';
         }
     }
 }
