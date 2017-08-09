@@ -7,4 +7,12 @@ export class AppSettings {
             return 'https://blockexplorer.gamecredits.com/api/';
         }
     }
+
+	public static get BLOCK_SOCKET_SERVER_URL(): string {
+		return 'http://localhost:5004/block';
+	}
+
+	public static get TX_SOCKET_SERVER_URL(): string {
+		return 'http://localhost:5004/tx';
+	}
 }

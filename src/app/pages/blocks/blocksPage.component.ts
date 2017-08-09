@@ -1,21 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { BlocksPageService } from "./blocksPage.service";
+import { BlockSocketService } from "app/pages/socket/socket.service";
 
  @Component ({
  	selector: 'exploder-blocks',
- 	templateUrl: 'blocksPage.component.html'
+ 	templateUrl: 'blocksPage.component.html',
+  providers: [BlockSocketService]
  })
+
  export class BlocksPageComponent implements OnInit {
 
  	blockArray: any = [];
  	currentlyLoaded: number = 0;
  	loadPerScroll: number = 30;
 
- 	constructor(private blocksPageService: BlocksPageService, 
-		) {}
+  private socket: any;
+  private block_response: any;
+  private block_test: any;
+
+  private blocks: any;
+  private block_data: any;
+  //private test: string;
+ 	constructor(private blocksPageService: BlocksPageService, private blockSocketService: BlockSocketService) {
+    this.blocks = [];
+    //this.test = "Ovo je test";
+  }
 
  	ngOnInit() {
- 		this.addBlocks();
+    this.addBlocks();
+
+    this.socket = this.blockSocketService.initConnection();
+    this.getBlockInitMessage();
+    this.getSocketBlock();
+
  	}
 
  	addBlocks(){
@@ -28,6 +45,19 @@ import { BlocksPageService } from "./blocksPage.service";
  	onScroll() {
  		this.addBlocks();
  	}
+
+
+  private getBlockInitMessage(): void {
+      this.socket = this.blockSocketService.getBlockConnection().subscribe((block_response) =>{
+        this.block_test = block_response
+      });
+  }
+
+  private getSocketBlock(): void {
+    this.socket = this.blockSocketService.getBlock().subscribe((block_data) =>{
+      this.blocks.push(block_data);
+    });
+  }
 
  	calulateMinutesFromNow( time: number) {
  		let now = new Date();

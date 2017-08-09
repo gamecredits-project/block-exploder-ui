@@ -1,5 +1,6 @@
 <div class="container">
 	<h1>All blocks </h1>
+	<h2>{{ block_test }}</h2>
     <div class="search-results"
 	    infiniteScroll
 	    [infiniteScrollDistance]="1"
@@ -17,6 +18,23 @@
 		    </thead>
 
 		    <tbody>
+					<tr *ngFor="let block of blocks.slice().reverse()">
+						<td>
+							<a routerLink="{{ '/blocks/' + block.hash}}">{{block?.height}}</a>
+						</td>
+						<td>
+							{{calulateMinutesFromNow(block?.time)}}
+						</td>
+						<td>
+							{{block?.tx?.length}}
+						</td>
+						<td>
+							{{block?.total | number:'1.5-5'}} GAME
+						</td>
+						<td>
+							{{block?.size}}
+						</td>
+					</tr>
 		        <tr *ngFor="let block of blockArray">
 		          <td>
 		            <a routerLink="{{ '/blocks/' + block.hash}}">{{block?.height}}</a>

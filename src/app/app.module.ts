@@ -29,6 +29,7 @@ import { BlockPageService } from './pages/block/blockPage.service';
 import { TransactionsPageService } from './pages/transactions/transactionsPage.service';
 import { AddressPageService } from './pages/address/addressPage.service';
 import { NetworkPageService } from './pages/network/networkPage.service';
+import { BlockSocketService } from "app/pages/socket/socket.service";
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { NetworkPageService } from './pages/network/networkPage.service';
   BlockPageService,
   TransactionsPageService,
   AddressPageService,
-  NetworkPageService
+  NetworkPageService,
+  BlockSocketService
   ],
   bootstrap: [AppComponent]
 })
