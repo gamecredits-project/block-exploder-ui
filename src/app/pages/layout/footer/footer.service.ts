@@ -12,7 +12,7 @@ export class FooterService {
     constructor(
         private _http: Http
     ) { }
-    
+
     getLatestTransactions() : Observable<any> {
         const url   = this.baseApiUrl + 'transactions/latest?limit=5';
         const headers = new Headers({

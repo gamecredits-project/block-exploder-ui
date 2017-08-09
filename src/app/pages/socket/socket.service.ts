@@ -7,7 +7,7 @@ import { AppSettings } from "app/appSettings";
 
 @Injectable()
 export class BlockSocketService {
-  private baseSocketServerUrl: string = AppSettings.BLOCK_SOCKET_SERVER_URL;
+  private blockSocketServerUrl: string = AppSettings.BLOCK_SOCKET_SERVER_URL;
 
   private socket;
 
@@ -21,7 +21,7 @@ export class BlockSocketService {
 
 
   private initSocket(): void {
-    this.socket = socketio(this.baseSocketServerUrl);
+    this.socket = socketio(this.blockSocketServerUrl);
   }
 
   public getBlockConnection() {
@@ -41,6 +41,51 @@ export class BlockSocketService {
     let observable = new Observable(observer => {
       this.socket.on('background_block_sender', (data) =>{
         observer.next(data.latest_block_data);
+        console.log(data);
+      });
+      return () => {
+        this.socket.disconnect();
+      };
+    });
+    return observable;
+  }
+
+}
+
+@Injectable()
+export class TxSocketService {
+  private txSocketServerUrl: string = AppSettings.TX_SOCKET_SERVER_URL;
+  private socket;
+
+  constructor() {
+    this.initSocket();
+  }
+
+  public initConnection() {
+    this.socket.emit('tx_connected');
+  }
+
+  private initSocket(): void {
+    this.socket = socketio(this.txSocketServerUrl);
+  }
+
+  public getTxConnection() {
+    let observable = new Observable(observer => {
+      this.socket.on('tx_response', (data) => {
+        observer.next(data.tx_data);
+        console.log(data);
+      });
+      return () => {
+        this.socket.disconnect();
+      };
+    });
+    return observable;
+  }
+
+  public getTx(){
+    let observable = new Observable(observer => {
+      this.socket.on('background_tx_sender', (data) =>{
+        observer.next(data.latest_tx_data);
         console.log(data);
       });
       return () => {

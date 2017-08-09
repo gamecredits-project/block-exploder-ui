@@ -24,6 +24,14 @@
 				<div class="table-responsive">
 					<table class="table latest-transactions-table">
 						<tbody>
+							<tr *ngFor="let transaction of txs">
+								<td>
+									<a href="{{'/transactions/' + transaction.txid}}"> {{transaction.txid.substring(0,29)}}..</a>
+								</td>
+								<td>
+									{{transaction.total | number:'1.5-5'}} GAME
+								</td>
+							</tr>
 							<tr *ngFor="let transaction of latestTransactions">
 								<td>
 									<a href="{{'/transactions/' + transaction.txid}}"> {{transaction.txid.substring(0,29)}}..</a>

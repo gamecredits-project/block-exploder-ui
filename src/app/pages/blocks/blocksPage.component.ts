@@ -20,10 +20,9 @@ import { BlockSocketService } from "app/pages/socket/socket.service";
 
   private blocks: any;
   private block_data: any;
-  //private test: string;
+  
  	constructor(private blocksPageService: BlocksPageService, private blockSocketService: BlockSocketService) {
     this.blocks = [];
-    //this.test = "Ovo je test";
   }
 
  	ngOnInit() {
