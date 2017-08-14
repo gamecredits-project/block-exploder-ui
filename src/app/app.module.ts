@@ -15,6 +15,7 @@ import { FooterComponent} from './pages/layout/footer/footer.component';
 
 import { HomePageComponent } from './pages/home/homePage.component';
 import { BlocksPageComponent } from './pages/blocks/blocksPage.component';
+import { AllTransactionsPageComponent } from './pages/allTransactions/allTransactionsPage.component';
 import { NetworkPageComponent } from './pages/network/networkPage.component';
 import { BlockPageComponent } from './pages/block/blockPage.component';
 import { TransactionsPageComponent } from './pages/transactions/transactionsPage.component';
@@ -25,6 +26,7 @@ import { AddressPageComponent } from './pages/address/addressPage.component';
 import { FooterService } from './pages/layout/footer/footer.service';
 import { HomePageService } from './pages/home/homePage.service';
 import { BlocksPageService } from './pages/blocks/blocksPage.service';
+import { AllTransactionsPageService } from './pages/allTransactions/allTransactionsPage.service';
 import { BlockPageService } from './pages/block/blockPage.service';
 import { TransactionsPageService } from './pages/transactions/transactionsPage.service';
 import { AddressPageService } from './pages/address/addressPage.service';
@@ -39,6 +41,7 @@ import { BlockSocketService, TxSocketService } from "app/pages/socket/socket.ser
   HeaderComponent,
   HomePageComponent,
   BlocksPageComponent,
+  AllTransactionsPageComponent,
   NetworkPageComponent,
   BlockPageComponent,
   TransactionsPageComponent,
@@ -59,6 +62,7 @@ import { BlockSocketService, TxSocketService } from "app/pages/socket/socket.ser
   FooterService,
   HomePageService,
   BlocksPageService,
+  AllTransactionsPageService,
   BlockPageService,
   TransactionsPageService,
   AddressPageService,

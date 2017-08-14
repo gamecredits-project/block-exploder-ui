@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { BlocksPageService } from "./blocksPage.service";
 import { BlockSocketService } from "app/pages/socket/socket.service";
 
- @Component ({
+@Component ({
  	selector: 'exploder-blocks',
  	templateUrl: 'blocksPage.component.html',
   providers: [BlockSocketService]
- })
+})
 
- export class BlocksPageComponent implements OnInit {
+export class BlocksPageComponent implements OnInit {
 
  	blockArray: any = [];
  	currentlyLoaded: number = 0;
@@ -20,7 +20,8 @@ import { BlockSocketService } from "app/pages/socket/socket.service";
 
   private blocks: any;
   private block_data: any;
-  
+
+
  	constructor(private blocksPageService: BlocksPageService, private blockSocketService: BlockSocketService) {
     this.blocks = [];
   }
@@ -31,7 +32,6 @@ import { BlockSocketService } from "app/pages/socket/socket.service";
     this.socket = this.blockSocketService.initConnection();
     this.getBlockInitMessage();
     this.getSocketBlock();
-
  	}
 
  	addBlocks(){
@@ -45,11 +45,10 @@ import { BlockSocketService } from "app/pages/socket/socket.service";
  		this.addBlocks();
  	}
 
-
   private getBlockInitMessage(): void {
-      this.socket = this.blockSocketService.getBlockConnection().subscribe((block_response) =>{
-        this.block_test = block_response
-      });
+    this.socket = this.blockSocketService.getBlockConnection().subscribe((block_response) =>{
+      this.block_test = block_response
+    });
   }
 
   private getSocketBlock(): void {

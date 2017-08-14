@@ -62,18 +62,18 @@ import { BlockSocketService } from "app/pages/socket/socket.service";
 			this.latestBlocks.push(...resp);
 		});
 
-        this.homePageService.getNetworkPrice().subscribe( (resp) => {
-            this.price = resp.priceUSD;
-        });
+    this.homePageService.getNetworkPrice().subscribe( (resp) => {
+      this.price = resp.priceUSD;
+    });
 
 
 		this.homePageService.getNetworkInfo().subscribe( (resp) => {
 			this.networkInfo = resp;
 		});
 
-        this.homePageService.getClientInfo().subscribe( (resp) => {
-            this.clientInfo = resp;
-        });
+    this.homePageService.getClientInfo().subscribe( (resp) => {
+      this.clientInfo = resp;
+    });
 
 
 		this.homePageService.getBootstrapLink().subscribe( (resp) => {
@@ -127,8 +127,7 @@ import { BlockSocketService } from "app/pages/socket/socket.service";
  	}
 
     hidePlaceholder() {
-                    this.showPlaceholder = false;
-
+      this.showPlaceholder = false;
     }
 
     onSearch(param: string) {

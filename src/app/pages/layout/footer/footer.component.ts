@@ -7,9 +7,9 @@ import { TxSocketService } from "app/pages/socket/socket.service";
 	templateUrl: 'footer.component.html',
 	providers: [TxSocketService]
 })
+
 export class FooterComponent implements OnInit {
 	latestTransactions: any = [];
-
 
 	private socket: any;
 	private tx_test: any;
@@ -21,7 +21,6 @@ export class FooterComponent implements OnInit {
 	constructor(private footerService: FooterService,private txSocketService: TxSocketService) {
 		this.txs = [];
 	}
-
 
 	ngOnInit() {
 		this.socket = this.txSocketService.initConnection();
@@ -42,8 +41,10 @@ export class FooterComponent implements OnInit {
 	private getTx(): void {
 	 this.socket = this.txSocketService.getTx().subscribe((tx_data) =>{
 		 this.txs.push(tx_data);
+		 if (this.txs.length > 5){
+			 this.txs.shift();
+		 }
+		 this.latestTransactions.shift();
 	 });
  }
-
-
 }

@@ -1,0 +1,44 @@
+<div class="container">
+	<h1>All blocks </h1>
+	<h2>{{ block_test }}</h2>
+    <div class="search-results"
+	    infiniteScroll
+	    [infiniteScrollDistance]="1"
+	    [infiniteScrollThrottle]="300"
+	    (scrolled)="onScroll()">
+		<table class="table latest-blocks-table">
+		    <thead>
+		    <tr>
+		      <th>Transaction id</th>
+					<th>Age</th>
+		      <th>Total</th>
+		    </tr>
+		    </thead>
+
+		    <tbody>
+					<tr *ngFor="let transaction of txs.slice().reverse()">
+						<td>
+							<a href="{{'/transactions/' + transaction.txid}}"> {{transaction.txid}}..</a>
+						</td>
+						<td>
+							{{calulateMinutesFromNow(transaction?.blocktime)}}
+						</td>
+						<td>
+							{{transaction.total | number:'1.5-5'}} GAME
+						</td>
+					</tr>
+					<tr *ngFor="let transaction of txArray">
+						<td>
+							<a href="{{'/transactions/' + transaction.txid}}"> {{transaction.txid}}..</a>
+						</td>
+						<td>
+							{{calulateMinutesFromNow(transaction?.blocktime)}}
+						</td>
+						<td>
+							{{transaction.total | number:'1.5-5'}} GAME
+						</td>
+					</tr>
+		    </tbody>
+		</table>
+	</div>
+</div>
