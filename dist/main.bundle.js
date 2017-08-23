@@ -22,14 +22,14 @@ var AppSettings = (function () {
     });
     Object.defineProperty(AppSettings, "BLOCK_SOCKET_SERVER_URL", {
         get: function () {
-            return 'wss://localhost:8082/block';
+            return 'wss://localhost:5004/block';
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(AppSettings, "TX_SOCKET_SERVER_URL", {
         get: function () {
-            return 'wss://localhost:8082/tx';
+            return 'wss://localhost:5004/tx';
         },
         enumerable: true,
         configurable: true
