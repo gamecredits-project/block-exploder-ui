@@ -24,6 +24,17 @@ export class AllTransactionsPageService {
             .catch(this.handleError);
     }
 
+    getLatestBlocks() : Observable<any> {
+        const url   = this.baseApiUrl + 'blocks/latest?limit=10';
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        });
+        return this._http.get(url, {headers})
+            .map(res => this.extractData(res))
+            .catch(this.handleError);
+    }
+
     private extractData(res: Response) {
         let body = res.json();
         return body || { };

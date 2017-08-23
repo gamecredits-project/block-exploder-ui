@@ -1,5 +1,5 @@
 <div class="container">
-	<h1>All blocks </h1>
+	<h1>All transactions</h1>
 	<h2>{{ block_test }}</h2>
     <div class="search-results"
 	    infiniteScroll
@@ -10,6 +10,7 @@
 		    <thead>
 		    <tr>
 		      <th>Transaction id</th>
+					<th>Block hash</th>
 					<th>Age</th>
 		      <th>Total</th>
 		    </tr>
@@ -18,7 +19,16 @@
 		    <tbody>
 					<tr *ngFor="let transaction of txs.slice().reverse()">
 						<td>
-							<a href="{{'/transactions/' + transaction.txid}}"> {{transaction.txid}}..</a>
+							<a href="{{'/transactions/' + transaction.txid}}">
+								 {{transaction.txid.substring(0,10)}}..
+								 ..{{transaction.txid.substring(54,64)}}
+							</a>
+						</td>
+						<td>
+							<a routerLink="{{ '/blocks/' + transaction.blockhash}}">
+								{{transaction.blockhash.substring(0,10)}}..
+								..{{transaction.blockhash.substring(54,64)}}
+							</a>
 						</td>
 						<td>
 							{{calulateMinutesFromNow(transaction?.blocktime)}}
@@ -29,7 +39,16 @@
 					</tr>
 					<tr *ngFor="let transaction of txArray">
 						<td>
-							<a href="{{'/transactions/' + transaction.txid}}"> {{transaction.txid}}..</a>
+							<a href="{{'/transactions/' + transaction.txid}}">
+								 {{transaction.txid.substring(0,10)}}..
+								 ..{{transaction.txid.substring(54,64)}}
+							</a>
+						</td>
+						<td>
+							<a routerLink="{{ '/blocks/' + transaction.blockhash}}">
+								{{transaction.blockhash.substring(0,10)}}..
+								..{{transaction.blockhash.substring(54,64)}}
+							</a>
 						</td>
 						<td>
 							{{calulateMinutesFromNow(transaction?.blocktime)}}

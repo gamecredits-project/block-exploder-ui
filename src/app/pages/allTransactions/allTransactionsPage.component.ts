@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AllTransactionsPageService } from "./allTransactionsPage.service";
 import { TxSocketService } from "app/pages/socket/socket.service";
+import { BlockSocketService } from "app/pages/socket/socket.service";
 
 @Component ({
  	selector: 'exploder-transactions',
  	templateUrl: 'allTransactionsPage.component.html',
-  providers: [TxSocketService]
+  providers: [TxSocketService, BlockSocketService]
 })
 
 export class AllTransactionsPageComponent implements OnInit {
@@ -22,7 +23,8 @@ export class AllTransactionsPageComponent implements OnInit {
   private tx_data: any;
 
 
- 	constructor(private allTransactionsPageService: AllTransactionsPageService, private txSocketService: TxSocketService) {
+ 	constructor(private allTransactionsPageService: AllTransactionsPageService,
+    private txSocketService: TxSocketService) {
     this.txs = [];
   }
 
