@@ -9,10 +9,10 @@ export class AppSettings {
     }
 
 	public static get BLOCK_SOCKET_SERVER_URL(): string {
-		return 'http://localhost:5004/block';
+		return 'http://localhost:8082/block';
 	}
 
 	public static get TX_SOCKET_SERVER_URL(): string {
-		return 'http://localhost:5004/tx';
+		return 'http://localhost:8082/tx';
 	}
 }
