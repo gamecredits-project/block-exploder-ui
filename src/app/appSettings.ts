@@ -9,10 +9,10 @@ export class AppSettings {
     }
 
 	public static get BLOCK_SOCKET_SERVER_URL(): string {
-		return 'wss://localhost:5004/block';
+		return 'https://blockexplorer.gamecredits.com/socket.io/block';
 	}
 
 	public static get TX_SOCKET_SERVER_URL(): string {
-		return 'wss://localhost:5004/tx';
+		return 'https://blockexplorer.gamecredits.com/socket.io/tx';
 	}
 }
