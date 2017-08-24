@@ -22,14 +22,14 @@ var AppSettings = (function () {
     });
     Object.defineProperty(AppSettings, "BLOCK_SOCKET_SERVER_URL", {
         get: function () {
-            return 'https://blockexplorer.gamecredits.com/socket.io/block';
+            return 'https://blockexplorer.gamecredits.com/block';
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(AppSettings, "TX_SOCKET_SERVER_URL", {
         get: function () {
-            return 'https://blockexplorer.gamecredits.com/socket.io/tx';
+            return 'https://blockexplorer.gamecredits.com/tx';
         },
         enumerable: true,
         configurable: true
