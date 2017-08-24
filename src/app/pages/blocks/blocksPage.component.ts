@@ -57,6 +57,10 @@ export class BlocksPageComponent implements OnInit {
     });
   }
 
+  ngOnDestroy(){
+    this.socket.unsubscribe();
+  }
+
  	calulateMinutesFromNow( time: number) {
  		let now = new Date();
  		let minutesOld = Math.abs( Math.round( (now.valueOf() / 1000 - time) / 60 ) );

@@ -98,6 +98,10 @@ import { BlockSocketService } from "app/pages/socket/socket.service";
       });
   }
 
+  ngOnDestroy(){
+    this.socket.unsubscribe();
+  }
+
   private getSocketBlock(): void {
     this.socket = this.blockSocketService.getBlock().subscribe((block_data) =>{
       this.blocks.push(block_data);
