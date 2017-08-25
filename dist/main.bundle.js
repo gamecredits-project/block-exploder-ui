@@ -47,74 +47,6 @@ AppSettings.devMode = false;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__footer_service__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_pages_socket_socket_service__ = __webpack_require__(22);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FooterComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var FooterComponent = (function () {
-    function FooterComponent(footerService, txSocketService) {
-        this.footerService = footerService;
-        this.txSocketService = txSocketService;
-        this.latestTransactions = [];
-        this.txs = [];
-    }
-    FooterComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.socket = this.txSocketService.initConnection();
-        this.getTxInitMessage();
-        this.getTx();
-        this.footerService.getLatestTransactions().subscribe(function (resp) {
-            _this.latestTransactions = resp;
-        });
-    };
-    FooterComponent.prototype.getTxInitMessage = function () {
-        var _this = this;
-        this.socket = this.txSocketService.getTxConnection().subscribe(function (tx_response) {
-            _this.tx_test = tx_response;
-        });
-    };
-    FooterComponent.prototype.getTx = function () {
-        var _this = this;
-        this.socket = this.txSocketService.getTx().subscribe(function (tx_data) {
-            _this.txs.push(tx_data);
-            if (_this.txs.length > 5) {
-                _this.txs.shift();
-            }
-            _this.latestTransactions.shift();
-        });
-    };
-    return FooterComponent;
-}());
-FooterComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'exploder-footer',
-        template: __webpack_require__(261),
-        providers: [__WEBPACK_IMPORTED_MODULE_2_app_pages_socket_socket_service__["b" /* TxSocketService */]]
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__footer_service__["a" /* FooterService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__footer_service__["a" /* FooterService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_app_pages_socket_socket_service__["b" /* TxSocketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_pages_socket_socket_service__["b" /* TxSocketService */]) === "function" && _b || Object])
-], FooterComponent);
-
-var _a, _b;
-//# sourceMappingURL=footer.component.js.map
-
-/***/ }),
-
-/***/ 101:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
@@ -184,7 +116,7 @@ var _a;
 
 /***/ }),
 
-/***/ 102:
+/***/ 101:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -213,13 +145,13 @@ HeaderComponent = __decorate([
 
 /***/ }),
 
-/***/ 103:
+/***/ 102:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__networkPage_service__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_switchMap__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__networkPage_service__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_switchMap__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_switchMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_switchMap__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NetworkPageComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -275,7 +207,7 @@ var _a;
 
 /***/ }),
 
-/***/ 104:
+/***/ 103:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -360,14 +292,14 @@ var _a;
 
 /***/ }),
 
-/***/ 105:
+/***/ 104:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__transactionsPage_service__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_switchMap__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__transactionsPage_service__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_switchMap__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_switchMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_switchMap__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TransactionsPageComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -415,7 +347,7 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 106:
+/***/ 105:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -500,7 +432,7 @@ var _a;
 
 /***/ }),
 
-/***/ 150:
+/***/ 151:
 /***/ (function(module, exports) {
 
 function webpackEmptyContext(req) {
@@ -509,20 +441,20 @@ function webpackEmptyContext(req) {
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 150;
+webpackEmptyContext.id = 151;
 
 
 /***/ }),
 
-/***/ 151:
+/***/ 152:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(161);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(164);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(165);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(167);
 
 
 
@@ -535,21 +467,21 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dyna
 
 /***/ }),
 
-/***/ 162:
+/***/ 163:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_layout_header_header_component__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_layout_footer_footer_component__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_homePage_component__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_blocks_blocksPage_component__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_allTransactions_allTransactionsPage_component__ = __webpack_require__(92);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_network_networkPage_component__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_block_blockPage_component__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_transactions_transactionsPage_component__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_address_addressPage_component__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_layout_header_header_component__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_layout_footer_footer_component__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_homePage_component__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_blocks_blocksPage_component__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_allTransactions_allTransactionsPage_component__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_network_networkPage_component__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_block_blockPage_component__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_transactions_transactionsPage_component__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_address_addressPage_component__ = __webpack_require__(89);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -636,7 +568,7 @@ AppRoutingModule = __decorate([
 
 /***/ }),
 
-/***/ 163:
+/***/ 164:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -658,7 +590,7 @@ AppComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-root',
         template: __webpack_require__(255),
-        styles: [__webpack_require__(241)]
+        styles: [__webpack_require__(242)]
     })
 ], AppComponent);
 
@@ -666,37 +598,37 @@ AppComponent = __decorate([
 
 /***/ }),
 
-/***/ 164:
+/***/ 165:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(160);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(161);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_routing_module__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(164);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_routing_module__ = __webpack_require__(163);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ngx_infinite_scroll__ = __webpack_require__(249);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__customDirectives_angular2_google_chart_directive__ = __webpack_require__(165);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_angular2_google_maps_core__ = __webpack_require__(170);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__customDirectives_angular2_google_chart_directive__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_angular2_google_maps_core__ = __webpack_require__(171);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_angular2_google_maps_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_angular2_google_maps_core__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_layout_header_header_component__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_layout_footer_footer_component__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_home_homePage_component__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_blocks_blocksPage_component__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_allTransactions_allTransactionsPage_component__ = __webpack_require__(92);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_network_networkPage_component__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_block_blockPage_component__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_transactions_transactionsPage_component__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_address_addressPage_component__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_layout_footer_footer_service__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_home_homePage_service__ = __webpack_require__(99);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_blocks_blocksPage_service__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_allTransactions_allTransactionsPage_service__ = __webpack_require__(93);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_block_blockPage_service__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_transactions_transactionsPage_service__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_address_addressPage_service__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_network_networkPage_service__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_layout_header_header_component__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_layout_footer_footer_component__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_home_homePage_component__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_blocks_blocksPage_component__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_allTransactions_allTransactionsPage_component__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_network_networkPage_component__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_block_blockPage_component__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_transactions_transactionsPage_component__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_address_addressPage_component__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_layout_footer_footer_service__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_home_homePage_service__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_blocks_blocksPage_service__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_allTransactions_allTransactionsPage_service__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_block_blockPage_service__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_transactions_transactionsPage_service__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_address_addressPage_service__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_network_networkPage_service__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_app_pages_socket_socket_service__ = __webpack_require__(22);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -782,7 +714,7 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 165:
+/***/ 166:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -858,7 +790,7 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 166:
+/***/ 167:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -992,10 +924,10 @@ TxSocketService = __decorate([
 
 /***/ }),
 
-/***/ 241:
+/***/ 242:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(32)(false);
+exports = module.exports = __webpack_require__(34)(false);
 // imports
 
 
@@ -1013,96 +945,96 @@ module.exports = module.exports.toString();
 /***/ 255:
 /***/ (function(module, exports) {
 
-module.exports = "<link rel=\"stylesheet\" href=\"../assets/css/exploder.css\">\n\n<router-outlet name=\"header\"></router-outlet>\n\n<router-outlet> </router-outlet>\n\n<router-outlet name=\"footer\"></router-outlet>\n"
+module.exports = "<link rel=\"stylesheet\" href=\"../assets/css/exploder.css\">\r\n\r\n<router-outlet name=\"header\"></router-outlet>\r\n\r\n<router-outlet> </router-outlet>\r\n\r\n<router-outlet name=\"footer\"></router-outlet>\r\n"
 
 /***/ }),
 
 /***/ 256:
 /***/ (function(module, exports) {
 
-module.exports = "    <div class=\"container-fluid page-banner block-header\">\n    \t<div class=\"container\">\n    \t\t<div class=\"row\">\n    \t\t\t<div class=\"col-xs-12\">\n    \t\t\t\t<h1 class=\"block-title\">\n    \t\t\t\t\tAddress <small>View information about a GameCredits address</small>\n    \t\t\t\t</h1>\n    \t\t\t\t<p>\n    \t\t\t\t\t<i class=\"fa fa-at\"></i>\n    \t\t\t\t\tAddress: {{address}}\n    \t\t\t\t</p>\n    \t\t\t</div>\n    \t\t\t<div class=\"col-md-6\">\n    \t\t\t\t<div class=\"table-responsive\">\n    \t\t\t\t\t<table class=\"table\">\n    \t\t\t\t\t\t<tbody>\n    \t\t\t\t\t\t\t<tr>\n    \t\t\t\t\t\t\t\t<th>Summary</th>\n    \t\t\t\t\t\t\t\t<th></th>\n    \t\t\t\t\t\t\t</tr>\n    \t\t\t\t\t\t\t<tr>\n    \t\t\t\t\t\t\t\t<td>Number Of Transactions</td>\n    \t\t\t\t\t\t\t\t<td>{{totalTransactionsNumber}}</td>\n    \t\t\t\t\t\t\t</tr>\n    \t\t\t\t\t\t</table>\n    \t\t\t\t\t</div>\n    \t\t\t\t</div>\n    \t\t\t\t<div class=\"col-md-6\">\n    \t\t\t\t\t<div class=\"table-responsive\">\n    \t\t\t\t\t\t<table class=\"table\">\n    \t\t\t\t\t\t\t<tr>\n    \t\t\t\t\t\t\t\t<td>Total volume:</td>\n    \t\t\t\t\t\t\t\t<td>{{volume | number:'1.5-5'}} GAME</td>\n    \t\t\t\t\t\t\t</tr>\n    \t\t\t\t\t\t\t<tr>\n    \t\t\t\t\t\t\t\t<td>Estimated balance</td>\n                                    <td>{{currentValue | number:'1.5-5'}} GAME</td>\n    \t\t\t\t\t\t\t</tr>\n    \t\t\t\t\t\t</table>\n    \t\t\t\t\t</div>\n    \t\t\t\t</div>\n    \t\t\t</div>\n    \t\t</div>\n    \t</div>\n\n    \t<div class=\"container address-transactions\">\n    \t\t<div class=\"row\">\n    \t\t\t<div class=\"col-xs-12 block-transactions\">\n    \t\t\t\t<h3 class=\"address-transactions-title\">{{selectedTrancationsTagName}} {{transactionsTagNumber}} <button class=\"btn btn-primary pull-right\" (click)=\"setMenu('All Transactions')\">All transactions</button>\n    \t\t\t\t\t<button class=\"pull-right btn btn-primary\" (click)=\"setMenu('Unspent Transactions')\">Unspent transactions </button></h3>\n\n    \t\t\t\t\t<div  *ngIf=\"selectedTrancationsTagName == 'All Transactions' && allTransactions\">\n    \t\t\t\t\t\t<div class=\"panel panel-default\" *ngFor=\"let trans of allTransactions\">\n    \t\t\t\t\t\t\t<div class=\"panel-heading\">\n    \t\t\t\t\t\t\t\t<a href=\"/transactions/345da10d5d5bff42e5949dd609bc993220b68ddfc9add9b15e7cdfeab57af35f\">\n    \t\t\t\t\t\t\t\t\t345da10d5d5bff42e5949dd609bc993220b68ddfc9add9b15e7cdfeab57af35f\n    \t\t\t\t\t\t\t\t</a>\n    \t\t\t\t\t\t\t\t<span class=\"pull-right\"><i class=\"fa fa-calendar\"> 2017-05-11T14:43:06+02:00</i></span>\n    \t\t\t\t\t\t\t</div>\n    \t\t\t\t\t\t\t<div class=\"panel-body\">\n    \t\t\t\t\t\t\t\t<div class=\"row\">\n    \t\t\t\t\t\t\t\t\t<div class=\"col-md-6\">\n    \t\t\t\t\t\t\t\t\t\t<p><b>Inputs</b></p>\n    \t\t\t\t\t\t\t\t\t\t<ul class=\"list-unstyled\">\n\n    \t\t\t\t\t\t\t\t\t\t\t<li *ngFor=\"let input of trans?.vin\" >\n    \t\t\t\t\t\t\t\t\t\t\t\t<div *ngIf=\"input.prev_txid\"> \n    \t\t\t\t\t\t\t\t\t\t\t\t\t<a routerLink=\"{{'/transactions/'+ input.prev_txid}}\">\n    \t\t\t\t\t\t\t\t\t\t\t\t\t\t{{input.prev_txid}}\n    \t\t\t\t\t\t\t\t\t\t\t\t\t</a> \n    \t\t\t\t\t\t\t\t\t\t\t\t</div>\n    \t\t\t\t\t\t\t\t\t\t\t\t<div *ngIf=\"!input.prev_txid\">No Inputs (Newly Generated Coins)</div>\n    \t\t\t\t\t\t\t\t\t\t\t</li> \n\n    \t\t\t\t\t\t\t\t\t\t</ul>\n    \t\t\t\t\t\t\t\t\t</div>\n    \t\t\t\t\t\t\t\t\t<div class=\"col-md-6\">\n    \t\t\t\t\t\t\t\t\t\t<p><b>Outputs</b></p>\n    \t\t\t\t\t\t\t\t\t\t<ul class=\"list-unstyled\">\n\n    \t\t\t\t\t\t\t\t\t\t\t<li *ngFor=\" let output of trans?.vout \">\n\n    \t\t\t\t\t\t\t\t\t\t\t\t<div *ngFor=\"let adress of output?.addresses\">\n    \t\t\t\t\t\t\t\t\t\t\t\t\t[\n    \t\t\t\t\t\t\t\t\t\t\t\t\t<a routerLink=\"{{'/addresses/'+ adress}}\" >\n    \t\t\t\t\t\t\t\t\t\t\t\t\t\t{{adress}}\n    \t\t\t\t\t\t\t\t\t\t\t\t\t</a>\n    \t\t\t\t\t\t\t\t\t\t\t\t\t]\n    \t\t\t\t\t\t\t\t\t\t\t\t</div>\n    \t\t\t\t\t\t\t\t\t\t\t\tAmount: {{output.value | number:'1.5-5'}} GAME\n    \t\t\t\t\t\t\t\t\t\t\t\t<Br> <br>\n    \t\t\t\t\t\t\t\t\t\t\t\t</li>\n\n    \t\t\t\t\t\t\t\t\t\t\t</ul>\n    \t\t\t\t\t\t\t\t\t\t</div>\n    \t\t\t\t\t\t\t\t\t</div>\n    \t\t\t\t\t\t\t\t</div>\n    \t\t\t\t\t\t\t\t<div class=\"panel-footer text-right\">\n    \t\t\t\t\t\t\t\t\t<b>Total:</b> 50 GAME\n    \t\t\t\t\t\t\t\t</div>\n    \t\t\t\t\t\t\t</div>\n\n                                <button class=\"btn btn-primary col-md-12 load-more-button\" *ngIf=\"totalTransactionsNumber > allTransactions.length\" (click)=\"loadMoreTransactions()\"> Load More Transactions </button>\n    \t\t\t\t\t\t</div>        \n\n    \t\t\t\t\t\t<div class=\"panel panel-default\" *ngIf=\"selectedTrancationsTagName == 'Unspent Transactions'\" >\n    \t\t\t\t\t\t<div class=\"panel panel-default\" *ngFor=\"let trans of unspent \">\n                                <div class=\"panel-heading\">\n                                    <a href=\"/transactions/345da10d5d5bff42e5949dd609bc993220b68ddfc9add9b15e7cdfeab57af35f\">\n                                        345da10d5d5bff42e5949dd609bc993220b68ddfc9add9b15e7cdfeab57af35f\n                                    </a>\n                                    <span class=\"pull-right\"><i class=\"fa fa-calendar\"> 2017-05-11T14:43:06+02:00</i></span>\n                                </div>\n                                <div class=\"panel-body\">\n                                    <div class=\"row\">\n                                        <div class=\"col-md-6\">\n                                            <p><b>Inputs</b></p>\n                                            <ul class=\"list-unstyled\">\n\n                                                <li *ngFor=\"let input of trans?.vin\" >\n                                                    <div *ngIf=\"input.prev_txid\"> \n                                                        <a routerLink=\"{{'/transactions/'+ input.prev_txid}}\">\n                                                            {{input.prev_txid}}\n                                                        </a> \n                                                    </div>\n                                                    <div *ngIf=\"!input.prev_txid\">No Inputs (Newly Generated Coins)</div>\n                                                </li> \n\n                                            </ul>\n                                        </div>\n                                        <div class=\"col-md-6\">\n                                            <p><b>Outputs</b></p>\n                                            <ul class=\"list-unstyled\">\n\n                                                    <div *ngFor=\"let adress of trans?.vout?.addresses\">\n                                                        [\n                                                        <a routerLink=\"{{'/addresses/'+ adress}}\" >\n                                                            {{adress}}\n                                                        </a>\n                                                        ]\n                                                    </div>\n                                                    Amount: {{trans?.vout?.value | number:'1.5-5'}} GAME\n                                                    <Br> <br>\n\n                                                </ul>\n                                            </div>\n                                        </div>\n                                    </div>\n                                    <div class=\"panel-footer text-right\">\n                                        <b>Total:</b> 50 GAME\n                                    </div>\n                                </div>\n    \t\t\t\t\t\t</div>  \n\n    \t\t\t\t\t</div>\n    \t\t\t\t</div>\n    \t\t\t</div>"
+module.exports = "    <div class=\"container-fluid page-banner block-header\">\r\n    \t<div class=\"container\">\r\n    \t\t<div class=\"row\">\r\n    \t\t\t<div class=\"col-xs-12\">\r\n    \t\t\t\t<h1 class=\"block-title\">\r\n    \t\t\t\t\tAddress <small>View information about a GameCredits address</small>\r\n    \t\t\t\t</h1>\r\n    \t\t\t\t<p>\r\n    \t\t\t\t\t<i class=\"fa fa-at\"></i>\r\n    \t\t\t\t\tAddress: {{address}}\r\n    \t\t\t\t</p>\r\n    \t\t\t</div>\r\n    \t\t\t<div class=\"col-md-6\">\r\n    \t\t\t\t<div class=\"table-responsive\">\r\n    \t\t\t\t\t<table class=\"table\">\r\n    \t\t\t\t\t\t<tbody>\r\n    \t\t\t\t\t\t\t<tr>\r\n    \t\t\t\t\t\t\t\t<th>Summary</th>\r\n    \t\t\t\t\t\t\t\t<th></th>\r\n    \t\t\t\t\t\t\t</tr>\r\n    \t\t\t\t\t\t\t<tr>\r\n    \t\t\t\t\t\t\t\t<td>Number Of Transactions</td>\r\n    \t\t\t\t\t\t\t\t<td>{{totalTransactionsNumber}}</td>\r\n    \t\t\t\t\t\t\t</tr>\r\n    \t\t\t\t\t\t</table>\r\n    \t\t\t\t\t</div>\r\n    \t\t\t\t</div>\r\n    \t\t\t\t<div class=\"col-md-6\">\r\n    \t\t\t\t\t<div class=\"table-responsive\">\r\n    \t\t\t\t\t\t<table class=\"table\">\r\n    \t\t\t\t\t\t\t<tr>\r\n    \t\t\t\t\t\t\t\t<td>Total volume:</td>\r\n    \t\t\t\t\t\t\t\t<td>{{volume | number:'1.5-5'}} GAME</td>\r\n    \t\t\t\t\t\t\t</tr>\r\n    \t\t\t\t\t\t\t<tr>\r\n    \t\t\t\t\t\t\t\t<td>Estimated balance</td>\r\n                                    <td>{{currentValue | number:'1.5-5'}} GAME</td>\r\n    \t\t\t\t\t\t\t</tr>\r\n    \t\t\t\t\t\t</table>\r\n    \t\t\t\t\t</div>\r\n    \t\t\t\t</div>\r\n    \t\t\t</div>\r\n    \t\t</div>\r\n    \t</div>\r\n\r\n    \t<div class=\"container address-transactions\">\r\n    \t\t<div class=\"row\">\r\n    \t\t\t<div class=\"col-xs-12 block-transactions\">\r\n    \t\t\t\t<h3 class=\"address-transactions-title\">{{selectedTrancationsTagName}} {{transactionsTagNumber}} <button class=\"btn btn-primary pull-right\" (click)=\"setMenu('All Transactions')\">All transactions</button>\r\n    \t\t\t\t\t<button class=\"pull-right btn btn-primary\" (click)=\"setMenu('Unspent Transactions')\">Unspent transactions </button></h3>\r\n\r\n    \t\t\t\t\t<div  *ngIf=\"selectedTrancationsTagName == 'All Transactions' && allTransactions\">\r\n    \t\t\t\t\t\t<div class=\"panel panel-default\" *ngFor=\"let trans of allTransactions\">\r\n    \t\t\t\t\t\t\t<div class=\"panel-heading\">\r\n    \t\t\t\t\t\t\t\t<a href=\"/transactions/345da10d5d5bff42e5949dd609bc993220b68ddfc9add9b15e7cdfeab57af35f\">\r\n    \t\t\t\t\t\t\t\t\t345da10d5d5bff42e5949dd609bc993220b68ddfc9add9b15e7cdfeab57af35f\r\n    \t\t\t\t\t\t\t\t</a>\r\n    \t\t\t\t\t\t\t\t<span class=\"pull-right\"><i class=\"fa fa-calendar\"> 2017-05-11T14:43:06+02:00</i></span>\r\n    \t\t\t\t\t\t\t</div>\r\n    \t\t\t\t\t\t\t<div class=\"panel-body\">\r\n    \t\t\t\t\t\t\t\t<div class=\"row\">\r\n    \t\t\t\t\t\t\t\t\t<div class=\"col-md-6\">\r\n    \t\t\t\t\t\t\t\t\t\t<p><b>Inputs</b></p>\r\n    \t\t\t\t\t\t\t\t\t\t<ul class=\"list-unstyled\">\r\n\r\n    \t\t\t\t\t\t\t\t\t\t\t<li *ngFor=\"let input of trans?.vin\" >\r\n    \t\t\t\t\t\t\t\t\t\t\t\t<div *ngIf=\"input.prev_txid\"> \r\n    \t\t\t\t\t\t\t\t\t\t\t\t\t<a routerLink=\"{{'/transactions/'+ input.prev_txid}}\">\r\n    \t\t\t\t\t\t\t\t\t\t\t\t\t\t{{input.prev_txid}}\r\n    \t\t\t\t\t\t\t\t\t\t\t\t\t</a> \r\n    \t\t\t\t\t\t\t\t\t\t\t\t</div>\r\n    \t\t\t\t\t\t\t\t\t\t\t\t<div *ngIf=\"!input.prev_txid\">No Inputs (Newly Generated Coins)</div>\r\n    \t\t\t\t\t\t\t\t\t\t\t</li> \r\n\r\n    \t\t\t\t\t\t\t\t\t\t</ul>\r\n    \t\t\t\t\t\t\t\t\t</div>\r\n    \t\t\t\t\t\t\t\t\t<div class=\"col-md-6\">\r\n    \t\t\t\t\t\t\t\t\t\t<p><b>Outputs</b></p>\r\n    \t\t\t\t\t\t\t\t\t\t<ul class=\"list-unstyled\">\r\n\r\n    \t\t\t\t\t\t\t\t\t\t\t<li *ngFor=\" let output of trans?.vout \">\r\n\r\n    \t\t\t\t\t\t\t\t\t\t\t\t<div *ngFor=\"let adress of output?.addresses\">\r\n    \t\t\t\t\t\t\t\t\t\t\t\t\t[\r\n    \t\t\t\t\t\t\t\t\t\t\t\t\t<a routerLink=\"{{'/addresses/'+ adress}}\" >\r\n    \t\t\t\t\t\t\t\t\t\t\t\t\t\t{{adress}}\r\n    \t\t\t\t\t\t\t\t\t\t\t\t\t</a>\r\n    \t\t\t\t\t\t\t\t\t\t\t\t\t]\r\n    \t\t\t\t\t\t\t\t\t\t\t\t</div>\r\n    \t\t\t\t\t\t\t\t\t\t\t\tAmount: {{output.value | number:'1.5-5'}} GAME\r\n    \t\t\t\t\t\t\t\t\t\t\t\t<Br> <br>\r\n    \t\t\t\t\t\t\t\t\t\t\t\t</li>\r\n\r\n    \t\t\t\t\t\t\t\t\t\t\t</ul>\r\n    \t\t\t\t\t\t\t\t\t\t</div>\r\n    \t\t\t\t\t\t\t\t\t</div>\r\n    \t\t\t\t\t\t\t\t</div>\r\n    \t\t\t\t\t\t\t\t<div class=\"panel-footer text-right\">\r\n    \t\t\t\t\t\t\t\t\t<b>Total:</b> 50 GAME\r\n    \t\t\t\t\t\t\t\t</div>\r\n    \t\t\t\t\t\t\t</div>\r\n\r\n                                <button class=\"btn btn-primary col-md-12 load-more-button\" *ngIf=\"totalTransactionsNumber > allTransactions.length\" (click)=\"loadMoreTransactions()\"> Load More Transactions </button>\r\n    \t\t\t\t\t\t</div>        \r\n\r\n    \t\t\t\t\t\t<div class=\"panel panel-default\" *ngIf=\"selectedTrancationsTagName == 'Unspent Transactions'\" >\r\n    \t\t\t\t\t\t<div class=\"panel panel-default\" *ngFor=\"let trans of unspent \">\r\n                                <div class=\"panel-heading\">\r\n                                    <a href=\"/transactions/345da10d5d5bff42e5949dd609bc993220b68ddfc9add9b15e7cdfeab57af35f\">\r\n                                        345da10d5d5bff42e5949dd609bc993220b68ddfc9add9b15e7cdfeab57af35f\r\n                                    </a>\r\n                                    <span class=\"pull-right\"><i class=\"fa fa-calendar\"> 2017-05-11T14:43:06+02:00</i></span>\r\n                                </div>\r\n                                <div class=\"panel-body\">\r\n                                    <div class=\"row\">\r\n                                        <div class=\"col-md-6\">\r\n                                            <p><b>Inputs</b></p>\r\n                                            <ul class=\"list-unstyled\">\r\n\r\n                                                <li *ngFor=\"let input of trans?.vin\" >\r\n                                                    <div *ngIf=\"input.prev_txid\"> \r\n                                                        <a routerLink=\"{{'/transactions/'+ input.prev_txid}}\">\r\n                                                            {{input.prev_txid}}\r\n                                                        </a> \r\n                                                    </div>\r\n                                                    <div *ngIf=\"!input.prev_txid\">No Inputs (Newly Generated Coins)</div>\r\n                                                </li> \r\n\r\n                                            </ul>\r\n                                        </div>\r\n                                        <div class=\"col-md-6\">\r\n                                            <p><b>Outputs</b></p>\r\n                                            <ul class=\"list-unstyled\">\r\n\r\n                                                    <div *ngFor=\"let adress of trans?.vout?.addresses\">\r\n                                                        [\r\n                                                        <a routerLink=\"{{'/addresses/'+ adress}}\" >\r\n                                                            {{adress}}\r\n                                                        </a>\r\n                                                        ]\r\n                                                    </div>\r\n                                                    Amount: {{trans?.vout?.value | number:'1.5-5'}} GAME\r\n                                                    <Br> <br>\r\n\r\n                                                </ul>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"panel-footer text-right\">\r\n                                        <b>Total:</b> 50 GAME\r\n                                    </div>\r\n                                </div>\r\n    \t\t\t\t\t\t</div>  \r\n\r\n    \t\t\t\t\t</div>\r\n    \t\t\t\t</div>\r\n    \t\t\t</div>"
 
 /***/ }),
 
 /***/ 257:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n\t<h1>All transactions</h1>\n\t<h2>{{ block_test }}</h2>\n    <div class=\"search-results\"\n\t    infiniteScroll\n\t    [infiniteScrollDistance]=\"1\"\n\t    [infiniteScrollThrottle]=\"300\"\n\t    (scrolled)=\"onScroll()\">\n\t\t<table class=\"table latest-blocks-table\">\n\t\t    <thead>\n\t\t    <tr>\n\t\t      <th>Transaction id</th>\n\t\t\t\t\t<th>Block hash</th>\n\t\t\t\t\t<th>Age</th>\n\t\t      <th>Total</th>\n\t\t    </tr>\n\t\t    </thead>\n\n\t\t    <tbody>\n\t\t\t\t\t<tr *ngFor=\"let transaction of txs.slice().reverse()\">\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t<a href=\"{{'/transactions/' + transaction.txid}}\">\n\t\t\t\t\t\t\t\t {{transaction.txid.substring(0,10)}}..\n\t\t\t\t\t\t\t\t ..{{transaction.txid.substring(54,64)}}\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t</td>\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t<a routerLink=\"{{ '/blocks/' + transaction.blockhash}}\">\n\t\t\t\t\t\t\t\t{{transaction.blockhash.substring(0,10)}}..\n\t\t\t\t\t\t\t\t..{{transaction.blockhash.substring(54,64)}}\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t</td>\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t{{calulateMinutesFromNow(transaction?.blocktime)}}\n\t\t\t\t\t\t</td>\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t{{transaction.total | number:'1.5-5'}} GAME\n\t\t\t\t\t\t</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr *ngFor=\"let transaction of txArray\">\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t<a href=\"{{'/transactions/' + transaction.txid}}\">\n\t\t\t\t\t\t\t\t {{transaction.txid.substring(0,10)}}..\n\t\t\t\t\t\t\t\t ..{{transaction.txid.substring(54,64)}}\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t</td>\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t<a routerLink=\"{{ '/blocks/' + transaction.blockhash}}\">\n\t\t\t\t\t\t\t\t{{transaction.blockhash.substring(0,10)}}..\n\t\t\t\t\t\t\t\t..{{transaction.blockhash.substring(54,64)}}\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t</td>\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t{{calulateMinutesFromNow(transaction?.blocktime)}}\n\t\t\t\t\t\t</td>\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t{{transaction.total | number:'1.5-5'}} GAME\n\t\t\t\t\t\t</td>\n\t\t\t\t\t</tr>\n\t\t    </tbody>\n\t\t</table>\n\t</div>\n</div>\n"
+module.exports = "<div class=\"container\">\r\n\t<h1>All transactions</h1>\r\n\t<h2>{{ block_test }}</h2>\r\n    <div class=\"search-results\"\r\n\t    infiniteScroll\r\n\t    [infiniteScrollDistance]=\"1\"\r\n\t    [infiniteScrollThrottle]=\"300\"\r\n\t    (scrolled)=\"onScroll()\">\r\n\t\t<table class=\"table latest-blocks-table\">\r\n\t\t    <thead>\r\n\t\t    <tr>\r\n\t\t      <th>Transaction id</th>\r\n\t\t\t\t\t<th>Block hash</th>\r\n\t\t\t\t\t<th>Age</th>\r\n\t\t      <th>Total</th>\r\n\t\t    </tr>\r\n\t\t    </thead>\r\n\r\n\t\t    <tbody>\r\n\t\t\t\t\t<tr *ngFor=\"let transaction of txs.slice().reverse()\">\r\n\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t<a href=\"{{'/transactions/' + transaction.txid}}\">\r\n\t\t\t\t\t\t\t\t {{transaction.txid.substring(0,10)}}..\r\n\t\t\t\t\t\t\t\t ..{{transaction.txid.substring(54,64)}}\r\n\t\t\t\t\t\t\t</a>\r\n\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t<a routerLink=\"{{ '/blocks/' + transaction.blockhash}}\">\r\n\t\t\t\t\t\t\t\t{{transaction.blockhash.substring(0,10)}}..\r\n\t\t\t\t\t\t\t\t..{{transaction.blockhash.substring(54,64)}}\r\n\t\t\t\t\t\t\t</a>\r\n\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t{{calulateMinutesFromNow(transaction?.blocktime)}}\r\n\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t{{transaction.total | number:'1.5-5'}} GAME\r\n\t\t\t\t\t\t</td>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t\t<tr *ngFor=\"let transaction of txArray\">\r\n\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t<a href=\"{{'/transactions/' + transaction.txid}}\">\r\n\t\t\t\t\t\t\t\t {{transaction.txid.substring(0,10)}}..\r\n\t\t\t\t\t\t\t\t ..{{transaction.txid.substring(54,64)}}\r\n\t\t\t\t\t\t\t</a>\r\n\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t<a routerLink=\"{{ '/blocks/' + transaction.blockhash}}\">\r\n\t\t\t\t\t\t\t\t{{transaction.blockhash.substring(0,10)}}..\r\n\t\t\t\t\t\t\t\t..{{transaction.blockhash.substring(54,64)}}\r\n\t\t\t\t\t\t\t</a>\r\n\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t{{calulateMinutesFromNow(transaction?.blocktime)}}\r\n\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t{{transaction.total | number:'1.5-5'}} GAME\r\n\t\t\t\t\t\t</td>\r\n\t\t\t\t\t</tr>\r\n\t\t    </tbody>\r\n\t\t</table>\r\n\t</div>\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ 258:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"block-details\"> \n  <div class=\"container-fluid page-banner block-header\">\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-xs-12\">\n          <h1 class=\"block-title\">\n            Block #{{block?.height}} <small>{{block?.hash}}</small>\n          </h1>\n          <p>\n            <i class=\"fa fa-tree\"></i>\n            Merkle root: {{block?.merkleroot}}\n          </p>\n        </div>\n        <div class=\"col-md-6\">\n          <div class=\"table-responsive\">\n            <table class=\"table\">\n              <tbody>\n                <tr>\n                  <th>Summary</th>\n                  <th></th>\n                </tr>\n                <tr>\n                  <td>Number Of Transactions</td>\n                  <td>{{block?.tx?.length}}</td>\n                </tr>\n                <tr>\n                  <td>Total sent</td>\n                  <td>{{block?.total | number:'1.5-5'}} GAME</td>\n                </tr>\n                <tr>\n                  <td>Difficulty</td>\n                  <td>{{block?.difficulty}}</td>\n                </tr>\n                <tr>\n                  <td>Version</td>\n                  <td>{{block?.version}}</td>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </div>\n        <div class=\"col-md-6\">\n          <div class=\"table-responsive\">\n            <table class=\"table\">\n              <tr>\n                <td>Confirmations</td>\n                <td>{{confirmations?.confirmations}}</td>\n              </tr>\n              <tr>\n                <td>Bits</td>\n                <td>{{block?.bits}}</td>\n              </tr>\n              <tr>\n                <td>Size</td>\n                <td>{{block?.size}} kB</td>\n              </tr>\n              <tr>\n                <td>Timestamp</td>\n                <td>{{ (block?.time * 1000 ) | date:'medium'}}</td>\n              </tr>\n              <tr>\n                <td>Nonce</td>\n                <td>{{block?.nonce}}</td>\n              </tr>\n            </table>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"container-fluid boxes-banner\">\n    <div class=\"container\">\n      <h4 class=\"chain-links-label\"><i class=\"fa fa-chain\"></i> Chain links</h4>\n      <div class=\"row boxes\">\n        <div class=\"col-md-1 hidden-sm hidden-xs\"></div>\n        <div class=\"col-md-2\">\n          <p>\n            Previous\n          </p>\n          <p>\n            <i class=\"fa fa-cube fa-5x\"></i> \n          </p>\n          <p class=\"block-link\">\n            <a routerLink=\"{{ '/blocks/' + block?.previousblockhash}}\">{{block?.previousblockhash}}</a>\n          </p>\n        </div>\n        <div class=\"col-md-2 hidden-xs hidden-sm\">\n          <div class=\"line\"></div>\n        </div>\n        <div class=\"col-md-2\">\n          <p class=\"box-label\">\n            This block\n          </p>\n          <p>\n            <i class=\"fa fa-cube fa-5x\"></i> \n          </p>\n          <p class=\"block-link\">\n            <a routerLink=\"{{ '/blocks/' + block?.hash}}\">{{block?.hash}}</a>\n          </p>\n        </div>\n        <div *ngIf=\"block?.nextblockhash\">\n          <div class=\"col-md-2 hidden-xs hidden-sm\">\n            <div class=\"line\"></div>\n          </div>\n          <div class=\"col-md-2\">\n            <p>\n              Next\n            </p>\n            <p>\n              <i class=\"fa fa-cube fa-5x\"></i> \n            </p>\n            <p class=\"block-link\">\n              <a routerLink=\"{{ '/blocks/' + block?.nextblockhash}}\">{{block?.nextblockhash}}</a>\n            </p>\n          </div>\n          <div class=\"col-md-1 hidden-sm hidden-xs\"></div>\n        </div>\n      </div>   \n    </div>\n  </div>\n\n  <div class=\"container block-transactions\">\n    <div class=\"row\">\n      <div class=\"col-xs-12 block-transactions\">\n        <h3 class=\"block-transactions-title\">Block Transactions ({{transactions?.length}})</h3>\n\n\n        <div class=\"panel panel-default\" *ngFor=\"let trans of transactions\">\n          <div class=\"panel-heading custom-panel-heading\">\n            <b> TXID: </b>\n            <a routerLink=\"{{'/transactions/' + trans.txid}}\">\n             {{trans.txid}}\n           </a>\n           <span class=\"pull-right\"><i class=\"fa fa-calendar\"> {{ (trans.blocktime * 1000 ) | date:'medium'}}</i></span>\n         </div>\n         <div class=\"panel-body\">\n          <div class=\"row\">\n            <div class=\"col-md-6\">\n              <p><b>Inputs</b></p>\n              <ul class=\"list-unstyled\">\n\n                <li *ngFor=\"let input of trans.vin\" >\n                  <div *ngIf=\"input.prev_txid\"> \n                    <a routerLink=\"{{'/transactions/'+ input.prev_txid}}\">\n                      {{input.prev_txid}}\n                    </a> \n                  </div>\n                  <div *ngIf=\"!input.prev_txid\">No Inputs (Newly Generated Coins)</div>\n                </li> \n\n              </ul>\n            </div>\n            <div class=\"col-md-6\">\n              <p><b>Outputs</b></p>\n              <ul class=\"list-unstyled\">\n\n                <li *ngFor=\" let output of trans.vout \">\n                  <div *ngFor=\"let adress of output.addresses\">\n                    {{output.value | number:'1.5-5'}} GAME ->\n                    <a routerLink=\"{{'/addresses/'+ adress}}\" >\n                      {{adress}}\n                    </a> <span *ngIf=\"output.spent\" class=\"badge badge-status\" style=\"background-color: #EB5757\">Spent</span> <span  *ngIf=\"!output.spent\" class=\"badge badge-status\" style=\"background-color: #F47F4B\">Unspent</span>\n                  </div>\n                </li>\n\n              </ul>\n            </div>\n          </div>\n        </div>\n        <div class=\"panel-footer custom-panel-footing text-right\">\n        <hr class=\"custom-panel-line\">\n          <b>Total:</b> {{trans?.total | number:'1.5-5'}} GAME\n        </div>\n      </div>\n\n\n    </div>\n  </div>\n</div>\n</div>"
+module.exports = "<div class=\"block-details\"> \r\n  <div class=\"container-fluid page-banner block-header\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-xs-12\">\r\n          <h1 class=\"block-title\">\r\n            Block #{{block?.height}} <small>{{block?.hash}}</small>\r\n          </h1>\r\n          <p>\r\n            <i class=\"fa fa-tree\"></i>\r\n            Merkle root: {{block?.merkleroot}}\r\n          </p>\r\n        </div>\r\n        <div class=\"col-md-6\">\r\n          <div class=\"table-responsive\">\r\n            <table class=\"table\">\r\n              <tbody>\r\n                <tr>\r\n                  <th>Summary</th>\r\n                  <th></th>\r\n                </tr>\r\n                <tr>\r\n                  <td>Number Of Transactions</td>\r\n                  <td>{{block?.tx?.length}}</td>\r\n                </tr>\r\n                <tr>\r\n                  <td>Total sent</td>\r\n                  <td>{{block?.total | number:'1.5-5'}} GAME</td>\r\n                </tr>\r\n                <tr>\r\n                  <td>Difficulty</td>\r\n                  <td>{{block?.difficulty}}</td>\r\n                </tr>\r\n                <tr>\r\n                  <td>Version</td>\r\n                  <td>{{block?.version}}</td>\r\n                </tr>\r\n              </tbody>\r\n            </table>\r\n          </div>\r\n        </div>\r\n        <div class=\"col-md-6\">\r\n          <div class=\"table-responsive\">\r\n            <table class=\"table\">\r\n              <tr>\r\n                <td>Confirmations</td>\r\n                <td>{{confirmations?.confirmations}}</td>\r\n              </tr>\r\n              <tr>\r\n                <td>Bits</td>\r\n                <td>{{block?.bits}}</td>\r\n              </tr>\r\n              <tr>\r\n                <td>Size</td>\r\n                <td>{{block?.size}} kB</td>\r\n              </tr>\r\n              <tr>\r\n                <td>Timestamp</td>\r\n                <td>{{ (block?.time * 1000 ) | date:'medium'}}</td>\r\n              </tr>\r\n              <tr>\r\n                <td>Nonce</td>\r\n                <td>{{block?.nonce}}</td>\r\n              </tr>\r\n            </table>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"container-fluid boxes-banner\">\r\n    <div class=\"container\">\r\n      <h4 class=\"chain-links-label\"><i class=\"fa fa-chain\"></i> Chain links</h4>\r\n      <div class=\"row boxes\">\r\n        <div class=\"col-md-1 hidden-sm hidden-xs\"></div>\r\n        <div class=\"col-md-2\">\r\n          <p>\r\n            Previous\r\n          </p>\r\n          <p>\r\n            <i class=\"fa fa-cube fa-5x\"></i> \r\n          </p>\r\n          <p class=\"block-link\">\r\n            <a routerLink=\"{{ '/blocks/' + block?.previousblockhash}}\">{{block?.previousblockhash}}</a>\r\n          </p>\r\n        </div>\r\n        <div class=\"col-md-2 hidden-xs hidden-sm\">\r\n          <div class=\"line\"></div>\r\n        </div>\r\n        <div class=\"col-md-2\">\r\n          <p class=\"box-label\">\r\n            This block\r\n          </p>\r\n          <p>\r\n            <i class=\"fa fa-cube fa-5x\"></i> \r\n          </p>\r\n          <p class=\"block-link\">\r\n            <a routerLink=\"{{ '/blocks/' + block?.hash}}\">{{block?.hash}}</a>\r\n          </p>\r\n        </div>\r\n        <div *ngIf=\"block?.nextblockhash\">\r\n          <div class=\"col-md-2 hidden-xs hidden-sm\">\r\n            <div class=\"line\"></div>\r\n          </div>\r\n          <div class=\"col-md-2\">\r\n            <p>\r\n              Next\r\n            </p>\r\n            <p>\r\n              <i class=\"fa fa-cube fa-5x\"></i> \r\n            </p>\r\n            <p class=\"block-link\">\r\n              <a routerLink=\"{{ '/blocks/' + block?.nextblockhash}}\">{{block?.nextblockhash}}</a>\r\n            </p>\r\n          </div>\r\n          <div class=\"col-md-1 hidden-sm hidden-xs\"></div>\r\n        </div>\r\n      </div>   \r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"container block-transactions\">\r\n    <div class=\"row\">\r\n      <div class=\"col-xs-12 block-transactions\">\r\n        <h3 class=\"block-transactions-title\">Block Transactions ({{transactions?.length}})</h3>\r\n\r\n\r\n        <div class=\"panel panel-default\" *ngFor=\"let trans of transactions\">\r\n          <div class=\"panel-heading custom-panel-heading\">\r\n            <b> TXID: </b>\r\n            <a routerLink=\"{{'/transactions/' + trans.txid}}\">\r\n             {{trans.txid}}\r\n           </a>\r\n           <span class=\"pull-right\"><i class=\"fa fa-calendar\"> {{ (trans.blocktime * 1000 ) | date:'medium'}}</i></span>\r\n         </div>\r\n         <div class=\"panel-body\">\r\n          <div class=\"row\">\r\n            <div class=\"col-md-6\">\r\n              <p><b>Inputs</b></p>\r\n              <ul class=\"list-unstyled\">\r\n\r\n                <li *ngFor=\"let input of trans.vin\" >\r\n                  <div *ngIf=\"input.prev_txid\"> \r\n                    <a routerLink=\"{{'/transactions/'+ input.prev_txid}}\">\r\n                      {{input.prev_txid}}\r\n                    </a> \r\n                  </div>\r\n                  <div *ngIf=\"!input.prev_txid\">No Inputs (Newly Generated Coins)</div>\r\n                </li> \r\n\r\n              </ul>\r\n            </div>\r\n            <div class=\"col-md-6\">\r\n              <p><b>Outputs</b></p>\r\n              <ul class=\"list-unstyled\">\r\n\r\n                <li *ngFor=\" let output of trans.vout \">\r\n                  <div *ngFor=\"let adress of output.addresses\">\r\n                    {{output.value | number:'1.5-5'}} GAME ->\r\n                    <a routerLink=\"{{'/addresses/'+ adress}}\" >\r\n                      {{adress}}\r\n                    </a> <span *ngIf=\"output.spent\" class=\"badge badge-status\" style=\"background-color: #EB5757\">Spent</span> <span  *ngIf=\"!output.spent\" class=\"badge badge-status\" style=\"background-color: #F47F4B\">Unspent</span>\r\n                  </div>\r\n                </li>\r\n\r\n              </ul>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"panel-footer custom-panel-footing text-right\">\r\n        <hr class=\"custom-panel-line\">\r\n          <b>Total:</b> {{trans?.total | number:'1.5-5'}} GAME\r\n        </div>\r\n      </div>\r\n\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n</div>"
 
 /***/ }),
 
 /***/ 259:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n\t<h1>All blocks </h1>\n\t<h2>{{ block_test }}</h2>\n    <div class=\"search-results\"\n\t    infiniteScroll\n\t    [infiniteScrollDistance]=\"1\"\n\t    [infiniteScrollThrottle]=\"300\"\n\t    (scrolled)=\"onScroll()\">\n\t\t<table class=\"table latest-blocks-table\">\n\t\t    <thead>\n\t\t    <tr>\n\t\t      <th>Height</th>\n\t\t      <th>Age</th>\n\t\t      <th>Transactions</th>\n\t\t      <th>Total Sent</th>\n\t\t      <th>Size (kB)</th>\n\t\t    </tr>\n\t\t    </thead>\n\n\t\t    <tbody>\n\t\t\t\t\t<tr *ngFor=\"let block of blocks.slice().reverse()\">\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t<a routerLink=\"{{ '/blocks/' + block.hash}}\">{{block?.height}}</a>\n\t\t\t\t\t\t</td>\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t{{calulateMinutesFromNow(block?.time)}}\n\t\t\t\t\t\t</td>\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t{{block?.tx?.length}}\n\t\t\t\t\t\t</td>\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t{{block?.total | number:'1.5-5'}} GAME\n\t\t\t\t\t\t</td>\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t{{block?.size}}\n\t\t\t\t\t\t</td>\n\t\t\t\t\t</tr>\n\t\t        <tr *ngFor=\"let block of blockArray\">\n\t\t          <td>\n\t\t            <a routerLink=\"{{ '/blocks/' + block.hash}}\">{{block?.height}}</a>\n\t\t          </td>\n\t\t          <td>\n\t\t            {{calulateMinutesFromNow(block?.time)}}\n\t\t          </td>\n\t\t          <td>\n\t\t            {{block?.tx?.length}}\n\t\t          </td>\n\t\t          <td>\n\t\t            {{block?.total | number:'1.5-5'}} GAME\n\t\t          </td>\n\t\t          <td>\n\t\t            {{block?.size}}\n\t\t          </td>\n\t\t        </tr>\n\t\t    </tbody>\n\t\t</table>\n\t</div>\n</div>\n"
+module.exports = "<div class=\"container\">\r\n\t<h1>All blocks </h1>\r\n\t<h2>{{ block_test }}</h2>\r\n    <div class=\"search-results\"\r\n\t    infiniteScroll\r\n\t    [infiniteScrollDistance]=\"1\"\r\n\t    [infiniteScrollThrottle]=\"300\"\r\n\t    (scrolled)=\"onScroll()\">\r\n\t\t<table class=\"table latest-blocks-table\">\r\n\t\t    <thead>\r\n\t\t    <tr>\r\n\t\t      <th>Height</th>\r\n\t\t      <th>Age</th>\r\n\t\t      <th>Transactions</th>\r\n\t\t      <th>Total Sent</th>\r\n\t\t      <th>Size (kB)</th>\r\n\t\t    </tr>\r\n\t\t    </thead>\r\n\r\n\t\t    <tbody>\r\n\t\t\t\t\t<tr *ngFor=\"let block of blocks.slice().reverse()\">\r\n\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t<a routerLink=\"{{ '/blocks/' + block.hash}}\">{{block?.height}}</a>\r\n\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t{{calulateMinutesFromNow(block?.time)}}\r\n\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t{{block?.tx?.length}}\r\n\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t{{block?.total | number:'1.5-5'}} GAME\r\n\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t{{block?.size}}\r\n\t\t\t\t\t\t</td>\r\n\t\t\t\t\t</tr>\r\n\t\t        <tr *ngFor=\"let block of blockArray\">\r\n\t\t          <td>\r\n\t\t            <a routerLink=\"{{ '/blocks/' + block.hash}}\">{{block?.height}}</a>\r\n\t\t          </td>\r\n\t\t          <td>\r\n\t\t            {{calulateMinutesFromNow(block?.time)}}\r\n\t\t          </td>\r\n\t\t          <td>\r\n\t\t            {{block?.tx?.length}}\r\n\t\t          </td>\r\n\t\t          <td>\r\n\t\t            {{block?.total | number:'1.5-5'}} GAME\r\n\t\t          </td>\r\n\t\t          <td>\r\n\t\t            {{block?.size}}\r\n\t\t          </td>\r\n\t\t        </tr>\r\n\t\t    </tbody>\r\n\t\t</table>\r\n\t</div>\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ 260:
 /***/ (function(module, exports) {
 
-module.exports = "\n    <div class=\"container-fluid page-banner\">\n        <div class=\"container\">\n            <div class=\"row\">\n                <div class=\"col-md-9\">\n                    <img *ngIf=\"showPlaceholder\" src=\"../../assets/images/placeholder.png\" alt=\"\" style=\"filter: blur(5px);\">\n                    <div id=\"line_chart\" [chartData]=\"line_ChartData\" [chartOptions]= \"line_ChartOptions\" (ready)=\"hidePlaceholder()\" chartType=\"LineChart\" GoogleChart></div>\n                </div>\n                <div class=\"col-md-3 network-info\">\n                    <div class=\"page-header home-title\">\n                      <h3>GameCredits</h3>\n                    </div>\n                    <div>\n                    <span class=\"usd-price-big\">${{price | number:'1.5-5'}}</span> <a class=\"link-underline\" href=\"https://coinmarketcap.com/currencies/gamecredits/\"> source</a>\n                    </div>\n                    <table class=\"home-table\">\n                      <tr>\n                          <td>\n                            Blockchain height:\n                          </td>\n                          <td>\n                            <a class=\"link-underline\" routerLink=\"{{ '/blocks/' + latestBlocks[0]?.hash}}\">{{latestBlocks[0]?.height}}</a>\n                          </td>\n                      </tr>\n                      <tr>\n                          <td>\n                            Coin supply:\n                          </td>\n                          <td>\n                             {{networkInfo?.coinSupply}}\n                          </td>\n                      </tr>\n                      <tr>\n                          <td>\n                            Blockchain size:\n                          </td>\n                          <td>\n                             {{networkInfo?.blockchainSize}}GB\n                          </td>\n                      </tr>\n                      <tr>\n                          <td>\n                            Hash rate:\n                          </td>\n                          <td>\n                             {{networkInfo?.hashrate / 1000000000 | number:'1.1-1'}} GH/s\n                          </td>\n                      </tr>\n                      <tr>\n                          <td>\n                            Number of transactions: &nbsp;\n                          </td>\n                          <td>\n                              {{networkInfo?.numTransactions}}\n                          </td>\n                      </tr>\n                      <tr>\n                          <td>\n                            Sync status:\n                          </td>\n                          <td>\n                            {{clientInfo?.syncProgress}} %\n                          </td>\n                      </tr>\n                    </table>\n                    <p>\n                        <a href=\"{{bootstrapLink}}\" class=\"btn btn-primary download-button\" role=\"button\"> <i class=\"fa fa-download\" aria-hidden=\"true\"> Download bootstrap.zip </i></a>\n                    </p>\n                </div>\n            </div>\n        </div>\n    </div>\n\n    <div class=\"container\">\n        <div class=\"search-div\">\n            <i class=\"fa fa-search\" aria-hidden=\"true\"></i>\n            <input #search type=\"text\" class=\"search\" placeholder=\"Search by block hash, transaction ID or address\" (keyup.enter)=\"onSearch(search.value)\">\n        </div>\n\n        <h1>Latest blocks</h1>\n        <table class=\"table latest-blocks-table\">\n            <thead>\n            <tr>\n              <th>Height</th>\n              <th>Age</th>\n              <th>Transactions</th>\n              <th>Total Sent</th>\n              <th>Size (kB)</th>\n            </tr>\n            </thead>\n\n            <tbody *ngIf=\"latestBlocks\" >\n              <tr *ngFor=\"let block of blocks.slice().reverse()\">\n                <td>\n                  <a routerLink=\"{{ '/blocks/' + block.hash}}\">{{block?.height}}</a>\n                </td>\n                <td>\n                  {{calulateMinutesFromNow(block?.time)}}\n                </td>\n                <td>\n                  {{block?.tx?.length}}\n                </td>\n                <td>\n                  {{block?.total | number:'1.5-5'}} GAME\n                </td>\n                <td>\n                  {{block?.size}}\n                </td>\n              </tr>\n                <tr *ngFor=\"let block of latestBlocks\">\n                  <td>\n                    <a routerLink=\"{{ '/blocks/' + block.hash}}\">{{block?.height}}</a>\n                  </td>\n                  <td>\n                    {{calulateMinutesFromNow(block?.time)}}\n                  </td>\n                  <td>\n                    {{block?.tx?.length}}\n                  </td>\n                  <td>\n                    {{block?.total | number:'1.5-5'}} GAME\n                  </td>\n                  <td>\n                    {{block?.size}}\n                  </td>\n                </tr>\n              </tbody>\n          </table>\n          <div class=\"row text-center\">\n             <hr>\n             <div class=\"cointainer-blocks\">\n                <a class=\"btn btn-primary all-blocks-button\" routerLink=\"/blocks\"> <i class=\"fa fa-th\" aria-hidden=\"true\"> </i> Show all blocks</a>\n             </div>\n          </div>\n    </div>\n"
+module.exports = "\r\n    <div class=\"container-fluid page-banner\">\r\n        <div class=\"container\">\r\n            <div class=\"row\">\r\n                <div class=\"col-md-9\">\r\n                    <img *ngIf=\"showPlaceholder\" src=\"../../assets/images/placeholder.png\" alt=\"\" style=\"filter: blur(5px);\">\r\n                    <div id=\"line_chart\" [chartData]=\"line_ChartData\" [chartOptions]= \"line_ChartOptions\" (ready)=\"hidePlaceholder()\" chartType=\"LineChart\" GoogleChart></div>\r\n                </div>\r\n                <div class=\"col-md-3 network-info\">\r\n                    <div class=\"page-header home-title\">\r\n                      <h3>GameCredits</h3>\r\n                    </div>\r\n                    <div>\r\n                    <span class=\"usd-price-big\">${{price | number:'1.5-5'}}</span> <a class=\"link-underline\" href=\"https://coinmarketcap.com/currencies/gamecredits/\"> source</a>\r\n                    </div>\r\n                    <table class=\"home-table\">\r\n                      <tr>\r\n                          <td>\r\n                            Blockchain height:\r\n                          </td>\r\n                          <td>\r\n                            <a class=\"link-underline\" routerLink=\"{{ '/blocks/' + latestBlocks[0]?.hash}}\">{{latestBlocks[0]?.height}}</a>\r\n                          </td>\r\n                      </tr>\r\n                      <tr>\r\n                          <td>\r\n                            Coin supply:\r\n                          </td>\r\n                          <td>\r\n                             {{networkInfo?.coinSupply}}\r\n                          </td>\r\n                      </tr>\r\n                      <tr>\r\n                          <td>\r\n                            Blockchain size:\r\n                          </td>\r\n                          <td>\r\n                             {{networkInfo?.blockchainSize}}GB\r\n                          </td>\r\n                      </tr>\r\n                      <tr>\r\n                          <td>\r\n                            Hash rate:\r\n                          </td>\r\n                          <td>\r\n                             {{networkInfo?.hashrate / 1000000000 | number:'1.1-1'}} GH/s\r\n                          </td>\r\n                      </tr>\r\n                      <tr>\r\n                          <td>\r\n                            Number of transactions: &nbsp;\r\n                          </td>\r\n                          <td>\r\n                              {{networkInfo?.numTransactions}}\r\n                          </td>\r\n                      </tr>\r\n                      <tr>\r\n                          <td>\r\n                            Sync status:\r\n                          </td>\r\n                          <td>\r\n                            {{clientInfo?.syncProgress}} %\r\n                          </td>\r\n                      </tr>\r\n                    </table>\r\n                    <p>\r\n                        <a href=\"{{bootstrapLink}}\" class=\"btn btn-primary download-button\" role=\"button\"> <i class=\"fa fa-download\" aria-hidden=\"true\"> Download bootstrap.zip </i></a>\r\n                    </p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"container\">\r\n        <div class=\"search-div\">\r\n            <i class=\"fa fa-search\" aria-hidden=\"true\"></i>\r\n            <input #search type=\"text\" class=\"search\" placeholder=\"Search by block hash, transaction ID or address\" (keyup.enter)=\"onSearch(search.value)\">\r\n        </div>\r\n\r\n        <h1>Latest blocks</h1>\r\n        <table class=\"table latest-blocks-table\">\r\n            <thead>\r\n            <tr>\r\n              <th>Height</th>\r\n              <th>Age</th>\r\n              <th>Transactions</th>\r\n              <th>Total Sent</th>\r\n              <th>Size (kB)</th>\r\n            </tr>\r\n            </thead>\r\n\r\n            <tbody *ngIf=\"latestBlocks\" >\r\n              <tr *ngFor=\"let block of blocks.slice().reverse()\">\r\n                <td>\r\n                  <a routerLink=\"{{ '/blocks/' + block.hash}}\">{{block?.height}}</a>\r\n                </td>\r\n                <td>\r\n                  {{calulateMinutesFromNow(block?.time)}}\r\n                </td>\r\n                <td>\r\n                  {{block?.tx?.length}}\r\n                </td>\r\n                <td>\r\n                  {{block?.total | number:'1.5-5'}} GAME\r\n                </td>\r\n                <td>\r\n                  {{block?.size}}\r\n                </td>\r\n              </tr>\r\n                <tr *ngFor=\"let block of latestBlocks\">\r\n                  <td>\r\n                    <a routerLink=\"{{ '/blocks/' + block.hash}}\">{{block?.height}}</a>\r\n                  </td>\r\n                  <td>\r\n                    {{calulateMinutesFromNow(block?.time)}}\r\n                  </td>\r\n                  <td>\r\n                    {{block?.tx?.length}}\r\n                  </td>\r\n                  <td>\r\n                    {{block?.total | number:'1.5-5'}} GAME\r\n                  </td>\r\n                  <td>\r\n                    {{block?.size}}\r\n                  </td>\r\n                </tr>\r\n              </tbody>\r\n          </table>\r\n          <div class=\"row text-center\">\r\n             <hr>\r\n             <div class=\"cointainer-blocks\">\r\n                <a class=\"btn btn-primary all-blocks-button\" routerLink=\"/blocks\"> <i class=\"fa fa-th\" aria-hidden=\"true\"> </i> Show all blocks</a>\r\n             </div>\r\n          </div>\r\n    </div>\r\n"
 
 /***/ }),
 
 /***/ 261:
 /***/ (function(module, exports) {
 
-module.exports = "<footer class=\"container-fluid\">\n\t<div class=\"container\">\n\t\t<div class=\"footer-wrap\">\n\t\t\t<div class=\"logo\">\n\t\t\t<img src=\"../../../assets/images/logo.png\" alt=\"\">\n\t\t\t</div>\n\t\t\t<div class=\"col-md-6 game-text\">\n\t\t\t\t<h2>New to GameCredits?</h2>\n\t\t\t\t<p>\n\t\t\t\t\tGameCredits is creating a new payment gateway for the gaming industry.\n\t\t\t\t\tThere are a lot of challenges and limitations with current payment solutions and platforms in the gaming industry.\n\t\t\t\t\tWe will provide gaming companies a very specific solution to make payments seamless, easy and secure.\n\t\t\t\t\tWe will offer the gaming industry ways to pay less and make more.\n\t\t\t\t\tOur in game payment gateway is built for the gaming industry by the gaming industry. <a class=\"link-underline\"href=\"https://gamecredits.com\">Read more</a>\n\t\t\t\t</p>\n\t\t\t\t<a href=\"https://www.facebook.com/gamecredits/\"><i class=\"fa fa-facebook-square fa-2x\" aria-hidden=\"true\"></i></a>\n\t\t\t\t<a href=\"https://twitter.com/game_credits\"><i class=\"fa fa-twitter-square fa-2x\" aria-hidden=\"true\"></i></a>\n\t\t\t\t<a href=\"https://www.linkedin.com/company/gamecredits\"><i class=\"fa fa-linkedin-square fa-2x\" aria-hidden=\"true\"></i></a>\n\t\t\t\t<a href=\"https://www.youtube.com/channel/UCzkC8rkM38sxpuPcnyr1lXg\"><i class=\"fa fa-youtube-square fa-2x\" aria-hidden=\"true\"></i></a>\n\t\t\t\t<a href=\"https://gamecredits.com/slack.html\"><i class=\"fa fa-slack fa-2x\" aria-hidden=\"true\"></i></a>\n\t\t\t</div>\n\t\t\t<div class=\"col-md-6 latest-transactions\">\n\t\t\t\t<h2>Latest (mined) transactions</h2>\n\t\t\t\t<div class=\"table-responsive\">\n\t\t\t\t\t<table class=\"table latest-transactions-table\">\n\t\t\t\t\t\t<tbody>\n\t\t\t\t\t\t\t<tr *ngFor=\"let transaction of txs\">\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<a href=\"{{'/transactions/' + transaction.txid}}\"> {{transaction.txid.substring(0,29)}}..</a>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t{{transaction.total | number:'1.5-5'}} GAME\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t\t<tr *ngFor=\"let transaction of latestTransactions\">\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<a href=\"{{'/transactions/' + transaction.txid}}\"> {{transaction.txid.substring(0,29)}}..</a>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t{{transaction.total | number:'1.5-5'}} GAME\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t</tbody>\n\t\t\t\t\t</table>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</footer>\n"
+module.exports = "<footer class=\"container-fluid\">\r\n\t<div class=\"container\">\r\n\t\t<div class=\"footer-wrap\">\r\n\t\t\t<div class=\"logo\">\r\n\t\t\t<img src=\"../../../assets/images/logo.png\" alt=\"\">\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-6 game-text\">\r\n\t\t\t\t<h2>New to GameCredits?</h2>\r\n\t\t\t\t<p>\r\n\t\t\t\t\tGameCredits is creating a new payment gateway for the gaming industry.\r\n\t\t\t\t\tThere are a lot of challenges and limitations with current payment solutions and platforms in the gaming industry.\r\n\t\t\t\t\tWe will provide gaming companies a very specific solution to make payments seamless, easy and secure.\r\n\t\t\t\t\tWe will offer the gaming industry ways to pay less and make more.\r\n\t\t\t\t\tOur in game payment gateway is built for the gaming industry by the gaming industry. <a class=\"link-underline\"href=\"https://gamecredits.com\">Read more</a>\r\n\t\t\t\t</p>\r\n\t\t\t\t<a href=\"https://www.facebook.com/gamecredits/\"><i class=\"fa fa-facebook-square fa-2x\" aria-hidden=\"true\"></i></a>\r\n\t\t\t\t<a href=\"https://twitter.com/game_credits\"><i class=\"fa fa-twitter-square fa-2x\" aria-hidden=\"true\"></i></a>\r\n\t\t\t\t<a href=\"https://www.linkedin.com/company/gamecredits\"><i class=\"fa fa-linkedin-square fa-2x\" aria-hidden=\"true\"></i></a>\r\n\t\t\t\t<a href=\"https://www.youtube.com/channel/UCzkC8rkM38sxpuPcnyr1lXg\"><i class=\"fa fa-youtube-square fa-2x\" aria-hidden=\"true\"></i></a>\r\n\t\t\t\t<a href=\"https://gamecredits.com/slack.html\"><i class=\"fa fa-slack fa-2x\" aria-hidden=\"true\"></i></a>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-6 latest-transactions\">\r\n\t\t\t\t<h2>Latest (mined) transactions</h2>\r\n\t\t\t\t<div class=\"table-responsive\">\r\n\t\t\t\t\t<table class=\"table latest-transactions-table\">\r\n\t\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t\t<tr *ngFor=\"let transaction of txs\">\r\n\t\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t\t<a href=\"{{'/transactions/' + transaction.txid}}\"> {{transaction.txid.substring(0,29)}}..</a>\r\n\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t\t{{transaction.total | number:'1.5-5'}} GAME\r\n\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t<tr *ngFor=\"let transaction of latestTransactions\">\r\n\t\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t\t<a href=\"{{'/transactions/' + transaction.txid}}\"> {{transaction.txid.substring(0,29)}}..</a>\r\n\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t\t{{transaction.total | number:'1.5-5'}} GAME\r\n\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t</tbody>\r\n\t\t\t\t\t</table>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</footer>\r\n"
 
 /***/ }),
 
 /***/ 262:
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default\">\n\t<div class=\"container\">\n\t\t<!-- Brand and toggle get grouped for better mobile display -->\n\t\t<div class=\"navbar-header\">\n\n\t\t\t<button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\">\n\t\t\t\t<span class=\"sr-only\">Toggle navigation</span>\n\t\t\t\t<span class=\"icon-bar\"></span>\n\t\t\t\t<span class=\"icon-bar\"></span>\n\t\t\t\t<span class=\"icon-bar\"></span>\n\t\t\t</button>\n\t\t\t\t<div class=\"padding-top-5\">\n\n\t\t\t\t\t <a class=\"header-logo\" href=\"#\">  <img src=\"../../../assets/images/whitelogo.png\" alt=\"\" height=\"40\"> Block Explorer <span class=\"badge\" style=\"background-color: #F47F4B\">Beta</span></a>\n\t\t\t\t</div>\n\t\t</div>\n\n\t\t<!-- Collect the nav links, forms, and other content for toggling -->\n\t\t<div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n\t\t\t<ul class=\"nav navbar-nav navbar-right\">\n\t\t\t\t<li><a routerLink=\"/home\">Home</a></li>\n\t\t\t\t<li><a routerLink=\"/blocks\">Blocks</a></li>\n\t\t\t\t<li><a routerLink=\"/allTransactions\">Transactions</a></li>\n\t\t\t\t<li><a routerLink=\"/network\">Network</a></li>\n\t\t\t\t<li><a href=\"https://blockexplorer.gamecredits.com/api/ui\">API</a></li>\n\t\t\t</ul>\n\t\t</div><!-- /.navbar-collapse -->\n\t</div><!-- /.container-fluid -->\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-default\">\r\n\t<div class=\"container\">\r\n\t\t<!-- Brand and toggle get grouped for better mobile display -->\r\n\t\t<div class=\"navbar-header\">\r\n\r\n\t\t\t<button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\">\r\n\t\t\t\t<span class=\"sr-only\">Toggle navigation</span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t</button>\r\n\t\t\t\t<div class=\"padding-top-5\">\r\n\r\n\t\t\t\t\t <a class=\"header-logo\" href=\"#\">  <img src=\"../../../assets/images/whitelogo.png\" alt=\"\" height=\"40\"> Block Explorer <span class=\"badge\" style=\"background-color: #F47F4B\">Beta</span></a>\r\n\t\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<!-- Collect the nav links, forms, and other content for toggling -->\r\n\t\t<div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\r\n\t\t\t<ul class=\"nav navbar-nav navbar-right\">\r\n\t\t\t\t<li><a routerLink=\"/home\">Home</a></li>\r\n\t\t\t\t<li><a routerLink=\"/blocks\">Blocks</a></li>\r\n\t\t\t\t<li><a routerLink=\"/allTransactions\">Transactions</a></li>\r\n\t\t\t\t<li><a routerLink=\"/network\">Network</a></li>\r\n\t\t\t\t<li><a href=\"https://blockexplorer.gamecredits.com/api/ui\">API</a></li>\r\n\t\t\t</ul>\r\n\t\t</div><!-- /.navbar-collapse -->\r\n\t</div><!-- /.container-fluid -->\r\n</nav>\r\n"
 
 /***/ }),
 
 /***/ 263:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n\t<div class=\"row text-center\">\n\t\t<h1 class=\"pull-left network-title\"> Block Explorer: addnode = 148.251.15.209:40002 </h1>\n\t\t<div class=\"col-md-4\">\n\t\t\t<div class=\"row\">\n\t\t\t<p class=\"pull-left\">\n\t\t\t\tMAP OF EXPLORER CONNECTIONS\n \t\t\t</p>\n\t\t\t</div>\n\t\t\t<br>\n\t\t\t<div class=\"row\">\n\t\t\t\t<p align=\"left\"> \n\t\t\t\t\t<b>\n\t\t\t\t\tThis maps shows live full nodes that are connected to the\n\t\t\t\t\tBlock Explorer. These are NOT all live nodes, only the ones\n\t\t\t\t\tthat the Explorer client is “talking to” at the moment.\n\t\t\t\t\t</b>\n\t\t\t\t</p>\n\t\t\t</div>\n\t\t\t<div class=\"row\">\n\t\t\t\t<table class=\"table peers-table\">\n\t\t\t\t\t<tr >\n\t\t\t\t\t\t<th class=\"no-border-top\">\n\t\t\t\t\t\t\tNode\n\t\t\t\t\t\t</th>\n\t\t\t\t\t\t<th class=\"no-border-top\">\n\t\t\t\t\t\t\tVersion\n\t\t\t\t\t\t</th>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr *ngFor=\"let peer of peersToShow\">\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t<span class=\"pull-left\">{{peer?.addr}}</span>\n\t\t\t\t\t\t</td>\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t<span class=\"pull-left\">{{peer?.subver}}</span>\n\t\t\t\t\t\t</td>\n\t\t\t\t\t</tr>\n\t\t\t\t</table>\n\t\t\t\t<span *ngIf=\"showButton\" (click)=\"showAll()\" class=\"all-peers-button\"> <b> Show all peers </b> </span>\n \t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-md-8\">\n\t\t\t<sebm-google-map [latitude]=\"lat\" [longitude]=\"lng\" [zoom]=\"zoom\" class=\"map\">\n\t\t\t<div *ngFor=\"let peer of clientInfo?.peerInfo\">\n\t\t\t  <sebm-google-map-marker [latitude]=\"peer.latitude\" [longitude]=\"peer.longitude\" ></sebm-google-map-marker>\n\t\t\t</div>\n\t\t\t</sebm-google-map>\t\n\t\t</div>\n\t</div>\n\t<div class=\"row last-row text-for-network\"> \n\t<p>\n\t\t* If syncing of your client takes a long time you can add a node manually and it may speed up the syncing process. In order to do that start your client from the command line with the -addnode=148.251.15.209:40002 parameter or you can add that parameter to the gamecredits.conf file in your data directory. \nFor more info read this article about running Bitcoin, all the same rules apply to GameCredits: https://en.bitcoin.it/wiki/Running_Bitcoin\n\t</p>\n\t</div>\n</div>"
+module.exports = "<div class=\"container\">\r\n\t<div class=\"row text-center\">\r\n\t\t<h1 class=\"pull-left network-title\"> Block Explorer: addnode = 148.251.15.209:40002 </h1>\r\n\t\t<div class=\"col-md-4\">\r\n\t\t\t<div class=\"row\">\r\n\t\t\t<p class=\"pull-left\">\r\n\t\t\t\tMAP OF EXPLORER CONNECTIONS\r\n \t\t\t</p>\r\n\t\t\t</div>\r\n\t\t\t<br>\r\n\t\t\t<div class=\"row\">\r\n\t\t\t\t<p align=\"left\"> \r\n\t\t\t\t\t<b>\r\n\t\t\t\t\tThis maps shows live full nodes that are connected to the\r\n\t\t\t\t\tBlock Explorer. These are NOT all live nodes, only the ones\r\n\t\t\t\t\tthat the Explorer client is “talking to” at the moment.\r\n\t\t\t\t\t</b>\r\n\t\t\t\t</p>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"row\">\r\n\t\t\t\t<table class=\"table peers-table\">\r\n\t\t\t\t\t<tr >\r\n\t\t\t\t\t\t<th class=\"no-border-top\">\r\n\t\t\t\t\t\t\tNode\r\n\t\t\t\t\t\t</th>\r\n\t\t\t\t\t\t<th class=\"no-border-top\">\r\n\t\t\t\t\t\t\tVersion\r\n\t\t\t\t\t\t</th>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t\t<tr *ngFor=\"let peer of peersToShow\">\r\n\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t<span class=\"pull-left\">{{peer?.addr}}</span>\r\n\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t<span class=\"pull-left\">{{peer?.subver}}</span>\r\n\t\t\t\t\t\t</td>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t</table>\r\n\t\t\t\t<span *ngIf=\"showButton\" (click)=\"showAll()\" class=\"all-peers-button\"> <b> Show all peers </b> </span>\r\n \t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"col-md-8\">\r\n\t\t\t<sebm-google-map [latitude]=\"lat\" [longitude]=\"lng\" [zoom]=\"zoom\" class=\"map\">\r\n\t\t\t<div *ngFor=\"let peer of clientInfo?.peerInfo\">\r\n\t\t\t  <sebm-google-map-marker [latitude]=\"peer.latitude\" [longitude]=\"peer.longitude\" ></sebm-google-map-marker>\r\n\t\t\t</div>\r\n\t\t\t</sebm-google-map>\t\r\n\t\t</div>\r\n\t</div>\r\n\t<div class=\"row last-row text-for-network\"> \r\n\t<p>\r\n\t\t* If syncing of your client takes a long time you can add a node manually and it may speed up the syncing process. In order to do that start your client from the command line with the -addnode=148.251.15.209:40002 parameter or you can add that parameter to the gamecredits.conf file in your data directory. \r\nFor more info read this article about running Bitcoin, all the same rules apply to GameCredits: https://en.bitcoin.it/wiki/Running_Bitcoin\r\n\t</p>\r\n\t</div>\r\n</div>"
 
 /***/ }),
 
 /***/ 264:
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"container-fluid transaction-header\">\n  <div class=\"container\">\n    <h1>Transaction <small>View information about a GameCredits transaction</small></h1>\n    <p>\n      <i class=\"fa fa-hashtag\"></i>\n      {{transaction?.blockhash}}\n    </p>\n  </div>\n</div>\n\n<div class=\"container-fluid transaction-body\">\n  <div class=\"container\">\n    <div class=\"transaction-card col-xs-12\">\n      <div class=\"transaction-card__body\">\n        <div class=\"col-md-6\">\n          <p><strong>Inputs:</strong></p>\n          <ul class=\"list-unstyled\">\n\n            <li *ngFor=\"let input of transaction?.vin\" >\n              <div *ngIf=\"input.prev_txid\"> \n                <a routerLink=\"{{'/transactions/'+ input.prev_txid}}\">\n                  {{input.prev_txid}}\n                </a> \n              </div>\n              <div *ngIf=\"!input.prev_txid\">No Inputs (Newly Generated Coins)</div>\n            </li> \n\n          </ul>\n        </div>\n        <div class=\"col-md-6\">\n          <p><strong>Outputs</strong></p>\n          <ul class=\"list-unstyled\">\n\n            <li *ngFor=\" let output of transaction?.vout \">\n\n              <div *ngFor=\"let adress of output.addresses\">\n                [\n                <a routerLink=\"/addresses/Gf2uS2ZaWWXkbj3DK263zsK2bqU4rvLHCy\" >\n                  {{adress}}\n                </a>\n                ]\n              </div>\n              Amount: {{output.value | number:'1.5-5'}} GAME\n              <Br> <br>\n              </li>\n\n            </ul>\n          </div>\n        </div>\n        <div class=\"transaction-card__footer\">\n          <div class=\"col-xs-12\">\n            <p class=\"pull-right\">\n              <span data-toggle=\"tooltip\" title=\"Transaction is considered confirmed if more than 6 confirmations are available\">\n                Total sent: {{transaction?.total | number:'1.5-5'}} GAME, Confirmations: {{confirmations}},  Status: <i class=\"fa fa-check-circle-o\" *ngIf=\" confirmations > 6\"></i> <i class=\"fa fa-times\" *ngIf=\" confirmations < 7\"></i> \n              </span>\n            </p>\n          </div>\n        </div>\n      </div>\n      <div class=\"col-xs-12 transaction-summary\">\n        <div class=\"table-responsive\">\n          <table class=\"table\">\n            <tr>\n              <th>Summary</th>\n              <th></th>\n            </tr>\n            <tr>\n              <td>Blockhash:</td>\n              <td>{{transaction?.blockhash}}</td>\n            </tr>\n            <tr>\n              <td>Blocktime:</td>\n              <td>{{ ( transaction?.blocktime * 1000 )  | date:'medium'}}</td>\n            </tr>\n            <tr>\n              <td>Version:</td>\n              <td>{{transaction?.version}}</td>\n            </tr>\n          </table>\n        </div>\n      </div>\n    </div>\n  </div>"
+module.exports = "\r\n<div class=\"container-fluid transaction-header\">\r\n  <div class=\"container\">\r\n    <h1>Transaction <small>View information about a GameCredits transaction</small></h1>\r\n    <p>\r\n      <i class=\"fa fa-hashtag\"></i>\r\n      {{transaction?.blockhash}}\r\n    </p>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"container-fluid transaction-body\">\r\n  <div class=\"container\">\r\n    <div class=\"transaction-card col-xs-12\">\r\n      <div class=\"transaction-card__body\">\r\n        <div class=\"col-md-6\">\r\n          <p><strong>Inputs:</strong></p>\r\n          <ul class=\"list-unstyled\">\r\n\r\n            <li *ngFor=\"let input of transaction?.vin\" >\r\n              <div *ngIf=\"input.prev_txid\"> \r\n                <a routerLink=\"{{'/transactions/'+ input.prev_txid}}\">\r\n                  {{input.prev_txid}}\r\n                </a> \r\n              </div>\r\n              <div *ngIf=\"!input.prev_txid\">No Inputs (Newly Generated Coins)</div>\r\n            </li> \r\n\r\n          </ul>\r\n        </div>\r\n        <div class=\"col-md-6\">\r\n          <p><strong>Outputs</strong></p>\r\n          <ul class=\"list-unstyled\">\r\n\r\n            <li *ngFor=\" let output of transaction?.vout \">\r\n\r\n              <div *ngFor=\"let adress of output.addresses\">\r\n                [\r\n                <a routerLink=\"/addresses/Gf2uS2ZaWWXkbj3DK263zsK2bqU4rvLHCy\" >\r\n                  {{adress}}\r\n                </a>\r\n                ]\r\n              </div>\r\n              Amount: {{output.value | number:'1.5-5'}} GAME\r\n              <Br> <br>\r\n              </li>\r\n\r\n            </ul>\r\n          </div>\r\n        </div>\r\n        <div class=\"transaction-card__footer\">\r\n          <div class=\"col-xs-12\">\r\n            <p class=\"pull-right\">\r\n              <span data-toggle=\"tooltip\" title=\"Transaction is considered confirmed if more than 6 confirmations are available\">\r\n                Total sent: {{transaction?.total | number:'1.5-5'}} GAME, Confirmations: {{confirmations}},  Status: <i class=\"fa fa-check-circle-o\" *ngIf=\" confirmations > 6\"></i> <i class=\"fa fa-times\" *ngIf=\" confirmations < 7\"></i> \r\n              </span>\r\n            </p>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"col-xs-12 transaction-summary\">\r\n        <div class=\"table-responsive\">\r\n          <table class=\"table\">\r\n            <tr>\r\n              <th>Summary</th>\r\n              <th></th>\r\n            </tr>\r\n            <tr>\r\n              <td>Blockhash:</td>\r\n              <td>{{transaction?.blockhash}}</td>\r\n            </tr>\r\n            <tr>\r\n              <td>Blocktime:</td>\r\n              <td>{{ ( transaction?.blocktime * 1000 )  | date:'medium'}}</td>\r\n            </tr>\r\n            <tr>\r\n              <td>Version:</td>\r\n              <td>{{transaction?.version}}</td>\r\n            </tr>\r\n          </table>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>"
 
 /***/ }),
 
-/***/ 316:
+/***/ 315:
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
 
-/***/ 318:
+/***/ 317:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(151);
+module.exports = __webpack_require__(152);
 
 
 /***/ }),
 
-/***/ 90:
+/***/ 89:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__addressPage_service__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_switchMap__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__addressPage_service__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_switchMap__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_switchMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_switchMap__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddressPageComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1206,7 +1138,7 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 91:
+/***/ 90:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1335,12 +1267,12 @@ var _a;
 
 /***/ }),
 
-/***/ 92:
+/***/ 91:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__allTransactionsPage_service__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__allTransactionsPage_service__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_pages_socket_socket_service__ = __webpack_require__(22);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AllTransactionsPageComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1370,6 +1302,9 @@ var AllTransactionsPageComponent = (function () {
         this.socket = this.txSocketService.initConnection();
         this.getTxInitMessage();
         this.getSocketTx();
+    };
+    AllTransactionsPageComponent.prototype.ngOnDestroy = function () {
+        this.socket.unsubscribe();
     };
     AllTransactionsPageComponent.prototype.addTransactions = function () {
         var _this = this;
@@ -1425,7 +1360,7 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 93:
+/***/ 92:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1510,14 +1445,14 @@ var _a;
 
 /***/ }),
 
-/***/ 94:
+/***/ 93:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blockPage_service__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_switchMap__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blockPage_service__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_switchMap__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_switchMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_switchMap__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BlockPageComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1571,7 +1506,7 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 95:
+/***/ 94:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1667,12 +1602,12 @@ var _a;
 
 /***/ }),
 
-/***/ 96:
+/***/ 95:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blocksPage_service__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blocksPage_service__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_pages_socket_socket_service__ = __webpack_require__(22);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BlocksPageComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1701,6 +1636,9 @@ var BlocksPageComponent = (function () {
         this.socket = this.blockSocketService.initConnection();
         this.getBlockInitMessage();
         this.getSocketBlock();
+    };
+    BlocksPageComponent.prototype.ngOnDestroy = function () {
+        this.socket.unsubscribe();
     };
     BlocksPageComponent.prototype.addBlocks = function () {
         var _this = this;
@@ -1756,7 +1694,7 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 97:
+/***/ 96:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1830,13 +1768,13 @@ var _a;
 
 /***/ }),
 
-/***/ 98:
+/***/ 97:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__homePage_service__ = __webpack_require__(99);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__homePage_service__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_pages_socket_socket_service__ = __webpack_require__(22);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePageComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1915,6 +1853,9 @@ var HomePageComponent = (function () {
             _this.line_ChartData = _this.tempLineChartData; // Change dependant vaulue only one ( so we dont trriger onChange in directive multiple times)
         });
     };
+    HomePageComponent.prototype.ngOnDestroy = function () {
+        this.socket.unsubscribe();
+    };
     HomePageComponent.prototype.getBlockInitMessage = function () {
         var _this = this;
         this.socket = this.blockSocketService.getBlockConnection().subscribe(function (block_response) {
@@ -1976,7 +1917,7 @@ var _a, _b, _c;
 
 /***/ }),
 
-/***/ 99:
+/***/ 98:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2125,7 +2066,78 @@ HomePageService = __decorate([
 var _a;
 //# sourceMappingURL=homePage.service.js.map
 
+/***/ }),
+
+/***/ 99:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__footer_service__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_pages_socket_socket_service__ = __webpack_require__(22);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FooterComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var FooterComponent = (function () {
+    function FooterComponent(footerService, txSocketService) {
+        this.footerService = footerService;
+        this.txSocketService = txSocketService;
+        this.latestTransactions = [];
+        this.txs = [];
+    }
+    FooterComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.socket = this.txSocketService.initConnection();
+        this.getTxInitMessage();
+        this.getTx();
+        this.footerService.getLatestTransactions().subscribe(function (resp) {
+            _this.latestTransactions = resp;
+        });
+    };
+    FooterComponent.prototype.ngOnDestroy = function () {
+        this.socket.unsubscribe();
+    };
+    FooterComponent.prototype.getTxInitMessage = function () {
+        var _this = this;
+        this.socket = this.txSocketService.getTxConnection().subscribe(function (tx_response) {
+            _this.tx_test = tx_response;
+        });
+    };
+    FooterComponent.prototype.getTx = function () {
+        var _this = this;
+        this.socket = this.txSocketService.getTx().subscribe(function (tx_data) {
+            _this.txs.push(tx_data);
+            if (_this.txs.length > 5) {
+                _this.txs.shift();
+            }
+            _this.latestTransactions.shift();
+        });
+    };
+    return FooterComponent;
+}());
+FooterComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'exploder-footer',
+        template: __webpack_require__(261),
+        providers: [__WEBPACK_IMPORTED_MODULE_2_app_pages_socket_socket_service__["b" /* TxSocketService */]]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__footer_service__["a" /* FooterService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__footer_service__["a" /* FooterService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_app_pages_socket_socket_service__["b" /* TxSocketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_pages_socket_socket_service__["b" /* TxSocketService */]) === "function" && _b || Object])
+], FooterComponent);
+
+var _a, _b;
+//# sourceMappingURL=footer.component.js.map
+
 /***/ })
 
-},[318]);
+},[317]);
 //# sourceMappingURL=main.bundle.js.map

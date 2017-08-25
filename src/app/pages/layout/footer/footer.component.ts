@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import { FooterService } from "./footer.service";
 import { TxSocketService } from "app/pages/socket/socket.service";
 
@@ -8,7 +8,7 @@ import { TxSocketService } from "app/pages/socket/socket.service";
 	providers: [TxSocketService]
 })
 
-export class FooterComponent implements OnInit {
+export class FooterComponent implements OnInit, OnDestroy {
 	latestTransactions: any = [];
 
 	private socket: any;
@@ -31,6 +31,10 @@ export class FooterComponent implements OnInit {
 			this.latestTransactions = resp;
 		});
 	}
+
+	ngOnDestroy() {
+    this.socket.unsubscribe();
+  }
 
 	private getTxInitMessage(): void {
 	    this.socket = this.txSocketService.getTxConnection().subscribe((tx_response) => {

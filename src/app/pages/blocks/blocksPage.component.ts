@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import { BlocksPageService } from "./blocksPage.service";
 import { BlockSocketService } from "app/pages/socket/socket.service";
+import {Subscription} from "rxjs";
 
 @Component ({
  	selector: 'exploder-blocks',
@@ -8,7 +9,7 @@ import { BlockSocketService } from "app/pages/socket/socket.service";
   providers: [BlockSocketService]
 })
 
-export class BlocksPageComponent implements OnInit {
+export class BlocksPageComponent implements OnInit, OnDestroy {
 
  	blockArray: any = [];
  	currentlyLoaded: number = 0;
@@ -30,9 +31,14 @@ export class BlocksPageComponent implements OnInit {
     this.addBlocks();
 
     this.socket = this.blockSocketService.initConnection();
+
     this.getBlockInitMessage();
     this.getSocketBlock();
  	}
+
+  ngOnDestroy(){
+    this.socket.unsubscribe();
+  }
 
  	addBlocks(){
  		this.blocksPageService.getBlocks(this.loadPerScroll, this.currentlyLoaded).subscribe( (resp) => {
@@ -57,9 +63,7 @@ export class BlocksPageComponent implements OnInit {
     });
   }
 
-  ngOnDestroy(){
-    this.socket.unsubscribe();
-  }
+
 
  	calulateMinutesFromNow( time: number) {
  		let now = new Date();

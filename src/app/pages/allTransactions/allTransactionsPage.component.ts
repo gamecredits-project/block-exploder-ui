@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import { AllTransactionsPageService } from "./allTransactionsPage.service";
 import { TxSocketService } from "app/pages/socket/socket.service";
 import { BlockSocketService } from "app/pages/socket/socket.service";
@@ -9,7 +9,7 @@ import { BlockSocketService } from "app/pages/socket/socket.service";
   providers: [TxSocketService, BlockSocketService]
 })
 
-export class AllTransactionsPageComponent implements OnInit {
+export class AllTransactionsPageComponent implements OnInit, OnDestroy {
 
   txArray: any = [];
  	currentlyLoaded: number = 0;
@@ -36,6 +36,10 @@ export class AllTransactionsPageComponent implements OnInit {
     this.getSocketTx();
  	}
 
+  ngOnDestroy(){
+    this.socket.unsubscribe();
+  }
+
  	addTransactions(){
  		this.allTransactionsPageService.getLatestTransactions(this.loadPerScroll, this.currentlyLoaded).subscribe( (resp) => {
 			this.txArray = this.txArray.concat(resp);
@@ -59,9 +63,7 @@ export class AllTransactionsPageComponent implements OnInit {
 	 });
  }
 
- ngOnDestroy(){
-   this.socket.unsubscribe();
- }
+
 
  	calulateMinutesFromNow(time: number) {
  		let now = new Date();

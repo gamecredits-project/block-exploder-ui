@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import { HomePageService } from "./homePage.service";
 import { Router } from '@angular/router';
 import { BlockSocketService } from "app/pages/socket/socket.service";
@@ -8,7 +8,7 @@ import { BlockSocketService } from "app/pages/socket/socket.service";
  	templateUrl: 'homePage.component.html',
   providers: [BlockSocketService]
  })
- export class HomePageComponent implements OnInit {
+ export class HomePageComponent implements OnInit, OnDestroy {
 
  	latestBlocks: any = [];
  	networkInfo: any = [];
@@ -92,15 +92,16 @@ import { BlockSocketService } from "app/pages/socket/socket.service";
 		});
  	}
 
+   ngOnDestroy(){
+     this.socket.unsubscribe();
+   }
+
   private getBlockInitMessage(): void {
       this.socket = this.blockSocketService.getBlockConnection().subscribe((block_response) =>{
         this.block_test = block_response
       });
   }
 
-  ngOnDestroy(){
-    this.socket.unsubscribe();
-  }
 
   private getSocketBlock(): void {
     this.socket = this.blockSocketService.getBlock().subscribe((block_data) =>{
