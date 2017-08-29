@@ -52,10 +52,10 @@
     					<div  *ngIf="selectedTrancationsTagName == 'All Transactions' && allTransactions">
     						<div class="panel panel-default" *ngFor="let trans of allTransactions">
     							<div class="panel-heading">
-    								<a href="/transactions/345da10d5d5bff42e5949dd609bc993220b68ddfc9add9b15e7cdfeab57af35f">
-    									345da10d5d5bff42e5949dd609bc993220b68ddfc9add9b15e7cdfeab57af35f
+    								<a href="{{'/transactions/' + trans.txid}}">
+    									   {{trans.txid}}
     								</a>
-    								<span class="pull-right"><i class="fa fa-calendar"> 2017-05-11T14:43:06+02:00</i></span>
+    								<span class="pull-right"><i class="fa fa-calendar"> {{ (trans?.blocktime * 1000 ) | date:'medium'}}</i></span>
     							</div>
     							<div class="panel-body">
     								<div class="row">
@@ -96,7 +96,7 @@
     									</div>
     								</div>
     								<div class="panel-footer text-right">
-    									<b>Total:</b> 50 GAME
+    									<b>Total:</b> {{trans?.total | number:'1.5-5'}} GAME
     								</div>
     							</div>
 
@@ -106,10 +106,10 @@
     						<div class="panel panel-default" *ngIf="selectedTrancationsTagName == 'Unspent Transactions'" >
     						<div class="panel panel-default" *ngFor="let trans of unspent ">
                                 <div class="panel-heading">
-                                    <a href="/transactions/345da10d5d5bff42e5949dd609bc993220b68ddfc9add9b15e7cdfeab57af35f">
-                                        345da10d5d5bff42e5949dd609bc993220b68ddfc9add9b15e7cdfeab57af35f
+                                    <a href="{{'/transactions/' + trans.txid}}">
+                                           {{trans.txid}}                                    
                                     </a>
-                                    <span class="pull-right"><i class="fa fa-calendar"> 2017-05-11T14:43:06+02:00</i></span>
+                                    <span class="pull-right"><i class="fa fa-calendar"> {{ (trans?.blocktime * 1000 ) | date:'medium'}}</i></span>
                                 </div>
                                 <div class="panel-body">
                                     <div class="row">
@@ -117,37 +117,24 @@
                                             <p><b>Inputs</b></p>
                                             <ul class="list-unstyled">
 
-                                                <li *ngFor="let input of trans?.vin" >
-                                                    <div *ngIf="input.prev_txid"> 
-                                                        <a routerLink="{{'/transactions/'+ input.prev_txid}}">
-                                                            {{input.prev_txid}}
+                                                <li *ngFor="let input of trans?.addresses" >
+                                                    <div *ngIf="input"> 
+                                                        <a routerLink="{{'/addresses/'+ input}}">
+                                                            {{input}}
                                                         </a> 
                                                     </div>
-                                                    <div *ngIf="!input.prev_txid">No Inputs (Newly Generated Coins)</div>
                                                 </li> 
 
                                             </ul>
                                         </div>
                                         <div class="col-md-6">
                                             <p><b>Outputs</b></p>
-                                            <ul class="list-unstyled">
 
-                                                    <div *ngFor="let adress of trans?.vout?.addresses">
-                                                        [
-                                                        <a routerLink="{{'/addresses/'+ adress}}" >
-                                                            {{adress}}
-                                                        </a>
-                                                        ]
-                                                    </div>
-                                                    Amount: {{trans?.vout?.value | number:'1.5-5'}} GAME
-                                                    <Br> <br>
-
-                                                </ul>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="panel-footer text-right">
-                                        <b>Total:</b> 50 GAME
+                                        <b>Total:</b> {{trans?.value | number:'1.5-5'}} GAME
                                     </div>
                                 </div>
     						</div>  
