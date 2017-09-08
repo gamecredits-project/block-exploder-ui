@@ -46,7 +46,7 @@ import 'rxjs/add/operator/switchMap';
  				let i;
  				for (i = 0; i < resp.length; i++){
 					let item = resp[i];
-					item.vin = Array.from(resp[i].vin);
+					item.vin = Array.from(resp[i].addresses);
 					this.unspent.push(item); 					
  				}
 
@@ -57,22 +57,22 @@ import 'rxjs/add/operator/switchMap';
  		this.route.params
  			.switchMap((params: Params) => this.addressPageService.getAddressVolume('' + params['hash']))
  			.subscribe( resp => {
- 				this.volume = Number(resp);
- 				isNaN(this.volume) ? this.volume = 0 : this.volume = resp;
+ 				this.volume = Number(resp.volume);
+ 				isNaN(this.volume) ? this.volume = 0 : this.volume = resp.volume;
  			});
 
  		this.route.params
  			.switchMap((params: Params) => this.addressPageService.getAddressTotalTransactionsNumber('' + params['hash']))
  			.subscribe( resp => {
- 				this.totalTransactionsNumber = Number(resp);
- 				isNaN(this.totalTransactionsNumber) ? this.totalTransactionsNumber = 0 : this.totalTransactionsNumber = resp;
+ 				this.totalTransactionsNumber = Number(resp.transactionCount);
+ 				isNaN(this.totalTransactionsNumber) ? this.totalTransactionsNumber = 0 : this.totalTransactionsNumber = resp.transactionCount;
  			});
 
  		this.route.params
  			.switchMap((params: Params) => this.addressPageService.getAddressBalance('' + params['hash']))
  			.subscribe( resp => {
- 				this.currentValue = Number(resp);
- 				isNaN(this.currentValue) ? this.currentValue = 0 : this.currentValue = resp;
+ 				this.currentValue = Number(resp.balance );
+ 				isNaN(this.currentValue) ? this.currentValue = 0 : this.currentValue = resp.balance;
  			});		
  	}
  	
@@ -82,7 +82,7 @@ import 'rxjs/add/operator/switchMap';
  		if (name == 'All Transactions') {
  			this.transactionsTagNumber = this.allTransactions ? this.allTransactions.length : 0;
  		} else if (name == 'Unspent Transactions') {
- 			this.transactionsTagNumber = 0; // FIX THIS AFTER DIVIC FIXES BACKEND 
+ 			this.transactionsTagNumber = this.unspent ? this.unspent.length : 0;
  		}
  	}
 

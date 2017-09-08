@@ -1,20 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { AppSettings } from '../../../appSettings';
+import { AppSettings } from '../../appSettings';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
-export class FooterService {
+export class AllTransactionsPageService {
     private baseApiUrl: string = AppSettings.API_ENDPOINT;
 
     constructor(
-        private _http: Http
+        private _http: Http,
     ) { }
 
-    getLatestTransactions() : Observable<any> {
-        const url   = this.baseApiUrl + 'transactions/latest?limit=5';
+    getLatestTransactions(limit: number, offset: number) : Observable<any> {
+        const url   = this.baseApiUrl + 'transactions/latest?limit=' + limit + '&offset=' + offset;
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        });
+        return this._http.get(url, {headers})
+            .map(res => this.extractData(res))
+            .catch(this.handleError);
+    }
+
+    getLatestBlocks() : Observable<any> {
+        const url   = this.baseApiUrl + 'blocks/latest?limit=10';
         const headers = new Headers({
             'Content-Type': 'application/json',
             'Accept': 'application/json',

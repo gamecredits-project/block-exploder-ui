@@ -1,25 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import { HomePageService } from "./homePage.service";
 import { Router } from '@angular/router';
+import { BlockSocketService } from "app/pages/socket/socket.service";
 
  @Component ({
  	selector: 'exploder-home',
- 	templateUrl: 'homePage.component.html'
+ 	templateUrl: 'homePage.component.html',
+  providers: [BlockSocketService]
  })
- export class HomePageComponent implements OnInit {
+ export class HomePageComponent implements OnInit, OnDestroy {
 
  	latestBlocks: any = [];
  	networkInfo: any = [];
  	bootstrapLink: any = [];
-    price: number;
-    clientInfo: any = [];
+  price: number;
+  clientInfo: any = [];
 
-    showPlaceholder: boolean = true;
+  showPlaceholder: boolean = true;
 
-    public line_ChartData:any = [];
-    tempLineChartData: any = [];
+  public line_ChartData:any = [];
+  tempLineChartData: any = [];
 
-    public line_ChartOptions = {
+  public line_ChartOptions = {
         curveType: 'function',
         height: 400,
         vAxis: {baselineColor: '#CCCCCC', gridlines: { count: 13, color: '#dddddd'} , textStyle: {color: 'white'}},
@@ -39,28 +41,39 @@ import { Router } from '@angular/router';
         pointSize: 8,
         dataOpacity: 0.5
     };
-        
-	constructor(private homePageService: HomePageService, 
-                private router: Router
-		) {}
+
+  private socket: any;
+  private block_response: any;
+  private block_test: any;
+
+  private blocks: any;
+  private block_data: any;
+
+	constructor(private homePageService: HomePageService, private router: Router, private blockSocketService: BlockSocketService) {
+    this.blocks = [];
+  }
 
  	ngOnInit() {
+    this.socket = this.blockSocketService.initConnection();
+    this.getBlockInitMessage();
+    this.getSocketBlock();
+
  		this.homePageService.getLatestBlocks().subscribe( (resp) => {
 			this.latestBlocks.push(...resp);
 		});
 
-        this.homePageService.getNetworkPrice().subscribe( (resp) => {
-            this.price = resp.priceUSD;
-        });
+    this.homePageService.getNetworkPrice().subscribe( (resp) => {
+      this.price = resp.priceUSD;
+    });
 
 
 		this.homePageService.getNetworkInfo().subscribe( (resp) => {
 			this.networkInfo = resp;
 		});
 
-        this.homePageService.getClientInfo().subscribe( (resp) => {
-            this.clientInfo = resp;
-        });
+    this.homePageService.getClientInfo().subscribe( (resp) => {
+      this.clientInfo = resp;
+    });
 
 
 		this.homePageService.getBootstrapLink().subscribe( (resp) => {
@@ -78,6 +91,23 @@ import { Router } from '@angular/router';
             this.line_ChartData = this.tempLineChartData; // Change dependant vaulue only one ( so we dont trriger onChange in directive multiple times)
 		});
  	}
+
+   ngOnDestroy(){
+     this.socket.unsubscribe();
+   }
+
+  private getBlockInitMessage(): void {
+      this.socket = this.blockSocketService.getBlockConnection().subscribe((block_response) =>{
+        this.block_test = block_response
+      });
+  }
+
+
+  private getSocketBlock(): void {
+    this.socket = this.blockSocketService.getBlock().subscribe((block_data) =>{
+      this.blocks.push(block_data);
+    });
+  }
 
  	calulateMinutesFromNow( time: number) {
  		let now = new Date();
@@ -102,8 +132,7 @@ import { Router } from '@angular/router';
  	}
 
     hidePlaceholder() {
-                    this.showPlaceholder = false;
-
+      this.showPlaceholder = false;
     }
 
     onSearch(param: string) {
