@@ -1,4 +1,4 @@
-    
+
     <div class="container-fluid page-banner">
         <div class="container">
             <div class="row">
@@ -11,7 +11,7 @@
                       <h3>GameCredits</h3>
                     </div>
                     <div>
-                    <span class="usd-price-big">${{price | number:'1.5-5'}}</span> <a class="link-underline" href="https://coinmarketcap.com/currencies/gamecredits/"> source</a>  
+                    <span class="usd-price-big">${{price | number:'1.5-5'}}</span> <a class="link-underline" href="https://coinmarketcap.com/currencies/gamecredits/"> source</a>
                     </div>
                     <table class="home-table">
                       <tr>
@@ -90,6 +90,23 @@
             </thead>
 
             <tbody *ngIf="latestBlocks" >
+              <tr *ngFor="let block of blocks.slice().reverse()">
+                <td>
+                  <a routerLink="{{ '/blocks/' + block.hash}}">{{block?.height}}</a>
+                </td>
+                <td>
+                  {{calulateMinutesFromNow(block?.time)}}
+                </td>
+                <td>
+                  {{block?.tx?.length}}
+                </td>
+                <td>
+                  {{block?.total | number:'1.5-5'}} GAME
+                </td>
+                <td>
+                  {{block?.size}}
+                </td>
+              </tr>
                 <tr *ngFor="let block of latestBlocks">
                   <td>
                     <a routerLink="{{ '/blocks/' + block.hash}}">{{block?.height}}</a>
