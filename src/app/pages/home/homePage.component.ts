@@ -15,7 +15,7 @@ import { BlockSocketService } from "app/pages/socket/socket.service";
  	bootstrapLink: any = [];
   price: number;
   clientInfo: any = [];
-
+  data: any = {};
   showPlaceholder: boolean = true;
 
   public line_ChartData:any = [];
@@ -48,6 +48,7 @@ import { BlockSocketService } from "app/pages/socket/socket.service";
 
   private blocks: any;
   private block_data: any;
+  private test: any;
 
 	constructor(private homePageService: HomePageService, private router: Router, private blockSocketService: BlockSocketService) {
     this.blocks = [];
@@ -138,9 +139,19 @@ import { BlockSocketService } from "app/pages/socket/socket.service";
     onSearch(param: string) {
         this.homePageService.getSearchItemType(param).subscribe( (resp) => {
             if(resp.type == 'block') {
-                this.router.navigateByUrl('blocks/' + resp.searchBy);
+
+                // check if search param is integer
+                if (!isNaN(resp.searchBy)){
+                 this.homePageService.getBlockHashByHeight(resp.searchBy).subscribe(data => {
+                   this.router.navigateByUrl('blocks/' + data['hash']);
+                 })
+               }else{
+                 this.router.navigateByUrl('blocks/' + resp.searchBy);
+               }
+
             } else if(resp.type == 'address') {
                 this.router.navigateByUrl('addresses/' + resp.searchBy);
+                // console.log(resp.searchBy);
             } else if(resp.type == 'transaction') {
                 this.router.navigateByUrl('transactions/' + resp.searchBy);
             }
