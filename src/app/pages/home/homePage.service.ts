@@ -12,7 +12,7 @@ export class HomePageService {
     constructor(
         private _http: Http,
     ) { }
-    
+
     getLatestBlocks() : Observable<any> {
         const url   = this.baseApiUrl + 'blocks/latest?limit=10';
         const headers = new Headers({
@@ -78,7 +78,20 @@ export class HomePageService {
         return this._http.get(url, {headers})
             .map(res => this.extractData(res))
             .catch(this.handleError);
+
     }
+
+    getBlockHashByHeight(param: string) : Observable<any> {
+        const url = this.baseApiUrl + 'blocks?height=' + param;
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        });
+        return this._http.get(url, {headers})
+            .map(res => this.extractData(res))
+            .catch(this.handleError);
+    }
+
 
     getBootstrapLink() : Observable<any> {
         const url   = this.baseApiUrl + 'network/bootstrap';
