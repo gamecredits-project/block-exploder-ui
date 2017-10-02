@@ -1,5 +1,73 @@
-<!doctype html><html lang="en"><head><script src="https://www.gstatic.com/charts/loader.js"></script><script>// !important: You want to give this variable(var googleLoaded = false;). This is used to run multiple chart in your jade.
+<!doctype html><html lang="en"><head><style>.loader-div {
+		  text-align: center;
+		  background-color: #06482f;
+		  height: 100vh;
+		}
+
+
+		.loader {
+		  text-align: center;
+		  display: inline-block;
+		  width: 200px;
+		  height: 200px;
+		  position: relative;
+		  border: 4px solid #Fff;
+		  top: 30%;
+		  animation: loader 2s infinite ease;
+		}
+
+		.loader-inner {
+		  vertical-align: top;
+		  display: inline-block;
+		  width: 100%;
+		  background-color: #fff;
+		  animation: loader-inner 2s infinite ease-in;
+		}
+
+		@keyframes loader {
+		  0% {
+		    transform: rotate(0deg);
+		  }
+		  
+		  25% {
+		    transform: rotate(180deg);
+		  }
+		  
+		  50% {
+		    transform: rotate(180deg);
+		  }
+		  
+		  75% {
+		    transform: rotate(360deg);
+		  }
+		  
+		  100% {
+		    transform: rotate(360deg);
+		  }
+		}
+
+		@keyframes loader-inner {
+		  0% {
+		    height: 0%;
+		  }
+		  
+		  25% {
+		    height: 0%;
+		  }
+		  
+		  50% {
+		    height: 100%;
+		  }
+		  
+		  75% {
+		    height: 100%;
+		  }
+		  
+		  100% {
+		    height: 0%;
+		  }
+		}</style><script src="https://www.gstatic.com/charts/loader.js"></script><script>// !important: You want to give this variable(var googleLoaded = false;). This is used to run multiple chart in your jade.
 	    var googleLoaded = false;
 	    // !important: Define which chart packages to preload.Because this package uses ChartWrappers you can use any chart type that Google supports, but if it // isn't loaded it will load it on demand. 
 	    var googleChartsPackagesToLoad = ['geochart'];
-	    google.charts.load('current', {'packages':['corechart']});</script><meta charset="utf-8"><title>BlockExplorer</title><base href="/"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/x-icon" href="favicon.ico"><link href="styles.3509f6669cacb9686507.bundle.css" rel="stylesheet"/></head><body><app-root>Loading..</app-root><script type="text/javascript" src="inline.b9f7510a65262455a4d7.bundle.js"></script><script type="text/javascript" src="polyfills.df4f2938f01208238e63.bundle.js"></script><script type="text/javascript" src="vendor.0ccc4d99e5163c4cbe30.bundle.js"></script><script type="text/javascript" src="main.59b852ce4b5db77a9f4d.bundle.js"></script></body></html>
+	    google.charts.load('current', {'packages':['corechart']});</script><meta charset="utf-8"><title>BlockExplorer</title><base href="/"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/x-icon" href="favicon.ico"><link href="styles.846c71ab8eea0bd6260d.bundle.css" rel="stylesheet"/></head><body><app-root><div class="loader-div"><span class="loader"><span class="loader-inner"></span></span></div></app-root><script type="text/javascript" src="inline.b9f7510a65262455a4d7.bundle.js"></script><script type="text/javascript" src="polyfills.df4f2938f01208238e63.bundle.js"></script><script type="text/javascript" src="vendor.0ccc4d99e5163c4cbe30.bundle.js"></script><script type="text/javascript" src="main.59b852ce4b5db77a9f4d.bundle.js"></script></body></html>
