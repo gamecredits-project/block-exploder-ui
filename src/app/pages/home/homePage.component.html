@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                    <img *ngIf="showPlaceholder" src="../../assets/images/placeholder.png" alt="" style="filter: blur(5px);">
+                    <img *ngIf="showPlaceholder" src="../../assets/images/placeholder.png" alt="" style="filter: blur(5px); width: 100%;">
                     <div id="line_chart" [chartData]="line_ChartData" [chartOptions]= "line_ChartOptions" (ready)="hidePlaceholder()" chartType="LineChart" GoogleChart></div>
                 </div>
                 <div class="col-md-3 network-info">
@@ -72,9 +72,13 @@
     </div>
 
     <div class="container">
-        <div class="search-div">
+        <div class="search-div hidden-xs hidden-sm ">
             <i class="icon-search" aria-hidden="true"></i>
             <input #search type="text" class="search" placeholder="Search by block hash, block height, transaction ID or address" (keyup.enter)="onSearch(search.value)">
+        </div>
+        <div class="search-div-sm hidden-md hidden-lg ">
+            <i class="icon-search" aria-hidden="true"></i>
+            <input #search type="text" class="search" placeholder="Search" (keyup.enter)="onSearch(search.value)">
         </div>
 
         <h1>Latest blocks</h1>
@@ -83,7 +87,8 @@
             <tr>
               <th>Height</th>
               <th>Age</th>
-              <th>Transactions</th>
+              <th class="hidden-xs hidden-sm">Transactions</th>
+              <th class="hidden-md hidden-lg">TX Count</th>
               <th>Total Sent</th>
               <th>Size (kB)</th>
             </tr>

@@ -220,6 +220,25 @@ body {
     .search-div .search:focus {
       outline: none; }
 
+
+.search-div-sm {
+  margin: auto;
+  font-size: 22px;
+  border: 3px solid #06482f;
+  width: 90%;
+  border-radius: 50px;
+  padding: 5px 15px;
+  position: relative;
+  bottom: 25px;
+  background-color: white; }
+  .search-div-sm .search {
+    font-size: 20px;
+    width: 80%;
+    border: none;
+    background-color: transparent; }
+    .search-div-sm .search:focus {
+      outline: none; }      
+
 .cointainer-blocks {
     margin-bottom: 100px !important;
     display:inline-block;

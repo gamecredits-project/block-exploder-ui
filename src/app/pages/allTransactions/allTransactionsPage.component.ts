@@ -74,14 +74,14 @@ export class AllTransactionsPageComponent implements OnInit, OnDestroy {
  		let hours = Math.floor( ( minutesOld - days * 60 * 24 ) / 60 );
  		let minutes = minutesOld % 60;
 
- 		message += minutes + ' m ';
+ 		message += minutes + 'm ';
 
  		if(hours || days) {
- 			message += hours + ' h ';
+ 			message += hours + 'h ';
  		}
 
  		if(days) {
- 			message += days + ' d ';
+ 			message += days + 'd ';
  		}
 
  		return message;

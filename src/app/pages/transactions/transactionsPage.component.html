@@ -1,8 +1,8 @@
 
 <div class="container-fluid transaction-header">
   <div class="container">
-    <h1>Transaction <small>View information about a GameCredits transaction</small></h1>
-    <p>
+    <h1>Transaction <small class="hidden-xs hidden-sm">View information about a GameCredits transaction</small></h1>
+    <p style="word-break: break-all;">
       <i class="icon-hashtag"></i>
       {{transaction?.blockhash}}
     </p>
@@ -18,10 +18,12 @@
           <ul class="list-unstyled">
 
             <li *ngFor="let input of transaction?.vin" >
-              <div *ngIf="input.prev_txid"> 
-                <a routerLink="{{'/transactions/'+ input.prev_txid}}">
-                  {{input.prev_txid}}
-                </a> 
+              <div *ngIf="input.prev_txid">
+                <p class="block-link"> 
+                  <a routerLink="{{'/transactions/'+ input.prev_txid}}">
+                    {{input.prev_txid}}
+                  </a> 
+                </p>
               </div>
               <div *ngIf="!input.prev_txid">No Inputs (Newly Generated Coins)</div>
             </li> 
@@ -35,11 +37,13 @@
             <li *ngFor=" let output of transaction?.vout ">
 
               <div *ngFor="let adress of output.addresses">
-                [
-                <a routerLink="/addresses/Gf2uS2ZaWWXkbj3DK263zsK2bqU4rvLHCy" >
-                  {{adress}}
-                </a>
-                ]
+                
+                <p class="block-link" >
+                  [<a style="color: blue !important;" routerLink="/addresses/Gf2uS2ZaWWXkbj3DK263zsK2bqU4rvLHCy" >
+                    {{adress}}
+                  </a>]
+                </p>
+                
               </div>
               Amount: {{output.value | number:'1.5-5'}} GAME
               <Br> <br>
