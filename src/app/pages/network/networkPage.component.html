@@ -1,0 +1,56 @@
+<div class="container">
+	<div class="row text-center">
+		<h1 class="pull-left network-title"> Block Explorer: addnode = 148.251.15.209:40002 </h1>
+		<div class="col-md-4">
+			<div class="row">
+			<p class="pull-left">
+				MAP OF EXPLORER CONNECTIONS
+ 			</p>
+			</div>
+			<br>
+			<div class="row">
+				<p align="left"> 
+					<b>
+					This maps shows live full nodes that are connected to the
+					Block Explorer. These are NOT all live nodes, only the ones
+					that the Explorer client is “talking to” at the moment.
+					</b>
+				</p>
+			</div>
+			<div class="row">
+				<table class="table peers-table">
+					<tr >
+						<th class="no-border-top">
+							Node
+						</th>
+						<th class="no-border-top">
+							Version
+						</th>
+					</tr>
+					<tr *ngFor="let peer of peersToShow">
+						<td>
+							<span class="pull-left">{{peer?.addr}}</span>
+						</td>
+						<td>
+							<span class="pull-left">{{peer?.subver}}</span>
+						</td>
+					</tr>
+				</table>
+				<span *ngIf="showButton" (click)="showAll()" class="all-peers-button"> <b> Show all peers </b> </span>
+ 			</div>
+		</div>
+		<div class="col-md-8">
+			<sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" class="map">
+			<div *ngFor="let peer of clientInfo?.peerInfo">
+			  <sebm-google-map-marker [latitude]="peer.latitude" [longitude]="peer.longitude" ></sebm-google-map-marker>
+			</div>
+			</sebm-google-map>	
+		</div>
+	</div>
+	<div class="row last-row text-for-network"> 
+	<p>
+		* If syncing of your client takes a long time you can add a node manually and it may speed up the syncing process. In order to do that start your client from the command line with the -<i>addnode=148.251.15.209:40002</i> parameter or you can add that parameter to the gamecredits.conf file in your data directory. 
+For more info read this article about running Bitcoin, all the same rules apply to GameCredits: <a href="https://en.bitcoin.it/wiki/Running_Bitcoin">https://en.bitcoin.it/wiki/Running_Bitcoin</a>
+	</p>
+	</div>
+</div>

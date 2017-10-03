@@ -1,0 +1,135 @@
+
+    <div class="container-fluid page-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <img *ngIf="showPlaceholder" src="../../assets/images/placeholder.png" alt="" style="filter: blur(5px);">
+                    <div id="line_chart" [chartData]="line_ChartData" [chartOptions]= "line_ChartOptions" (ready)="hidePlaceholder()" chartType="LineChart" GoogleChart></div>
+                </div>
+                <div class="col-md-3 network-info">
+                    <div class="page-header home-title">
+                      <h3>GameCredits</h3>
+                    </div>
+                    <div>
+                    <span class="usd-price-big">${{price | number:'1.5-5'}}</span> <a class="link-underline" href="https://coinmarketcap.com/currencies/gamecredits/"> source</a>
+                    </div>
+                    <table class="home-table">
+                      <tr>
+                          <td>
+                            Blockchain height:
+                          </td>
+                          <td>
+                            <a class="link-underline" routerLink="{{ '/blocks/' + latestBlocks[0]?.hash}}">{{latestBlocks[0]?.height}}</a>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            Coin supply:
+                          </td>
+                          <td>
+                             {{networkInfo?.coinSupply}}
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            Blockchain size:
+                          </td>
+                          <td>
+                             {{networkInfo?.blockchainSize}}GB
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            Hash rate:
+                          </td>
+                          <td>
+                             {{networkInfo?.hashrate / 1000000000 | number:'1.1-1'}} GH/s
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            Number of transactions: &nbsp;
+                          </td>
+                          <td>
+                              {{networkInfo?.numTransactions}}
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            Sync status:
+                          </td>
+                          <td>
+                            {{clientInfo?.syncProgress}} %
+                          </td>
+                      </tr>
+                    </table>
+                    <p>
+                        <a href="{{bootstrapLink}}" class="btn btn-primary download-button" role="button"> <i class="icon-download" aria-hidden="true"> Download bootstrap.zip </i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="search-div">
+            <i class="icon-search" aria-hidden="true"></i>
+            <input #search type="text" class="search" placeholder="Search by block hash, block height, transaction ID or address" (keyup.enter)="onSearch(search.value)">
+        </div>
+
+        <h1>Latest blocks</h1>
+        <table class="table latest-blocks-table">
+            <thead>
+            <tr>
+              <th>Height</th>
+              <th>Age</th>
+              <th>Transactions</th>
+              <th>Total Sent</th>
+              <th>Size (kB)</th>
+            </tr>
+            </thead>
+
+            <tbody *ngIf="latestBlocks" >
+              <tr *ngFor="let block of blocks.slice().reverse()">
+                <td>
+                  <a routerLink="{{ '/blocks/' + block.hash}}">{{block?.height}}</a>
+                </td>
+                <td>
+                  {{calulateMinutesFromNow(block?.time)}}
+                </td>
+                <td>
+                  {{block?.tx?.length}}
+                </td>
+                <td>
+                  {{block?.total | number:'1.5-5'}} GAME
+                </td>
+                <td>
+                  {{block?.size}}
+                </td>
+              </tr>
+                <tr *ngFor="let block of latestBlocks">
+                  <td>
+                    <a routerLink="{{ '/blocks/' + block.hash}}">{{block?.height}}</a>
+                  </td>
+                  <td>
+                    {{calulateMinutesFromNow(block?.time)}}
+                  </td>
+                  <td>
+                    {{block?.tx?.length}}
+                  </td>
+                  <td>
+                    {{block?.total | number:'1.5-5'}} GAME
+                  </td>
+                  <td>
+                    {{block?.size}}
+                  </td>
+                </tr>
+              </tbody>
+          </table>
+          <div class="row text-center">
+             <hr>
+             <div class="cointainer-blocks">
+                <a class="btn btn-primary all-blocks-button" routerLink="/blocks"> <i class="icon-th" aria-hidden="true"> </i> Show all blocks</a>
+             </div>
+          </div>
+    </div>

@@ -1,0 +1,144 @@
+    <div class="container-fluid page-banner block-header">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-xs-12">
+    				<h1 class="block-title">
+    					Address <small>View information about a GameCredits address</small>
+    				</h1>
+    				<p>
+    					<i class="icon-at"></i>
+    					Address: {{address}}
+    				</p>
+    			</div>
+    			<div class="col-md-6">
+    				<div class="table-responsive">
+    					<table class="table">
+    						<tbody>
+    							<tr>
+    								<th>Summary</th>
+    								<th></th>
+    							</tr>
+    							<tr>
+    								<td>Number Of Transactions</td>
+    								<td>{{totalTransactionsNumber}}</td>
+    							</tr>
+    						</table>
+    					</div>
+    				</div>
+    				<div class="col-md-6">
+    					<div class="table-responsive">
+    						<table class="table">
+    							<tr>
+    								<td>Total volume:</td>
+    								<td>{{volume | number:'1.5-5'}} GAME</td>
+    							</tr>
+    							<tr>
+    								<td>Estimated balance</td>
+                                    <td>{{currentValue | number:'1.5-5'}} GAME</td>
+    							</tr>
+    						</table>
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+
+    	<div class="container address-transactions">
+    		<div class="row">
+    			<div class="col-xs-12 block-transactions">
+    				<h3 class="address-transactions-title">{{selectedTrancationsTagName}} {{transactionsTagNumber}} <button class="btn btn-primary pull-right" (click)="setMenu('All Transactions')">All transactions</button>
+    					<button class="pull-right btn btn-primary" (click)="setMenu('Unspent Transactions')">Unspent transactions </button></h3>
+
+    					<div  *ngIf="selectedTrancationsTagName == 'All Transactions' && allTransactions">
+    						<div class="panel panel-default" *ngFor="let trans of allTransactions">
+    							<div class="panel-heading">
+    								<a href="{{'/transactions/' + trans.txid}}">
+    									   {{trans.txid}}
+    								</a>
+    								<span class="pull-right"><i class="icon-calendar"> {{ (trans?.blocktime * 1000 ) | date:'medium'}}</i></span>
+    							</div>
+    							<div class="panel-body">
+    								<div class="row">
+    									<div class="col-md-6">
+    										<p><b>Inputs</b></p>
+    										<ul class="list-unstyled">
+
+    											<li *ngFor="let input of trans?.vin" >
+    												<div *ngIf="input.prev_txid"> 
+    													<a routerLink="{{'/transactions/'+ input.prev_txid}}">
+    														{{input.prev_txid}}
+    													</a> 
+    												</div>
+    												<div *ngIf="!input.prev_txid">No Inputs (Newly Generated Coins)</div>
+    											</li> 
+
+    										</ul>
+    									</div>
+    									<div class="col-md-6">
+    										<p><b>Outputs</b></p>
+    										<ul class="list-unstyled">
+
+    											<li *ngFor=" let output of trans?.vout ">
+
+    												<div *ngFor="let adress of output?.addresses">
+    													[
+    													<a routerLink="{{'/addresses/'+ adress}}" >
+    														{{adress}}
+    													</a>
+    													]
+    												</div>
+    												Amount: {{output.value | number:'1.5-5'}} GAME
+    												<Br> <br>
+    												</li>
+
+    											</ul>
+    										</div>
+    									</div>
+    								</div>
+    								<div class="panel-footer text-right">
+    									<b>Total:</b> {{trans?.total | number:'1.5-5'}} GAME
+    								</div>
+    							</div>
+
+                                <button class="btn btn-primary col-md-12 load-more-button" *ngIf="totalTransactionsNumber > allTransactions.length" (click)="loadMoreTransactions()"> Load More Transactions </button>
+    						</div>        
+
+    						<div class="panel panel-default" *ngIf="selectedTrancationsTagName == 'Unspent Transactions'" >
+    						<div class="panel panel-default" *ngFor="let trans of unspent ">
+                                <div class="panel-heading">
+                                    <a href="{{'/transactions/' + trans.txid}}">
+                                           {{trans.txid}}                                    
+                                    </a>
+                                    <span class="pull-right"><i class="icon-calendar"> {{ (trans?.blocktime * 1000 ) | date:'medium'}}</i></span>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p><b>Inputs</b></p>
+                                            <ul class="list-unstyled">
+
+                                                <li *ngFor="let input of trans?.addresses" >
+                                                    <div *ngIf="input"> 
+                                                        <a routerLink="{{'/addresses/'+ input}}">
+                                                            {{input}}
+                                                        </a> 
+                                                    </div>
+                                                </li> 
+
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><b>Outputs</b></p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-footer text-right">
+                                        <b>Total:</b> {{trans?.value | number:'1.5-5'}} GAME
+                                    </div>
+                                </div>
+    						</div>  
+
+    					</div>
+    				</div>
+    			</div>
