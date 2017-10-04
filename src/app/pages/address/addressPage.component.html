@@ -45,12 +45,12 @@
 
     	<div class="container address-transactions">
 
-            <div class="col-sm-6">
+            <div class="col-sm-10">
                 <h3 class="address-transactions-title">{{selectedTrancationsTagName}} {{transactionsTagNumber}} </h3>
             </div>
-            <div class="col-sm-6" style="padding-top: 20px; margin-bottom: 40px">
+            <div class="col-sm-2" style="padding-top: 20px; margin-bottom: 40px">
                 <button class="btn btn-primary pull-right" (click)="setMenu('All Transactions')">All transactions</button>
-                <button class="pull-right btn btn-primary" style="margin-right: 20px" (click)="setMenu('Unspent Transactions')">Unspent transactions </button>
+                <button class="pull-right btn btn-primary" style="margin-right: 10px" (click)="setMenu('Unspent Transactions')">Unspent transactions </button>
             </div>
 
     		<div class="row">
@@ -118,11 +118,17 @@
 
     						<div class="panel panel-default" *ngIf="selectedTrancationsTagName == 'Unspent Transactions'" >
     						<div class="panel panel-default" *ngFor="let trans of unspent ">
-                                <div class="panel-heading">
-                                    <a href="{{'/transactions/' + trans.txid}}">
-                                           {{trans.txid}}                                    
-                                    </a>
-                                    <span class="pull-right"><i class="icon-calendar"> {{ (trans?.blocktime * 1000 ) | date:'medium'}}</i></span>
+                                <div class="panel-heading" style="height: 60px !important">
+                                    <div class="col-sm-9">
+                                        <p class="block-link">
+                                            <a href="{{'/transactions/' + trans.txid}}">
+                                                   {{trans.txid}}
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <span ><i class="icon-calendar"> {{ (trans?.blocktime * 1000 ) | date:'medium'}}</i></span>
+                                    </div>
                                 </div>
                                 <div class="panel-body">
                                     <div class="row">

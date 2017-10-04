@@ -81,10 +81,13 @@
   font-size: 70px; 
 }
 
-
+a.icons{
+  text-decoration: none !important;
+}
 
 .icons{
   font-size: 30px !important;
+  text-decoration: none !important;
 }
 
 body {
