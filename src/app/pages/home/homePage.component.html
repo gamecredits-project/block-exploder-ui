@@ -2,9 +2,9 @@
     <div class="container-fluid page-banner">
         <div class="container">
             <div class="row">
-                <div class="col-md-9">
+                <div class="col-md-9" (window:resize)="onResize()">
                     <img *ngIf="showPlaceholder" src="../../assets/images/placeholder.png" alt="" style="filter: blur(5px); width: 100%;">
-                    <div id="line_chart" [chartData]="line_ChartData" [chartOptions]= "line_ChartOptions" (ready)="hidePlaceholder()" chartType="LineChart" GoogleChart></div>
+                    <div id="line_chart" [chartData]="line_ChartData" [chartOptions]= "line_ChartOptions" (ready)="hidePlaceholder()" chartType="LineChart" GoogleChart ></div>
                 </div>
                 <div class="col-md-3 network-info">
                     <div class="page-header home-title">

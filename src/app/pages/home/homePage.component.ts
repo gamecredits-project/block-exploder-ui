@@ -54,6 +54,7 @@ import { BlockSocketService } from "app/pages/socket/socket.service";
     this.blocks = [];
   }
 
+
  	ngOnInit() {
     this.socket = this.blockSocketService.initConnection();
     this.getBlockInitMessage();
@@ -86,16 +87,29 @@ import { BlockSocketService } from "app/pages/socket/socket.service";
 			this.tempLineChartData.push(['Date','Network Hashrate']);
 			for (let index = 0; index < resp.length; ++index) {
 			    this.tempLineChartData.push([ new Date(resp[index].timestamp * 1000),resp[index].hashrate / 1000000000]);
+          this.line_ChartData = this.tempLineChartData;
 			}
-
-
-            this.line_ChartData = this.tempLineChartData; // Change dependant vaulue only one ( so we dont trriger onChange in directive multiple times)
+            this.line_ChartData = this.tempLineChartData; // Change dependant vaulue only once ( so we dont trriger onChange in directive multiple times)
 		});
  	}
 
    ngOnDestroy(){
      this.socket.unsubscribe();
    }
+
+  onResize() {
+    this.homePageService.getHashrates().subscribe( (resp) => {
+
+      this.tempLineChartData.push(['Date','Network Hashrate']);
+      this.line_ChartData = [];
+      for (let index = 0; index < resp.length-12; ++index) {
+          this.tempLineChartData.push([ new Date(resp[index].timestamp * 1000),resp[index].hashrate / 1000000000]);
+          this.line_ChartData = this.tempLineChartData;
+      }
+
+             // Change dependant vaulue only once ( so we dont trriger onChange in directive multiple times)
+    });
+  }
 
   private getBlockInitMessage(): void {
       this.socket = this.blockSocketService.getBlockConnection().subscribe((block_response) =>{

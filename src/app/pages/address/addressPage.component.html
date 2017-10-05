@@ -45,12 +45,14 @@
 
     	<div class="container address-transactions">
 
-            <div class="col-sm-10">
+            <div class="col-sm-7">
                 <h3 class="address-transactions-title">{{selectedTrancationsTagName}} {{transactionsTagNumber}} </h3>
             </div>
-            <div class="col-sm-2" style="padding-top: 20px; margin-bottom: 40px">
-                <button class="btn btn-primary pull-right" (click)="setMenu('All Transactions')">All transactions</button>
-                <button class="pull-right btn btn-primary" style="margin-right: 10px" (click)="setMenu('Unspent Transactions')">Unspent transactions </button>
+            <div class="col-sm-2 text-center" style="padding-top: 20px;">
+                <button class="btn btn-primary" (click)="setMenu('All Transactions')">All transactions</button>
+            </div>
+            <div class="col-sm-3 text-center" style="padding-top: 20px; margin-bottom: 30px">
+                <button class="btn btn-primary" style="margin-right: 10px" (click)="setMenu('Unspent Transactions')">Unspent transactions </button>
             </div>
 
     		<div class="row">
@@ -127,7 +129,7 @@
                                         </p>
                                     </div>
                                     <div class="col-sm-3">
-                                        <span ><i class="icon-calendar"> {{ (trans?.blocktime * 1000 ) | date:'medium'}}</i></span>
+                                        
                                     </div>
                                 </div>
                                 <div class="panel-body">
@@ -147,9 +149,6 @@
                                             </ul>
                                         </div>
                                         <div class="col-md-6">
-                                            <p><b>Outputs</b></p>
-
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="panel-footer text-right">

@@ -164,6 +164,16 @@ body {
   padding-top: 20px;
   }
 
+.no-padding {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.padding15pxsides {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
 .all-peers-button:hover{
   cursor: pointer;
 }
@@ -186,6 +196,7 @@ body {
 
 .network-title {
   padding-bottom: 40px;
+  font-size: 30px;
 }
 
 .home-title {
@@ -398,7 +409,9 @@ footer {
     clear: both; }
 
 .transaction-summary {
-  min-height: 300px; }
+  min-height: 300px; 
+  padding-bottom: 50px;
+}
 
 .address-transactions .btn-primary {
   background-color: #33A579; }
