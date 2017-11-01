@@ -319,6 +319,7 @@ footer {
 }
 .bottom-border {
   border-bottom: none;
+  padding-bottom: 0!important;
 
 }
 .border-right {
@@ -333,6 +334,7 @@ footer {
   }
   .bottom-border {
     border-bottom: 1px solid rgba(255,255,255, 0.25);
+    padding-bottom: 64px!important;
   }
   .border-right {
     border-right: none;
