@@ -271,6 +271,98 @@ body {
 
 }
 
+.blocks-wrapper {
+	background-color: #1A2A36;
+}
+
+.blocks-title {
+  font-size: 36px;
+  margin-top: 64px;
+  margin-bottom: 32px;
+  color: white;
+}
+
+.blocks-table-header{
+  height: 47.5px !important;
+}
+
+.blocks-table-header th{
+  opacity: 0.5;
+  color: #7B93A6;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 15px;
+  text-align: left;
+  vertical-align: middle !important;
+  padding-left: 30px !important;
+  border-bottom: 0px !important;
+}
+
+.latest-blocks-table tr{
+  height: 68px;
+}
+
+.first-row-box{
+  background-color: rgba(255,255,255,0.07) !important;
+  width: 48px !important;
+  height: 48px !important;
+  text-align: center !important;
+  
+}
+
+.first-row-box a{
+  color: rgb(228, 230, 232) !important;
+}
+
+.first-row-xs{
+  background-color: rgb(50, 67, 81);
+  height: 48px;
+  line-height: 48px;
+  border-radius: 4px 4px 0px 0px;
+}
+
+.card-bot-border {
+  border-bottom: 1px solid rgb(50, 67, 81);
+  opacity: 0.1;
+}
+
+.card-left-border {
+  border-left: 1px solid rgb(50, 67, 81);
+  opacity: 0.1;
+}
+
+.first-row-xs a{
+  color:#82B1FF;
+}
+
+.one-card-table{
+  border-radius: 0px 0px 4px 4px; 
+}
+
+.one-card-table td{
+  background-color: #20303c;
+  color: #7B93A6;
+  font-size: 11px;
+  font-weight: 400;
+  opacity: 0.8;
+  line-height: 15px;
+  padding-left: 15px !important;
+  border-top: 0px !important;
+}
+
+.white-text {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #FFFFFF;
+}
+
+.latest-blocks-table td{
+  text-align: left;
+  padding-left: 30px !important;
+  vertical-align: middle !important;
+  border-top: 1px solid #1A2A36 !important;
+}
 .row.text-center hr{
   border-color: #ddd;
 }
@@ -281,9 +373,25 @@ body {
   line-height: 39.6px; }
 
 .latest-blocks-table {
-  margin-bottom: 100px; }
-  .latest-blocks-table a {
-    color: #F47F4B; }
+  margin-bottom: 100px;
+  opacity: 0.8;
+  border-radius: 4px;	
+  background-color: rgba(123,147,166,0.07);
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  padding: 20px;
+}
+
+.latest-blocks-table a {
+    height: 16px;
+    width: 55px;
+    color: #82B1FF;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 16px;
+  }
 
 footer {
   min-height: 200px;
