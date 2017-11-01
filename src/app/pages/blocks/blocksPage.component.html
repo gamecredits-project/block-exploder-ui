@@ -55,7 +55,7 @@
 						</tbody>
 				</table>
 				<div class="container-fluid hidden-sm hidden-md hidden-lg">
-					<div class="row one-card" *ngFor="let block of blockArray">
+					<div class="row one-card" *ngFor="let block of blocks.reverse()">
 							<div class="first-row-xs">
 								<div class="col-xs-6">
 									<a routerLink="{{ '/blocks/' + block.hash}}">{{block?.height}}</a>
@@ -88,6 +88,40 @@
 							</table>
 					</div>
 				</div>
+				<div class="container-fluid hidden-sm hidden-md hidden-lg">
+						<div class="row one-card" *ngFor="let block of blockArray">
+								<div class="first-row-xs">
+									<div class="col-xs-6">
+										<a routerLink="{{ '/blocks/' + block.hash}}">{{block?.height}}</a>
+									</div>
+									<div class="first-row-box pull-right">
+											<a routerLink="{{ '/blocks/' + block.hash}}">></a>
+									</div>	
+								</div>
+								<table class="table one-card-table">
+									<tr>
+										<td class="card-bot-border">
+											AGE <br>
+											<span class="white-text">{{calulateMinutesFromNow(block?.time)}}</span>
+										</td>
+										<td class="card-left-border card-bot-border">
+											TRANS.  <br>
+											<span class="white-text">{{block?.tx?.length}}</span>
+										</td>
+										<td class="card-left-border card-bot-border">
+											SIZE (KB) <br>
+											<span class="white-text">{{block?.size}}</span>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="3">
+												TOTAL SENT GAME <br>
+												<span class="white-text">{{block?.total | number:'1.5-5'}}</span>
+										</td>
+									</tr>
+								</table>
+						</div>
+					</div>
 		</div>
 	</div>
 </div>

@@ -1,63 +1,137 @@
-<div class="container">
-	<h1>All transactions</h1>
-	<h2>{{ block_test }}</h2>
-    <div class="search-results"
-	    infiniteScroll
-	    [infiniteScrollDistance]="1"
-	    [infiniteScrollThrottle]="300"
-	    (scrolled)="onScroll()">
-		<table class="table latest-blocks-table">
-		    <thead>
-		    <tr>
-		      <th>Transaction id</th>
-					<th>Block hash</th>
-					<th>Age</th>
-		      <th>Total</th>
-		    </tr>
-		    </thead>
+<div class="container-fluid blocks-wrapper">
+	<div class="container">
+		<h1 class="blocks-title">Transactions</h1>
+		<h2>{{ block_test }}</h2>
+		<div class="search-results"
+			infiniteScroll
+			[infiniteScrollDistance]="1"
+			[infiniteScrollThrottle]="300"
+			(scrolled)="onScroll()">
+			<table class="table latest-blocks-table hidden-xs">
+				<thead>
+				<tr class="blocks-table-header">
+				<th>TRANSACTION ID</th>
+				<th>BLOCK HASH</th>
+				<th>AGE</th>
+				<th>TOTAL</th>
+				</tr>
+				</thead>
 
-		    <tbody>
-					<tr *ngFor="let transaction of txs.slice().reverse()">
-						<td>
-							<a href="{{'/transactions/' + transaction.txid}}">
-								 {{transaction.txid.substring(0,10)}}..
-								 ..{{transaction.txid.substring(54,64)}}
-							</a>
-						</td>
-						<td>
-							<a routerLink="{{ '/blocks/' + transaction.blockhash}}">
-								{{transaction.blockhash.substring(0,10)}}..
-								..{{transaction.blockhash.substring(54,64)}}
-							</a>
-						</td>
-						<td>
-							{{calulateMinutesFromNow(transaction?.blocktime)}}
-						</td>
-						<td>
-							{{transaction.total | number:'1.5-5'}} GAME
-						</td>
-					</tr>
-					<tr *ngFor="let transaction of txArray">
-						<td>
-							<a href="{{'/transactions/' + transaction.txid}}">
-								 {{transaction.txid.substring(0,10)}}..
-								 ..{{transaction.txid.substring(54,64)}}
-							</a>
-						</td>
-						<td>
-							<a routerLink="{{ '/blocks/' + transaction.blockhash}}">
-								{{transaction.blockhash.substring(0,10)}}..
-								..{{transaction.blockhash.substring(54,64)}}
-							</a>
-						</td>
-						<td>
-							{{calulateMinutesFromNow(transaction?.blocktime)}}
-						</td>
-						<td>
-							{{transaction.total | number:'1.5-5'}} GAME
-						</td>
-					</tr>
-		    </tbody>
-		</table>
+				<tbody>
+						<tr *ngFor="let transaction of txs.slice().reverse()">
+							<td>
+								<a href="{{'/transactions/' + transaction.txid}}">
+									{{transaction.txid.substring(0,10)}}..
+									..{{transaction.txid.substring(54,64)}}
+								</a>
+							</td>
+							<td>
+								<a routerLink="{{ '/blocks/' + transaction.blockhash}}">
+									{{transaction.blockhash.substring(0,10)}}..
+									..{{transaction.blockhash.substring(54,64)}}
+								</a>
+							</td>
+							<td>
+								{{calulateMinutesFromNow(transaction?.blocktime)}}
+							</td>
+							<td>
+								{{transaction.total | number:'1.5-5'}} GAME
+							</td>
+						</tr>
+						<tr *ngFor="let transaction of txArray">
+							<td>
+								<a href="{{'/transactions/' + transaction.txid}}">
+									{{transaction.txid.substring(0,10)}}..
+									..{{transaction.txid.substring(54,64)}}
+								</a>
+							</td>
+							<td>
+								<a routerLink="{{ '/blocks/' + transaction.blockhash}}">
+									{{transaction.blockhash.substring(0,10)}}..
+									..{{transaction.blockhash.substring(54,64)}}
+								</a>
+							</td>
+							<td>
+								{{calulateMinutesFromNow(transaction?.blocktime)}}
+							</td>
+							<td>
+								{{transaction.total | number:'1.5-5'}} GAME
+							</td>
+						</tr>
+				</tbody>
+			</table>
+			<div class="container-fluid hidden-sm hidden-md hidden-lg">
+					<div class="row one-card" *ngFor="let transaction of txs.slice().reverse()">
+							<table class="table one-card-table transactions-card-table">
+								<tr >
+									<td class="" style="padding-top:30px">
+										TRANSACTION ID <br>
+										<a class="transactions-card-link"  href="{{'/transactions/' + transaction.txid}}">
+											{{transaction.txid.substring(0,10)}}..
+											..{{transaction.txid.substring(54,64)}}
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td class="">
+										BLOCK HASH  <br>
+										<a class="transactions-card-link" routerLink="{{ '/blocks/' + transaction.blockhash}}">
+											{{transaction.blockhash.substring(0,10)}}..
+											..{{transaction.blockhash.substring(54,64)}}
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td class="">
+										AGE <br>
+										<span class="white-text">{{calulateMinutesFromNow(transaction?.blocktime)}}</span>
+									</td>
+								</tr>
+								<tr >
+									<td  style="padding-bottom:30px">
+										TOTAL <br>
+										<span class="white-text">{{transaction.total | number:'1.5-5'}} GAME</span>
+									</td>
+								</tr>
+							</table>
+					</div>
+				</div>
+			<div class="container-fluid hidden-sm hidden-md hidden-lg">
+					<div class="row one-card" *ngFor="let transaction of txArray">
+							<table class="table one-card-table transactions-card-table">
+								<tr >
+									<td class="" style="padding-top:30px">
+										TRANSACTION ID <br>
+										<a class="transactions-card-link"  href="{{'/transactions/' + transaction.txid}}">
+											{{transaction.txid.substring(0,10)}}..
+											..{{transaction.txid.substring(54,64)}}
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td class="">
+										BLOCK HASH  <br>
+										<a class="transactions-card-link" routerLink="{{ '/blocks/' + transaction.blockhash}}">
+											{{transaction.blockhash.substring(0,10)}}..
+											..{{transaction.blockhash.substring(54,64)}}
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td class="">
+										AGE <br>
+										<span class="white-text">{{calulateMinutesFromNow(transaction?.blocktime)}}</span>
+									</td>
+								</tr>
+								<tr >
+									<td  style="padding-bottom:30px">
+										TOTAL <br>
+										<span class="white-text">{{transaction.total | number:'1.5-5'}} GAME</span>
+									</td>
+								</tr>
+							</table>
+					</div>
+				</div>
+		</div>
 	</div>
 </div>

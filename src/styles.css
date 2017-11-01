@@ -314,6 +314,13 @@ body {
   color: rgb(228, 230, 232) !important;
 }
 
+.transactions-card-link {
+  color: #82B1FF !important;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 36px;
+}
+
 .first-row-xs{
   background-color: rgb(50, 67, 81);
   height: 48px;
@@ -339,6 +346,12 @@ body {
   border-radius: 0px 0px 4px 4px; 
 }
 
+.transactions-card-table {
+  border-bottom: 1px solid rgba(123,147,166,0.1) !important;
+  margin-top: 0px;
+  margin-bottom: 0px !important;
+}
+
 .one-card-table td{
   background-color: #20303c;
   color: #7B93A6;
@@ -353,7 +366,7 @@ body {
 .white-text {
   font-size: 13px;
   font-weight: 400;
-  line-height: 28px;
+  line-height: 34px;
   color: #FFFFFF;
 }
 
