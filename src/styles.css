@@ -263,7 +263,10 @@ body {
 /**
 ** END HEADER
 **/
-
+.no-padding {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
 /**
 ** FOOTER
 **/
@@ -287,6 +290,7 @@ footer {
 }
 .footer-info h1{
   font-size: 24px;
+  margin:0;
 }
 .footer-info h2 {
   font-weight: bold;
@@ -319,6 +323,7 @@ footer {
 }
 .bottom-border {
   border-bottom: none;
+  padding-bottom: 0!important;
 
 }
 .border-right {
@@ -326,13 +331,28 @@ footer {
 }
 .padding-large {
   padding: 0 0 20px 50px!important;
+  margin:0;
+}
+@media screen and (max-width: 740px) {
+  .footer-info .gc-info {
+    margin-bottom: 52px;
+  }
+  .footer-links {
+    padding-right: 15px!important;
+    padding-left: 15px!important;
+  }
+  .footer-info h1{
+    margin-bottom: 48px;
+  }
 }
 @media screen and (max-width: 1198px) {
   .padding-large {
     padding: 0!important;
+    margin:0;
   }
   .bottom-border {
     border-bottom: 1px solid rgba(255,255,255, 0.25);
+    padding-bottom: 64px!important;
   }
   .border-right {
     border-right: none;
@@ -358,11 +378,6 @@ footer {
   background-color: #33A579;
   border-bottom: 2px solid #06482f;
   padding-top: 20px;
-}
-
-.no-padding {
-  padding-left: 0px !important;
-  padding-right: 0px !important;
 }
 
 .padding15pxsides {
