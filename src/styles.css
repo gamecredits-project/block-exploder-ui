@@ -891,9 +891,20 @@ p.address {
   margin-bottom: 40px;
 }
 .block-address-wrap {
-  padding-bottom: 40px;
+  padding-bottom: 0;
+}
+.md-border-left {
+  border-left: 1px solid rgba(123, 147, 166, 0.15);
+}
+.md-border-top {
+  border-top: none;
 }
 @media screen and (max-width: 740px) {
+
+  .address-transactions .filter-btn {
+    margin-bottom: 30px;
+  }
+
   .qr-code {
     float: none !important;
     text-align: center;
@@ -903,6 +914,20 @@ p.address {
   }
   .sm-border {
     border-bottom: 1px solid rgba(255,255,255, 0.25);
+  }
+
+}
+
+@media screen and (max-width: 1198px) {
+  .block-address-wrap {
+    padding-bottom: 40px;
+  }
+
+  .md-border-top {
+    border-top: 1px solid rgba(123, 147, 166, 0.15);
+  }
+  .md-border-left {
+    border-left: none;
   }
 }
 
@@ -917,6 +942,7 @@ p.address {
   font-weight: 600!important;
   line-height: 16px!important;
   height: 36px;
+  /*margin-bottom: 0px;*/
 }
 .address-transactions .active {
   color: rgba(255,255,255, 1)!important;
@@ -950,14 +976,18 @@ p.address {
   width: 37px;
   padding: 0!important;
 }
-.panel-block {
 
-}
 
 .panel-block{
   background-color: #1E2D3A!important;
   border: none!important;
   color: #fff;
+}
+.panel-block .panel-body {
+  padding: 0 !important;
+}
+.panel-block .panel-body .block-content {
+  padding: 15px 30px;
 }
 .panel-block .panel-heading {
   height: 48px;
@@ -982,6 +1012,7 @@ p.address {
 .panel-block .panel-footer{
   border-top:1px solid rgba(123, 147, 166, 0.15) ;
   background: none!important;
+  padding-bottom: 30px;
 }
 
 .block-transactions-title {

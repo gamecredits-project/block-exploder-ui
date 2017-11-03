@@ -1,6 +1,6 @@
     <div class="container-fluid page-banner block-header">
     	<div class="container">
-    		<div class="row">
+    		<div class="">
             <div class="col-xs-12 col-lg-5 col-md-6 col-sm-6 border-right sm-border block-address-wrap">
               <h1 class="block-title">
                 Address
@@ -12,7 +12,7 @@
             <div class="col-lg-1 col-md-6 col-sm-6 col-xs-12 qr-code sm-border">
               <img src="../../../assets/images/qr-eg.jpg" >
             </div>
-    			<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 block-summary">
+    			<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 block-summary md-border-top">
     				<div class="col-lg-12 col-md-12 col-sm-12">
     								<h5>Summary</h5>
               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
@@ -51,14 +51,14 @@
         </div>
 
 
-        <div class="row">
+        <div class="">
           <div class="col-xs-12 block-transactions">
 
             <div  *ngIf="selectedTrancationsTagName == 'All Transactions' && allTransactions">
               <div class="panel panel-default panel-block" *ngFor="let trans of allTransactions">
                 <div class="panel-heading">
 
-                    <p class="block-link col-sm-11 vcenter">
+                    <p class="block-link col-sm-11 col-xs-10 vcenter">
                       <a href="{{'/transactions/' + trans.txid}}">
                         {{trans.txid}}
                       </a>
@@ -72,8 +72,8 @@
 
                 </div>
                 <div class="panel-body">
-                  <div class="row">
-                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 border-right" style="height: 100%">
+                  <div class="">
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 block-content" style="height: 100%">
                       <p class="block-label">Inputs</p>
                       <ul class="list-unstyled">
 
@@ -90,7 +90,7 @@
 
                       </ul>
                     </div>
-                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 md-border-left block-content md-border-top">
                       <p class="block-label">Outputs</p>
                       <ul class="list-unstyled">
 
@@ -123,27 +123,25 @@
                 </div>
               </div>
 
-              <button class="btn btn-primary col-md-12 load-more-button" *ngIf="totalTransactionsNumber > allTransactions.length" (click)="loadMoreTransactions()"> Load More Transactions </button>
+              <button class="btn active filter-btn" *ngIf="totalTransactionsNumber > allTransactions.length" (click)="loadMoreTransactions()"> Load More Transactions </button>
             </div>
 
-            <div class="panel panel-default" *ngIf="selectedTrancationsTagName == 'Unspent Transactions'" >
-              <div class="panel panel-default" *ngFor="let trans of unspent ">
-                <div class="panel-heading" style="height: 60px !important">
-                  <div class="col-sm-9">
-                    <p class="block-link">
+            <div class="panel panel-default panel-block" *ngIf="selectedTrancationsTagName == 'Unspent Transactions'" >
+              <div class="panel panel-default panel-block" *ngFor="let trans of unspent ">
+                <div class="panel-heading" style="">
+                  <p class="block-link col-sm-11 col-xs-10 vcenter">
                       <a href="{{'/transactions/' + trans.txid}}">
                         {{trans.txid}}
                       </a>
                     </p>
-                  </div>
-                  <div class="col-sm-3">
-
-                  </div>
+                  <div class="panel-rectangle">
+                  <i class="glyphicon glyphicon-chevron-right vcenter"></i>
+                </div>
                 </div>
                 <div class="panel-body">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <p><b>Inputs</b></p>
+                  <div class="">
+                    <div class="col-md-12 block-content" style="height: 100%">
+                      <p class="block-label">Inputs</p>
                       <ul class="list-unstyled">
 
                         <li *ngFor="let input of trans?.addresses" >
@@ -156,11 +154,13 @@
 
                       </ul>
                     </div>
-                    <div class="col-md-6">
-                    </div>
+
                   </div>
-                  <div class="panel-footer text-right">
-                    <b>Total:</b> {{trans?.value | number:'1.5-5'}} GAME
+                </div>
+                  <div class="panel-footer">
+                    <div class="col-md-12 text-right">
+                      <span class="block-label">Total:</span> <span class="block-value">{{trans?.value | number:'1.5-5'}} GAME</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -169,5 +169,5 @@
           </div>
         </div>
       </div>
-    </div>
+
 
