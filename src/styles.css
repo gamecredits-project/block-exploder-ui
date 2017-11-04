@@ -378,6 +378,9 @@ footer {
   padding-left: 15px !important;
   padding-right: 15px !important;
 }
+.padding15pxtop {
+  padding-top:15px;
+}
 
 .all-peers-button:hover {
   cursor: pointer;
@@ -873,6 +876,7 @@ p.address {
   font-size: 13px;
   font-weight: 600;
   line-height: 18px;
+  word-wrap: break-word;
 }
 .sm-border {
   border-bottom: none;
@@ -892,6 +896,7 @@ p.address {
 }
 .block-address-wrap {
   padding-bottom: 0;
+  word-wrap: break-word;
 }
 .md-border-left {
   border-left: 1px solid rgba(123, 147, 166, 0.15);
@@ -1050,3 +1055,30 @@ p.address {
 /*
 * End of Address
 */
+
+/*
+* NETWORK
+*/
+
+.network p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+}
+.network h4 {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+}
+.network h2 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+}
+.network h1 {
+  color: #FFFFFF;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 36px;
+}
+.map {
+  padding: 70px;
+}

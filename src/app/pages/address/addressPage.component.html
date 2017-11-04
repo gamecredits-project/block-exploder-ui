@@ -96,12 +96,12 @@
 
                         <li *ngFor=" let output of trans?.vout ">
 
-                          <div class="col-md-9 col-sm-9 col-xs-12" *ngFor="let adress of output?.addresses">
+                          <div class="col-md-8 col-sm-8 col-xs-12" *ngFor="let adress of output?.addresses">
                             <a routerLink="{{'/addresses/'+ adress}}" >
                               [{{adress}}]
                             </a>
                           </div>
-                          <div class="col-md-3 col-sm-3 col-xs-12 block-value" >
+                          <div class="col-md-4 col-sm-4 col-xs-12 block-value" >
                              {{output.value | number:'1.5-5'}} GAME
                           </div>
 
