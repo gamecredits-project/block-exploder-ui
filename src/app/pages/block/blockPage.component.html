@@ -2,187 +2,239 @@
   <div class="container-fluid page-banner block-header">
     <div class="container">
       <div class="row">
-        <div class="col-xs-12">
-          <h1 class="block-title">
-            Block #{{block?.height}}
-          </h1>
-          <span style="word-break: break-all; color: white;">{{block?.hash}}</span>
-            <br>            <br>
-          <p>
-            <i class="icon-tree"></i>
-            <span style="word-break: break-all;">Merkle root: {{block?.merkleroot}}</span>
-          </p>
-        </div>
-        <div class="col-md-6">
-          <div class="table-responsive">
-            <table class="table">
-              <tbody>
-                <tr>
-                  <th>Summary</th>
-                  <th></th>
-                </tr>
-                <tr>
-                  <td>Number Of Transactions</td>
-                  <td>{{block?.tx?.length}}</td>
-                </tr>
-                <tr>
-                  <td>Total sent</td>
-                  <td>{{block?.total | number:'1.5-5'}} GAME</td>
-                </tr>
-                <tr>
-                  <td>Difficulty</td>
-                  <td>{{block?.difficulty}}</td>
-                </tr>
-                <tr>
-                  <td>Version</td>
-                  <td>{{block?.version}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="table-responsive">
-            <table class="table">
-              <tr>
-                <td>Confirmations</td>
-                <td>{{confirmations?.confirmations}}</td>
-              </tr>
-              <tr>
-                <td>Bits</td>
-                <td>{{block?.bits}}</td>
-              </tr>
-              <tr>
-                <td>Size</td>
-                <td>{{block?.size}} kB</td>
-              </tr>
-              <tr>
-                <td>Timestamp</td>
-                <td>{{ (block?.time * 1000 ) | date:'medium'}}</td>
-              </tr>
-              <tr>
-                <td>Nonce</td>
-                <td>{{block?.nonce}}</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="container-fluid boxes-banner">
-    <div class="container">
-      <h4 class="chain-links-label"><i class="icon-chain"></i> Chain links</h4>
-      <div class="row boxes">
-        <div class="col-md-1 hidden-sm hidden-xs"></div>
-        <div class="col-md-2">
-          <p>
-            Previous
-          </p>
-          <p>
-            <i class="icon-cube"></i> 
-          </p>
-          <p class="block-link">
-            <a routerLink="{{ '/blocks/' + block?.previousblockhash}}">{{block?.previousblockhash}}</a>
-          </p>
-        </div>
-        <div class="col-md-2 hidden-xs hidden-sm">
-          <div class="line"></div>
-        </div>
-        <div class="col-md-2">
-          <p class="box-label">
-            This block
-          </p>
-          <p>
-            <i class="icon-cube"></i> 
-          </p>
-          <p class="block-link">
-            <a routerLink="{{ '/blocks/' + block?.hash}}">{{block?.hash}}</a>
-          </p>
-        </div>
-        <div *ngIf="block?.nextblockhash">
-          <div class="col-md-2 hidden-xs hidden-sm">
-            <div class="line"></div>
-          </div>
-          <div class="col-md-2">
-            <p>
-              Next
-            </p>
-            <p>
-              <i class="icon-cube"></i> 
-            </p>
-            <p class="block-link">
-              <a routerLink="{{ '/blocks/' + block?.nextblockhash}}">{{block?.nextblockhash}}</a>
-            </p>
-          </div>
-          <div class="col-md-1 hidden-sm hidden-xs"></div>
-        </div>
-      </div>   
-    </div>
-  </div>
-
-  <div class="container block-transactions">
-    <div class="row">
-      <div class="col-xs-12 block-transactions">
-        <h3 class="block-transactions-title">Block Transactions ({{transactions?.length}})</h3>
-
-
-        <div class="panel panel-default" *ngFor="let trans of transactions">
-          <div class="panel-heading custom-panel-heading">
-            <b> TXID: </b>
-            <p class="block-link">
-              <a routerLink="{{'/transactions/' + trans.txid}}">
-               {{trans.txid}}
-             </a>
-           </p>
-           <span class="pull-right"><i class="icon-calendar"> {{ (trans.blocktime * 1000 ) | date:'medium'}}</i></span>
-         </div>
-         <div class="panel-body">
-          <div class="row">
-            <div class="col-md-6">
-              <p><b>Inputs</b></p>
-              <ul class="list-unstyled">
-
-                <li *ngFor="let input of trans.vin" >
-                  <div *ngIf="input.prev_txid"> 
-                    <p class="block-link">
-                      <a routerLink="{{'/transactions/'+ input.prev_txid}}">
-                        {{input.prev_txid}}
-                      </a> 
-                    </p>
-                  </div>
-                  <div *ngIf="!input.prev_txid">No Inputs (Newly Generated Coins)</div>
-                </li> 
-
-              </ul>
+        <div class="col-lg-6 left-half">
+          <div class="bottom-border-block-row">
+            <h1 class="block-title">
+              Block <span class="hidden-sm hidden-md hidden-lg"> <br> </span> #{{block?.height}} 
+              <span class="pull-right next-prev-link hidden-xs " *ngIf="block?.nextblockhash"> <a routerLink="{{ '/blocks/' + block?.nextblockhash}}">></a>  </span>
+              <span class="pull-right next-prev-link hidden-xs" > <a   routerLink="{{ '/blocks/' + block?.previousblockhash}}"><</a> </span>
+            </h1>
+            <div class="block-hash-text">
+            <span >{{block?.hash}}</span>
             </div>
-            <div class="col-md-6">
-              <p><b>Outputs</b></p>
-              <ul class="list-unstyled">
-
-                <li *ngFor=" let output of trans.vout ">
-                  <div *ngFor="let adress of output.addresses">
-                    {{output.value | number:'1.5-5'}} GAME -> <span *ngIf="output.spent" class="badge badge-status" style="background-color: #EB5757">Spent</span><span  *ngIf="!output.spent" class="badge badge-status" style="background-color: #F47F4B">Unspent</span>
-                    <p class="block-link">
-                      <a routerLink="{{'/addresses/'+ adress}}" >
-                        {{adress}}
-                      </a>
-                    </p>
-                  </div>
-                </li>
-
-              </ul>
-            </div>
+            <br>
           </div>
+          <div class="bottom-border-block-row">
+              <h5 class="small-title-texts">
+                  Merkle Root
+              </h5>
+              <div class="root-text">
+                  <span style="word-break: break-all;">{{block?.merkleroot}}</span>
+              </div>
+              <br><br>
+            </div>
+          <div class="table-responsive hidden-xs" style="padding-top:25px; border: 0px !important;">
+              <table class="table">
+                <tbody class="block-summary-table">
+                  <tr>
+                    <th class="small-title-texts">Summary</th>
+                    <th></th>
+                  </tr>
+                  <tr>
+                    <td>
+                        <span class="block-summary-small-text"># OF TRANSACTIONS</span> <br>
+                        <span class="block-summary-small-text-white">{{block?.tx?.length}}</span>
+                    </td>
+                    <td>
+                        <span class="block-summary-small-text">TOTAL SENT</span> <br>
+                        <span class="block-summary-small-text-white">{{block?.total | number:'1.5-5'}} GAME</span>
+                    </td>
+                    <td>
+                        <span class="block-summary-small-text">DIFFICULTY</span> <br>
+                        <span class="block-summary-small-text-white">{{block?.difficulty}}</span>
+                    </td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <span class="block-summary-small-text">SIZE</span> <br>
+                          <span class="block-summary-small-text-white">{{block?.size}} kB</span>
+                      </td>
+                      <td>
+                          <span class="block-summary-small-text">TIMESTAMP</span> <br>
+                          <span class="block-summary-small-text-white">{{ (block?.time * 1000 ) | date:'medium'}}</span>
+                      </td>
+                      <td>
+                          <span class="block-summary-small-text">NONCE</span> <br>
+                          <span class="block-summary-small-text-white">{{block?.nonce}}</span>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <span class="block-summary-small-text">VERSION</span> <br>
+                          <span class="block-summary-small-text-white">{{block?.version}}</span>
+                      </td>
+                      <td>
+                          <span class="block-summary-small-text">CONFIRMATIONS</span> <br>
+                          <span class="block-summary-small-text-white">{{confirmations?.confirmations}}</span>
+                      </td>
+                      <td>
+                          <span class="block-summary-small-text">BITS</span> <br>
+                          <span class="block-summary-small-text-white">{{block?.bits}}</span>
+                      </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="table-responsive hidden-sm hidden-md hidden-lg" style="padding-top:25px; border: 0px !important ">
+                <table class="table">
+                  <tbody class="block-summary-table">
+                    <tr>
+                      <th class="small-title-texts">Summary</th>
+                      <th></th>
+                    </tr>
+                    <tr>
+                      <td>
+                          <span class="block-summary-small-text"># OF TRANSACTIONS</span> <br>
+                          <span class="block-summary-small-text-white">{{block?.tx?.length}}</span>
+                      </td>
+                      <td>
+                          <span class="block-summary-small-text">TOTAL SENT</span> <br>
+                          <span class="block-summary-small-text-white">{{block?.total | number:'1.5-5'}} GAME</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                          <span class="block-summary-small-text">DIFFICULTY</span> <br>
+                          <span class="block-summary-small-text-white">{{block?.difficulty}}</span>
+                      </td>
+                        <td>
+                            <span class="block-summary-small-text">SIZE</span> <br>
+                            <span class="block-summary-small-text-white">{{block?.size}} kB</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="block-summary-small-text">BITS</span> <br>
+                            <span class="block-summary-small-text-white">{{block?.bits}}</span>
+                        </td>
+                        <td>
+                            <span class="block-summary-small-text">NONCE</span> <br>
+                            <span class="block-summary-small-text-white">{{block?.nonce}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="block-summary-small-text">VERSION</span> <br>
+                            <span class="block-summary-small-text-white">{{block?.version}}</span>
+                        </td>
+                        <td>
+                            <span class="block-summary-small-text">CONFIRMATIONS</span> <br>
+                            <span class="block-summary-small-text-white">{{confirmations?.confirmations}}</span>
+                        </td>
+                      </tr>
+                      <tr>
+                          <td>
+                              <span class="block-summary-small-text">TIMESTAMP</span> <br>
+                              <span class="block-summary-small-text-white">{{ (block?.time * 1000 ) | date:'medium'}}</span>
+                          </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
         </div>
-        <div class="panel-footer custom-panel-footing text-right">
-        <hr class="custom-panel-line">
-          <b>Total:</b> {{trans?.total | number:'1.5-5'}} GAME
+        <div class="col-lg-6 right-half">
+            <div class="block-transactions">
+                <div class="row">
+                  <div class="block-transactions">
+                    <div class="bottom-border-block-row" style="padding-bottom:15px; margin-bottom:15px;">
+                      <h3 class="block-transactions-title ">Block Transactions &nbsp; &nbsp;<span class="number-with-background">{{transactions?.length}}</span></h3>
+                      <span class="pull-right small-loop-icon hidden-xs"><i class="glyphicon glyphicon-search"></i></span>
+                    </div>
+            
+
+                    <div class="main-card-block" *ngFor="let trans of transactions">
+
+                    <div class="first-row-xs">
+                        <div class="col-xs-6 hidden-xs">
+                          <a routerLink="{{'/transactions/' + trans.txid}}" class="block-transaction-link">{{trans.txid}}</a>
+                        </div>
+
+                        <div class="col-xs-6 hidden-sm hidden-md hidden-lg">
+                            <a href="{{'/transactions/' + trans.txid}}" class="block-transaction-link">{{trans.txid.substring(0,10)}}...{{trans.txid.substring(54,64)}}</a>
+                        </div>
+
+                        <div class="first-row-box pull-right">
+                            <a routerLink="{{'/transactions/' + trans.txid}}" style="text-decoration:none;">></a>
+                        </div>	
+                    </div>
+
+                     <div class="panel-body" style="background-color: rgba(123,147,166,0.07);">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <span class="block-summary-small-text">INPUTS</span>
+                          <ul class="list-unstyled">
+            
+                            <li *ngFor="let input of trans.vin" >
+                              <div *ngIf="input.prev_txid"> 
+                                <p class="block-link">
+                                  <a routerLink="{{'/transactions/'+ input.prev_txid}}" class="block-transaction-link hidden-xs">
+                                    {{input.prev_txid}}
+                                  </a>
+                                  <a routerLink="{{'/transactions/'+ input.prev_txid}}" class="block-transaction-link hidden-sm hidden-md hidden-lg">
+                                    {{input.prev_txid.substring(0,14)}}...{{input.prev_txid.substring(50,64)}}
+                                  </a> 
+                                  
+                                </p>
+                              </div>
+                              <div *ngIf="!input.prev_txid"> <span class="block-summary-small-text-white">No Inputs (Newly Generated Coins)</span></div>
+                            </li> 
+            
+                          </ul>
+                        </div>
+                        <div class="col-sm-12">
+                            <span class="block-summary-small-text">OUTPUTS</span>
+                          <ul class="list-unstyled">
+            
+                            <li *ngFor=" let output of trans.vout ">
+                              
+                              <div *ngFor="let adress of output.addresses" class="holder-div" >
+                                  <div class="col-sm-7">
+                                    <a routerLink="{{'/addresses/'+ adress}}" class="block-transaction-link hidden-xs" >
+                                      {{adress}}
+                                    </a>
+                                    <a routerLink="{{'/addresses/'+ adress}}" class="block-transaction-link hidden-sm hidden-md hidden-lg" >
+                                      {{adress.substring(0,10)}}...{{adress.substring(20,64)}}
+                                    </a>
+                                  </div>
+                                  <div class="col-sm-3" style="text-align:center;">
+                                      <span class="block-summary-small-text-white">{{output.value | number:'1.5-5'}} GAME</span> 
+                                  </div>
+                                  <div class="col-sm-2 border-r-4px" *ngIf="output.spent" style="background-color: rgba(20,199,219,0.15);" > 
+                                    <span  class="badge-status-text" style="	color: #14C7DB;">SPENT</span>
+                                  </div>
+                                  <div class="col-sm-2 border-r-4px" *ngIf="!output.spent" style="background-color: rgba(123,147,166,0.15);">
+                                    <span   class="badge-status-text" style="color: #7B93A6;">UNSPENT</span>
+                                  </div>
+                              </div>
+                            </li>
+            
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="last-row-panel">
+                        <div>
+                            <span class="block-summary-small-text-2"> {{ (trans.blocktime * 1000 ) | date:'medium'}} </span>
+                        </div>
+                        <span class="hidden-sm hidden-md hidden-lg"> <br> </span>
+                        <div class="pull-right footer-card-right-div hidden-xs">
+                          <span class="block-summary-small-text">TOTAL</span> &nbsp; 
+                          <span class="block-summary-small-text-white">{{trans?.total | number:'1.5-5'}} GAME </span>
+                        </div>
+                        <div class="footer-card-right-div hidden-sm hidden-md hidden-lg" style="padding-left:15px !important">
+                            <span class="block-summary-small-text">TOTAL</span> &nbsp; 
+                            <span class="block-summary-small-text-white">{{trans?.total | number:'1.5-5'}} GAME </span>
+                          </div>
+                    </div>
+                  </div>
+            
+                </div>
+              </div>
         </div>
+
       </div>
-
-
     </div>
   </div>
 </div>
