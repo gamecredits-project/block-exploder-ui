@@ -1,162 +1,173 @@
     <div class="container-fluid page-banner block-header">
     	<div class="container">
-    		<div class="row">
-    			<div class="col-xs-12">
-    				<h1 class="block-title">
-    					Address <small class="hidden-xs hidden-sm">View information about a GameCredits address</small>
-    				</h1>
-    				<p>
-    					<i class="icon-at"></i>
-    					Address: {{address}}
-    				</p>
-    			</div>
-    			<div class="col-md-6">
-    				<div class="table-responsive">
-    					<table class="table">
-    						<tbody>
-    							<tr>
-    								<th>Summary</th>
-    								<th></th>
-    							</tr>
-    							<tr>
-    								<td>Number Of Transactions</td>
-    								<td>{{totalTransactionsNumber}}</td>
-    							</tr>
-    						</table>
-    					</div>
-    				</div>
-    				<div class="col-md-6">
-    					<div class="table-responsive">
-    						<table class="table">
-    							<tr>
-    								<td>Total volume:</td>
-    								<td>{{volume | number:'1.5-5'}} GAME</td>
-    							</tr>
-    							<tr>
-    								<td>Estimated balance</td>
-                                    <td>{{currentValue | number:'1.5-5'}} GAME</td>
-    							</tr>
-    						</table>
+    		<div class="">
+            <div class="col-xs-12 col-lg-5 col-md-6 col-sm-6 border-right sm-border block-address-wrap">
+              <h1 class="block-title">
+                Address
+              </h1>
+              <p class="address">
+                {{address}}
+              </p>
+            </div>
+            <div class="col-lg-1 col-md-6 col-sm-6 col-xs-12 qr-code sm-border">
+              <img src="../../../assets/images/qr-eg.jpg" >
+            </div>
+    			<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 block-summary md-border-top">
+    				<div class="col-lg-12 col-md-12 col-sm-12">
+    								<h5>Summary</h5>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                <div class="row block-label"># Number Of Transactions</div>
+                <div class="row block-value">{{totalTransactionsNumber}}</div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                <div class="row block-label">Total volume:</div>
+                <div class="row block-value">{{volume | number:'1.5-5'}} GAME</div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                <div class="row block-label">Estimated balance</div>
+                <div class="row block-value">{{currentValue | number:'1.5-5'}} GAME</div>
+              </div>
     					</div>
     				</div>
     			</div>
     		</div>
     	</div>
+<!-- TRANSACTIONS -->
+    <div class="blocks-wrapper">
+      <div class="container address-transactions">
 
-    	<div class="container address-transactions">
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
+          <h3 class="address-transactions-title"> {{selectedTrancationsTagName}}  <button class="btn transaction-number">{{transactionsTagNumber}}</button></h3>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-lg-3 text-center" style="padding-top: 20px;">
 
-            <div class="col-sm-7">
-                <h3 class="address-transactions-title">{{selectedTrancationsTagName}} {{transactionsTagNumber}} </h3>
+          <div class="col-xs-6 col-sm-6">
+            <!--TODO@luka - set active class checker-->
+            <button class="btn active filter-btn" (click)="setMenu('All Transactions')">All transactions</button>
+          </div>
+          <div class="col-xs-6 col-sm-6">
+            <button class="btn filter-btn" style="margin-right: 10px" (click)="setMenu('Unspent Transactions')">Unspent </button>
+          </div>
+        </div>
+
+
+        <div class="">
+          <div class="col-xs-12 block-transactions">
+
+            <div  *ngIf="selectedTrancationsTagName == 'All Transactions' && allTransactions">
+              <div class="panel panel-default panel-block" *ngFor="let trans of allTransactions">
+                <div class="panel-heading">
+
+                    <p class="block-link col-sm-11 col-xs-10 vcenter">
+                      <a href="{{'/transactions/' + trans.txid}}">
+                        {{trans.txid}}
+                      </a>
+                    </p>
+                  <div class="panel-rectangle">
+                    <i class="glyphicon glyphicon-chevron-right vcenter"></i>
+                  </div>
+
+
+                    <!--<span ><i class="icon-calendar"> {{ (trans?.blocktime * 1000 ) | date:'medium'}}</i></span>-->
+
+                </div>
+                <div class="panel-body">
+                  <div class="">
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 block-content" style="height: 100%">
+                      <p class="block-label">Inputs</p>
+                      <ul class="list-unstyled">
+
+                        <li *ngFor="let input of trans?.vin" >
+                          <div *ngIf="input.prev_txid">
+                            <p class="block-link">
+                              <a routerLink="{{'/transactions/'+ input.prev_txid}}">
+                                {{input.prev_txid}}
+                              </a>
+                            </p>
+                          </div>
+                          <div *ngIf="!input.prev_txid">No Inputs (Newly Generated Coins)</div>
+                        </li>
+
+                      </ul>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 md-border-left block-content md-border-top">
+                      <p class="block-label">Outputs</p>
+                      <ul class="list-unstyled">
+
+                        <li *ngFor=" let output of trans?.vout ">
+
+                          <div class="col-md-8 col-sm-8 col-xs-12" *ngFor="let adress of output?.addresses">
+                            <a routerLink="{{'/addresses/'+ adress}}" >
+                              [{{adress}}]
+                            </a>
+                          </div>
+                          <div class="col-md-4 col-sm-4 col-xs-12 block-value" >
+                             {{output.value | number:'1.5-5'}} GAME
+                          </div>
+
+                          <Br> <br>
+                        </li>
+
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel-footer">
+                  <div class="col-md-6 block-label">
+                    {{ (trans?.blocktime * 1000 ) | date:'medium'}}
+                  </div>
+                  <div class="col-md-6 text-right">
+                    <span class="block-label">Total:</span> <span class="block-value">{{trans?.total | number:'1.5-5'}} GAME</span>
+                  </div>
+
+                </div>
+              </div>
+
+              <button class="btn active filter-btn" *ngIf="totalTransactionsNumber > allTransactions.length" (click)="loadMoreTransactions()"> Load More Transactions </button>
             </div>
-            <div class="col-sm-2 text-center" style="padding-top: 20px;">
-                <button class="btn btn-primary" (click)="setMenu('All Transactions')">All transactions</button>
+
+            <div class="panel panel-default panel-block" *ngIf="selectedTrancationsTagName == 'Unspent Transactions'" >
+              <div class="panel panel-default panel-block" *ngFor="let trans of unspent ">
+                <div class="panel-heading" style="">
+                  <p class="block-link col-sm-11 col-xs-10 vcenter">
+                      <a href="{{'/transactions/' + trans.txid}}">
+                        {{trans.txid}}
+                      </a>
+                    </p>
+                  <div class="panel-rectangle">
+                  <i class="glyphicon glyphicon-chevron-right vcenter"></i>
+                </div>
+                </div>
+                <div class="panel-body">
+                  <div class="">
+                    <div class="col-md-12 block-content" style="height: 100%">
+                      <p class="block-label">Inputs</p>
+                      <ul class="list-unstyled">
+
+                        <li *ngFor="let input of trans?.addresses" >
+                          <div *ngIf="input">
+                            <a routerLink="{{'/addresses/'+ input}}">
+                              {{input}}
+                            </a>
+                          </div>
+                        </li>
+
+                      </ul>
+                    </div>
+
+                  </div>
+                </div>
+                  <div class="panel-footer">
+                    <div class="col-md-12 text-right">
+                      <span class="block-label">Total:</span> <span class="block-value">{{trans?.value | number:'1.5-5'}} GAME</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
-            <div class="col-sm-3 text-center" style="padding-top: 20px; margin-bottom: 30px">
-                <button class="btn btn-primary" style="margin-right: 10px" (click)="setMenu('Unspent Transactions')">Unspent transactions </button>
-            </div>
+          </div>
+        </div>
+      </div>
 
-    		<div class="row">
-    			<div class="col-xs-12 block-transactions">
 
-    					<div  *ngIf="selectedTrancationsTagName == 'All Transactions' && allTransactions">
-    						<div class="panel panel-default" *ngFor="let trans of allTransactions">
-    							<div class="panel-heading" style="height: 60px !important">
-                                    <div class="col-sm-9">
-                                        <p class="block-link">
-            								<a href="{{'/transactions/' + trans.txid}}">
-            									   {{trans.txid}}
-            								</a>
-                                        </p>
-                                    </div>
-                                    <div class="col-sm-3">
-    								    <span ><i class="icon-calendar"> {{ (trans?.blocktime * 1000 ) | date:'medium'}}</i></span>
-                                    </div>
-    							</div>
-    							<div class="panel-body">
-    								<div class="row">
-    									<div class="col-md-6">
-    										<p><b>Inputs</b></p>
-    										<ul class="list-unstyled">
-
-    											<li *ngFor="let input of trans?.vin" >
-    												<div *ngIf="input.prev_txid"> 
-                                                        <p class="block-link">
-        													<a routerLink="{{'/transactions/'+ input.prev_txid}}">
-        														{{input.prev_txid}}
-        													</a> 
-                                                        </p>
-    												</div>
-    												<div *ngIf="!input.prev_txid">No Inputs (Newly Generated Coins)</div>
-    											</li> 
-
-    										</ul>
-    									</div>
-    									<div class="col-md-6">
-    										<p><b>Outputs</b></p>
-    										<ul class="list-unstyled">
-
-    											<li *ngFor=" let output of trans?.vout ">
-
-    												<div *ngFor="let adress of output?.addresses">
-    													<a routerLink="{{'/addresses/'+ adress}}" >
-    														[{{adress}}]
-    													</a>
-    												</div>
-    												Amount: {{output.value | number:'1.5-5'}} GAME
-    												<Br> <br>
-    												</li>
-
-    											</ul>
-    										</div>
-    									</div>
-    								</div>
-    								<div class="panel-footer text-right">
-    									<b>Total:</b> {{trans?.total | number:'1.5-5'}} GAME
-    								</div>
-    							</div>
-
-                                <button class="btn btn-primary col-md-12 load-more-button" *ngIf="totalTransactionsNumber > allTransactions.length" (click)="loadMoreTransactions()"> Load More Transactions </button>
-    						</div>        
-
-    						<div class="panel panel-default" *ngIf="selectedTrancationsTagName == 'Unspent Transactions'" >
-    						<div class="panel panel-default" *ngFor="let trans of unspent ">
-                                <div class="panel-heading" style="height: 60px !important">
-                                    <div class="col-sm-9">
-                                        <p class="block-link">
-                                            <a href="{{'/transactions/' + trans.txid}}">
-                                                   {{trans.txid}}
-                                            </a>
-                                        </p>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        
-                                    </div>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p><b>Inputs</b></p>
-                                            <ul class="list-unstyled">
-
-                                                <li *ngFor="let input of trans?.addresses" >
-                                                    <div *ngIf="input"> 
-                                                        <a routerLink="{{'/addresses/'+ input}}">
-                                                            {{input}}
-                                                        </a> 
-                                                    </div>
-                                                </li> 
-
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-6">
-                                        </div>
-                                    </div>
-                                    <div class="panel-footer text-right">
-                                        <b>Total:</b> {{trans?.value | number:'1.5-5'}} GAME
-                                    </div>
-                                </div>
-    						</div>  
-
-    					</div>
-    				</div>
-    			</div>

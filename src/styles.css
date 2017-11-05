@@ -162,9 +162,7 @@ body {
   font-weight: bold;
   vertical-align: bottom;
 }
-.navbar-header .row{
 
-}
 .header-logo img {
   margin-right: 12px;
   vertical-align: middle;
@@ -175,6 +173,7 @@ body {
   border: none !important;
   display: flex;
   align-items: center;
+  border-radius: 0!important;
 }
 
 .toggler {
@@ -381,6 +380,9 @@ footer {
 .padding15pxsides {
   padding-left: 15px !important;
   padding-right: 15px !important;
+}
+.padding15pxtop {
+  padding-top:15px;
 }
 
 .all-peers-button:hover {
@@ -908,10 +910,6 @@ footer {
   margin-bottom: 50px;
 }
 
-.block-transactions a {
-  color: #06482f;
-  text-decoration: underline;
-}
 
 .block-details {
   background: linear-gradient(90deg, #1D2E3B 50%, #192834 50%);
@@ -952,19 +950,7 @@ footer {
   padding-bottom: 50px;
 }
 
-.address-transactions .btn-primary {
-  background-color: #33A579;
-}
 
-.address-transactions .btn-warning {
-  background-color: #F47F4B;
-  margin-right: 5px;
-}
-
-.address-transactions-title {
-  margin-top: 30px;
-  margin-bottom: 15px;
-}
 
 .halving-alert {
   margin: 0;
@@ -1057,3 +1043,256 @@ footer {
 }
 
 /*# sourceMappingURL=exploder.css.map */
+
+
+/*
+* Address
+*/
+.page-banner {
+  min-height: 241px;
+  background-color: #1D2E3B;
+  padding-top: 20px;
+}
+
+.block-title {
+  color: white;
+  padding-bottom: 15px;
+}
+
+.block-title small {
+  color: white;
+  font-size: 16px;
+}
+.block-header {
+  padding-bottom: 25px;
+  color: #FFF;
+}
+
+.block-header h5 {
+  font-size: 15px;
+  padding-top: 15px;
+  font-weight: bold;
+}
+p.address {
+  font-size: 16px;
+  letter-spacing: 1px;
+  line-height: 26px;
+  color: rgba(255,255,255,0.5);
+}
+.block-label {
+  font-size: 11px;
+  line-height: 15px;
+  font-weight: 600;
+  color: rgba(123, 147, 166, 0.5);
+  text-transform: uppercase;
+}
+.block-value {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  word-wrap: break-word;
+}
+.sm-border {
+  border-bottom: none;
+}
+
+.qr-code {
+  float: right !important;
+}
+.qr-code img {
+  max-width: 70px;
+  margin-top: 25px;
+  float:right !important;
+  margin-bottom: 40px;
+}
+.block-summary {
+  margin-bottom: 40px;
+}
+.block-address-wrap {
+  padding-bottom: 0;
+  word-wrap: break-word;
+}
+.md-border-left {
+  border-left: 1px solid rgba(123, 147, 166, 0.15);
+}
+.md-border-top {
+  border-top: none;
+}
+@media screen and (max-width: 740px) {
+
+  .address-transactions .filter-btn {
+    margin-bottom: 30px;
+  }
+
+  .qr-code {
+    float: none !important;
+    text-align: center;
+  }
+  .qr-code img{
+    float: none!important;
+  }
+  .sm-border {
+    border-bottom: 1px solid rgba(255,255,255, 0.25);
+  }
+
+}
+
+@media screen and (max-width: 1198px) {
+  .block-address-wrap {
+    padding-bottom: 40px;
+  }
+
+  .md-border-top {
+    border-top: 1px solid rgba(123, 147, 166, 0.15);
+  }
+  .md-border-left {
+    border-left: none;
+  }
+}
+
+.address-transactions {
+
+}
+
+.address-transactions .filter-btn{
+  background-color: #1A2A36!important;
+  color:rgba(255,255,255, 0.5)!important;
+  font-size: 13px!important;
+  font-weight: 600!important;
+  line-height: 16px!important;
+  height: 36px;
+  /*margin-bottom: 0px;*/
+}
+.address-transactions .active {
+  color: rgba(255,255,255, 1)!important;
+  border-radius: 4px;
+  background-color: #203442!important;
+  min-width: 100%;
+}
+.address-transactions .btn-warning {
+  background-color: #F47F4B;
+  margin-right: 5px;
+}
+
+.address-transactions-title {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 27px;
+}
+.transaction-number {
+  margin-left: 14px;
+  border-radius: 6px;
+  color: #FFFFFF;
+  background-color: #7B93A6!important;
+  font-size: 11px!important;
+  font-weight: bold!important;
+  letter-spacing: 1px!important;
+  line-height: 14px!important;
+  height: 22px;
+  width: 37px;
+  padding: 0!important;
+}
+
+
+.panel-block{
+  background-color: #1E2D3A!important;
+  border: none!important;
+  color: #fff;
+}
+.panel-block .panel-body {
+  padding: 0 !important;
+}
+.panel-block .panel-body .block-content {
+  padding: 15px 30px;
+}
+.panel-block .panel-heading {
+  height: 48px;
+  padding: 0 !important;
+  background-color: rgba(123, 147, 166, 0.2)!important;
+  border: none!important;
+}
+.panel-rectangle{
+  float:right;
+  height: 48px;
+  width: 48px;
+  border-radius: 0 4px 0 0;
+  background-color: rgba(255,255,255,0.2)!important;
+  /*background: red!important;*/
+  text-align: center;
+}
+.panel-rectangle i {
+  margin-top: 12px;
+  font-size: 19px;
+  color:#fff;
+}
+.panel-block .panel-footer{
+  border-top:1px solid rgba(123, 147, 166, 0.15) ;
+  background: none!important;
+  padding-bottom: 30px;
+}
+
+.block-transactions-title {
+  margin-top: 60px;
+}
+
+.block-transactions {
+  margin-bottom: 50px;
+}
+
+.block-transactions a {
+  color: #82B1FF;
+  text-decoration: none;
+}
+
+.block-transactions {
+  min-height: 233px;
+}
+
+.block-link {
+  margin-top: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #82B1FF;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+.block-link a {
+  color: #82B1FF;
+  text-decoration: none;
+}
+/*
+* End of Address
+*/
+
+/*
+* NETWORK
+*/
+
+.network p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+}
+.network h4 {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+}
+.network h2 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+}
+.network h1 {
+  color: #FFFFFF;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 36px;
+}
+.map {
+  padding: 70px;
+}

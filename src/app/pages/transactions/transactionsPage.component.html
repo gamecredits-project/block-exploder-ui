@@ -1,88 +1,106 @@
-
-<div class="container-fluid transaction-header">
+<div class="container-fluid page-banner block-header">
   <div class="container">
-    <h1>Transaction <small class="hidden-xs hidden-sm">View information about a GameCredits transaction</small></h1>
-    <p style="word-break: break-all;">
-      <i class="icon-hashtag"></i>
-      {{transaction?.blockhash}}
-    </p>
-  </div>
-</div>
-
-<div class="container-fluid transaction-body">
-  <div class="container">
-    <div class="transaction-card col-xs-12">
-      <div class="transaction-card__body">
-        <div class="col-md-6">
-          <p><strong>Inputs:</strong></p>
-          <ul class="list-unstyled">
-
-            <li *ngFor="let input of transaction?.vin" >
-              <div *ngIf="input.prev_txid">
-                <p class="block-link"> 
-                  <a routerLink="{{'/transactions/'+ input.prev_txid}}">
-                    {{input.prev_txid}}
-                  </a> 
-                </p>
-              </div>
-              <div *ngIf="!input.prev_txid">No Inputs (Newly Generated Coins)</div>
-            </li> 
-
-          </ul>
-        </div>
-        <div class="col-md-6">
-          <p><strong>Outputs</strong></p>
-          <ul class="list-unstyled">
-
-            <li *ngFor=" let output of transaction?.vout ">
-
-              <div *ngFor="let adress of output.addresses">
-                
-                <p class="block-link" >
-                  [<a style="color: blue !important;" routerLink="/addresses/Gf2uS2ZaWWXkbj3DK263zsK2bqU4rvLHCy" >
-                    {{adress}}
-                  </a>]
-                </p>
-                
-              </div>
-              Amount: {{output.value | number:'1.5-5'}} GAME
-              <Br> <br>
-              </li>
-
-            </ul>
-          </div>
-        </div>
-        <div class="transaction-card__footer">
-          <div class="col-xs-12">
-            <p class="pull-right">
-              <span data-toggle="tooltip" title="Transaction is considered confirmed if more than 6 confirmations are available">
-                Total sent: {{transaction?.total | number:'1.5-5'}} GAME, Confirmations: {{confirmations}},  Status: <i class="icon-check-circle" *ngIf=" confirmations > 6"></i> <i class="icon-times-circle" *ngIf=" confirmations < 7"></i> 
-              </span>
-            </p>
-          </div>
-        </div>
+    <div class="">
+      <div class="col-xs-12 col-lg-5 col-md-6 col-sm-6 border-right sm-border block-address-wrap">
+        <h1 class="block-title">
+          Transaction
+        </h1>
+        <p class="address">
+          {{transaction?.blockhash}}
+        </p>
       </div>
-      <div class="col-xs-12 transaction-summary">
-        <div class="table-responsive">
-          <table class="table">
-            <tr>
-              <th>Summary</th>
-              <th></th>
-            </tr>
-            <tr>
-              <td>Blockhash:</td>
-              <td>{{transaction?.blockhash}}</td>
-            </tr>
-            <tr>
-              <td>Blocktime:</td>
-              <td>{{ ( transaction?.blocktime * 1000 )  | date:'medium'}}</td>
-            </tr>
-            <tr>
-              <td>Version:</td>
-              <td>{{transaction?.version}}</td>
-            </tr>
-          </table>
+      <div class="col-lg-1 col-md-6 col-sm-6 col-xs-12 qr-code sm-border">
+        <img src="../../../assets/images/qr-eg.jpg" >
+      </div>
+      <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 block-summary md-border-top">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <h5>Summary</h5>
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+            <div class="row block-label">Blockhash</div>
+            <div class="row block-value">{{transaction?.blockhash}}</div>
+          </div>
+          <div class="col-md-1 col-sm-1 hidden-xs"></div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+            <div class="row block-label">Blocktime:</div>
+            <div class="row block-value">{{ ( transaction?.blocktime * 1000 )  | date:'medium'}}</div>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-6">
+            <div class="row block-label">Versiom</div>
+            <div class="row block-value">{{transaction?.version}}</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+<div class="blocks-wrapper">
+  <div class="container address-transactions">
+    <div class="">
+      <div class="col-xs-12 block-transactions">
+
+          <div class="panel panel-default panel-block" style="margin-top:64px;">
+
+            <div class="panel-body">
+              <div class="">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 block-content" style="height: 100%">
+                  <p class="block-label">Inputs</p>
+                  <ul class="list-unstyled">
+
+                    <li *ngFor="let input of transaction?.vin" >
+                      <div *ngIf="input.prev_txid">
+                        <p class="block-link">
+                          <a routerLink="{{'/transactions/'+ input.prev_txid}}">
+                            {{input.prev_txid}}
+                          </a>
+                        </p>
+                      </div>
+                      <div *ngIf="!input.prev_txid">No Inputs (Newly Generated Coins)</div>
+                    </li>
+
+                  </ul>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 md-border-left block-content md-border-top">
+                  <p class="block-label">Outputs</p>
+                  <ul class="list-unstyled">
+
+                    <li *ngFor=" let output of transaction?.vout ">
+
+                      <div class="col-md-8 col-sm-8 col-xs-12" *ngFor="let adress of output?.addresses">
+                        <a routerLink="{{'/addresses/'+ adress}}" >
+                          [{{adress}}]
+                        </a>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-12 block-value" >
+                        {{output.value | number:'1.5-5'}} GAME
+                      </div>
+
+                      <Br> <br>
+                    </li>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="panel-footer">
+              <div class="col-md-4 col-xs-12">
+                <span class="block-label">Confirmations:</span>
+                <span class="block-value">{{confirmations}}</span>
+              </div>
+              <div class="col-md-4 col-xs-12" style="text-align: center">
+                <span class="block-label">Status:</span>
+                <span class="block-value" *ngIf=" confirmations > 6">Complete</span>
+                <span class="block-value" *ngIf=" confirmations < 7">UnComplete</span>
+              </div>
+              <div class="col-md-4 col-xs-12 text-right">
+                <span class="block-label">Total Sent:</span> <span class="block-value">{{transaction?.total | number:'1.5-5'}} GAME</span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
