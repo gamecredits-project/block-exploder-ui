@@ -349,6 +349,9 @@ footer {
   .footer-info h1{
     margin-bottom: 48px;
   }
+  .xs-text-left {
+    text-align: left!important;
+  }
 }
 @media screen and (max-width: 1198px) {
   .padding-large {
@@ -1308,5 +1311,5 @@ p.address {
   padding: 70px;
 }
 .text-center {
-  text-align: center !important;
+  text-align: center;
 }
