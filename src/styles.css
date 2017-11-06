@@ -734,8 +734,8 @@ footer {
 }
 
 
-.right-half::-webkit-scrollbar { 
-  display: none; 
+.right-half::-webkit-scrollbar {
+  display: none;
 }
 
 
@@ -789,7 +789,7 @@ footer {
 }
 
 .block-hash-text{
-  word-break: break-all; 
+  word-break: break-all;
   color: rgba(255,255,255,0.5);
   font-size:16px;
   line-height: 26px;
@@ -850,7 +850,7 @@ footer {
 }
 
 .block-summary-small-text-2 {
-  color: rgba(123,147,166,0.65);	
+  color: rgba(123,147,166,0.65);
   font-size: 12px;
   letter-spacing: 1px;
   padding-left: 15px;
@@ -1101,6 +1101,7 @@ p.address {
   font-weight: 600;
   line-height: 18px;
   word-wrap: break-word;
+  color:#fff;
 }
 .sm-border {
   border-bottom: none;
@@ -1305,4 +1306,7 @@ p.address {
 }
 .map {
   padding: 70px;
+}
+.text-center {
+  text-align: center !important;
 }

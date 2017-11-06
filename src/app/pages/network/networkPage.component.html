@@ -76,4 +76,50 @@
 <!--For more info read this article about running Bitcoin, all the same rules apply to GameCredits: <a href="https://en.bitcoin.it/wiki/Running_Bitcoin">https://en.bitcoin.it/wiki/Running_Bitcoin</a>-->
 	<!--</p>-->
 	<!--</div>-->
+
+  <div class="container network">
+    <table class="table latest-blocks-table hidden-xs text-center">
+      <thead>
+      <tr class="blocks-table-header">
+        <th></th>
+        <th>NODE</th>
+        <th></th>
+        <th>VERSION</th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let peer of peersToShow">
+        <td></td>
+        <td>
+          {{peer?.addr}}
+        </td>
+        <td></td>
+        <td>
+          {{peer?.subver}}
+        </td>
+        <td></td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="row one-card hidden-sm hidden-md hidden-lg" *ngFor="let peer of peersToShow" style="border-bottom: 1px solid rgba(123, 147, 166, 0.1)">
+      <table class="table one-card-table transactions-card-table">
+        <tr >
+          <td class="" style="padding-top:30px">
+            NODE <br>
+            <span class="block-value">{{peer?.addr}}</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="">
+            VERSION  <br>
+           <span class="block-value">{{peer?.subver}}</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
 </div>
