@@ -28,6 +28,12 @@
   content: "\f002";
 }
 
+.block-summary-2-table tr th,.block-summary-2-table tr td {
+  border: 0px !important;
+  padding-left: 0px !important;
+  padding-top: 20px !important;
+}
+
 .icon-th:before {
   content: "\f00a";
 }
@@ -857,8 +863,7 @@ footer {
   text-align: center;
 }
 
-.block-summary-table tr th, tr td {
-  border: 0px !important;
+.block-summary-table tr th,.block-summary-table tr td {
   padding-left: 0px !important;
   padding-top: 20px !important;
 }
@@ -912,7 +917,7 @@ footer {
 
 
 .block-details {
-  background: linear-gradient(90deg, #1D2E3B 50%, #192834 50%);
+  background: linear-gradient(90deg, #1D2E3B 50%, #192834 50%) ;
 }
 
 .transaction-header {
@@ -1051,6 +1056,11 @@ footer {
 .page-banner {
   min-height: 241px;
   background-color: #1D2E3B;
+  padding-top: 20px;
+}
+
+.page-banner-2 {
+  min-height: 241px;
   padding-top: 20px;
 }
 
