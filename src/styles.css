@@ -260,6 +260,7 @@ body {
   list-style: none;
   background-color: #1D2E3B;
   margin-bottom: 0;
+  padding: 0;
 }
 
 .header-custom-nav > li > a {
@@ -375,6 +376,10 @@ footer {
   .xs-text-left {
     text-align: left !important;
   }
+  .custom-btn {
+    width: 100%;
+  }
+
 }
 
 @media screen and (max-width: 1198px) {
