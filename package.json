@@ -29,6 +29,7 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "ngx-infinite-scroll": "^0.5.1",
+    "ngx-qrcode3": "^0.3.0",
     "rxjs": "^5.1.0",
     "socket.io-client": "^2.0.3",
     "zone.js": "^0.8.4"

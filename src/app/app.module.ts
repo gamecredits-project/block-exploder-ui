@@ -32,6 +32,7 @@ import { TransactionsPageService } from './pages/transactions/transactionsPage.s
 import { AddressPageService } from './pages/address/addressPage.service';
 import { NetworkPageService } from './pages/network/networkPage.service';
 import { BlockSocketService, TxSocketService } from "app/pages/socket/socket.service";
+import { NgxQRCodeModule } from 'ngx-qrcode3';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { BlockSocketService, TxSocketService } from "app/pages/socket/socket.ser
   HttpModule,
   AppRoutingModule,
   InfiniteScrollModule,
+  NgxQRCodeModule,
   AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDVGMQhtueV-z7v4kjQ80kYd26jrmqV-o4'
     })

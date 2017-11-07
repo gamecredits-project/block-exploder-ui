@@ -1,18 +1,21 @@
     <div class="container-fluid page-banner block-header">
     	<div class="container">
     		<div class="">
-            <div class="col-xs-12 col-lg-5 col-md-6 col-sm-6 border-right sm-border block-address-wrap">
-              <h1 class="block-title">
-                Address
-              </h1>
-              <p class="address">
-                {{address}}
-              </p>
-            </div>
-            <div class="col-lg-1 col-md-6 col-sm-6 col-xs-12 qr-code sm-border">
-              <img src="../../../assets/images/qr-eg.jpg" >
-            </div>
-    			<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 block-summary md-border-top">
+          <div class="col-xs-12 col-lg-5 col-md-6 col-sm-6 border-right sm-border block-address-wrap">
+            <h1 class="block-title">
+              Address
+            </h1>
+            <p class="address">
+              {{address}}
+            </p>
+
+
+          </div>
+          <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 qr-code sm-border">
+              <ngx-qrcode [qrc-element-type]="'url'" [qrc-value] = "currentLocation">
+              </ngx-qrcode>
+          </div>
+    			<div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 block-summary md-border-top" style="padding: 0px !important;">
     				<div class="col-lg-12 col-md-12 col-sm-12">
     								<h5>Summary</h5>
               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
@@ -42,11 +45,10 @@
         <div class="col-xs-12 col-sm-4 col-lg-3 text-center" style="padding-top: 20px;">
 
           <div class="col-xs-6 col-sm-6">
-            <!--TODO@luka - set active class checker-->
-            <button class="btn active filter-btn" (click)="setMenu('All Transactions')">All transactions</button>
+            <button class="btn filter-btn" [ngClass]="{'active': selectedTrancationsTagName == 'All Transactions'}" (click)="setMenu('All Transactions')">All </button>
           </div>
           <div class="col-xs-6 col-sm-6">
-            <button class="btn filter-btn" style="margin-right: 10px" (click)="setMenu('Unspent Transactions')">Unspent </button>
+            <button class="btn filter-btn"  [ngClass]="{'active': selectedTrancationsTagName != 'All Transactions'}" style="margin-right: 10px" (click)="setMenu('Unspent Transactions')">Unspent </button>
           </div>
         </div>
 
@@ -58,12 +60,16 @@
               <div class="panel panel-default panel-block" *ngFor="let trans of allTransactions">
                 <div class="panel-heading">
 
-                    <p class="block-link col-sm-11 col-xs-10 vcenter">
-                      <a href="{{'/transactions/' + trans.txid}}">
+                    <p class="col-sm-11 col-xs-9 vcenter">
+                      <a href="{{'/transactions/' + trans.txid}}" class="block-link col-sm-11 col-xs-10 vcenter hidden-xs" >
                         {{trans.txid}}
                       </a>
+                      <a href="{{'/transactions/' + trans.txid}}" class="block-link col-sm-11 col-xs-10 vcenter hidden-sm hidden-md hidden-lg" >
+                        {{trans.txid.substring(0,10)}}...{{trans.txid.substring(55,64)}}
+                      </a>
+
                     </p>
-                  <div class="panel-rectangle">
+                  <div class="panel-rectangle col-sm-1 col-xs-3 float-right">
                     <i class="glyphicon glyphicon-chevron-right vcenter"></i>
                   </div>
 
@@ -80,9 +86,13 @@
                         <li *ngFor="let input of trans?.vin" >
                           <div *ngIf="input.prev_txid">
                             <p class="block-link">
-                              <a routerLink="{{'/transactions/'+ input.prev_txid}}">
+                              <a routerLink="{{'/transactions/'+ input.prev_txid}}" class="hidden-xs" >
                                 {{input.prev_txid}}
                               </a>
+                              <a routerLink="{{'/transactions/'+ input.prev_txid}}" class="hidden-sm hidden-md hidden-lg" >
+                                {{input.prev_txid.substring(0,10)}}...{{input.prev_txid.substring(55,64)}}
+                              </a>
+
                             </p>
                           </div>
                           <div *ngIf="!input.prev_txid">No Inputs (Newly Generated Coins)</div>
@@ -96,12 +106,16 @@
 
                         <li *ngFor=" let output of trans?.vout ">
 
-                          <div class="col-md-8 col-sm-8 col-xs-12" *ngFor="let adress of output?.addresses">
-                            <a routerLink="{{'/addresses/'+ adress}}" >
-                              [{{adress}}]
+                          <div class="col-md-8 col-sm-8 col-xs-12" *ngFor="let adress of output?.addresses" style="padding-left: 0px;">
+                            <a routerLink="{{'/addresses/'+ adress}}" class="hidden-xs">
+                              {{adress}}
+                            </a>
+
+                            <a routerLink="{{'/addresses/'+ adress}}" class="hidden-sm hidden-md hidden-lg" >
+                              {{adress.substring(0,10)}}...{{adress.substring(23,64)}}
                             </a>
                           </div>
-                          <div class="col-md-4 col-sm-4 col-xs-12 block-value" >
+                          <div class="col-md-4 col-sm-4 col-xs-12 block-value" style="padding-left: 0px;">
                              {{output.value | number:'1.5-5'}} GAME
                           </div>
 

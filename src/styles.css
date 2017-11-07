@@ -1111,9 +1111,8 @@ p.address {
   float: right !important;
 }
 .qr-code img {
-  max-width: 70px;
+  max-width: 150px;
   margin-top: 25px;
-  float:right !important;
   margin-bottom: 40px;
 }
 .block-summary {
@@ -1189,8 +1188,8 @@ p.address {
   margin-top: 30px;
   margin-bottom: 15px;
   color: #fff;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 400;
   line-height: 27px;
 }
 .transaction-number {
@@ -1226,7 +1225,7 @@ p.address {
   border: none!important;
 }
 .panel-rectangle{
-  float:right;
+  float:right !important;
   height: 48px;
   width: 48px;
   border-radius: 0 4px 0 0;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AddressPageService } from "./addressPage.service";
-import { ActivatedRoute, Params }   from '@angular/router';
+import { ActivatedRoute, Params, Router }   from '@angular/router';
 
 import 'rxjs/add/operator/switchMap';
 
@@ -19,10 +19,12 @@ import 'rxjs/add/operator/switchMap';
  	price: number;
  	nextTransactionsPageLink: string = '';
  	currentValue: number = 0;
- 	totalTransactionsNumber: number = 0;
+	totalTransactionsNumber: number = 0;
+	currentLocation: string ="www.blockexplorer.gamecredits.com";
 
  	constructor(private addressPageService: AddressPageService, 
- 		private route: ActivatedRoute
+		 private route: ActivatedRoute,
+		 private router: Router
 		) {}
 
  	ngOnInit() {
@@ -31,6 +33,7 @@ import 'rxjs/add/operator/switchMap';
 		        this.address = '' + params['hash']
 		 });
 
+		this.currentLocation = window.location.href;
 
  		this.route.params
  			.switchMap((params: Params) => this.addressPageService.getAddressAllTransactions('' + params['hash']))
