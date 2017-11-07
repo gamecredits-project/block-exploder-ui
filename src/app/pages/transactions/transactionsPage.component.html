@@ -82,16 +82,16 @@
               </div>
             </div>
             <div class="panel-footer">
-              <div class="col-md-4 col-xs-12">
+              <div class="col-md-4 col-xs-12 xs-text-left">
                 <span class="block-label">Confirmations:</span>
                 <span class="block-value">{{confirmations}}</span>
               </div>
-              <div class="col-md-4 col-xs-12" style="text-align: center">
+              <div class="col-md-4 col-xs-12 text-center xs-text-left">
                 <span class="block-label">Status:</span>
                 <span class="block-value" *ngIf=" confirmations > 6">Complete</span>
                 <span class="block-value" *ngIf=" confirmations < 7">UnComplete</span>
               </div>
-              <div class="col-md-4 col-xs-12 text-right">
+              <div class="col-md-4 col-xs-12 text-right xs-text-left">
                 <span class="block-label">Total Sent:</span> <span class="block-value">{{transaction?.total | number:'1.5-5'}} GAME</span>
               </div>
 

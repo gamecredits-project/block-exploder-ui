@@ -1,140 +1,254 @@
 
-    <div class="container-fluid page-banner">
+    <div class="container-fluid page-banner home">
         <div class="container">
-            <div class="row">
-                <div class="col-md-9" (window:resize)="onResize()">
-                    <img *ngIf="showPlaceholder" src="../../assets/images/placeholder.png" alt="" style="filter: blur(5px); width: 100%;">
-                    <div id="line_chart" [chartData]="line_ChartData" [chartOptions]= "line_ChartOptions" (ready)="hidePlaceholder()" chartType="LineChart" GoogleChart ></div>
+          <div class="home-header row">
+            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+              <div class="row">
+                <div class="col-md-12">
+                  <h5>GameCredits Stats</h5>
+                  <h1>${{price | number:'1.5-5'}}</h1>
                 </div>
-                <div class="col-md-3 network-info">
-                    <div class="page-header home-title">
-                      <h3>GameCredits</h3>
+              </div>
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+
+                  <div class="home-box">
+                    <div class="block-label">
+                      BLOCkCHAIN SIZE
                     </div>
-                    <div>
-                    <span class="usd-price-big">${{price | number:'1.5-5'}}</span> <a class="link-underline" href="https://coinmarketcap.com/currencies/gamecredits/"> source</a>
+                    <div class="block-value">{{networkInfo?.blockchainSize}}GB</div>
+                    <div class="bchain-animation">
+                      <div id="ripple" class="centered">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                      </div>
                     </div>
-                    <table class="home-table">
-                      <tr>
-                          <td>
-                            Blockchain height:
-                          </td>
-                          <td>
-                            <a class="link-underline" routerLink="{{ '/blocks/' + latestBlocks[0]?.hash}}">{{latestBlocks[0]?.height}}</a>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>
-                            Coin supply:
-                          </td>
-                          <td>
-                             {{networkInfo?.coinSupply}}
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>
-                            Blockchain size:
-                          </td>
-                          <td>
-                             {{networkInfo?.blockchainSize}}GB
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>
-                            Hash rate:
-                          </td>
-                          <td>
-                             {{networkInfo?.hashrate / 1000000000 | number:'1.1-1'}} GH/s
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>
-                            Number of transactions: &nbsp;
-                          </td>
-                          <td>
-                              {{networkInfo?.numTransactions}}
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>
-                            Sync status:
-                          </td>
-                          <td>
-                            {{clientInfo?.syncProgress}} %
-                          </td>
-                      </tr>
-                    </table>
-                    <p>
-                        <a href="{{bootstrapLink}}" class="btn btn-primary download-button" role="button"> <i class="icon-download" aria-hidden="true"> Download bootstrap.zip </i></a>
-                    </p>
+                  </div>
+
                 </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+
+                  <div class="home-box">
+                    <div class="block-label">
+                      HASH RATE
+                    </div>
+                    <div class="block-value">{{networkInfo?.hashrate / 1000000000 | number:'1.1-1'}} GH/s</div>
+                  </div>
+
+
+                </div>
+              </div>
+              <div class="row hidden-md hidden-sm hidden-xs" style="margin-top: 43px;">
+                <div class="col-md-6">
+                  <button class="btn home-download-btn"> Download Current Chain</button>
+                </div>
+                <div class="col-md-6">
+                  <span class="block-value">Source of information</span><br />
+                  <a href="coinmarketcap.com">coinmarketcap.com</a>
+                </div>
+
+              </div>
             </div>
-        </div>
-    </div>
+            <div class="col-lg-6 col-md-9 col-sm-12 col-xs-12" style="min-height: 400px">
+                CHART
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
+              <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
+                <div class="home-box">
+                  <div class="block-label">
+                    SYNC STATUS
+                  </div>
+                  <div class="block-value">{{clientInfo?.syncProgress}} %</div>
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
+                <div class="home-box">
+                  <div class="block-label">
+                    COIN SUPPLY
+                  </div>
+                  <div class="block-value">{{networkInfo?.coinSupply}}</div>
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
+                <div class="home-box">
+                  <div class="block-label">
+                    BLOCKCHAIN HEIGHT
+                  </div>
+                  <div class="block-value">{{latestBlocks[0]?.height}}</div>
 
-    <div class="container">
-        <div class="search-div hidden-xs hidden-sm ">
-            <i class="icon-search" aria-hidden="true"></i>
-            <input #search type="text" class="search" placeholder="Search by block hash, block height, transaction ID or address" (keyup.enter)="onSearch(search.value)">
-        </div>
-        <div class="search-div-sm hidden-md hidden-lg ">
-            <i class="icon-search" aria-hidden="true"></i>
-            <input #searchsm type="text" class="search" placeholder="Search" (keyup.enter)="onSearch(searchsm.value)">
-        </div>
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
+                <div class="home-box">
+                  <div class="block-label">
+                    # OF TRANSACTIONS
+                  </div>
+                  <div class="block-value">{{networkInfo?.numTransactions}}</div>
 
-        <h1>Latest blocks</h1>
-        <table class="table latest-blocks-table">
-            <thead>
-            <tr>
-              <th>Height</th>
-              <th>Age</th>
-              <th class="hidden-xs hidden-sm">Transactions</th>
-              <th class="hidden-md hidden-lg">TX Count</th>
-              <th>Total Sent</th>
-              <th>Size (kB)</th>
-            </tr>
-            </thead>
+                </div>
+              </div>
 
-            <tbody *ngIf="latestBlocks" >
-              <tr *ngFor="let block of blocks.slice().reverse()">
-                <td>
-                  <a routerLink="{{ '/blocks/' + block.hash}}">{{block?.height}}</a>
-                </td>
-                <td>
-                  {{calulateMinutesFromNow(block?.time)}}
-                </td>
-                <td>
-                  {{block?.tx?.length}}
-                </td>
-                <td>
-                  {{block?.total | number:'1.5-5'}} GAME
-                </td>
-                <td>
-                  {{block?.size}}
-                </td>
-              </tr>
+            </div>
+            <div class=" hidden-lg hidden-xs col-sm-12 col-md-12 vcenter" style="margin-top: 43px;">
+              <div class="col-md-6 col-sm-6">
+                <button class="btn home-download-btn-lg"> Download</button>
+              </div>
+              <div class="col-md-6 col-sm-6 vcenter" style="padding-left: 30px; padding-top: 12px">
+                <span class="block-value">Source of information</span>
+                <a href="coinmarketcap.com">coinmarketcap.com</a>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- BLOCKS & TRANSACTIONS -->
+          <div class="home-body row">
+
+              <div class="col-lg-7 col-md-12">
+                <div class="row">
+                  <div class="col-xs-7 col-sm-7 col-md-7" >
+                    <h2>Latest Blocks</h2>
+                  </div>
+                  <div class="col-xs-5 col-sm-5 col-md-5 text-right" style="padding-right: 24px;padding-top: 21px;">
+                    <a routerLink="/blocks/">
+                      View All
+                    </a>
+                  </div>
+                </div>
+                <table class="table latest-blocks-table hidden-xs">
+                  <thead>
+                  <tr class="blocks-table-header">
+                    <th>HEIGHT</th>
+                    <th>AGE</th>
+                    <th>TRANSACTIONS</th>
+                    <th>TOTAL SENT</th>
+                    <th>SIZE (KB)</th>
+                  </tr>
+                  </thead>
+
+                  <tbody *ngIf="latestBlocks" >
+                  <tr *ngFor="let block of latestBlocks">
+                    <td>
+                      <a routerLink="{{ '/blocks/' + block.hash}}">{{block?.height}}</a>
+                    </td>
+                    <td>
+                      {{calulateMinutesFromNow(block?.time)}}
+                    </td>
+                    <td>
+                      {{block?.tx?.length}}
+                    </td>
+                    <td>
+                      {{block?.total | number:'1.5-5'}} GAME
+                    </td>
+                    <td>
+                      {{block?.size}}
+                    </td>
+                  </tr>
+                  <tr *ngFor="let block of blockArray">
+                    <td>
+                      <a routerLink="{{ '/blocks/' + block.hash}}">{{block?.height}}</a>
+                    </td>
+                    <td>
+                      {{calulateMinutesFromNow(block?.time)}}
+                    </td>
+                    <td>
+                      {{block?.tx?.length}}
+                    </td>
+                    <td>
+                      {{block?.total | number:'1.5-5'}} GAME
+                    </td>
+                    <td>
+                      {{block?.size}}
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+                <!--SMALL SCREEN BLOCKS-->
+                <div class="hidden-sm hidden-lg hidden-md panel panel-default panel-block" *ngIf="latestBlocks" >
+                  <div class="panel panel-default panel-block"  *ngFor="let block of latestBlocks">
+                    <div class="panel-heading" style="">
+                      <p class="block-link col-sm-11 col-xs-10 vcenter">
+                        <a routerLink="{{ '/blocks/' + block.hash}}">{{block?.height}}</a>
+                      </p>
+                      <div class="panel-rectangle">
+                        <a routerLink="{{ '/blocks/' + block.hash}}">
+                        <i class="glyphicon glyphicon-chevron-right vcenter"></i>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="panel-body">
+                      <div class="">
+                        <div class="col-xs-4 block-content" style="height: 100%; border-right: 1px solid rgba(123, 147, 166, 0.1) ">
+                          <p class="block-label">AGE</p>
+                          <p class="block-value"> {{calulateMinutesFromNow(block?.time)}}</p>
+                      </div>
+                        <div class="col-xs-4 block-content" style="height: 100%; border-right: 1px solid rgba(123, 147, 166, 0.1)">
+                          <p class="block-label">TRANS.</p>
+                          <p class="block-value"> {{block?.tx?.length}}</p>
+
+                        </div>
+                        <div class="col-xs-4 block-content" style="height: 100%">
+                          <p class="block-label">SIZE (KB)</p>
+                          <p class="block-value"> {{block?.size}}</p>
+
+                        </div>
+                        <div class="col-xs-12 block-content" style="height: 100% ;border-top: 1px solid rgba(123, 147, 166, 0.1)">
+                          <p class="block-label">TOTAL SENT GAME</p>
+                          <p class="block-value"> {{block?.total | number:'1.5-5'}} </p>
+
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+            <div class="col-md-5">
+              <div class="row">
+                <div class="col-xs-7 col-sm-7 col-md-7" >
+                  <h2>Latest Transactions</h2>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 text-right" style="padding-right: 24px;padding-top: 21px;">
+                  <a routerLink="/transactions/">
+                    View All
+                  </a>
+                </div>
+              </div>
+              <!--TODO@luka: replace this with transactions table-->
+              <table class="table latest-blocks-table ">
+                <thead>
+                <tr class="blocks-table-header">
+                  <th>HEIGHT</th>
+                  <th class="hidden-xs">AGE</th>
+                  <th class="hidden-xs">TRANSACTIONS</th>
+                  <th>TOTAL SENT</th>
+                  <th class="hidden-xs">SIZE (KB)</th>
+                </tr>
+                </thead>
+
+                <tbody *ngIf="latestBlocks" >
                 <tr *ngFor="let block of latestBlocks">
-                  <td>
+                  <td >
                     <a routerLink="{{ '/blocks/' + block.hash}}">{{block?.height}}</a>
                   </td>
-                  <td>
+                  <td class="hidden-xs">
                     {{calulateMinutesFromNow(block?.time)}}
                   </td>
-                  <td>
+                  <td class="hidden-xs">
                     {{block?.tx?.length}}
                   </td>
                   <td>
                     {{block?.total | number:'1.5-5'}} GAME
                   </td>
-                  <td>
+                  <td class="hidden-xs">
                     {{block?.size}}
                   </td>
                 </tr>
-              </tbody>
-          </table>
-          <div class="row text-center">
-             <hr>
-             <div class="cointainer-blocks">
-                <a class="btn btn-primary all-blocks-button" routerLink="/blocks"> <i class="icon-th" aria-hidden="true"> </i> Show all blocks</a>
-             </div>
-          </div>
+                </tbody>
+              </table>
+            </div>
+
+
+        </div>
     </div>
+
