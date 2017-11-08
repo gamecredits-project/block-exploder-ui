@@ -29,11 +29,29 @@
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6">
 
-                  <div class="home-box">
-                    <div class="block-label">
-                      HASH RATE
+                  <div class="home-box row height-80-px no-left-right-margin">
+                    <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12 no-left-right-padding">
+                      <div class="block-label">
+                        HASH RATE
+                      </div>
+                      <div class="block-value">{{networkInfo?.hashrate / 1000000000 | number:'1.1-1'}} GH/s</div>
                     </div>
-                    <div class="block-value">{{networkInfo?.hashrate / 1000000000 | number:'1.1-1'}} GH/s</div>
+                    <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12 no-left-right-padding" style="overflow:hidden;">
+                      <div  class="position-top-54-px">
+                      <svg 
+                      width="120px" height="100px"
+                      viewBox="5 0 80 60">
+                      <path id="wave" 
+                          fill="none" 
+                          stroke="#00D7DF" 
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          [attr.d]="buildWave(120, 90)"
+                          >
+                      </path>
+                      </svg>
+                    </div>
+                    </div>
                   </div>
 
 
@@ -50,8 +68,9 @@
 
               </div>
             </div>
-            <div class="col-lg-6 col-md-9 col-sm-12 col-xs-12" style="min-height: 400px">
-                CHART
+            <div class="col-lg-6 col-md-9 col-sm-12 col-xs-12" style="min-height: 400px; padding-top: 12px;">
+              <h5 style="padding-left: 8px;">Network Hashrate</h5>
+              <div id="line_chart" [chartData]="line_ChartData" [chartOptions]= "line_ChartOptions" (ready)="hidePlaceholder()" chartType="LineChart" GoogleChart ></div>
             </div>
             <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
               <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
@@ -218,30 +237,18 @@
               <table class="table latest-blocks-table ">
                 <thead>
                 <tr class="blocks-table-header">
-                  <th>HEIGHT</th>
-                  <th class="hidden-xs">AGE</th>
-                  <th class="hidden-xs">TRANSACTIONS</th>
-                  <th>TOTAL SENT</th>
-                  <th class="hidden-xs">SIZE (KB)</th>
+                  <th>TRANSACTION ID</th>
+                  <th>GAME</th>
                 </tr>
                 </thead>
 
-                <tbody *ngIf="latestBlocks" >
-                <tr *ngFor="let block of latestBlocks">
+                <tbody *ngIf="latestTransactions" >
+                <tr *ngFor="let trans of latestTransactions">
                   <td >
-                    <a routerLink="{{ '/blocks/' + block.hash}}">{{block?.height}}</a>
-                  </td>
-                  <td class="hidden-xs">
-                    {{calulateMinutesFromNow(block?.time)}}
-                  </td>
-                  <td class="hidden-xs">
-                    {{block?.tx?.length}}
+                    <a routerLink="{{ '/transactions/' + trans.txid}}">{{trans?.txid.substring(0,15)}}..</a>
                   </td>
                   <td>
-                    {{block?.total | number:'1.5-5'}} GAME
-                  </td>
-                  <td class="hidden-xs">
-                    {{block?.size}}
+                    {{trans?.total | number:'1.5-5'}} GAME
                   </td>
                 </tr>
                 </tbody>

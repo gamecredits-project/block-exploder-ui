@@ -14,7 +14,18 @@ export class HomePageService {
     ) { }
 
     getLatestBlocks() : Observable<any> {
-        const url   = this.baseApiUrl + 'blocks/latest?limit=10';
+        const url   = this.baseApiUrl + 'blocks/latest?limit=8';
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        });
+        return this._http.get(url, {headers})
+            .map(res => this.extractData(res))
+            .catch(this.handleError);
+    }
+
+    getLatestTransactions() : Observable<any> {
+        const url   = this.baseApiUrl + 'transactions/latest?limit=8';
         const headers = new Headers({
             'Content-Type': 'application/json',
             'Accept': 'application/json',

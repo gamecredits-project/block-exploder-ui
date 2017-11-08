@@ -328,6 +328,72 @@ footer {
   line-height: 46px;
 }
 
+svg {
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+#wave {
+  stroke-dasharray: 0 16 101 16;
+  -webkit-animation: moveTheWave 2400ms linear infinite;
+          animation: moveTheWave 2400ms linear infinite;
+}
+
+@-webkit-keyframes moveTheWave {
+  0% {
+    stroke-dashoffset: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  100% {
+    stroke-dashoffset: -133;
+    -webkit-transform: translate3d(-90px, 0, 0);
+            transform: translate3d(-90px, 0, 0);
+  }
+}
+
+@keyframes moveTheWave {
+  0% {
+    stroke-dashoffset: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  100% {
+    stroke-dashoffset: -133;
+    -webkit-transform: translate3d(-90px, 0, 0);
+            transform: translate3d(-90px, 0, 0);
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 768px) {
+  .height-80-px{
+      height: 80px;
+    }
+  
+  .position-top-54-px{
+    position: relative;
+    top: -54px;
+  }  
+}
+
+.no-left-right-padding {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.no-left-right-margin {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+.position-top-54-px{
+
+}
+
+.height-80-px{
+
+}
+
 .custom-btn {
   height: 48px;
   width: 280px;

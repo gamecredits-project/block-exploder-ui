@@ -10,7 +10,8 @@ import { BlockSocketService } from "app/pages/socket/socket.service";
  })
  export class HomePageComponent implements OnInit, OnDestroy {
 
- 	latestBlocks: any = [];
+  latestBlocks: any = [];
+  latestTransactions: any = [];
  	networkInfo: any = [];
  	bootstrapLink: any = [];
   price: number;
@@ -24,20 +25,17 @@ import { BlockSocketService } from "app/pages/socket/socket.service";
   public line_ChartOptions = {
         curveType: 'function',
         height: 400,
-        vAxis: {baselineColor: '#CCCCCC', gridlines: { count: 13, color: '#dddddd'} , textStyle: {color: 'white'}},
-        hAxis: {format: 'd. MMM', baselineColor: '#CCCCCC', gridlines: { count: 10, color: '#bbbbbb' }, minorGridlines: {  color: 'red' }, textStyle: {color: 'white'}},
-        chartArea: {left:40,top:40,width:'90%',height:'80%'},
-        backgroundColor: '#33A579',
+        vAxis: {baselineColor: '#CCCCCC', gridlines: { count: 13, color: '#2d3c49', opacity:0.13} , textStyle: {color: '#808080'}},
+        hAxis: {format: 'd. MMM', baselineColor: '#0a0a0a', gridlines: { count: 10, color: '#1d2e3b', opacity:0.13 }, minorGridlines: {  color: 'red' }, textStyle: {color: '#808080'}},
+        chartArea: {left:40,top:20,width:'95%',height:'80%'},
+        backgroundColor: '#1d2e3b',
         yAxes: [{
                     ticks: {
                         beginAtZero:true
                     }
                     , color: 'red'
                 }],
-        legend: {
-            position: 'top', textStyle: {color: 'white', fontSize: 16}, alignment: 'center', opacity: 0.1
-        },
-        colors: ['white'],
+        colors: ['#dddddd'],
         pointSize: 8,
         dataOpacity: 0.5
     };
@@ -62,6 +60,10 @@ import { BlockSocketService } from "app/pages/socket/socket.service";
 
  		this.homePageService.getLatestBlocks().subscribe( (resp) => {
 			this.latestBlocks.push(...resp);
+		});
+
+    this.homePageService.getLatestTransactions().subscribe( (resp) => {
+			this.latestTransactions.push(...resp);
 		});
 
     this.homePageService.getNetworkPrice().subscribe( (resp) => {
@@ -122,6 +124,18 @@ import { BlockSocketService } from "app/pages/socket/socket.service";
     this.socket = this.blockSocketService.getBlock().subscribe((block_data) =>{
       this.blocks.push(block_data);
     });
+  }
+
+  private buildWave(w, h):any {
+    
+      var pathData: any;
+      var a = h / 4;
+      var y = h / 2;
+      var m = 0.512286623256592433;
+
+      return pathData = ['M', w * 0, y + a / 2, 'c', a * m, 0, -(1 - a) * m, -a, a, -a, 's', -(1 - a) * m, a, a, a, 's', -(1 - a) * m, -a, a, -a, 's', -(1 - a) * m, a, a, a, 's', -(1 - a) * m, -a, a, -a, 's', -(1 - a) * m, a, a, a, 's', -(1 - a) * m, -a, a, -a, 's', -(1 - a) * m, a, a, a, 's', -(1 - a) * m, -a, a, -a, 's', -(1 - a) * m, a, a, a, 's', -(1 - a) * m, -a, a, -a, 's', -(1 - a) * m, a, a, a, 's', -(1 - a) * m, -a, a, -a, 's', -(1 - a) * m, a, a, a, 's', -(1 - a) * m, -a, a, -a].join(' ');
+    
+      // path.setAttribute('d', pathData);
   }
 
  	calulateMinutesFromNow( time: number) {
