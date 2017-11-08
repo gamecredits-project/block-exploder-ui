@@ -260,6 +260,7 @@ body {
   list-style: none;
   background-color: #1D2E3B;
   margin-bottom: 0;
+  padding: 0;
 }
 
 .header-custom-nav > li > a {
@@ -441,6 +442,10 @@ svg {
   .xs-text-left {
     text-align: left !important;
   }
+  .custom-btn {
+    width: 100%;
+  }
+
 }
 
 @media screen and (max-width: 1198px) {
@@ -1189,6 +1194,7 @@ p.address {
   font-weight: 600;
   color: rgba(123, 147, 166, 0.5);
   text-transform: uppercase;
+  margin-bottom: 7px;
 }
 
 .block-value {
