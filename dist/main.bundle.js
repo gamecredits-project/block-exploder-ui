@@ -1332,29 +1332,6 @@ var HomePageComponent = (function () {
     HomePageComponent.prototype.hidePlaceholder = function () {
         this.showPlaceholder = false;
     };
-    HomePageComponent.prototype.onSearch = function (param) {
-        var _this = this;
-        this.homePageService.getSearchItemType(param).subscribe(function (resp) {
-            if (resp.type == 'block') {
-                // check if search param is integer
-                if (!isNaN(resp.searchBy)) {
-                    _this.homePageService.getBlockHashByHeight(resp.searchBy).subscribe(function (data) {
-                        _this.router.navigateByUrl('blocks/' + data['hash']);
-                    });
-                }
-                else {
-                    _this.router.navigateByUrl('blocks/' + resp.searchBy);
-                }
-            }
-            else if (resp.type == 'address') {
-                _this.router.navigateByUrl('addresses/' + resp.searchBy);
-                // console.log(resp.searchBy);
-            }
-            else if (resp.type == 'transaction') {
-                _this.router.navigateByUrl('transactions/' + resp.searchBy);
-            }
-        });
-    };
     return HomePageComponent;
 }());
 HomePageComponent = __decorate([
@@ -1699,7 +1676,7 @@ var _a;
 /***/ "../../../../../src/app/pages/layout/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default\">\r\n  <div class=\"container\">\r\n    <!-- Brand and toggle get grouped for better mobile display -->\r\n    <div class=\"navbar-header col-sm-12\">\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-md-4 col-sm-10  vcenter\" style=\"width:235px;\">\r\n          <i class=\"toggler glyphicon glyphicon-menu-hamburger\"\r\n             data-toggle=\"collapse\" data-target=\".bs-example-navbar-collapse-1\">\r\n          </i>\r\n          <a class=\"header-logo\" href=\"#\">\r\n            <img src=\"../../../assets/images/icn_game@2x.png\" alt=\"\" height=\"23.61\">\r\n            Block Explorer</a>\r\n        </div>\r\n        <div class=\"hidden-xs hidden-sm col-md-6 search-header vcenter md-border-left\">\r\n          <i class=\"glyphicon glyphicon-search\"></i>\r\n          <input type=\"text\" placeholder=\"Search by blockhash...\"/>\r\n        </div>\r\n        <div class=\"col-md-2 col-sm-8 col-lg-3 vcenter text-right\">\r\n          <div data-toggle=\"collapse\" data-target=\".bs-example-navbar-collapse-1\"\r\n               class=\"custom-x collapse bs-example-navbar-collapse-1\">\r\n            X\r\n          </div>\r\n        </div>\r\n\r\n\r\n      </div>\r\n    </div>\r\n  </div><!-- /.container-fluid -->\r\n  <!-- Collect the nav links, forms, and other content for toggling -->\r\n</nav>\r\n<div class=\"collapse navbar-collapsed bs-example-navbar-collapse-1\">\r\n  <ul class=\"header-custom-nav\">\r\n    <li><a routerLink=\"/home\">Home</a></li>\r\n    <li><a routerLink=\"/blocks\">Blocks</a></li>\r\n    <li><a routerLink=\"/allTransactions\">Transactions</a></li>\r\n    <li><a routerLink=\"/network\">Network</a></li>\r\n    <li><a href=\"https://blockexplorer.gamecredits.com/api/ui\">API</a></li>\r\n  </ul>\r\n</div><!-- /.navbar-collapse -->\r\n"
+module.exports = "<nav class=\"navbar navbar-default\">\r\n  <div class=\"container\">\r\n    <!-- Brand and toggle get grouped for better mobile display -->\r\n    <div class=\"navbar-header col-sm-12\">\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-md-4 col-sm-10  vcenter\" style=\"width:255px;\">\r\n          <i class=\"toggler glyphicon glyphicon-menu-hamburger\"\r\n             data-toggle=\"collapse\" data-target=\".bs-example-navbar-collapse-1\">\r\n          </i>\r\n          <a class=\"header-logo\" href=\"#\">\r\n            <img src=\"../../../assets/images/icn_game@2x.png\" alt=\"\" height=\"23.61\">\r\n            Block Explorer</a>\r\n        </div>\r\n        <div class=\"hidden-xs hidden-sm col-md-6 search-header vcenter md-border-left\">\r\n          <i class=\"glyphicon glyphicon-search\"></i>\r\n          <input #search type=\"text\" placeholder=\"Search by blockhash...\" (keyup.enter)=\"onSearch(search.value)\" style=\"width: 400px\"/>\r\n        </div>\r\n        <div class=\"col-md-2 col-sm-8 col-lg-3 vcenter text-right\">\r\n          <div data-toggle=\"collapse\" data-target=\".bs-example-navbar-collapse-1\"\r\n               class=\"custom-x collapse bs-example-navbar-collapse-1\">\r\n            X\r\n          </div>\r\n        </div>\r\n\r\n\r\n      </div>\r\n    </div>\r\n  </div><!-- /.container-fluid -->\r\n  <!-- Collect the nav links, forms, and other content for toggling -->\r\n</nav>\r\n<div class=\"collapse navbar-collapsed bs-example-navbar-collapse-1\">\r\n  <ul class=\"header-custom-nav\">\r\n    <li><a routerLink=\"/home\">Home</a></li>\r\n    <li><a routerLink=\"/blocks\">Blocks</a></li>\r\n    <li><a routerLink=\"/allTransactions\">Transactions</a></li>\r\n    <li><a routerLink=\"/network\">Network</a></li>\r\n    <li><a href=\"https://blockexplorer.gamecredits.com/api/ui\">API</a></li>\r\n  </ul>\r\n</div><!-- /.navbar-collapse -->\r\n"
 
 /***/ }),
 
@@ -1709,25 +1686,59 @@ module.exports = "<nav class=\"navbar navbar-default\">\r\n  <div class=\"contai
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HeaderComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home_homePage_service__ = __webpack_require__("../../../../../src/app/pages/home/homePage.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
 
 var HeaderComponent = (function () {
-    function HeaderComponent() {
+    function HeaderComponent(homePageService, router) {
+        this.homePageService = homePageService;
+        this.router = router;
     }
+    HeaderComponent.prototype.onSearch = function (param) {
+        var _this = this;
+        this.homePageService.getSearchItemType(param).subscribe(function (resp) {
+            if (resp.type == 'block') {
+                // check if search param is integer
+                if (!isNaN(resp.searchBy)) {
+                    _this.homePageService.getBlockHashByHeight(resp.searchBy).subscribe(function (data) {
+                        _this.router.navigateByUrl('blocks/' + data['hash']);
+                    });
+                }
+                else {
+                    _this.router.navigateByUrl('blocks/' + resp.searchBy);
+                }
+            }
+            else if (resp.type == 'address') {
+                _this.router.navigateByUrl('addresses/' + resp.searchBy);
+                // console.log(resp.searchBy);
+            }
+            else if (resp.type == 'transaction') {
+                _this.router.navigateByUrl('transactions/' + resp.searchBy);
+            }
+        });
+    };
     return HeaderComponent;
 }());
 HeaderComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'exploder-header',
         template: __webpack_require__("../../../../../src/app/pages/layout/header/header.component.html")
-    })
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__home_homePage_service__["a" /* HomePageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__home_homePage_service__["a" /* HomePageService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object])
 ], HeaderComponent);
 
+var _a, _b;
 //# sourceMappingURL=header.component.js.map
 
 /***/ }),
