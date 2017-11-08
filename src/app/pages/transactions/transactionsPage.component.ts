@@ -12,12 +12,14 @@ import 'rxjs/add/operator/switchMap';
 
  	transaction: any;
  	confirmations: any;
+ 	currentLocation: string ="www.blockexplorer.gamecredits.com";
 
- 	constructor(private transactionsPageService: TransactionsPageService, 
+ 	constructor(private transactionsPageService: TransactionsPageService,
  		private route: ActivatedRoute
 		) {}
 
  	ngOnInit() {
+    this.currentLocation = window.location.href;
  		this.route.params
  			.switchMap((params: Params) => this.transactionsPageService.getTransaction('' + params['txid']))
  			.subscribe( resp => {

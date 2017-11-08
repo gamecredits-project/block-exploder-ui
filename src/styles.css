@@ -1128,6 +1128,7 @@ p.address {
   font-weight: 600;
   color: rgba(123, 147, 166, 0.5);
   text-transform: uppercase;
+  margin-bottom: 7px;
 }
 
 .block-value {

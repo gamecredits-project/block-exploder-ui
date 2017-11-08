@@ -1,4 +1,4 @@
-<div class="container-fluid page-banner block-header">
+<div class=" page-banner block-header">
   <div class="container">
     <div class="">
       <div class="col-xs-12 col-lg-5 col-md-6 col-sm-6 border-right sm-border block-address-wrap">
@@ -10,7 +10,8 @@
         </p>
       </div>
       <div class="col-lg-1 col-md-6 col-sm-6 col-xs-12 qr-code sm-border">
-        <img src="../../../assets/images/qr-eg.jpg" >
+        <ngx-qrcode [qrc-element-type]="'url'" [qrc-value] = "currentLocation">
+        </ngx-qrcode>
       </div>
       <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 block-summary md-border-top">
         <div class="col-lg-12 col-md-12 col-sm-12">
@@ -18,14 +19,15 @@
           <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
             <div class="row block-label">Blockhash</div>
             <div class="row block-value">{{transaction?.blockhash}}</div>
+            <div class="row block-value"><br /></div>
           </div>
           <div class="col-md-1 col-sm-1 hidden-xs"></div>
-          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-10">
             <div class="row block-label">Blocktime:</div>
             <div class="row block-value">{{ ( transaction?.blocktime * 1000 )  | date:'medium'}}</div>
           </div>
-          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-6">
-            <div class="row block-label">Versiom</div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2" >
+            <div class="row block-label">Version</div>
             <div class="row block-value">{{transaction?.version}}</div>
           </div>
         </div>
@@ -49,8 +51,11 @@
                     <li *ngFor="let input of transaction?.vin" >
                       <div *ngIf="input.prev_txid">
                         <p class="block-link">
-                          <a routerLink="{{'/transactions/'+ input.prev_txid}}">
+                          <a routerLink="{{'/transactions/'+ input.prev_txid}}" class="hidden-xs" >
                             {{input.prev_txid}}
+                          </a>
+                          <a routerLink="{{'/transactions/'+ input.prev_txid}}" class="hidden-sm hidden-md hidden-lg" >
+                            {{input.prev_txid.substring(0,10)}}...{{input.prev_txid.substring(55,64)}}
                           </a>
                         </p>
                       </div>
@@ -65,12 +70,15 @@
 
                     <li *ngFor=" let output of transaction?.vout ">
 
-                      <div class="col-md-8 col-sm-8 col-xs-12" *ngFor="let adress of output?.addresses">
-                        <a routerLink="{{'/addresses/'+ adress}}" >
-                          [{{adress}}]
+                      <div class="col-md-8 col-sm-8 col-xs-12" style="padding: 0" *ngFor="let adress of output?.addresses">
+                        <a routerLink="{{'/addresses/'+ adress}}" class="hidden-xs">
+                          {{adress}}
+                        </a>
+                        <a routerLink="{{'/addresses/'+ adress}}" class="hidden-sm hidden-md hidden-lg" >
+                          {{adress.substring(0,10)}}...{{adress.substring(23,64)}}
                         </a>
                       </div>
-                      <div class="col-md-4 col-sm-4 col-xs-12 block-value" >
+                      <div class="col-md-4 col-sm-4 col-xs-12 block-value" style="padding: 0">
                         {{output.value | number:'1.5-5'}} GAME
                       </div>
 
@@ -89,6 +97,7 @@
               <div class="col-md-4 col-xs-12 text-center xs-text-left">
                 <span class="block-label">Status:</span>
                 <span class="block-value" *ngIf=" confirmations > 6">Complete</span>
+                <!--TODO@luka check status names-->
                 <span class="block-value" *ngIf=" confirmations < 7">UnComplete</span>
               </div>
               <div class="col-md-4 col-xs-12 text-right xs-text-left">
