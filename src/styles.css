@@ -199,6 +199,9 @@ body {
   color: #fff;
   cursor: pointer;
   font-weight: bold;
+  /*position: absolute;*/
+  /*top:13px;*/
+  /*right: 10px;*/
 }
 
 .logo-header {
@@ -370,11 +373,11 @@ svg {
   .height-80-px{
       height: 80px;
     }
-  
+
   .position-top-54-px{
     position: relative;
     top: -54px;
-  }  
+  }
 }
 
 .no-left-right-padding {
@@ -1366,8 +1369,9 @@ p.address {
 
 .panel-block .panel-footer {
   border-top: 1px solid rgba(123, 147, 166, 0.15);
-  background: none !important;
-  padding-bottom: 30px;
+  /*background: none !important;*/
+  background-color: #1E2D3A !important;
+  padding-bottom: 10px !important;
 }
 
 .block-transactions-title {
@@ -1579,3 +1583,8 @@ p.address {
   }
 }
 /*END HOME*/
+@media screen and (min-width: 321px){
+  .md-text-right{
+    text-align:center
+  }
+}
