@@ -371,12 +371,15 @@ svg {
 
 @media screen and (max-width: 1200px) and (min-width: 768px) {
   .height-80-px{
-      height: 80px;
+      height: 86px;
     }
 
   .position-top-54-px{
     position: relative;
     top: -54px;
+  }
+  .animation-box {
+    min-height: 86px!important;
   }
 }
 
@@ -1582,9 +1585,22 @@ p.address {
     padding-top: 0px;
   }
 }
+.animation-box {
+  min-height: 210px;
+}
 /*END HOME*/
 @media screen and (min-width: 321px){
   .md-text-right{
     text-align:center
+  }
+}
+input:focus{
+  outline: none!important;
+}
+@media screen and (max-width: 768px){
+  .status-boxes .home-box {
+    background: none;
+    padding: 0;
+
   }
 }
