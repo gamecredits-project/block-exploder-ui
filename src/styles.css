@@ -117,7 +117,7 @@ body {
 }
 
 .sebm-google-map-container {
-  height: 600px;
+  height: 740px;
 
 }
 
@@ -496,12 +496,21 @@ svg {
   cursor: pointer;
 }
 
+.all-peers-button{
+  margin-top: 30px;
+  width: 280px;
+  height: 48px;
+  background-color: #4B6070;
+  border-radius: 6px;
+  border-style: none;
+}
+
 .text-for-network {
   padding-top: 30px;
 }
 
 .map {
-  height: 400px;
+  height: 600px;
 }
 
 .peers-table th, .peers-table td {
@@ -689,7 +698,7 @@ svg {
 }
 
 .one-card-table td {
-  background-color: #20303c;
+  background-color: #283946;
   color: #7B93A6;
   font-size: 11px;
   font-weight: 400;
@@ -1423,6 +1432,7 @@ p.address {
   font-size: 36px;
   font-weight: 600;
   line-height: 36px;
+  word-break: break-word;
 }
 
 .map {
