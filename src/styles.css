@@ -1610,3 +1610,7 @@ input:focus{
   padding-left: 15px;
   text-transform: none;
 }
+
+body {
+  font-family: "Open Sans"!important;
+}
