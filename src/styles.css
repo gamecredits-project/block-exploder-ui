@@ -1604,3 +1604,9 @@ input:focus{
 
   }
 }
+
+.navbar-header .navbar-nav li>a{
+  padding-right: 15px;
+  padding-left: 15px;
+  text-transform: none;
+}
