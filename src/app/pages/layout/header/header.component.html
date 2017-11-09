@@ -12,11 +12,11 @@
             <img src="../../../assets/images/icn_game@2x.png" alt="" height="23.61">
             Block Explorer</a>
         </div>
-        <div class="hidden-xs hidden-sm col-md-6 search-header vcenter md-border-left">
+        <div class="hidden-xs col-sm-5 col-md-6 search-header vcenter md-border-left">
           <i class="glyphicon glyphicon-search"></i>
-          <input #search type="text" placeholder="Search by blockhash..." (keyup.enter)="onSearch(search.value)" style="width: 400px"/>
+          <input #search type="text" placeholder="Search by blockhash..." (keyup.enter)="onSearch(search.value)" style="max-width: 200px"/>
         </div>
-        <div class="col-md-2 col-sm-8 col-lg-3 vcenter text-right">
+        <div class="col-md-2 col-sm-1 col-lg-3 vcenter text-right">
           <div data-toggle="collapse" data-target=".bs-example-navbar-collapse-1"
                class="custom-x collapse bs-example-navbar-collapse-1">
             X
