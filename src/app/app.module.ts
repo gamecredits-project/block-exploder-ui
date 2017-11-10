@@ -32,7 +32,7 @@ import { TransactionsPageService } from './pages/transactions/transactionsPage.s
 import { AddressPageService } from './pages/address/addressPage.service';
 import { NetworkPageService } from './pages/network/networkPage.service';
 import { BlockSocketService, TxSocketService } from "app/pages/socket/socket.service";
-import { NgxQRCodeModule } from 'ngx-qrcode3';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 
 @NgModule({

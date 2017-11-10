@@ -126,7 +126,7 @@ import { BlockSocketService } from "app/pages/socket/socket.service";
     });
   }
 
-  private buildWave(w, h):any {
+  public buildWave(w, h):any {
     
       var pathData: any;
       var a = h / 4;
