@@ -1,16 +1,21 @@
-<div class="block-details"> 
+<div class="block-details">
   <div class="container-fluid page-banner-2 block-header">
     <div class="container">
       <div class="row">
         <div class="col-lg-6 left-half">
           <div class="bottom-border-block-row">
             <h1 class="block-title">
-              Block <span class="hidden-sm hidden-md hidden-lg"> <br> </span> #{{block?.height}} 
+              Block <span class="hidden-sm hidden-md hidden-lg"> <br> </span> #{{block?.height}}
               <span class="pull-right next-prev-link hidden-xs " *ngIf="block?.nextblockhash"> <a routerLink="{{ '/blocks/' + block?.nextblockhash}}">></a>  </span>
               <span class="pull-right next-prev-link hidden-xs" > <a   routerLink="{{ '/blocks/' + block?.previousblockhash}}"><</a> </span>
             </h1>
             <div class="block-hash-text">
             <span >{{block?.hash}}</span>
+            </div>
+            <br>
+            <div class="row prev-next-btn hidden-lg hidden-md hidden-sm ">
+              <span class="next-prev-link pull-left" > <a   routerLink="{{ '/blocks/' + block?.previousblockhash}}"><</a> </span>
+              <span class="next-prev-link  pull-right" *ngIf="block?.nextblockhash"> <a routerLink="{{ '/blocks/' + block?.nextblockhash}}">></a>  </span>
             </div>
             <br>
           </div>
@@ -142,7 +147,7 @@
                       <h3 class="block-transactions-title ">Block Transactions &nbsp; &nbsp;<span class="number-with-background">{{transactions?.length}}</span></h3>
                       <span class="pull-right small-loop-icon hidden-xs"><i class="glyphicon glyphicon-search"></i></span>
                     </div>
-            
+
 
                     <div class="main-card-block" *ngFor="let trans of transactions">
 
@@ -157,7 +162,7 @@
 
                         <div class="first-row-box pull-right">
                             <a routerLink="{{'/transactions/' + trans.txid}}" style="text-decoration:none;">></a>
-                        </div>	
+                        </div>
                     </div>
 
                      <div class="panel-body" style="background-color: rgba(123,147,166,0.07);">
@@ -165,30 +170,30 @@
                         <div class="col-md-12">
                           <span class="block-summary-small-text">INPUTS</span>
                           <ul class="list-unstyled">
-            
+
                             <li *ngFor="let input of trans.vin" >
-                              <div *ngIf="input.prev_txid"> 
+                              <div *ngIf="input.prev_txid">
                                 <p class="block-link">
                                   <a routerLink="{{'/transactions/'+ input.prev_txid}}" class="block-transaction-link hidden-xs">
                                     {{input.prev_txid}}
                                   </a>
                                   <a routerLink="{{'/transactions/'+ input.prev_txid}}" class="block-transaction-link hidden-sm hidden-md hidden-lg">
                                     {{input.prev_txid.substring(0,14)}}...{{input.prev_txid.substring(50,64)}}
-                                  </a> 
-                                  
+                                  </a>
+
                                 </p>
                               </div>
                               <div *ngIf="!input.prev_txid"> <span class="block-summary-small-text-white">No Inputs (Newly Generated Coins)</span></div>
-                            </li> 
-            
+                            </li>
+
                           </ul>
                         </div>
                         <div class="col-sm-12">
                             <span class="block-summary-small-text">OUTPUTS</span>
                           <ul class="list-unstyled">
-            
+
                             <li *ngFor=" let output of trans.vout ">
-                              
+
                               <div *ngFor="let adress of output.addresses" class="holder-div" >
                                   <div class="col-sm-7">
                                     <a routerLink="{{'/addresses/'+ adress}}" class="block-transaction-link hidden-xs" >
@@ -199,9 +204,9 @@
                                     </a>
                                   </div>
                                   <div class="col-sm-3" style="text-align:center;">
-                                      <span class="block-summary-small-text-white">{{output.value | number:'1.5-5'}} GAME</span> 
+                                      <span class="block-summary-small-text-white">{{output.value | number:'1.5-5'}} GAME</span>
                                   </div>
-                                  <div class="col-sm-2 border-r-4px" *ngIf="output.spent" style="background-color: rgba(20,199,219,0.15);" > 
+                                  <div class="col-sm-2 border-r-4px" *ngIf="output.spent" style="background-color: rgba(20,199,219,0.15);" >
                                     <span  class="badge-status-text" style="	color: #14C7DB;">SPENT</span>
                                   </div>
                                   <div class="col-sm-2 border-r-4px" *ngIf="!output.spent" style="background-color: rgba(123,147,166,0.15);">
@@ -209,7 +214,7 @@
                                   </div>
                               </div>
                             </li>
-            
+
                           </ul>
                         </div>
                       </div>
@@ -220,16 +225,16 @@
                         </div>
                         <span class="hidden-sm hidden-md hidden-lg"> <br> </span>
                         <div class="pull-right footer-card-right-div hidden-xs">
-                          <span class="block-summary-small-text">TOTAL</span> &nbsp; 
+                          <span class="block-summary-small-text">TOTAL</span> &nbsp;
                           <span class="block-summary-small-text-white">{{trans?.total | number:'1.5-5'}} GAME </span>
                         </div>
                         <div class="footer-card-right-div hidden-sm hidden-md hidden-lg" style="padding-left:15px !important">
-                            <span class="block-summary-small-text">TOTAL</span> &nbsp; 
+                            <span class="block-summary-small-text">TOTAL</span> &nbsp;
                             <span class="block-summary-small-text-white">{{trans?.total | number:'1.5-5'}} GAME </span>
                           </div>
                     </div>
                   </div>
-            
+
                 </div>
               </div>
         </div>
