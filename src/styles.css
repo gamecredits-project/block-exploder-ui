@@ -1605,6 +1605,10 @@ input:focus{
   }
 }
 
+.wtf-class {
+  height: 100px !important;
+}
+
 .navbar-header .navbar-nav li>a{
   padding-right: 15px;
   padding-left: 15px;

@@ -17,7 +17,8 @@ import 'rxjs/add/operator/switchMap';
  	transactionsTagNumber: number = 0;
  	volume: number = 0;
  	price: number;
- 	nextTransactionsPageLink: string = '';
+	nextTransactionsPageLink: string = '';
+	nextUnspentTransactionsPageLink: string = ''; 
  	currentValue: number = 0;
 	totalTransactionsNumber: number = 0;
 	currentLocation: string ="www.blockexplorer.gamecredits.com";
@@ -46,15 +47,8 @@ import 'rxjs/add/operator/switchMap';
  		this.route.params
  			.switchMap((params: Params) => this.addressPageService.getAddressUnspent('' + params['hash']))
  			.subscribe( resp => {
- 				let i;
- 				for (i = 0; i < resp.length; i++){
-					let item = resp[i];
-					item.vin = Array.from(resp[i].addresses);
-					this.unspent.push(item); 					
- 				}
-
-
- 				console.log(this.unspent);
+				this.nextUnspentTransactionsPageLink = resp.next;
+ 				this.unspent = resp.utxo;
  			});
 
  		this.route.params
