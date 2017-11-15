@@ -2,11 +2,12 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import { HomePageService } from "./homePage.service";
 import { Router } from '@angular/router';
 import { BlockSocketService } from "app/pages/socket/socket.service";
+import { Globals } from "./../globals";
 
  @Component ({
  	selector: 'exploder-home',
  	templateUrl: 'homePage.component.html',
-  providers: [BlockSocketService]
+  providers: [BlockSocketService, Globals]
  })
  export class HomePageComponent implements OnInit, OnDestroy {
 
@@ -48,12 +49,13 @@ import { BlockSocketService } from "app/pages/socket/socket.service";
   private block_data: any;
   private test: any;
 
-	constructor(private homePageService: HomePageService, private router: Router, private blockSocketService: BlockSocketService) {
+	constructor(private homePageService: HomePageService, private router: Router, private blockSocketService: BlockSocketService, private globals: Globals) {
     this.blocks = [];
   }
 
 
  	ngOnInit() {
+
     this.socket = this.blockSocketService.initConnection();
     this.getBlockInitMessage();
     this.getSocketBlock();

@@ -33,6 +33,7 @@ import { AddressPageService } from './pages/address/addressPage.service';
 import { NetworkPageService } from './pages/network/networkPage.service';
 import { BlockSocketService, TxSocketService } from "app/pages/socket/socket.service";
 import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { Globals } from './pages/globals';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
   AddressPageService,
   NetworkPageService,
   BlockSocketService,
-  TxSocketService
+  TxSocketService,
+  Globals
   ],
   bootstrap: [AppComponent]
 })
