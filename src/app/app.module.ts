@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from "./app-routing-module";
+import { AppRoutingModule } from './app-routing-module';
 
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { GoogleChart } from './customDirectives/angular2-google-chart.directive';
@@ -31,7 +31,7 @@ import { BlockPageService } from './pages/block/blockPage.service';
 import { TransactionsPageService } from './pages/transactions/transactionsPage.service';
 import { AddressPageService } from './pages/address/addressPage.service';
 import { NetworkPageService } from './pages/network/networkPage.service';
-import { BlockSocketService, TxSocketService } from "app/pages/socket/socket.service";
+import { BlockSocketService, TxSocketService } from './pages/socket/socket.service';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { Globals } from './pages/globals';
 

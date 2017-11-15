@@ -1,0 +1,119 @@
+/**
+** HEADER
+**/
+.header-logo {
+  color: white !important;
+  font-size: 16px;
+  text-decoration: none !important;
+  line-height: 22px;
+  font-weight: bold;
+  vertical-align: bottom;
+}
+
+.header-logo img {
+  margin-right: 12px;
+  vertical-align: middle;
+}
+
+.navbar-default {
+  /*background-color: #2D475B ! important;*/
+  margin: 0 !important;
+  border: none !important;
+  display: flex;
+  align-items: center;
+  border-radius: 0 !important;
+}
+
+.toggler {
+  color: #fff;
+  margin-right: 32px;
+  font-size: 19px;
+  /*padding-top: 10px;*/
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.custom-x {
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  /*position: absolute;*/
+  /*top:13px;*/
+  /*right: 10px;*/
+}
+
+.logo-header {
+  /*margin: 7px 0 7px 0;*/
+  border-right: 1px solid rgba(123, 147, 166, 0.15);
+}
+
+.search-header {
+  vertical-align: middle;
+  padding: 7px;
+  line-height: 19px;
+  font-size: 13px;
+  margin-left: 13px;
+
+}
+
+.search-header input {
+  /*background-color: #2D475B;*/
+  color: rgba(255, 255, 255, 0.3);
+  /*color: #7B93A6;*/
+  /*background-color: #2D475B;*/
+  border: none;
+}
+
+::-webkit-input-placeholder { /* Chrome */
+  color: rgba(255, 255, 255, 0.3);
+}
+
+:-ms-input-placeholder { /* IE 10+ */
+  color: rgba(255, 255, 255, 0.3);
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(255, 255, 255, 0.3);
+}
+
+:-moz-placeholder { /* Firefox 4 - 18 */
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.search-header .glyphicon {
+  color: #7B93A6;
+  font-size: 19px;
+  vertical-align: middle;
+  margin-right: 14px;
+}
+
+.navbar-default .navbar-nav li a, .navbar-default .navbar-brand {
+  color: white !important;
+}
+
+.navbar-default .navbar-nav li a {
+  text-transform: uppercase;
+}
+
+.header-custom-nav {
+  text-align: center;
+  float: none;
+  list-style: none;
+  background-color: #1D2E3B;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.header-custom-nav > li > a {
+  text-decoration: none;
+  color: #fff;
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 40px;
+}
+
+/**
+** END HEADER
+**/
