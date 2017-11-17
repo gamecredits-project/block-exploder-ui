@@ -1,0 +1,79 @@
+footer {
+  min-height: 428px;
+  background-color: #16242E;
+  /*background-color: #fff;*/
+  padding: 55px 0 55px 0;
+}
+footer.white-color { background: #fff}
+.footer-wrap {
+  /*position: relative;*/
+  /*bottom: 50px;*/
+}
+
+.footer-info {
+  font-size: 16px;
+  color: #FFFFFF;
+  padding: 64px 0 64px 0;
+}
+
+.footer-info .logo {
+  margin-bottom: 55px;
+}
+
+.footer-info h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.footer-info h2 {
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 0;
+}
+
+.footer-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-info li a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  line-height: 46px;
+}
+
+.custom-btn {
+  height: 48px;
+  width: 280px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #424EDE 0%, #5286FA 100%) !important;
+  font-size: 15px !important;
+  line-height: 20px !important;
+  font-weight: bold !important;
+  color: #FFF !important;
+}
+@media screen and (max-width: 740px) {
+  .navbar-container {
+    width: 100%;
+  }
+
+  .footer-info .gc-info {
+    margin-bottom: 52px;
+  }
+
+  .footer-links {
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+  }
+
+  .footer-info h1 {
+    margin-bottom: 48px;
+  }
+
+  .custom-btn {
+    width: 100%;
+  }
+
+}

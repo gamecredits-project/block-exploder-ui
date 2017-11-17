@@ -1,13 +1,12 @@
 import {Component} from '@angular/core';
 import {HomePageService} from '../../home/homePage.service';
 import {Router} from '@angular/router';
-import { Globals } from '../../globals';
+import {Globals} from '../../globals';
 
 @Component({
   selector   : 'exploder-header',
   templateUrl: 'header.component.html',
   styleUrls  : ['./header.style.css'],
-  providers  : [Globals]
 })
 export class HeaderComponent {
 
@@ -37,7 +36,7 @@ export class HeaderComponent {
   }
 
   switchTheme() {
-    this.globals.theme = (this.globals.theme === 'dark') ? 'white' : 'dark';
+    this.globals.updateTheme((this.globals.theme === 'dark') ? 'white' : 'dark');
   }
 
 }

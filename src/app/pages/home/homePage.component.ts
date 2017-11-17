@@ -7,7 +7,7 @@ import { Globals } from "./../globals";
  @Component ({
  	selector: 'exploder-home',
  	templateUrl: 'homePage.component.html',
-  providers: [BlockSocketService, Globals]
+  providers: [BlockSocketService]
  })
  export class HomePageComponent implements OnInit, OnDestroy {
 
@@ -129,14 +129,14 @@ import { Globals } from "./../globals";
   }
 
   public buildWave(w, h):any {
-    
+
       var pathData: any;
       var a = h / 4;
       var y = h / 2;
       var m = 0.512286623256592433;
 
       return pathData = ['M', w * 0, y + a / 2, 'c', a * m, 0, -(1 - a) * m, -a, a, -a, 's', -(1 - a) * m, a, a, a, 's', -(1 - a) * m, -a, a, -a, 's', -(1 - a) * m, a, a, a, 's', -(1 - a) * m, -a, a, -a, 's', -(1 - a) * m, a, a, a, 's', -(1 - a) * m, -a, a, -a, 's', -(1 - a) * m, a, a, a, 's', -(1 - a) * m, -a, a, -a, 's', -(1 - a) * m, a, a, a, 's', -(1 - a) * m, -a, a, -a, 's', -(1 - a) * m, a, a, a, 's', -(1 - a) * m, -a, a, -a, 's', -(1 - a) * m, a, a, a, 's', -(1 - a) * m, -a, a, -a].join(' ');
-    
+
       // path.setAttribute('d', pathData);
   }
 

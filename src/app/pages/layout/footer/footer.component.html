@@ -1,45 +1,45 @@
-<footer class="container-fluid">
+<footer class="container-fluid" [ngClass]="globals.theme + '-color'">
 	<div class="container">
 		<div class="footer-wrap">
 
       <div class="bottom-border border-right footer-info no-padding col-sm-12 col-lg-8 col-xs-12">
         <div class="gc-info col-sm-6 col-xs-12 col-lg-9">
           <div class="col-sm-12 col-xs-12 logo">
-            <a class="header-logo" href="#">
-              <img src="../../../assets/images/icn_game@2x.png" alt="" height="23.61">
+            <a class="header-logo" href="#" [ngClass]="globals.theme + '-color'">
+              <img [src]="'../../../assets/images/icn_game_'+ globals.theme +'@2x.png'" alt="" height="23.61">
               GameCredits</a>
           </div>
 
-          <div class="col-xs-12 col-sm-6 col-lg-10 col-md-6 footer-info no-padding">
+          <div class="col-xs-12 col-sm-6 col-lg-10 col-md-6 footer-info no-padding" [ngClass]="globals.theme + '-color'">
             <h2>New to GameCredits?</h2>
             <p>GameCredits is creating a new payment gateway for the gaming industry.</p>
           </div>
         </div>
 
-        <div class="footer-links col-xs-12 col-sm-6 col-lg-3 col-md-6 footer-info no-padding">
+        <div class="footer-links col-xs-12 col-sm-6 col-lg-3 col-md-6 footer-info no-padding" [ngClass]="globals.theme + '-color'">
           <h2>Links</h2>
           <ul class="col-xs-6 col-sm-6 col-md-6 col-lg-12">
-            <li><a routerLink="/blocks">Blocks</a></li>
-            <li><a routerLink="/allTransactions">Transactions</a></li>
-            <li><a routerLink="/network">Network</a></li>
+            <li><a [ngClass]="globals.theme + '-color'" routerLink="/blocks">Blocks</a></li>
+            <li><a [ngClass]="globals.theme + '-color'" routerLink="/allTransactions">Transactions</a></li>
+            <li><a [ngClass]="globals.theme + '-color'" routerLink="/network">Network</a></li>
           </ul>
           <ul class="col-xs-6 col-sm-6 col-md-6 col-lg-12">
-            <li><a target="_blank" href="https://blockexplorer.gamecredits.com/api/ui">API</a></li>
-            <li><a href="https://gamecredits.com">GameCredits</a></li>
-            <li><a target="_blank" href="https://gamecredits.com/blog/1">Blog</a></li>
+            <li><a [ngClass]="globals.theme + '-color'" target="_blank" href="https://blockexplorer.gamecredits.com/api/ui">API</a></li>
+            <li><a [ngClass]="globals.theme + '-color'" href="https://gamecredits.com">GameCredits</a></li>
+            <li><a [ngClass]="globals.theme + '-color'" target="_blank" href="https://gamecredits.com/blog/1">Blog</a></li>
           </ul>
         </div>
       </div>
 
 
       <div class="col-xs-12 col-sm-12 footer-info col-lg-4">
-        <div class="padding-large cosl-xs-12 col-sm-6 col-lg-12">
+        <div class="padding-large cosl-xs-12 col-sm-6 col-lg-12" [ngClass]="globals.theme + '-color'">
           <h1>
             Interested in more news about GameCredits?
           </h1>
         </div>
         <div class="col-xs-12 col-sm-6 col-lg-12 padding-large" >
-          <a target="_blank" href="https://gamecredits.com/blog/1" class="btn custom-btn " style="padding: 12px 12px">
+          <a [ngClass]="globals.theme + '-color'" target="_blank" href="https://gamecredits.com/blog/1" class="btn custom-btn " style="padding: 12px 12px">
             Visit our blog
           </a>
         </div>
