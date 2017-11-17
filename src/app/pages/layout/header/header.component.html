@@ -9,7 +9,7 @@
              data-toggle="collapse" data-target=".bs-example-navbar-collapse-1" [ngClass]="globals.theme + '-color'">
           </i>
           <a class="header-logo" href="#" [ngClass]="globals.theme + '-color'">
-            <img src="../../../assets/images/icn_game@2x.png" alt="" height="23.61">
+            <img [src]="'../../../assets/images/icn_game_'+ globals.theme +'@2x.png'" alt="" height="23.61">
             Block Explorer</a>
         </div>
 
