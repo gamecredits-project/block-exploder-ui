@@ -1,15 +1,17 @@
 import {Component} from '@angular/core';
 import {HomePageService} from '../../home/homePage.service';
 import {Router} from '@angular/router';
+import { Globals } from '../../globals';
 
 @Component({
   selector   : 'exploder-header',
   templateUrl: 'header.component.html',
-  styleUrls     : ['./header.style.css']
+  styleUrls  : ['./header.style.css'],
+  providers  : [Globals]
 })
 export class HeaderComponent {
 
-  constructor(private homePageService: HomePageService, private router: Router) {
+  constructor(private homePageService: HomePageService, private router: Router, private globals: Globals) {
   }
 
   onSearch(param: string) {
@@ -32,6 +34,10 @@ export class HeaderComponent {
         this.router.navigateByUrl('transactions/' + resp.searchBy);
       }
     });
+  }
+
+  switchTheme() {
+    this.globals.theme = (this.globals.theme === 'dark') ? 'white' : 'dark';
   }
 
 }

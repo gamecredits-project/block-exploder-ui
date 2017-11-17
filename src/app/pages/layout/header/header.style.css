@@ -1,8 +1,5 @@
-/**
-** HEADER
-**/
 .header-logo {
-  color: white !important;
+  /*color: white !important;*/
   font-size: 16px;
   text-decoration: none !important;
   line-height: 22px;
@@ -25,7 +22,7 @@
 }
 
 .toggler {
-  color: #fff;
+  /*color: #fff;*/
   margin-right: 32px;
   font-size: 19px;
   /*padding-top: 10px;*/
@@ -35,7 +32,7 @@
 
 .custom-x {
   font-size: 20px;
-  color: #fff;
+  /*color: #fff;*/
   cursor: pointer;
   font-weight: bold;
   /*position: absolute;*/
@@ -54,33 +51,40 @@
   line-height: 19px;
   font-size: 13px;
   margin-left: 13px;
-
 }
 
 .search-header input {
   /*background-color: #2D475B;*/
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.3)!important;
   /*color: #7B93A6;*/
   /*background-color: #2D475B;*/
   border: none;
+}
+.search-header input.white-main {
+  color: #2D475B!important;
 }
 
 ::-webkit-input-placeholder { /* Chrome */
   color: rgba(255, 255, 255, 0.3);
 }
-
+.white-main::-webkit-input-placeholder {
+  color: #2D475B;
+}
 :-ms-input-placeholder { /* IE 10+ */
   color: rgba(255, 255, 255, 0.3);
 }
-
+.white-main:-ms-input-placeholder {
+  color: #2D475B;
+}
 ::-moz-placeholder { /* Firefox 19+ */
   color: rgba(255, 255, 255, 0.3);
 }
-
 :-moz-placeholder { /* Firefox 4 - 18 */
   color: rgba(255, 255, 255, 0.3);
 }
-
+.white-main:-moz-placeholder {
+  color: #2D475B;
+}
 .search-header .glyphicon {
   color: #7B93A6;
   font-size: 19px;
@@ -89,7 +93,7 @@
 }
 
 .navbar-default .navbar-nav li a, .navbar-default .navbar-brand {
-  color: white !important;
+  /*color: white !important;*/
 }
 
 .navbar-default .navbar-nav li a {
@@ -100,20 +104,76 @@
   text-align: center;
   float: none;
   list-style: none;
-  background-color: #1D2E3B;
   margin-bottom: 0;
   padding: 0;
 }
-
+.header-custom-nav.dark-color {
+  background-color: #1D2E3B;
+}
+.header-custom-nav.white-color {
+  background-color: #F2F5FA;
+}
 .header-custom-nav > li > a {
   text-decoration: none;
-  color: #fff;
+  /*color: #fff;*/
   text-transform: capitalize;
   font-weight: bold;
   font-size: 18px;
   line-height: 40px;
 }
+/* Theme switch */
+.switch {
+  position: relative;
+  top: 3px;
+  display: flex;
+  width: 41px;
+  height: 27px;
+}
+.switch input {display:none;}
 
-/**
-** END HEADER
-**/
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #283E4F;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 21px;
+  width: 21px;
+  left: 4px;
+  bottom: 3px;
+  background: #2D475B url('../../../../assets/images/sun.png') no-repeat center;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #F5F6F8;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+  background: #fff url('../../../../assets/images/moon@1x.png') no-repeat center;
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

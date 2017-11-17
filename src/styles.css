@@ -1537,3 +1537,10 @@ a:hover {
 .white-main {
   background-color: #fff!important;
 }
+.white-color {
+  color: #2D475B!important;
+}
+.dark-color {
+  color: #fff!important;
+}
+
