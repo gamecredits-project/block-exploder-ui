@@ -620,26 +620,6 @@ svg {
   top: 65px;
 }
 
-@media screen and (max-width: 1200px) and (min-width: 300px) {
-  .block-details {
-    background: linear-gradient(180deg, #1D2E3B 50%, #192834 50%) !important;
-  }
-
-  .right-half {
-    padding-left: 30px !important;
-    overflow: overlay;
-    height: 750px;
-    padding-left: 30px !important;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .right-half {
-    padding-left: 55px !important;
-    overflow: overlay;
-    height: 750px;
-  }
-}
 
 .boxes {
   text-align: center;
@@ -650,193 +630,7 @@ svg {
   min-height: 600px;
 }
 
-.left-half {
-  height: 820px;
-}
 
-.right-half::-webkit-scrollbar {
-  display: none;
-}
-
-.block-link {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: #396E9E;
-}
-
-.block-link a {
-  color: #06482f;
-  text-decoration: underline;
-}
-
-.block-title {
-  color: white;
-  padding-bottom: 15px;
-}
-
-.block-title small {
-  color: white;
-  font-size: 16px;
-}
-
-.block-header {
-  padding-bottom: 25px;
-}
-
-.block-header .table {
-  border-color: white;
-  color: white;
-  overflow: hidden;
-}
-
-.boxes-banner {
-  background-color: #f5f5f5;
-  padding-bottom: 60px;
-  border-bottom: 1px solid #ddd;
-}
-
-.box-label {
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-.chain-links-label {
-  margin: 25px 0;
-  text-transform: uppercase;
-  font-size: 16px;
-}
-
-.block-hash-text {
-  word-break: break-all;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 16px;
-  line-height: 26px;
-  letter-spacing: 1px;
-}
-
-.block-summary-small-text {
-  color: rgba(123, 147, 166, 0.5);
-  font-size: 11px;
-  line-height: 25px;
-}
-
-.block-summary-small-text-white {
-  color: #FFFFFF;
-  font-size: 13px;
-  line-height: 18px;
-}
-
-.small-title-texts {
-  color: #FFFFFF;
-  font-size: 15px;
-  font-weight: 300;
-  line-height: 20px;
-  padding-top: 20px;
-}
-
-.holder-div div {
-  padding: 0px !important;
-}
-
-.holder-div {
-  padding-bottom: 30px;
-}
-
-.badge-status-text {
-
-  font-size: 10px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  line-height: 14px;
-
-}
-
-.main-card-block {
-  padding-top: 15px;
-}
-
-.footer-card-right-div {
-  position: relative;
-  top: -4px;
-  padding-right: 15px;
-}
-
-.last-row-panel {
-  padding-top: 0px !important;
-  padding-bottom: 25px !important;
-  border-radius: 0 0 6px 6px;
-  background-color: rgb(38, 55, 69);
-}
-
-.block-summary-small-text-2 {
-  color: rgba(123, 147, 166, 0.65);
-  font-size: 12px;
-  letter-spacing: 1px;
-  padding-left: 15px;
-  position: relative;
-  top: 15px;
-}
-
-.border-r-4px {
-  border-radius: 4px;
-  text-align: center;
-}
-
-.block-summary-table tr th, .block-summary-table tr td {
-  padding-left: 0px !important;
-  padding-top: 20px !important;
-}
-
-.root-text {
-  color: rgba(123, 147, 166, 0.5);
-  font-size: 12px;
-  letter-spacing: 1px;
-  line-height: 19px;
-}
-
-.bottom-border-block-row {
-  border-bottom: 1px solid rgba(242, 246, 255, 0.1);
-}
-
-.block-transaction-link {
-  text-decoration: none !important;
-  color: rgba(130, 177, 255, 0.5) !important;
-  font-size: 13px;
-}
-
-.small-loop-icon {
-  color: #7B93A6;
-  font-size: 20px;
-  font-weight: 100;
-  position: relative;
-  top: -18px;
-}
-
-.number-with-background {
-  font-size: 12px;
-  background-color: #7B93A6;
-  border-radius: 6px;
-  height: 22px;
-  padding: 4px 8px;
-  position: relative;
-  top: -3px;
-}
-
-.block-transactions-title {
-  margin-top: 35px;
-  color: #FFFFFF;
-  font-size: 20px;
-  line-height: 0px;
-}
-
-.block-transactions {
-  margin-bottom: 50px;
-}
-
-.block-details {
-  background: linear-gradient(90deg, #1D2E3B 50%, #192834 50%);
-}
 
 .transaction-header {
   background-color: #33A579;
@@ -1465,7 +1259,7 @@ a:hover {
 }
 .block-header.white-color .block-title, .block-header.white-color .block-value,
 .block-header.white-color h5 {
-  color: #16222C;
+  color: #16222C!important;
 }
 .blocks-wrapper.white-color {
   background-color: #EDF2FA;
@@ -1528,7 +1322,8 @@ a:hover {
 .white-color h3.address-transactions-title, .panel-footer.white-color .block-value {
   color: #1D2E3B!important;
 }
-.white-color .card-bot-border, .white-color .card-left-border, .white-color .transactions-card-table {
+.white-color .card-bot-border, .white-color .card-left-border, .white-color .transactions-card-table,
+.white-color .bottom-border-block-row{
   border-color: #ddd!important;
 }
 
