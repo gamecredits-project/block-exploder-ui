@@ -1,9 +1,9 @@
-<div class="container-fluid blocks-wrapper">
+<div class="container-fluid blocks-wrapper" [ngClass]="globals.theme + '-color'">
 	<div class="container">
 		<h1 class="blocks-title">Transactions</h1>
 		<h2>{{ block_test }}</h2>
 		<div class="search-results">
-			<table class="table latest-blocks-table hidden-xs">
+			<table [ngClass]="globals.theme + '-main'" class="table latest-blocks-table hidden-xs">
 				<thead>
 				<tr class="blocks-table-header">
 				<th>TRANSACTION ID</th>
@@ -56,7 +56,7 @@
 						</tr>
 				</tbody>
 			</table>
-			<div class="container-fluid hidden-sm hidden-md hidden-lg">
+			<div class="container-fluid hidden-sm hidden-md hidden-lg" [ngClass]="globals.theme + '-color'">
 					<div class="row one-card" *ngFor="let transaction of txs.slice().reverse()">
 							<table class="table one-card-table transactions-card-table">
 								<tr >
@@ -129,7 +129,7 @@
 					</div>
 				</div>
 		</div>
-		<button class="btn active filter-btn" (click)="onScroll()">
+		<button class="btn active filter-btn" (click)="onScroll()" style="margin-bottom: 20px">
             Load More Transactions
         </button>
 	</div>

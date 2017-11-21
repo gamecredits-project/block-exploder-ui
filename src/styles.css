@@ -1514,6 +1514,6 @@ a:hover {
 .white-color h3.address-transactions-title, .panel-footer.white-color .block-value {
   color: #1D2E3B!important;
 }
-.white-color .card-bot-border, .white-color .card-left-border {
+.white-color .card-bot-border, .white-color .card-left-border, .white-color .transactions-card-table {
   border-color: #ddd!important;
 }
