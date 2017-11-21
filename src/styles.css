@@ -1520,3 +1520,18 @@ a:hover {
   color: #7B93A6!important;
 }
 
+.latest-blocks-table.dark-main{
+  background-color: #1E2D3A !important;
+}
+.latest-blocks-table.white-main {
+  color: #1D2E3B;
+}
+.white-color .blocks-title {
+  color: #1D2E3B;
+}
+.latest-blocks-table.white-main td {
+  border-top: 1px solid #ddd!important;
+}
+.white-color .first-row-xs {
+
+}

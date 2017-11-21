@@ -1,8 +1,8 @@
-<div class="container-fluid blocks-wrapper">
+<div class="container-fluid blocks-wrapper" [ngClass]="globals.theme + '-color'" >
 	<div class="container">
 		<h1 class="blocks-title">Blocks </h1>
 			<div class="search-results">
-				<table class="table latest-blocks-table hidden-xs">
+				<table [ngClass]="globals.theme + '-main'"  class="table latest-blocks-table hidden-xs">
 						<thead>
 						<tr class="blocks-table-header">
 							<th>HEIGHT</th>
@@ -58,7 +58,7 @@
 								</div>
 								<div class="first-row-box pull-right">
 										<a routerLink="{{ '/blocks/' + block.hash}}">></a>
-								</div>	
+								</div>
 							</div>
 							<table class="table one-card-table">
 								<tr>
@@ -84,7 +84,7 @@
 							</table>
 					</div>
 				</div>
-				<div class="container-fluid hidden-sm hidden-md hidden-lg">
+				<div class="container-fluid hidden-sm hidden-md hidden-lg" [ngClass]="globals.theme + '-color'" >
 						<div class="row one-card" *ngFor="let block of blockArray">
 								<div class="first-row-xs">
 									<div class="col-xs-6">
@@ -92,7 +92,7 @@
 									</div>
 									<div class="first-row-box pull-right">
 											<a routerLink="{{ '/blocks/' + block.hash}}">></a>
-									</div>	
+									</div>
 								</div>
 								<table class="table one-card-table">
 									<tr>
@@ -119,7 +119,7 @@
 						</div>
 					</div>
 		</div>
-		<button class="btn active filter-btn" (click)="onScroll()">
+		<button class="btn active filter-btn" style="margin-bottom: 20px" (click)="onScroll()">
             Load More Blocks
         </button>
 	</div>
