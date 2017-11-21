@@ -1,11 +1,7 @@
 <div class="container-fluid blocks-wrapper">
 	<div class="container">
 		<h1 class="blocks-title">Blocks </h1>
-			<div class="search-results"
-			infiniteScroll
-			[infiniteScrollDistance]="1"
-			[infiniteScrollThrottle]="300"
-			(scrolled)="onScroll()">
+			<div class="search-results">
 				<table class="table latest-blocks-table hidden-xs">
 						<thead>
 						<tr class="blocks-table-header">
@@ -123,5 +119,8 @@
 						</div>
 					</div>
 		</div>
+		<button class="btn active filter-btn" (click)="onScroll()">
+            Load More Blocks
+        </button>
 	</div>
 </div>

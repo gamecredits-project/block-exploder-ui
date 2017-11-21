@@ -1100,7 +1100,7 @@ p.address {
 
 }
 
-.address-transactions .filter-btn {
+.container .filter-btn {
   background-color: #1A2A36 !important;
   color: rgba(255, 255, 255, 0.5) !important;
   font-size: 13px !important;
@@ -1110,7 +1110,7 @@ p.address {
   /*margin-bottom: 0px;*/
 }
 
-.address-transactions .active {
+.container .active {
   color: rgba(255, 255, 255, 1) !important;
   border-radius: 4px;
   background-color: #203442 !important;

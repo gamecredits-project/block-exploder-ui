@@ -2,11 +2,7 @@
 	<div class="container">
 		<h1 class="blocks-title">Transactions</h1>
 		<h2>{{ block_test }}</h2>
-		<div class="search-results"
-			infiniteScroll
-			[infiniteScrollDistance]="1"
-			[infiniteScrollThrottle]="300"
-			(scrolled)="onScroll()">
+		<div class="search-results">
 			<table class="table latest-blocks-table hidden-xs">
 				<thead>
 				<tr class="blocks-table-header">
@@ -133,5 +129,8 @@
 					</div>
 				</div>
 		</div>
+		<button class="btn active filter-btn" (click)="onScroll()">
+            Load More Transactions
+        </button>
 	</div>
 </div>
