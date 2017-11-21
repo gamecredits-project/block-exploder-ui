@@ -1463,23 +1463,9 @@ a:hover {
 .block-header.white-color p.address {
   color: rgba(22, 34, 44, 0.5);
 }
-.block-header.white-color .block-title {
-  color: #16222C;
-}
-.block-header.white-color .block-value {
-  color: #16222C;
-}
+.block-header.white-color .block-title, .block-header.white-color .block-value,
 .block-header.white-color h5 {
   color: #16222C;
-}
-.blocks-wrapper.white-color {
-  background-color: #EDF2FA;
-}
-.panel-body.white-color {
-  background-color: #fff!important;
-}
-.panel-block .panel-footer.white-main {
-  background-color: #fff!important;
 }
 .panel-block .panel-footer.white-main .block-value {
   color: #AEBDC8;
@@ -1487,31 +1473,20 @@ a:hover {
 .panel-block.dark-color {
   background-color: #1E2D3A !important;
 }
-.panel-block.white-color {
-  background-color: #fff!important;
-}
+
 .panel-heading.white-color {
   background-color: rgba(82,134,250,0.2) !important;
 }
-.white-color .panel-rectangle {
+.white-color .panel-rectangle, .white-color .first-row-box {
   background-color: rgba(82,134,250,0.07)!important;
 }
-.white-color .panel-rectangle i {
+.white-color .panel-rectangle i, .white-color .first-row-box a  {
   color: #5286FA!important;
 }
 .panel-footer.white-color {
   background-color: #F6F9FE!important;
 }
-.panel-footer.white-color .block-value {
-  color: #1D2E3B;
-}
-.white-color .panel-block .block-content .block-value {
-  color: #1D2E3B;
-}
-.white-color h3.address-transactions-title {
-  color: #1D2E3B!important;
-}
-.white-color .filter-btn {
+.white-color .filter-btn, .blocks-wrapper.white-color {
   background-color: #EDF2FA!important;
   color: #B8C6D2!important;
 }
@@ -1523,15 +1498,22 @@ a:hover {
 .latest-blocks-table.dark-main{
   background-color: #1E2D3A !important;
 }
-.latest-blocks-table.white-main {
-  color: #1D2E3B;
-}
-.white-color .blocks-title {
-  color: #1D2E3B;
-}
+
 .latest-blocks-table.white-main td {
   border-top: 1px solid #ddd!important;
 }
 .white-color .first-row-xs {
-
+  background-color: rgba(82,134,250,0.2) !important;
+}
+.white-color .one-card-table td, .panel-block.white-color, .panel-block .panel-footer.white-main,
+.panel-body.white-color {
+  background-color: #fff!important;
+}
+.white-color .one-card-table td .white-text, .white-color .blocks-title,
+.latest-blocks-table.white-main, .white-color .panel-block .block-content .block-value,
+.white-color h3.address-transactions-title, .panel-footer.white-color .block-value {
+  color: #1D2E3B!important;
+}
+.white-color .card-bot-border, .white-color .card-left-border {
+  border-color: #ddd!important;
 }
