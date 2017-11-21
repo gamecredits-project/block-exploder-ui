@@ -138,23 +138,32 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: #283E4F;
   -webkit-transition: .4s;
   transition: .4s;
 }
-
+.slider.dark {
+  background: #283E4F;
+}
+.slider.white {
+  background: #F5F6F8;
+}
 .slider:before {
   position: absolute;
+  bottom: 3px;
   content: "";
   height: 21px;
   width: 21px;
-  left: 4px;
-  bottom: 3px;
-  background: #2D475B url('../../../../assets/images/sun.png') no-repeat center;
   -webkit-transition: .4s;
   transition: .4s;
 }
-
+.slider.dark:before {
+  left: 4px;
+  background: #2D475B url('../../../../assets/images/sun.png') no-repeat center;
+}
+.slider.white:before {
+  right: 4px;
+  background: #fff url('../../../../assets/images/moon@1x.png') no-repeat center;
+}
 input:checked + .slider {
   background-color: #F5F6F8;
 }
@@ -163,7 +172,7 @@ input:focus + .slider {
   box-shadow: 0 0 1px #2196F3;
 }
 
-input:checked + .slider:before {
+input:checked + .slider.dark:before {
   -webkit-transform: translateX(13px);
   -ms-transform: translateX(13px);
   transform: translateX(13px);

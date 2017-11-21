@@ -32,7 +32,7 @@
         <div class="col-lg-1 col-md-1 hidden-xs vcenter">
           <label class="switch">
             <input type="checkbox"  (change)="switchTheme()">
-            <span class="slider round"></span>
+            <span class="slider round" [ngClass]="globals.theme"></span>
           </label>
         </div>
 
