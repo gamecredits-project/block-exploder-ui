@@ -1443,7 +1443,7 @@ a:hover {
   width: 29%;
 }
 
-/* DARK*/
+/* Theme switching*/
 
 .dark-main {
   background-color: #2D475B!important;
@@ -1456,5 +1456,67 @@ a:hover {
 }
 .dark-color {
   color: #fff!important;
+}
+.block-header.white-color {
+  background-color: #F7FAFF;
+}
+.block-header.white-color p.address {
+  color: rgba(22, 34, 44, 0.5);
+}
+.block-header.white-color .block-title {
+  color: #16222C;
+}
+.block-header.white-color .block-value {
+  color: #16222C;
+}
+.block-header.white-color h5 {
+  color: #16222C;
+}
+.blocks-wrapper.white-color {
+  background-color: #EDF2FA;
+}
+.panel-body.white-color {
+  background-color: #fff!important;
+}
+.panel-block .panel-footer.white-main {
+  background-color: #fff!important;
+}
+.panel-block .panel-footer.white-main .block-value {
+  color: #AEBDC8;
+}
+.panel-block.dark-color {
+  background-color: #1E2D3A !important;
+}
+.panel-block.white-color {
+  background-color: #fff!important;
+}
+.panel-heading.white-color {
+  background-color: rgba(82,134,250,0.2) !important;
+}
+.white-color .panel-rectangle {
+  background-color: rgba(82,134,250,0.07)!important;
+}
+.white-color .panel-rectangle i {
+  color: #5286FA!important;
+}
+.panel-footer.white-color {
+  background-color: #F6F9FE!important;
+}
+.panel-footer.white-color .block-value {
+  color: #1D2E3B;
+}
+.white-color .panel-block .block-content .block-value {
+  color: #1D2E3B;
+}
+.white-color h3.address-transactions-title {
+  color: #1D2E3B!important;
+}
+.white-color .filter-btn {
+  background-color: #EDF2FA!important;
+  color: #B8C6D2!important;
+}
+.white-color .active {
+  background-color: #E2E9F2!important;
+  color: #7B93A6!important;
 }
 

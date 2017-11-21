@@ -1,4 +1,4 @@
-<div class=" page-banner block-header">
+<div class=" page-banner block-header" [ngClass]="globals.theme + '-color'">
   <div class="container">
     <div class="">
       <div class="col-xs-12 col-lg-5 col-md-6 col-sm-6 border-right sm-border block-address-wrap">
@@ -36,14 +36,14 @@
     </div>
   </div>
 </div>
-<div class="blocks-wrapper">
+<div class="blocks-wrapper" [ngClass]="globals.theme + '-color'">
   <div class="container address-transactions">
     <div class="">
       <div class="col-xs-12 block-transactions">
 
           <div class="panel panel-default panel-block" style="margin-top:64px;">
 
-            <div class="panel-body">
+            <div class="panel-body" [ngClass]="globals.theme + '-color'">
               <div class="">
                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 block-content" style="height: 100%">
                   <br>
@@ -92,7 +92,7 @@
                 </div>
               </div>
             </div>
-            <div class="panel-footer col-xs-12 no-padding">
+            <div class="panel-footer col-xs-12 no-padding" [ngClass]="globals.theme + '-main'">
               <br>
               <div class="col-sm-4 col-md-4 col-xs-12 xs-text-left">
 
