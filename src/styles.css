@@ -1475,6 +1475,11 @@ a:hover {
 .blocks-wrapper.white-color {
   background-color: #EDF2FA;
 }
+
+.network-wrapper.white-color{
+  background-color: #EDF2FA;
+}
+
 .panel-body.white-color {
   background-color: #fff!important;
 }
@@ -1534,4 +1539,21 @@ a:hover {
 }
 .white-color .first-row-xs {
 
+}
+
+.nodes.latest-blocks-table.dark-main {
+  background-color: #253542 !important;
+}
+
+.nodes.white-main {
+  background-color: #fff !important;
+}
+
+.all-peers-button.white-main {
+  background-color: #dce3ed !important;
+  color: #7b93a6 !important;
+}
+
+.one-card-table.white-main td {
+  background-color: #fff !important;
 }

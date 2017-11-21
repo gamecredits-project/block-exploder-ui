@@ -1,14 +1,14 @@
-<div class="page-banner block-header">
-  <div class="container network">
+<div class="page-banner network-wrapper block-header" [ngClass]="globals.theme + '-color'">
+  <div class="container  network"  >
     <div class="network-header">
       <div class="col-md-7">
         <div class="row">
-          <h1 class=" padding15pxsides padding15pxtop">
+          <h1 class=" padding15pxsides padding15pxtop" [ngClass]="globals.theme + '-color'">
             addnode = 148.251.15.209:40002
           </h1>
         </div>
 
-        <h4>
+        <h4 style="color: rgb(155,155,155)">
           Block Explorer
         </h4>
 
@@ -21,8 +21,8 @@
             Map of explorer connections
           </h2>
         </div>
-        <div class="row padding15pxsides">
-          <p align="left">
+        <div class="row padding15pxsides" >
+          <p align="left" style="color: rgb(155,155,155)">
 
             This maps shows live full nodes that are connected to the
             Block Explorer. These are NOT all live nodes, only the ones
@@ -61,7 +61,7 @@
  			<!--</div>-->
 		<!--</div>-->
 		<!--<div class="col-md-8 no-padding">-->
-			<sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" class="map" [styles]="mapStyle">
+			<sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" class="map" [styles]="globals.theme == 'dark'? mapStyle : mapStyle2">
 			<div *ngFor="let peer of clientInfo?.peerInfo">
 			  <sebm-google-map-marker [latitude]="peer.latitude" [longitude]="peer.longitude"  [iconUrl]="'../../assets/images/node_single.svg'">
 
@@ -77,8 +77,8 @@
 	<!--</p>-->
 	<!--</div>-->
 
-  <div class="container network">
-      <table class="table latest-blocks-table hidden-xs text-center">
+  <div class="container network ">
+      <table class="table nodes latest-blocks-table hidden-xs text-center " [ngClass]="globals.theme + '-main'">
         <thead>
         <tr class="blocks-table-header">
           <th></th>
@@ -103,8 +103,8 @@
         </tr>
         </tbody>
       </table>
-      <div class="row one-card hidden-sm hidden-md hidden-lg" *ngFor="let peer of peersToShow" style="border-bottom: 1px solid rgba(123, 147, 166, 0.1); margin-left: 10px; margin-right: 10px;">
-        <table class="table one-card-table transactions-card-table">
+      <div class="row one-card nodes hidden-sm hidden-md hidden-lg" *ngFor="let peer of peersToShow" style="border-bottom: 1px solid rgba(123, 147, 166, 0.1); margin-left: 10px; margin-right: 10px;" [ngClass]="globals.theme + '-main'">
+        <table class="table one-card-table transactions-card-table" [ngClass]="globals.theme + '-main'">
           <tr >
             <td class="" style="padding-top:30px; padding-left:30px !important">
               NODE <br>
@@ -121,7 +121,7 @@
       </div>
     </div>
     <div style="justify-content: center !important; display: flex;">
-        <button *ngIf="showButton" (click)="showAll()" class="all-peers-button"> Show all peers  </button>
+        <button *ngIf="showButton" (click)="showAll()" class="all-peers-button" [ngClass]="globals.theme + '-main'"> Show all peers  </button>
     </div>
 
 </div>
