@@ -26,7 +26,7 @@ export class GoogleChart implements OnChanges {
       googleLoaded = true;
     google.charts.load('current', {'packages':['corechart', 'gauge']['orgchart']});
      }
-    setTimeout(() =>this.drawGraph(this.chartOptions,this.chartType,this.chartData,this._element, this.ready),1000);
+    this.drawGraph(this.chartOptions,this.chartType,this.chartData,this._element, this.ready);
   } 
   drawGraph (chartOptions,chartType,chartData,ele, ready) {
       google.charts.setOnLoadCallback(drawChart);
@@ -43,7 +43,7 @@ export class GoogleChart implements OnChanges {
       });
 
       wrapper.draw(ele);
-      ready.emit(); // customized this shit because divic wanter the dummy graph to be "blured" before the real one had loaded, and i added an event so i could know when to swap
+      ready.emit(); // customized this shit because divic wanted the dummy graph to be "blured" before the real one had loaded, and i added an event so i could know when to swap
     }
 }
 }

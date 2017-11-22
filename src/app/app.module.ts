@@ -5,8 +5,6 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing-module';
-
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { GoogleChart } from './customDirectives/angular2-google-chart.directive';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 
@@ -55,7 +53,6 @@ import { Globals } from './pages/globals';
   FormsModule,
   HttpModule,
   AppRoutingModule,
-  InfiniteScrollModule,
   NgxQRCodeModule,
   AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDVGMQhtueV-z7v4kjQ80kYd26jrmqV-o4'

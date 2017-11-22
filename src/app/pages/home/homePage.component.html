@@ -1,10 +1,10 @@
 
-    <div class="container-fluid page-banner home">
+    <div class="container-fluid page-banner home" [ngClass]="globals.theme + '-home'" style="padding-top: 0px !important;">
         <div class="container">
-          <div class="home-header row" [ngClass]="{'some-shit-class' : globals.theme=='dark'}">
+          <div class="home-header row" [ngClass]="globals.theme + '-homeup'" style="padding-bottom: 45px !important; padding-top: 30px !important;">
             <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
               <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12" style="padding-top: 15px;">
                   <h5>GameCredits Stats</h5>
                   <h1>${{price | number:'1.5-5'}}</h1>
                 </div>
@@ -12,11 +12,11 @@
               <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-6 ">
 
-                  <div class="animation-box home-box">
+                  <div class="animation-box home-box" [ngClass]="globals.theme + '-main'" >
                     <div class="block-label">
                       BLOCkCHAIN SIZE
                     </div>
-                    <div class="block-value">{{networkInfo?.blockchainSize}}GB</div>
+                    <div class="block-value" [ngClass]="globals.theme + '-color'">{{networkInfo?.blockchainSize}}GB</div>
                     <div class="bchain-animation">
                       <div id="ripple" class="centered">
                         <div class="circle"></div>
@@ -29,12 +29,12 @@
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6 ">
 
-                  <div class="animation-box home-box">
+                  <div class="animation-box home-box" [ngClass]="globals.theme + '-main'">
                     <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12 no-left-right-padding">
                       <div class="block-label">
                         HASH RATE
                       </div>
-                      <div class="block-value">{{networkInfo?.hashrate / 1000000000 | number:'1.1-1'}} GH/s</div>
+                      <div class="block-value" [ngClass]="globals.theme + '-color'">{{networkInfo?.hashrate / 1000000000 | number:'1.1-1'}} GH/s</div>
                     </div>
                     <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12 no-left-right-padding" style="overflow:hidden;">
                       <div  class="position-top-54-px">
@@ -62,48 +62,48 @@
                   <a style="padding: 10px 12px; opacity: 0.7" href="{{bootstrapLink}}" class="btn home-download-btn"> Download Current Chain</a>
                 </div>
                 <div class="col-md-6">
-                  <span class="block-value">Source of information</span><br />
+                  <span class="block-value" [ngClass]="globals.theme + '-small'">Source of information</span><br />
                   <a target="_blank" href="http://coinmarketcap.com">coinmarketcap.com</a>
                 </div>
 
               </div>
             </div>
             <div class="col-lg-6 col-md-9 col-sm-12 col-xs-12" style="min-height: 400px; padding-top: 12px;">
-              <h5 style="padding-left: 8px;">Network Hashrate</h5>
-              <div id="line_chart" [chartData]="line_ChartData" [chartOptions]= "line_ChartOptions" (ready)="hidePlaceholder()" chartType="LineChart" GoogleChart ></div>
+              <h5 style="padding-left: 8px; font-weight: 600;">Network Hashrate</h5>
+              <div id="line_chart" [chartData]="line_ChartData" [chartOptions]= "globals.theme == 'dark'? line_ChartOptions : line_ChartOptions2" (ready)="hidePlaceholder()" chartType="LineChart" GoogleChart ></div>
             </div>
             <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12 no-padding status-boxes">
               <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
-                <div class="home-box">
-                  <div class="block-label">
+                <div class="home-box" [ngClass]="globals.theme + '-main'">
+                  <div class="block-label" >
                     SYNC STATUS
                   </div>
-                  <div class="block-value">{{clientInfo?.syncProgress}} %</div>
+                  <div class="block-value" [ngClass]="globals.theme + '-color'">{{clientInfo?.syncProgress}} %</div>
                 </div>
               </div>
               <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
-                <div class="home-box">
+                <div class="home-box" [ngClass]="globals.theme + '-main'">
                   <div class="block-label">
                     COIN SUPPLY
                   </div>
-                  <div class="block-value">{{networkInfo?.coinSupply}}</div>
+                  <div class="block-value" [ngClass]="globals.theme + '-color'">{{networkInfo?.coinSupply}}</div>
                 </div>
               </div>
-              <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
-                <div class="home-box">
+              <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6" [ngClass]="globals.theme + '-color'">
+                <div class="home-box" [ngClass]="globals.theme + '-main'">
                   <div class="block-label">
                     BLOCKCHAIN HEIGHT
                   </div>
-                  <div class="block-value">{{latestBlocks[0]?.height}}</div>
+                  <div class="block-value" [ngClass]="globals.theme + '-color'">{{latestBlocks[0]?.height}}</div>
 
                 </div>
               </div>
-              <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
-                <div class="home-box">
-                  <div class="block-label">
+              <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6" [ngClass]="globals.theme + '-color'">
+                <div class="home-box" [ngClass]="globals.theme + '-main'">
+                  <div class="block-label" >
                     # OF TRANSACTIONS
                   </div>
-                  <div class="block-value">{{networkInfo?.numTransactions}}</div>
+                  <div class="block-value" [ngClass]="globals.theme + '-color'">{{networkInfo?.numTransactions}}</div>
 
                 </div>
               </div>
@@ -111,10 +111,10 @@
             </div>
             <div class=" hidden-lg hidden-xs col-sm-12 col-md-12 vcenter" style="margin-top: 43px;">
               <div class="col-md-6 col-sm-6">
-                <button class="btn home-download-btn-lg"> Download</button>
+                <button class="btn home-download-btn-lg" style="opacity: 0.6"> Download</button>
               </div>
               <div class="col-md-6 col-sm-6 vcenter" style="padding-left: 30px; padding-top: 12px">
-                <span class="block-value">Source of information</span>
+                <span class="block-value"  [ngClass]="globals.theme + '-color'">Source of information</span>
                 <a href="http://coinmarketcap.com">coinmarketcap.com</a>
               </div>
 
@@ -122,7 +122,7 @@
           </div>
 
           <!-- BLOCKS & TRANSACTIONS -->
-          <div class="home-body row">
+          <div class="home-body row" [ngClass]="globals.theme + '-homedown'" style="padding-bottom: 45px !important; padding-top: 30px !important;">
 
               <div class="col-lg-7 col-md-12">
                 <div class="row">
@@ -135,7 +135,7 @@
                     </a>
                   </div>
                 </div>
-                <table class="table latest-blocks-table hidden-xs">
+                <table class="table latest-blocks-table hidden-xs" [ngClass]="globals.theme + '-table'">
                   <thead>
                   <tr class="blocks-table-header">
                     <th>HEIGHT</th>
@@ -184,8 +184,8 @@
                   </tbody>
                 </table>
                 <!--SMALL SCREEN BLOCKS-->
-                <div class="hidden-sm hidden-lg hidden-md panel panel-default panel-block" *ngIf="latestBlocks" >
-                  <div class="panel panel-default panel-block"  *ngFor="let block of latestBlocks">
+                <div class="hidden-sm hidden-lg hidden-md panel panel-default panel-block" *ngIf="latestBlocks" [ngClass]="globals.theme + '-panels'" >
+                  <div class="panel panel-default panel-block"  *ngFor="let block of latestBlocks" [ngClass]="globals.theme + '-panels'">
                     <div class="panel-heading" style="">
                       <p class="block-link col-sm-11 col-xs-9 vcenter">
                         <a routerLink="{{ '/blocks/' + block.hash}}">{{block?.height}}</a>
@@ -196,10 +196,10 @@
                         </a>
                       </div>
                     </div>
-                    <div class="panel-body" style="background: #1F2F3C!important;">
+                    <div class="panel-body panel-background" [ngClass]="globals.theme + '-panels'">
 
                       <div class="">
-                        <div class="col-xs-4 block-content" style="height: 100%; border-right: 1px solid rgba(123, 147, 166, 0.1) ">
+                        <div class="col-xs-4 block-content" style="height: 100%; border-right: 1px solid rgba(123, 147, 166, 0.1)" [ngClass]="globals.theme + '-panels'">
                           <br>
                           <p class="block-label">AGE</p>
                           <p class="block-value"> {{calulateMinutesFromNow(block?.time)}}</p>
@@ -240,7 +240,7 @@
                 </div>
               </div>
               <!--TODO@luka: replace this with transactions table-->
-              <table class="table latest-blocks-table ">
+              <table class="table latest-blocks-table " [ngClass]="globals.theme + '-table'">
                 <thead>
                 <tr class="blocks-table-header">
                   <th>TRANSACTION ID</th>

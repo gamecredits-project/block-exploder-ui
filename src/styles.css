@@ -1475,6 +1475,7 @@ a:hover {
   background-color: #EDF2FA;
 }
 
+
 .panel-body.white-color {
   background-color: #fff!important;
 }
@@ -1547,4 +1548,72 @@ a:hover {
 
 .one-card-table.white-main td {
   background-color: #fff !important;
+}
+
+.home.white-home h1, .home.white-home h5{
+  background-color: #f7faff;
+  color: #2D475B !important;
+}
+
+.home.white-color {
+  background-color: #f7faff;
+  color: #2D475B !important;
+}
+
+.home-box.dark-main {
+  background-color: rgba(123, 147, 166, 0.07) !important;
+}
+
+.block-value.white-small {
+  color: #3e5260;
+  opacity: 0.4;
+}
+
+.home.white-home {
+  background-color: #FFFFFF !important;
+}
+
+.home-header.white-homeup {
+  background-color: #f7faff !important;
+}
+
+.home-header.dark-homeup {
+  background-color: #253846;
+}
+.home-body.white-homedown {
+  background-color: #edf1fa !important;
+}
+.home-body.dark-homedown {
+  background-color: #223340 !important;
+}
+
+.table.white-table {
+  background-color: #ffffff;
+}
+
+.table.white-table td {
+  color: #3e5260;
+  border-top: 1px solid #ddd !important;
+}
+
+
+.home-body.white-homedown h2{
+  color: #3e5260;
+  padding-bottom: 15px;
+}
+
+.panel-background {
+  background: #1F2F3C!important;
+}
+
+.white-panels.panel-body {
+  background-color: #ffffff !important;
+}
+
+.white-panels.panel-block {
+  background-color: #edf1fa !important;
+}
+
+.white-panels .block-value {
+  color: #3e5260 !important;
 }

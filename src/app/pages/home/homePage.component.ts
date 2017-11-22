@@ -27,9 +27,9 @@ import { Globals } from "./../globals";
         curveType: 'function',
         height: 400,
         vAxis: {baselineColor: '#CCCCCC', gridlines: { count: 13, color: '#2d3c49', opacity:0.13} , textStyle: {color: '#808080'}},
-        hAxis: {format: 'd. MMM', baselineColor: '#0a0a0a', gridlines: { count: 10, color: '#1d2e3b', opacity:0.13 }, minorGridlines: {  color: 'red' }, textStyle: {color: '#808080'}},
+        hAxis: {format: 'd. MMM', baselineColor: '#0a0a0a', gridlines: { count: 10, color: '#253846', opacity:0.13 }, minorGridlines: {  color: 'red' }, textStyle: {color: '#808080'}},
         chartArea: {left:40,top:20,width:'95%',height:'80%'},
-        backgroundColor: '#1d2e3b',
+        backgroundColor: '#253846',
         yAxes: [{
                     ticks: {
                         beginAtZero:true
@@ -40,6 +40,25 @@ import { Globals } from "./../globals";
         pointSize: 8,
         dataOpacity: 0.5
     };
+
+
+  public line_ChartOptions2 = {
+      curveType: 'function',
+      height: 400,
+      vAxis: {baselineColor: '#dddddd', gridlines: { count: 13, color: '#dddddd'} , textStyle: {color: '#bbbbbb'}},
+      hAxis: {format: 'd. MMM', baselineColor: '#f7faff', gridlines: { count: 10, color: '#f7faff', opacity:0.13 }, minorGridlines: {  color: 'f7faff' }, textStyle: {color: '#bbbbbb'}},
+      chartArea: {left:40,top:20,width:'95%',height:'80%'},
+      backgroundColor: '#f7faff',
+      yAxes: [{
+                  ticks: {
+                      beginAtZero:true
+                  }
+                  , color: 'red'
+              }],
+      colors: ['#1344dd'],
+      pointSize: 8,
+      dataOpacity: 0.5
+  };
 
   private socket: any;
   private block_response: any;
