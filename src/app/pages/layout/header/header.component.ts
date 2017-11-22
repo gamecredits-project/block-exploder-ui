@@ -10,7 +10,7 @@ import {Globals} from '../../globals';
 })
 export class HeaderComponent {
 
-  constructor(private homePageService: HomePageService, private router: Router, private globals: Globals) {
+  constructor(private homePageService: HomePageService, private router: Router, public globals: Globals) {
   }
 
   onSearch(param: string) {

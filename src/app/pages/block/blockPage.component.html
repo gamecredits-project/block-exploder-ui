@@ -1,4 +1,4 @@
-<div class="block-details">
+<div class="block-details" [ngClass]="globals.theme + '-color'">
   <div class="container-fluid page-banner-2 block-header">
     <div class="container">
       <div class="row">
@@ -149,7 +149,7 @@
                     </div>
 
 
-                    <div class="main-card-block" *ngFor="let trans of transactions">
+                    <div [ngClass]="globals.theme + '-main'" class="main-card-block" *ngFor="let trans of transactions">
 
                     <div class="first-row-xs">
                         <div class="col-xs-6 hidden-xs">
@@ -157,7 +157,7 @@
                         </div>
 
                         <div class="col-xs-6 hidden-sm hidden-md hidden-lg">
-                            <a href="{{'/transactions/' + trans.txid}}" class="block-transaction-link">{{trans.txid.substring(0,10)}}...{{trans.txid.substring(54,64)}}</a>
+                            <a routerLink="{{'/transactions/' + trans.txid}}" class="block-transaction-link">{{trans.txid.substring(0,10)}}...{{trans.txid.substring(54,64)}}</a>
                         </div>
 
                         <div class="first-row-box pull-right">
@@ -165,7 +165,7 @@
                         </div>
                     </div>
 
-                     <div class="panel-body" style="background-color: rgba(123,147,166,0.07);">
+                     <div class="panel-body" style="">
                       <div class="row">
                         <div class="col-md-12">
                           <span class="block-summary-small-text">INPUTS</span>
@@ -219,7 +219,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="last-row-panel">
+                    <div class="last-row-panel panel-footer" [ngClass]="globals.theme + '-main'">
                         <div>
                             <span class="block-summary-small-text-2"> {{ (trans.blocktime * 1000 ) | date:'medium'}} </span>
                         </div>

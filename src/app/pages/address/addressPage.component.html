@@ -68,16 +68,16 @@
             <div class="panel-heading" [ngClass]="globals.theme + '-color'">
 
               <p class="col-sm-11 col-xs-9 vcenter">
-                <a href="{{'/transactions/' + trans.txid}}" class="block-link col-sm-11 col-xs-10 vcenter hidden-xs">
+                <a routerLink="{{'/transactions/' + trans.txid}}" class="block-link col-sm-11 col-xs-10 vcenter hidden-xs">
                   {{trans.txid}}
                 </a>
-                <a href="{{'/transactions/' + trans.txid}}" class="block-link col-sm-11 col-xs-10 vcenter hidden-sm hidden-md hidden-lg">
+                <a routerLink="{{'/transactions/' + trans.txid}}" class="block-link col-sm-11 col-xs-10 vcenter hidden-sm hidden-md hidden-lg">
                   {{trans.txid.substring(0,10)}}...{{trans.txid.substring(55,64)}}
                 </a>
 
               </p>
               <div class="panel-rectangle col-sm-1 col-xs-3 float-right">
-                <a href="{{'/transactions/' + trans.txid}}">
+                <a routerLink="{{'/transactions/' + trans.txid}}">
                   <i class="glyphicon glyphicon-chevron-right vcenter"></i>
                 </a>
               </div>
@@ -164,16 +164,16 @@
             <div class="panel-heading" [ngClass]="globals.theme + '-color'">
 
               <p class="col-sm-11 col-xs-9 vcenter">
-                <a href="{{'/transactions/' + trans.txid}}" class="block-link col-sm-11 col-xs-10 vcenter hidden-xs">
+                <a routerLink="{{'/transactions/' + trans.txid}}" class="block-link col-sm-11 col-xs-10 vcenter hidden-xs">
                   {{trans.txid}}
                 </a>
-                <a href="{{'/transactions/' + trans.txid}}" class="block-link col-sm-11 col-xs-10 vcenter hidden-sm hidden-md hidden-lg">
+                <a routerLink="{{'/transactions/' + trans.txid}}" class="block-link col-sm-11 col-xs-10 vcenter hidden-sm hidden-md hidden-lg">
                   {{trans.txid.substring(0,10)}}...{{trans.txid.substring(55,64)}}
                 </a>
 
               </p>
               <div class="panel-rectangle col-sm-1 col-xs-3 float-right">
-                <a href="{{'/transactions/' + trans.txid}}">
+                <a routerLink="{{'/transactions/' + trans.txid}}">
                   <i class="glyphicon glyphicon-chevron-right vcenter"></i>
                 </a>
               </div>
@@ -194,6 +194,11 @@
             </div>
 
           </div>
+
+          <button class="btn active filter-btn" *ngIf="newUnspentTransactions.length > 0" (click)="addLoadedTranasactions()">
+            Load More Transactions
+          </button>
+
         </div>
 
       </div>

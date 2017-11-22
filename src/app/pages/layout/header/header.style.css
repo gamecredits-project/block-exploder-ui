@@ -164,19 +164,21 @@
   right: 4px;
   background: #fff url('../../../../assets/images/moon@1x.png') no-repeat center;
 }
-input:checked + .slider {
+input:checked + .slider.white {
   background-color: #F5F6F8;
 }
-
+input:checked + .slider.dark {
+  background-color: #2D475B;
+}
 input:focus + .slider {
   box-shadow: 0 0 1px #2196F3;
 }
 
 input:checked + .slider.dark:before {
-  -webkit-transform: translateX(13px);
-  -ms-transform: translateX(13px);
-  transform: translateX(13px);
-  background: #fff url('../../../../assets/images/moon@1x.png') no-repeat center;
+  -webkit-transform: translateX(-3px);
+  -ms-transform: translateX(-3px);
+  transform: translateX(-3px);
+  background: #2D475B url('../../../../assets/images/sun.png') no-repeat center;
 }
 
 .slider.round {

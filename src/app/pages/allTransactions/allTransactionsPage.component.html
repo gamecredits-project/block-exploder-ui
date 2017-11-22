@@ -16,7 +16,7 @@
 				<tbody>
 						<tr *ngFor="let transaction of txs.slice().reverse()">
 							<td>
-								<a href="{{'/transactions/' + transaction.txid}}">
+								<a routerLink="{{'/transactions/' + transaction.txid}}">
 									{{transaction.txid.substring(0,10)}}..
 									..{{transaction.txid.substring(54,64)}}
 								</a>
@@ -36,7 +36,7 @@
 						</tr>
 						<tr *ngFor="let transaction of txArray">
 							<td>
-								<a href="{{'/transactions/' + transaction.txid}}">
+								<a routerLink="{{'/transactions/' + transaction.txid}}">
 									{{transaction.txid.substring(0,10)}}..
 									..{{transaction.txid.substring(54,64)}}
 								</a>
@@ -62,7 +62,7 @@
 								<tr >
 									<td class="" style="padding-top:30px">
 										TRANSACTION ID <br>
-										<a class="transactions-card-link"  href="{{'/transactions/' + transaction.txid}}">
+										<a class="transactions-card-link"  routerLink="{{'/transactions/' + transaction.txid}}">
 											{{transaction.txid.substring(0,10)}}..
 											..{{transaction.txid.substring(54,64)}}
 										</a>
@@ -98,7 +98,7 @@
 								<tr >
 									<td class="" style="padding-top:30px">
 										TRANSACTION ID <br>
-										<a class="transactions-card-link"  href="{{'/transactions/' + transaction.txid}}">
+										<a class="transactions-card-link"  routerLink="{{'/transactions/' + transaction.txid}}">
 											{{transaction.txid.substring(0,10)}}..
 											..{{transaction.txid.substring(54,64)}}
 										</a>

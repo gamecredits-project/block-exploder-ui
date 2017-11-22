@@ -68,7 +68,7 @@ import { Globals } from "./../globals";
   private block_data: any;
   private test: any;
 
-	constructor(private homePageService: HomePageService, private router: Router, private blockSocketService: BlockSocketService, private globals: Globals) {
+	constructor(private homePageService: HomePageService, private router: Router, private blockSocketService: BlockSocketService, public globals: Globals) {
     this.blocks = [];
   }
 
