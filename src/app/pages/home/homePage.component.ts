@@ -27,9 +27,9 @@ import { Globals } from "./../globals";
         curveType: 'function',
         height: 400,
         vAxis: {baselineColor: '#CCCCCC', gridlines: { count: 13, color: '#2d3c49', opacity:0.13} , textStyle: {color: '#808080'}},
-        hAxis: {format: 'd. MMM', baselineColor: '#0a0a0a', gridlines: { count: 10, color: '#253846', opacity:0.13 }, minorGridlines: {  color: 'red' }, textStyle: {color: '#808080'}},
+        hAxis: {format: 'd. MMM', baselineColor: '#1D2E3B', gridlines: { count: 10, color: '#1D2E3B', opacity:0.13 }, minorGridlines: {  color: 'red' }, textStyle: {color: '#808080'}},
         chartArea: {left:40,top:20,width:'95%',height:'80%'},
-        backgroundColor: '#253846',
+        backgroundColor: '#1D2E3B',
         yAxes: [{
                     ticks: {
                         beginAtZero:true
