@@ -9,7 +9,7 @@
                   <h1>${{price | number:'1.5-5'}}</h1>
                 </div>
               </div>
-              <div class="row">
+              <div class="row hidden-lg">
                 <div class="col-md-6 col-sm-6 col-xs-6 ">
 
                   <div class="animation-box home-box" [ngClass]="globals.theme + '-main'" >
@@ -53,9 +53,66 @@
                     </div>
                     </div>
                   </div>
+                </div>
+              </div>
+              <div class="hidden-xs hidden-sm hidden-md">
+                <div class="row">
+                  <div class="col-lg-12 col-sm-6 col-xs-6 ">
 
+                    <div class=" home-box" [ngClass]="globals.theme + '-main'"  style="height: 88px;">
+                      <div class="col-lg-6"> 
+                        <div class="block-label">
+                          BLOCkCHAIN SIZE
+                        </div>
+                        <div class="block-value" [ngClass]="globals.theme + '-color'">
+                          {{networkInfo?.blockchainSize}}GB
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="centered" style="top: 6px;">
+                          <div class="circle"></div>
+                          <div class="circle"></div>
+                          <div class="circle"></div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
 
                 </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-6 col-xs-6 ">
+
+                      <div class=" home-box" [ngClass]="globals.theme + '-main'"  style="height: 88px;">
+                        <div class="col-lg-6">
+                          <div class="block-label">
+                            HASH RATE
+                          </div>
+                          <div class="block-value" [ngClass]="globals.theme + '-color'">
+                            {{networkInfo?.hashrate / 1000000000 | number:'1.1-1'}} GH/s
+                          </div>
+                        </div>
+
+
+                        <div class="col-lg-6 " style="margin-top: -52px; right: -27px;">
+                          <div >
+                            <svg
+                            width="120px" height="100px"
+                            viewBox="5 0 80 60">
+                            <path id="wave"
+                                fill="none"
+                                stroke="#00D7DF"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                [attr.d]="buildWave(120, 90)"
+                                >
+                            </path>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>  
               </div>
               <div class="row hidden-md hidden-sm hidden-xs" style="margin-top: 43px;">
                 <div class="col-md-6">
@@ -70,7 +127,7 @@
             </div>
             <div class="col-lg-6 col-md-9 col-sm-12 col-xs-12" style="min-height: 400px; padding-top: 12px;">
               <h5 style="padding-left: 8px; font-weight: 600;">Network Hashrate</h5>
-              <div id="line_chart" [chartData]="line_ChartData" [chartOptions]= "globals.theme == 'dark'? line_ChartOptions : line_ChartOptions2" (ready)="hidePlaceholder()" chartType="LineChart" GoogleChart ></div>
+              <div id="line_chart" [chartData]="line_ChartData" [chartOptions]= "globals.theme == 'dark'? line_ChartOptions : line_ChartOptions2" (ready)="hidePlaceholder()" chartType="LineChart"  GoogleChart ></div>
             </div>
             <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12 no-padding status-boxes">
               <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">

@@ -1075,7 +1075,7 @@ p.address {
 .home-box {
   /*height: 180px;*/
   /*width: 160px;*/
-  padding: 20px 24px;
+  padding: 20px 20px;
   border-radius: 6px;
   background-color: rgba(123, 147, 166, 0.07);
   margin-top: 10px;
@@ -1234,7 +1234,6 @@ a:hover {
 
 .prev-next-btn{
   margin: 0!important;
-  width: 29%;
 }
 
 /* Theme switching*/
@@ -1391,6 +1390,14 @@ a:hover {
 .home-body.white-homedown h2{
   color: #3e5260;
   padding-bottom: 15px;
+}
+
+.home-header.dark-homeup {
+  background-color: #253846;
+}
+
+.home-body.dark-homedown {
+ background-color: #223340 !important;
 }
 
 .panel-background {

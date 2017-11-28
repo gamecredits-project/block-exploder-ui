@@ -4,11 +4,11 @@
     <div class="navbar-header col-sm-12">
 
       <div class="row">
-        <div class="col-xs-9 col-lg-2 col-md-4 col-sm-4  vcenter" style="">
+        <div class="col-xs-11 col-lg-2 col-md-4 col-sm-4  vcenter" style="">
           <i class="hidden-lg toggler glyphicon glyphicon-menu-hamburger"
              data-toggle="collapse" data-target=".bs-example-navbar-collapse-1" [ngClass]="globals.theme + '-color'">
           </i>
-          <a class="header-logo" href="#" [ngClass]="globals.theme + '-color'">
+          <a class="header-logo" routerLink="/home" [ngClass]="globals.theme + '-color'">
             <img [src]="'../../../assets/images/icn_game_'+ globals.theme +'@2x.png'" alt="" height="23.61">
             Block Explorer</a>
         </div>

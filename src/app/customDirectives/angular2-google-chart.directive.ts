@@ -17,6 +17,7 @@ export class GoogleChart implements OnChanges {
   @Input('chartType') public chartType:string;
   @Input('chartOptions') public chartOptions: Object;
   @Input('chartData') public chartData: Object;
+  @Input('draw') draw:EventEmitter<any> = new EventEmitter<any>();
   @Output('ready') ready:EventEmitter<any> = new EventEmitter<any>();
   constructor(public element: ElementRef) {
     this._element = this.element.nativeElement;
@@ -45,5 +46,9 @@ export class GoogleChart implements OnChanges {
       wrapper.draw(ele);
       ready.emit(); // customized this shit because divic wanted the dummy graph to be "blured" before the real one had loaded, and i added an event so i could know when to swap
     }
-}
+  }
+
+  triggerDraw() {
+    this.drawGraph(this.chartOptions,this.chartType,this.chartData,this._element, this.ready);
+  }
 }

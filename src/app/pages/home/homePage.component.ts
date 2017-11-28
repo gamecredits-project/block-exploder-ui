@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import { Component, OnInit, Output, OnDestroy, EventEmitter } from '@angular/core';
 import { HomePageService } from "./homePage.service";
 import { Router } from '@angular/router';
 import { BlockSocketService } from "app/pages/socket/socket.service";
@@ -10,7 +10,7 @@ import { Globals } from "./../globals";
   providers: [BlockSocketService]
  })
  export class HomePageComponent implements OnInit, OnDestroy {
-
+  @Output('draw') draw:EventEmitter<any> = new EventEmitter<any>();
   latestBlocks: any = [];
   latestTransactions: any = [];
  	networkInfo: any = [];
@@ -26,6 +26,11 @@ import { Globals } from "./../globals";
   public line_ChartOptions = {
         curveType: 'function',
         height: 400,
+        animation:{
+          duration: 2000,
+          easing: 'linear',
+          startup: true
+        },
         vAxis: {baselineColor: '#CCCCCC', gridlines: { count: 13, color: '#2d3c49', opacity:0.13} , textStyle: {color: '#808080'}},
         hAxis: {format: 'd. MMM', baselineColor: '#1D2E3B', gridlines: { count: 10, color: '#1D2E3B', opacity:0.13 }, minorGridlines: {  color: 'red' }, textStyle: {color: '#808080'}},
         chartArea: {left:40,top:20,width:'95%',height:'80%'},
@@ -109,10 +114,16 @@ import { Globals } from "./../globals";
 
 			this.tempLineChartData.push(['Date','Network Hashrate']);
 			for (let index = 0; index < resp.length; ++index) {
-			    this.tempLineChartData.push([ new Date(resp[index].timestamp * 1000),resp[index].hashrate / 1000000000]);
-          this.line_ChartData = this.tempLineChartData;
+        var that = this;
+        setTimeout( function() {
+			    that.tempLineChartData.push([ new Date(resp[index].timestamp * 1000),resp[index].hashrate / 1000000000]);
+          that.line_ChartData = that.tempLineChartData;
+          that.line_ChartOptions = that.line_ChartOptions;
+          that.draw.emit();
+        },
+          index * 1000
+      )
 			}
-            this.line_ChartData = this.tempLineChartData; // Change dependant vaulue only once ( so we dont trriger onChange in directive multiple times)
 		});
  	}
 
