@@ -24,29 +24,11 @@
             <li><a [ngClass]="globals.theme + '-color'" routerLink="/network">Network</a></li>
           </ul>
           <ul class="col-xs-6 col-sm-6 col-md-6 col-lg-12">
-            <li><a [ngClass]="globals.theme + '-color'" target="_blank" href="https://blockexplorer.gamecredits.com/api/ui">API</a></li>
-            <li><a [ngClass]="globals.theme + '-color'" href="https://gamecredits.com">GameCredits</a></li>
-            <li><a [ngClass]="globals.theme + '-color'" target="_blank" href="https://gamecredits.com/blog/1">Blog</a></li>
+            <li><a [ngClass]="globals.theme + '-color'" target="_blank" href="{{apiDocsUrl}}}">API</a></li>
+            <li><a [ngClass]="globals.theme + '-color'" href="{{appWebsite}}">GameCredits</a></li>
           </ul>
         </div>
       </div>
-
-
-      <div class="col-xs-12 col-sm-12 footer-info col-lg-4">
-        <div class="padding-large cosl-xs-12 col-sm-6 col-lg-12" [ngClass]="globals.theme + '-color'">
-          <h1>
-            Interested in more news about GameCredits?
-          </h1>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-lg-12 padding-large" >
-          <a [ngClass]="globals.theme + '-color'" target="_blank" href="https://gamecredits.com/blog/1" class="btn custom-btn " style="padding: 12px 12px">
-            Visit our blog
-          </a>
-        </div>
-
-
-      </div>
-
 		</div>
 	</div>
 </footer>

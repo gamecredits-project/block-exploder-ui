@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
-import {HomePageService} from '../../home/homePage.service';
 import {Router} from '@angular/router';
+import {HomePageService} from '../../home/homePage.service';
 import {Globals} from '../../globals';
+import {AppSettings} from '../../../appSettings';
 
 @Component({
   selector   : 'exploder-header',
@@ -9,8 +10,10 @@ import {Globals} from '../../globals';
   styleUrls  : ['./header.style.css'],
 })
 export class HeaderComponent {
+  apiDocsUrl: string;
 
   constructor(private homePageService: HomePageService, private router: Router, public globals: Globals) {
+    this.apiDocsUrl = AppSettings.API_DOCS_URL;
   }
 
   onSearch(param: string) {
