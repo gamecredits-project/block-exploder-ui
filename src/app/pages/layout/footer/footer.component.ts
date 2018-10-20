@@ -2,6 +2,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {FooterService} from './footer.service';
 import {TxSocketService} from '../../socket/socket.service';
 import { Globals } from '../../globals';
+import {AppSettings} from '../../../appSettings';
 
 @Component({
   selector   : 'exploder-footer',
@@ -20,8 +21,10 @@ export class FooterComponent implements OnInit, OnDestroy {
   public txs: any;
   private tx_data: any;
 
-  constructor(private footerService: FooterService, private txSocketService: TxSocketService, public globals: Globals)
-  {
+  apiDocsUrl: string;
+  appWebsite: string;
+
+  constructor(private footerService: FooterService, private txSocketService: TxSocketService, public globals: Globals) {
     this.txs = [];
   }
 
@@ -29,6 +32,8 @@ export class FooterComponent implements OnInit, OnDestroy {
     this.socket = this.txSocketService.initConnection();
     this.getTxInitMessage();
     this.getTx();
+    this.apiDocsUrl = AppSettings.API_DOCS_URL;
+    this.appWebsite = AppSettings.APP_WEBSITE;
 
     this.footerService.getLatestTransactions().subscribe((resp) => {
       this.latestTransactions = resp;

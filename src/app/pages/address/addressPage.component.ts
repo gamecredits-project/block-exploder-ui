@@ -22,8 +22,8 @@ export class AddressPageComponent implements OnInit {
   nextUnspentTransactionsPageLink: string = '';
   currentValue: number = 0;
   totalTransactionsNumber: number = 0;
-  currentLocation: string = 'www.blockexplorer.gamecredits.com';
-  newUnspentTransactions:  any =[];
+  currentLocation: string;
+  newUnspentTransactions:  any = [];
 
   constructor(private addressPageService: AddressPageService,
               private route: ActivatedRoute,
@@ -53,7 +53,7 @@ export class AddressPageComponent implements OnInit {
       .subscribe(resp => {
         this.nextUnspentTransactionsPageLink = resp.next;
         this.unspent = resp.utxo;
-        this.loadMoreUnspentTransactions();  
+        this.loadMoreUnspentTransactions();
       });
 
     this.route.params
@@ -101,13 +101,13 @@ export class AddressPageComponent implements OnInit {
     this.addressPageService.getNextTransactions(this.nextUnspentTransactionsPageLink).subscribe((resp) => {
       this.newUnspentTransactions = resp.utxo;
       this.nextUnspentTransactionsPageLink = resp.next;
-    
+
     });
   }
 
   addLoadedTranasactions() {
     this.unspent = this.unspent.concat(this.newUnspentTransactions);
-    if(this.selectedTrancationsTagName == 'Unspent Transactions') {
+    if(this.selectedTrancationsTagName === 'Unspent Transactions') {
       this.transactionsTagNumber = this.unspent.length;
     }
     this.loadMoreUnspentTransactions();

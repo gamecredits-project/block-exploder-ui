@@ -13,7 +13,7 @@ export class TransactionsPageComponent implements OnInit {
 
   transaction: any;
   confirmations: any;
-  currentLocation: string = 'www.blockexplorer.gamecredits.com';
+  currentLocation: string;
 
   constructor(private transactionsPageService: TransactionsPageService,
               private route: ActivatedRoute, public globals: Globals) {
